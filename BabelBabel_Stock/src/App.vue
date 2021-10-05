@@ -9,7 +9,7 @@ import Add from './components/Add.vue'
 
 <template>
 <NavBar />
-  <Add />
+ <Add />
 </template>
 
 <style>

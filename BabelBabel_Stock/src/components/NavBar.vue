@@ -12,10 +12,8 @@
   </div>
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
-    <router-link to="/AddWine">
-      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-        Add Wine
-      </a>
+      <router-link to="AddWine" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+       <button> Add Wine</button>
     </router-link>
       <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         Wine List 

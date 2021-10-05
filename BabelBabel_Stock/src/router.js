@@ -7,7 +7,7 @@ const routes = [{
 }, {
   path: "/AddWine",
   name: "add",
-  component: () => import('./components/AddWine.vue'),
+  component: () => import('./views/AddWine.vue'),
 },
 ];
 
