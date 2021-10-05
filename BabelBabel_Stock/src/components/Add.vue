@@ -67,6 +67,7 @@
   </div>
 </form>
 </div>
+
 </template>
 
 <script>
@@ -76,11 +77,17 @@ name : "Add"
 </script>
 
 <style>
+
 .formulaire {
 display : flex;
 justify-content: center;
 align-items: center;
 margin-top: 50px;
+}
+
+.block {
+  
+justify-content: space-evenly;
 }
 
 </style>

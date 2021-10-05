@@ -9,6 +9,7 @@ import Add from './components/Add.vue'
 
 <template>
 <NavBar />
+<HelloWorld />
  <Add />
 </template>
 

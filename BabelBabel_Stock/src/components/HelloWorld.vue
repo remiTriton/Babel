@@ -9,13 +9,25 @@ const count = ref(0)
 </script>
 
 <template>
-  <h1>Welcome to Babel Babel Wine Stock</h1>
+<div>
 
-  
+  <h1>WELCOME TO BABEL BABEL WINE STOCK</h1>
+
+</div>
 </template>
 
 <style scoped>
-a {
-  color: #42b983;
+h1 {
+  color: #2a574c;
+  margin-top: 150px;
+}
+.bb{
+  background-color : #2a574c;
+  width: 150px;
+  display : flex;
+justify-content: center;
+align-items: center;
+  margin-top: 50px;
+  
 }
 </style>
