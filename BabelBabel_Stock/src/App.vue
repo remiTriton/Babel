@@ -18,7 +18,9 @@ import Add from './components/Add.vue'
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-
+  color:white;
+}
+#NavBar {
+  background-color: #2a574c;
 }
 </style>
