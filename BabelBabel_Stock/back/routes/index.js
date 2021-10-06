@@ -3,7 +3,7 @@ const router = express.Router()
 const User = require('../models/users');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
-const Comment = require("../models/wine")
+const wine = require("../models/wine")
 
 // /* GET wine */
 // router.get('/wine', (req, res) => {

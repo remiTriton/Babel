@@ -26,7 +26,7 @@
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>Menu</title>
+            <title class="cat">Menu</title>
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
         </button>
@@ -45,11 +45,12 @@
               mr-4
             "
           >
-            <button>Add Wine</button>
+            <button class ="cat">Add Wine</button>
           </router-link>
-          <a
-            href="#responsive-header"
+          <router-link
+              to=""
             class="
+              cat
               block
               mt-4
               lg:inline-block
@@ -60,10 +61,11 @@
             "
           >
             Wine List
-          </a>
-          <a
-            href="#responsive-header"
+          </router-link>
+          <router-link
+              to=""
             class="
+              cat
               block
               mt-4
               lg:inline-block
@@ -73,12 +75,13 @@
             "
           >
             Blog
-          </a>
+          </router-link>
         </div>
         <div>
-          <a
-            href="#"
+           <router-link
+            to=""
             class="
+              cat
               inline-block
               text-sm
               px-4
@@ -94,8 +97,7 @@
               mt-4
               lg:mt-0
             "
-            >Download</a
-          >
+            >Download</router-link>
         </div>
       </div>
     </nav>
@@ -115,5 +117,12 @@ export default {
 .bb {
   width: 150px;
   height: 150px;
+}
+.cat{
+  font-size: 30px;
+  display : flex;
+  justify-content: space-between;
+
+
 }
 </style>

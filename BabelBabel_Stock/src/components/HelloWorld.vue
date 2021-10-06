@@ -20,6 +20,7 @@ const count = ref(0)
 h1 {
   color: #2a574c;
   margin-top: 150px;
+  font-size: 25px;
 }
 .bb{
   background-color : #2a574c;
