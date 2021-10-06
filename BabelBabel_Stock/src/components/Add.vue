@@ -282,7 +282,6 @@
           />
         </div>
       </div>
-      <div class="sub">
         <button
           type="button"
           class="
@@ -296,15 +295,15 @@
             font-medium
             rounded-md
             text-gray-700
-            bg-white
-            hover:bg-gray-50
+            color-#2a574c
+            hover:bg-#2a574c-50
             focus:outline-none
             focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
           "
         >
           Submit
         </button>
-      </div>
+
     </v-form>
   </div>
 </template>
@@ -328,7 +327,8 @@ export default {
 }
 
 .sub {
-  color: #2a574c;
+
+  margin-top: 35px;
 }
 .col{
   align-items: center;
