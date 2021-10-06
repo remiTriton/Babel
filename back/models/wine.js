@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 
 const UserSchema = new Schema({
-    firstName: {
+  firstName: {
     type: String,
     required: true,
     unique: true
@@ -26,14 +26,12 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  quantité: {
+  quantite: {
     type: Number,
     required: true
   }
+}, {
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+})
 
-},
-  {
-    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
-  })
-
-module.exports = model('wine', UserSchema)
+module.exports = model('wine', UserSchema);

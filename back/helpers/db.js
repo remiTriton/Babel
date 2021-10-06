@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 module.exports = () => {
-  mongoose.connect(process.env.MONGODB_URI || 'localhost', { useNewUrlParser: true})
+  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true})
   mongoose.connection.on('open', () => {
     console.log('MongoDB : Connected successfully');
   })
