@@ -295,7 +295,7 @@
             font-medium
             rounded-md
             text-gray-700
-            color-#2a574c
+            colorfat-#2a574c
             hover:bg-#2a574c-50
             focus:outline-none
             focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500

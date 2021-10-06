@@ -1,0 +1,28 @@
+{
+  "name": "bck",
+  "version": "1.0.0",
+  "description": "wineStock",
+  "homepage": "https://github.com/remiTriton/Babel#readme",
+  "bugs": {
+    "url": "https://github.com/remiTriton/Babel/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remiTriton/Babel.git"
+  },
+  "license": "ISC",
+  "author": "remi",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-load": "^1.1.16",
+    "mongoose": "^6.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
