@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`backend start on http://localhost:${3001}`);
+  console.log(`backend start on http://localhost:${port}`);
 });
 
 module.exports = app;
