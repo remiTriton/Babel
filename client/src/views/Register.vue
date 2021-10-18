@@ -1,14 +1,14 @@
 <template>
-<Log />
+<SignUp />
 </template>
 
 <script>
-import Log from '../components/Log.vue'
+
+import SignUp from '../components/SignUp.vue'
 
 export default {
-  name: "Register",
-    components : {Log}
-
+  name: "Register.vue",
+  components: {SignUp},
 }
 </script>
 

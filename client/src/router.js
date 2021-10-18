@@ -6,10 +6,15 @@ const routes = [{
   component: () => import('./components/Add.vue'),
 },
   {
-    path: "/register",
-    name: "register",
+    path: "/login",
+    name: "Login",
+    component: () => import('./views/Login.vue'),
+  },{
+    path: "/Register",
+    name: "Register",
     component: () => import('./views/Register.vue'),
-  }, {
+  },
+  {
   path: "/AddWine",
   name: "add",
   component: () => import('./components/Add.vue'),
