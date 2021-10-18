@@ -94,8 +94,8 @@
               </div>
 
               <div>
-                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Sign in
+                <button class="But bg-blue hover:bg-dark text-white font-bold py-2 px-4 rounded-full" type="submit">
+                  Sign Up
                 </button>
               </div>
             </form>
@@ -118,5 +118,8 @@ export default {
 <style scoped>
 .img {
   justify-content: center;
+}
+.But {
+  background-color: #2a574c;
 }
 </style>
