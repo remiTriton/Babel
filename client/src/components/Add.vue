@@ -1,4 +1,5 @@
 <template>
+  <HelloWorld />
   <div class="formulaire">
     <v-form class="w-full max-w-lg">
       <div class="flex flex-wrap -mx-1 mb-6 mt-6">
@@ -305,12 +306,17 @@
         </button>
 
     </v-form>
+
   </div>
 </template>
 
 <script>
+
+import HelloWorld from '../components/HelloWorld.vue'
+
 export default {
   name: "Add",
+  components: "HelloWorld"
 };
 </script>
 
