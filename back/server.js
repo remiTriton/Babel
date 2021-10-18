@@ -1,21 +1,15 @@
 const express = require('express')
 const usersRouter = require('./routes/users');
-const wineRouter = require('./routes/wine');
-// const indexRouter = require('./routes/index')
+const winesRouter = require('./routes/wines');
 
-const port = 3001;
-
-// mongodb
-const db = require('./helpers/db')();
+const port = process.env.APP_PORT || 3001;
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/users', usersRouter);
-app.use('/api/wine', wineRouter);
-
-// catch 404 and forward to error handler
+app.use('/api/wines', winesRouter);
 
 // error handler
 app.use((err, req, res, next) => {

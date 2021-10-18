@@ -14,14 +14,14 @@
   "author": "remi",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "APP_PORT=$APP_PORT node server.js",
+    "dev": "APP_PORT=$APP_PORT nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.17.1",
     "express-load": "^1.1.16",
-    "mongoose": "^6.0.9"
+    "mongodb": "^4.1.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
