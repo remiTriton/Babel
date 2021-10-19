@@ -2,18 +2,19 @@
   "name": "babelbabel-stock",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "APP_PORT=$APP_PORT vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "APP_PORT=$APP_PORT vite preview"
   },
   "dependencies": {
     "vue": "^3.2.16"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.9.2",
-    "autoprefixer": "^10.3.6",
-    "postcss": "^8.3.8",
-    "tailwindcss": "^2.2.16",
-    "vite": "^2.6.0"
+    "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/ref-transform": "^3.2.20",
+    "autoprefixer": "^10.3.7",
+    "postcss": "^8.3.9",
+    "tailwindcss": "^2.2.17",
+    "vite": "^2.6.10"
   }
 }
