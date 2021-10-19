@@ -14,7 +14,7 @@
             "
             for="grid-first-name"
           >
-            First Name
+            Domain
           </label>
           <input
             class="
@@ -50,7 +50,7 @@
             "
             for="grid-last-name"
           >
-            Last Name
+            Winemaker
           </label>
           <input
             class="
