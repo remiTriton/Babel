@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid">
+  <form>
   <div class="w-full bg-grey" style="padding-top: 4rem;">
     <div class="container mx-auto py-8">
       <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
@@ -47,7 +47,7 @@
       </p>
     </div>
   </div>
-  </v-form>
+  </form>
 </template>
 
 <script>
