@@ -34,7 +34,6 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log(req.body)
   try {
     await client.connect();
     const database = client.db('babel');

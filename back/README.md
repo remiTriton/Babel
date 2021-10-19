@@ -22,3 +22,9 @@ curl http://localhost:3001/api/wines/HERE_YOUR_ID
 ```bash
 curl http://localhost:3001/api/wines
 ```
+
+
+### insert user
+```bash
+curl -d '{"firstname":"Remi", "lastname":"triton", "email":"remi.triton@epitech.eu", "password":"1234"}' -H "Content-Type: application/json" -X POST http://localhost:3001/api/users
+```

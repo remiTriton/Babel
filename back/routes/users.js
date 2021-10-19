@@ -9,7 +9,7 @@ const client = new MongoClient(uri);
 router.get('/', async (req, res) => {
     try {
         await client.connect();
-        const database = client.db('UserBabel');
+        const database = client.db('babel');
         const userCol = database.collection('users');
 
         const users = await userCol.find().toArray();
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         await client.connect();
-        const database = client.db('UserBabel');
+        const database = client.db('babel');
         const userCol = database.collection('users');
 
         const query = { _id: new ObjectId(req.params.id) };
@@ -35,10 +35,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     try {
         await client.connect();
-        const database = client.db('UserBabel');
+        const database = client.db('babel');
         const userCol = database.collection("users");
 
         // create a document to insert
