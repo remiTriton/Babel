@@ -42,8 +42,14 @@ router.post('/', async (req, res) => {
 
     // create a document to insert
     const doc = {
+      domain: req.body.domain,
+      winemaker: req.body.winemaker,
       wineName: req.body.wineName,
       color: req.body.color,
+      city: req.body.city,
+      state: req.body.state,
+      quantity: req.body.quantity,
+
     }
 
     const result = await wineCol.insertOne(doc);
