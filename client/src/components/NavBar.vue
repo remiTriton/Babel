@@ -36,7 +36,7 @@
         <div class="text-sm lg:flex-grow">
 
           <router-link
-              to=""
+              to="/WineList"
             class="
               cat
               block
