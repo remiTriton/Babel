@@ -1,4 +1,5 @@
 <template>
+  <HelloWorld />
   <div class="formulaire">
     <v-form class="w-full max-w-lg">
       <div class="flex flex-wrap -mx-1 mb-6 mt-6">
@@ -282,35 +283,22 @@
           />
         </div>
       </div>
-        <button
-          type="button"
-          class="
-            inline-flex
-            items-center
-            px-4
-            py-2
-            border border-gray-300
-            shadow-sm
-            text-sm
-            font-medium
-            rounded-md
-            text-gray-700
-            colorfat-#2a574c
-            hover:bg-#2a574c-50
-            focus:outline-none
-            focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
-          "
-        >
-          Submit
-        </button>
+      <button class="But bg-blue hover:bg-dark text-white font-bold py-2 px-4 rounded-full" type="submit" @click="submit">
+        Submit
+      </button>
 
     </v-form>
+
   </div>
 </template>
 
 <script>
+
+import HelloWorld from '../components/HelloWorld.vue'
+
 export default {
   name: "Add",
+  components: "HelloWorld"
 };
 </script>
 
@@ -333,5 +321,8 @@ export default {
 .col{
   align-items: center;
   margin-top: 25px;
+}
+.But{
+  background-color: #2a574c;
 }
 </style>
