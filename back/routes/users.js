@@ -49,7 +49,9 @@ router.post('/', async (req, res) => {
         }
 
         const result = await userCol.insertOne(doc);
-        res.send(`A document was inserted with the _id: ${result.insertedId}`);
+        res.send(JSON.stringify({
+          id: result.insertedId
+        }));
     } finally {
         await client.close();
     }
