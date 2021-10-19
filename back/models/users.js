@@ -2,11 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
-const fakeUserDb = [
+const NewUserDb = [
     {
-        id: 1,
-        name: 'castelly',
-        firstname: 'thomas',
+        id: "",
+        name: "",
+        lastname: "",
+        email: "",
+        password: "",
     }, {
         id: 2,
         name: 'Triton',
