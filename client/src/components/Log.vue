@@ -65,7 +65,7 @@
                   Email address
                 </label>
                 <div class="mt-1">
-                  <input id="email" name="email" type="email" autocomplete="email" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black" />
+                  <input v-model="email" name="email" type="email" autocomplete="email" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black" />
                 </div>
               </div>
 
@@ -74,7 +74,7 @@
                   Password
                 </label>
                 <div class="mt-1">
-                  <input id="password" name="password" type="password" autocomplete="current-password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black" />
+                  <input v-model="password" name="password" type="password" autocomplete="current-password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black" />
                 </div>
               </div>
 
@@ -111,8 +111,28 @@
 
 <script>
 export default {
-  name: "Log"
-}
+  name: "Log",
+//   data() {
+//     return {
+//       email: "",
+//       password: "",
+//     }
+//   },
+//   methods: {
+//      async logUser() {
+//       const user = {
+//          email: this.email,
+//         password: this.password,
+//   };
+//   // real Backend JSON
+//         const res = await resHttp.json();
+//         if (res.id) {
+//           this.email = '';
+//           this.password = '';
+//         }
+//      }
+//   }
+ }
 </script>
 
 <style scoped>

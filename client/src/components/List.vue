@@ -25,7 +25,7 @@ const products = [
   {
     id: 1,
     name: 'Chuck is Back',
-    href: '#',
+    href: '/Print',
     price: '50€',
     imageSrc: 'src/images/../assets/Chuck.jpg',
     imageAlt: 'La Sorga',
@@ -33,7 +33,7 @@ const products = [
   {
     id: 2,
     name: 'Maître Splinter',
-    href: '#',
+    href: '/Print',
     price: '40€',
     imageSrc: 'src/images/../assets/MS.jpg',
     imageAlt: 'Maître Splinter',
@@ -41,7 +41,7 @@ const products = [
   {
     id: 3,
     name: 'Bruce Lee',
-    href: '#',
+    href: '/Print',
     price: '89€',
     imageSrc: 'src/images/../assets/BL.jpg',
     imageAlt: 'Bruce Lee',
@@ -49,7 +49,7 @@ const products = [
   {
     id: 4,
     name: 'Yodel Master',
-    href: '#',
+    href: '/Print',
     price: '35€',
     imageSrc: 'src/images/../assets/YM.jpg',
     imageAlt: 'Yodel Master',

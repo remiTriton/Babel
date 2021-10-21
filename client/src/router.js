@@ -25,10 +25,16 @@ const routes = [{
     component: () => import('./views/WineList.vue'),
   },
   {
+    path: "/Print",
+    name: "Print",
+    component: () => import('./components/Unique.vue/'),
+  },
+  {
   path: "/AddWine",
   name: "add",
   component: () => import('./components/Add.vue'),
 },
+
 ];
 
 
