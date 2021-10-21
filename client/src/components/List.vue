@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mt-60">
+    <div class="container mt-40">
   <div class="flex items-center text-black">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-gray-600" fill="none" viewBox="0 0 24 24"
          stroke="currentColor">

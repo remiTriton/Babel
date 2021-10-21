@@ -1,7 +1,7 @@
 <template>
   <HelloWorld />
   <div class="formulaire">
-    <v-form class="w-full max-w-lg">
+    <v-form class="w-full max-w-lg mt-40">
       <div class="flex flex-wrap -mx-1 mb-6 mt-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
