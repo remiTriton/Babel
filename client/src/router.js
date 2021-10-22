@@ -35,6 +35,7 @@ const routes = [{
   component: () => import('./components/Add.vue'),
 },
 
+
 ];
 
 

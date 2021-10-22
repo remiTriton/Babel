@@ -2,6 +2,7 @@
 import HelloWorld from '../components/HelloWorld.vue'
 import NavBar from '../components/NavBar.vue'
 
+
 export default {
   components: {
     NavBar,
@@ -13,8 +14,8 @@ export default {
 
 <template>
 <NavBar />
-
 <router-view></router-view>
+  <Footer />
 </template>
 
 <style>

@@ -37,7 +37,7 @@
             type="text"
             placeholder="..."
           />
-          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+
         </div>
         <div class="w-full md:w-2/4 px-3">
           <label
@@ -111,7 +111,7 @@
               type="text"
               placeholder="gamay"
           />
-          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+
         </div>
         <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
           <label
@@ -187,7 +187,6 @@
         />
       </div>
 
-
       <div class="flex flex-wrap -mx-1 mt-5 mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
@@ -221,17 +220,17 @@
               focus:outline-none
               focus:bg-white
             "
-
             type="text"
             placeholder="Jane"
           />
-          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+
         </div>
 
 
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <div class="relative">
         <div class="col">
+
           <select
               class="
 
@@ -399,11 +398,51 @@
           />
         </div>
       </div>
-      <button class="But bg-blue hover:bg-dark text-white font-bold py-2 px-4 rounded-full" type="submit" @click="submit">
+
+      <div class="w-full md:w-2/8 px-3">
+        <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+              mt-10
+            "
+            for="grid-technical-Specification"
+        >
+          Download Image
+        </label>
+        <input
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-gray-200
+              rounded
+              py-3
+              px-4
+              leading-tight
+              focus:outline-none
+              focus:bg-white
+              focus:border-gray-500
+            "
+            id="grid-technical-Specification"
+            type="file" @change="onFileSelected"
+            placeholder="..."
+        />
+      </div>
+
+      <button class="But bg-blue hover:bg-dark text-white font-bold py-2 px-4 rounded-full mt-10" type="submit" @click="submit">
         Submit
       </button>
 
     </v-form>
+
+
 
   </div>
 </template>
@@ -414,7 +453,12 @@ import HelloWorld from '../components/HelloWorld.vue'
 
 export default {
   name: "Add",
-  components: "HelloWorld"
+  components: "HelloWorld",
+  data() {
+    return{
+      selectedFile: null,
+    }
+  }
 };
 </script>
 
