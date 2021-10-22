@@ -3,7 +3,7 @@
   <div class="formulaire">
     <v-form class="w-full max-w-lg mt-40">
       <div class="flex flex-wrap -mx-1 mb-6 mt-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
           <label
             class="
               block
@@ -13,7 +13,7 @@
               font-bold
               mb-2
             "
-            for="grid-first-name"
+            for="grid-domain"
           >
             Domain
           </label>
@@ -33,13 +33,13 @@
               focus:outline-none
               focus:bg-white
             "
-            id="grid-first-name"
+            id="grid-domain"
             type="text"
-            placeholder="Natural"
+            placeholder="..."
           />
           <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         </div>
-        <div class="w-full md:w-1/2 px-3">
+        <div class="w-full md:w-2/4 px-3">
           <label
             class="
               block
@@ -49,7 +49,7 @@
               font-bold
               mb-2
             "
-            for="grid-last-name"
+            for="grid-winemaker"
           >
             Winemaker
           </label>
@@ -69,14 +69,126 @@
               focus:bg-white
               focus:border-gray-500
             "
-            id="grid-last-name"
+            id="grid-winemaker"
             type="text"
-            placeholder="Wine"
+            placeholder="La Sorga"
           />
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-1 mb-6">
+      <div class="flex flex-wrap -mx-1 mb-6 mt-6">
+        <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
+          <label
+              class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+              for="grid-grape-variety"
+          >
+            Grape Variety
+          </label>
+          <input
+              class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-red-500
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none
+              focus:bg-white
+            "
+              id="grid-grape-variety"
+              type="text"
+              placeholder="gamay"
+          />
+          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+        </div>
+        <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
+          <label
+              class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+              for="grid-year"
+          >
+            Year
+          </label>
+          <input
+              class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-gray-200
+              rounded
+              py-3
+              px-4
+              leading-tight
+              focus:outline-none
+              focus:bg-white
+              focus:border-gray-500
+              text-overflow
+            "
+              id="grid-year"
+              type="text"
+              placeholder="2021"
+          />
+        </div>
+      </div>
+
+      <div class="w-full md:w-2/8 px-3">
+        <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="grid-technical-Specification"
+        >
+          Technical Specification
+        </label>
+        <input
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-gray-200
+              rounded
+              py-3
+              px-4
+              leading-tight
+              focus:outline-none
+              focus:bg-white
+              focus:border-gray-500
+            "
+            id="grid-technical-Specification"
+            type="text"
+            placeholder="..."
+        />
+      </div>
+
+
+      <div class="flex flex-wrap -mx-1 mt-5 mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
             class="
@@ -86,8 +198,10 @@
               text-gray-700 text-xs
               font-bold
               mb-2
+              text-overflow
+              overflow: scroll;
             "
-            for="grid-first-name"
+            for="grid-wine-name"
           >
             Wine Name
           </label>
@@ -113,6 +227,8 @@
           />
           <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         </div>
+
+
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <div class="relative">
         <div class="col">
@@ -307,6 +423,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin-top: 50px;
 }
 

@@ -31,7 +31,7 @@
 
 <script>
 const features = [
-  {name: 'Origin', description: 'South of Ardèche.'},
+  {name: 'Domain', description: 'South of Ardèche.'},
   {name: 'Color', description: 'Sparkling Red.'},
   {name: 'Year', description: '2017'},
   {name: 'Grape Variety', description: '100% Gammay'},
