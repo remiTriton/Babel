@@ -441,7 +441,7 @@
         Submit
       </button>
     </v-form>
-  </div>
+  </div></div>
 </template>
 
 <script>
@@ -486,8 +486,7 @@ export default {
         });
 
         // real Backend JSON
-        const res = await resHttp.json();
-        if (res.id) {
+        
           this.createdwine = true;
           this.domain = '';
           this.winemaker = '';
@@ -499,7 +498,7 @@ export default {
           this.city = '';
           this.state = '';
           this.quantity = '';
-        }
+        
     }
   }
 };

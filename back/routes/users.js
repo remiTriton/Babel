@@ -1,5 +1,6 @@
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb')
+const bcrypt = require('bcryptjs')
 
 const router = express.Router();
 
@@ -34,7 +35,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res) =>{
     try {
         await client.connect();
         const database = client.db('babel');
@@ -48,13 +49,24 @@ router.post('/', async (req, res) => {
             password: req.body.password,
         }
 
+        if(!doc.firstname ||!doc.lastname ||!doc.email ||!doc.password ){
+            res.send('Please fill all fields')
+        }else{
+                bcrypt.genSalt(10, (err, salt) => bcrypt.hash(doc.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    //MDP securisé
+                    doc.password = hash;
+            }))
+            
+
         const result = await userCol.insertOne(doc);
         res.send(JSON.stringify({
           id: result.insertedId
-        }));
+        }));}
     } finally {
         await client.close();
     }
 });
+
 
 module.exports = router;
