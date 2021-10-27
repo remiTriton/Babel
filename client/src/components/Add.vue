@@ -1,9 +1,9 @@
 <template>
   <HelloWorld />
   <div class="formulaire">
-    <v-form class="w-full max-w-lg">
+    <v-form @submit.prevent.stop class="w-full max-w-lg mt-40">
       <div class="flex flex-wrap -mx-1 mb-6 mt-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
           <label
             class="
               block
@@ -13,11 +13,12 @@
               font-bold
               mb-2
             "
-            for="grid-first-name"
+            for="grid-domain"
           >
             Domain
           </label>
           <input
+            v-model="domain"
             class="
               appearance-none
               block
@@ -30,16 +31,14 @@
               px-4
               mb-3
               leading-tight
-              focus:outline-none
-              focus:bg-white
+              focus:outline-none focus:bg-white
             "
-            id="grid-first-name"
+            id="grid-domain"
             type="text"
-            placeholder="Natural"
+            placeholder="..."
           />
-          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         </div>
-        <div class="w-full md:w-1/2 px-3">
+        <div class="w-full md:w-2/4 px-3">
           <label
             class="
               block
@@ -49,11 +48,12 @@
               font-bold
               mb-2
             "
-            for="grid-last-name"
+            for="grid-winemaker"
           >
             Winemaker
           </label>
           <input
+            v-model="winemaker"
             class="
               appearance-none
               block
@@ -65,19 +65,17 @@
               py-3
               px-4
               leading-tight
-              focus:outline-none
-              focus:bg-white
-              focus:border-gray-500
+              focus:outline-none focus:bg-white focus:border-gray-500
             "
-            id="grid-last-name"
+            id="grid-winemaker"
             type="text"
-            placeholder="Wine"
+            placeholder="La Sorga"
           />
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-1 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <div class="flex flex-wrap -mx-1 mb-6 mt-6">
+        <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
           <label
             class="
               block
@@ -87,11 +85,12 @@
               font-bold
               mb-2
             "
-            for="grid-first-name"
+            for="grid-grape-variety"
           >
-            Wine Name
+            Grape Variety
           </label>
           <input
+            v-model="grapeVariety"
             class="
               appearance-none
               block
@@ -104,48 +103,154 @@
               px-4
               mb-3
               leading-tight
-              focus:outline-none
-              focus:bg-white
+              focus:outline-none focus:bg-white
             "
+            id="grid-grape-variety"
+            type="text"
+            placeholder="gamay"
+          />
+        </div>
+        <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="grid-year"
+          >
+            Year
+          </label>
+          <input
+            v-model="year"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-gray-200
+              rounded
+              py-3
+              px-4
+              leading-tight
+              focus:outline-none focus:bg-white focus:border-gray-500
+              text-overflow
+            "
+            id="grid-year"
+            type="text"
+            placeholder="2021"
+          />
+        </div>
+      </div>
 
+      <div class="w-full md:w-2/8 px-3">
+        <label
+          class="
+            block
+            uppercase
+            tracking-wide
+            text-gray-700 text-xs
+            font-bold
+            mb-2
+          "
+          for="grid-technical-Specification"
+        >
+          Technical Specification
+        </label>
+        <input
+          v-model="technicalSpecification"
+          class="
+            appearance-none
+            block
+            w-full
+            bg-gray-200
+            text-gray-700
+            border border-gray-200
+            rounded
+            py-3
+            px-4
+            leading-tight
+            focus:outline-none focus:bg-white focus:border-gray-500
+          "
+          id="grid-technical-Specification"
+          type="text"
+          placeholder="..."
+        />
+      </div>
+
+      <div class="flex flex-wrap -mx-1 mt-5 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+              text-overflow
+              overflow:
+              scroll;
+            "
+            for="grid-wine-name"
+          >
+            Wine Name
+          </label>
+          <input v-model="wineName"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-red-500
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
             type="text"
             placeholder="Jane"
           />
-          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <div class="relative">
-        <div class="col">
-          <select
-              class="
 
-                block
-                uppercase
-                appearance-none
-                w-full
-                bg-gray-200
-                border border-gray-200
-                text-gray-700
-                py-3
-                px-4
-                mb-3
-                rounded
-                leading-tight
-                focus:outline-none
-                focus:bg-white
-                focus:border-gray-500
-              "
-              id="grid-state"
-          >
-            <option>Red</option>
-            <option>White</option>
-            <option>Rosé</option>
-            <option>Bubble</option>
-            <option>Bierre</option>
-          </select>
-      </div>
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="relative">
+            <div class="col">
+              <select
+                v-model="color"
+                class="
+                  block
+                  uppercase
+                  appearance-none
+                  w-full
+                  bg-gray-200
+                  border border-gray-200
+                  text-gray-700
+                  py-3
+                  px-4
+                  mb-3
+                  rounded
+                  leading-tight
+                  focus:outline-none focus:bg-white focus:border-gray-500
+                "
+                id="grid-state"
+              >
+                <option>Red</option>
+                <option>White</option>
+                <option>Rosé</option>
+                <option>Bubble</option>
+                <option>Bierre</option>
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
       </div>
       <div class="flex flex-wrap -mx-1 mb-2">
         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -163,6 +268,7 @@
             City
           </label>
           <input
+            v-model="city"
             class="
               appearance-none
               block
@@ -174,9 +280,7 @@
               py-3
               px-4
               leading-tight
-              focus:outline-none
-              focus:bg-white
-              focus:border-gray-500
+              focus:outline-none focus:bg-white focus:border-gray-500
             "
             id="grid-city"
             type="text"
@@ -199,6 +303,7 @@
           </label>
           <div class="relative">
             <select
+              v-model="state"
               class="
                 block
                 appearance-none
@@ -211,9 +316,7 @@
                 pr-8
                 rounded
                 leading-tight
-                focus:outline-none
-                focus:bg-white
-                focus:border-gray-500
+                focus:outline-none focus:bg-white focus:border-gray-500
               "
               id="grid-state"
             >
@@ -259,9 +362,10 @@
             "
             for="grid-zip"
           >
-            Quantité
+            Quantity
           </label>
           <input
+            v-model="quantity"
             class="
               appearance-none
               block
@@ -273,9 +377,7 @@
               py-3
               px-4
               leading-tight
-              focus:outline-none
-              focus:bg-white
-              focus:border-gray-500
+              focus:outline-none focus:bg-white focus:border-gray-500
             "
             id="grid-zip"
             type="number"
@@ -283,23 +385,121 @@
           />
         </div>
       </div>
-      <button class="But bg-blue hover:bg-dark text-white font-bold py-2 px-4 rounded-full" type="submit" @click="submit">
+
+      <div class="w-full md:w-2/8 px-3">
+        <label
+          class="
+            block
+            uppercase
+            tracking-wide
+            text-gray-700 text-xs
+            font-bold
+            mb-2
+            mt-10
+          "
+          for="grid-technical-Specification"
+        >
+          Download Image
+        </label>
+        <input
+          class="
+            appearance-none
+            block
+            w-full
+            bg-gray-200
+            text-gray-700
+            border border-gray-200
+            rounded
+            py-3
+            px-4
+            leading-tight
+            focus:outline-none focus:bg-white focus:border-gray-500
+          "
+          id="grid-technical-Specification"
+          type="file"
+          @change="onFileSelected"
+          placeholder="..."
+        />
+      </div>
+
+      <button
+        class="
+          But
+          bg-blue
+          hover:bg-dark
+          text-white
+          font-bold
+          py-2
+          px-4
+          rounded-full
+          mt-10
+        "
+        type="submit"
+        @click="createWine"
+      >
         Submit
       </button>
-
     </v-form>
-
   </div>
 </template>
 
 <script>
-
-import HelloWorld from '../components/HelloWorld.vue'
+import HelloWorld from "../components/HelloWorld.vue";
 
 export default {
-  name: "Add",
-  components: "HelloWorld"
-};
+  name: "SignUp",
+  data() {
+    return {
+      domain: "",
+      winemaker: "",
+      grapeVariety: "",
+      year: "",
+      technicalSpecification: "",
+      wineName: "",
+      color: "",
+      city: "",
+      state: "",
+      quantity: "",
+    }
+  },
+  methods: {
+    async createWine() {
+      const wine = {
+        
+      domain: this.domain,
+      winemaker: this.winemaker,
+      grapeVariety: this.grapeVariety,
+      year: this.year,
+      technicalSpecification: this.technicalSpecification,
+      wineName: this.wineName,
+      color: this.color,
+      city: this.city,
+      state: this.state,
+      quantity: this.quantity,
+      };
+      const resHttp = await fetch('/api/wines', {
+          method: 'POST',
+          headers:{'content-type' : 'application/json'
+          },
+          body: JSON.stringify(wine),
+        });
+
+        // real Backend JSON
+       
+          this.createdwine = true;
+          this.domain = '';
+          this.winemaker = '';
+          this.grapeVariety = '';
+          this.year = '';
+          this.technicalSpecification = '';
+          this.wineName = '';
+          this.color = '';
+          this.city = '';
+          this.state = '';
+          this.quantity = '';
+        }
+    }
+  }
 </script>
 
 <style>
@@ -307,6 +507,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin-top: 50px;
 }
 
@@ -315,14 +516,13 @@ export default {
 }
 
 .sub {
-
   margin-top: 35px;
 }
-.col{
+.col {
   align-items: center;
   margin-top: 25px;
 }
-.But{
+.But {
   background-color: #2a574c;
 }
 </style>
