@@ -98,7 +98,7 @@
                   Sign Up
                 </button>
               </div>
-            </form>
+            </v-form>
           </div>
         </div>
       </div>
