@@ -1,4 +1,5 @@
 <template>
+<div>
   <HelloWorld />
   <div class="formulaire">
     <v-form class="w-full max-w-lg mt-40">
@@ -444,7 +445,7 @@
 
 
 
-  </div>
+  </div></div>
 </template>
 
 <script>
