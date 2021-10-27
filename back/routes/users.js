@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
         await client.connect();
         const database = client.db('babel');
         const userCol = database.collection('users');
-
         const users = await userCol.find().toArray();
         res.send(users);
     } finally {
@@ -25,9 +24,7 @@ router.get('/:id', async (req, res) => {
         await client.connect();
         const database = client.db('babel');
         const userCol = database.collection('users');
-
         const query = { _id: new ObjectId(req.params.id) };
-
         const users = await userCol.findOne(query);
         res.send(users);
     } finally {
@@ -35,12 +32,11 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) =>{
+router.post('/', async (req, res) => {
     try {
         await client.connect();
         const database = client.db('babel');
-        const userCol = database.collection("users");
-
+        const userCol = database.collection("users")
         // create a document to insert
         const doc = {
             firstname: req.body.firstname,
@@ -48,25 +44,21 @@ router.post('/', async (req, res) =>{
             email: req.body.email,
             password: req.body.password,
         }
-
-        if(!doc.firstname ||!doc.lastname ||!doc.email ||!doc.password ){
-            res.send('Please fill all fields')
-        }else{
-                bcrypt.genSalt(10, (err, salt) => bcrypt.hash(doc.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    //MDP securisé
-                    doc.password = hash;
-            }))
-            
-
-        const result = await userCol.insertOne(doc);
-        res.send(JSON.stringify({
-          id: result.insertedId
-        }));}
+        if (!doc.firstname || !doc.lastname || !doc.email || !doc.password) {
+            res.send('Please fill all fields.');
+        } else {
+            bcrypt.genSalt(10, (err, salt) => bcrypt.hash(doc.password, salt, (err, hash) => {
+                if (err) throw err;
+                //password secured
+                doc.password = hash;
+            }));
+            const result = await userCol.insertOne(doc);
+            res.send(JSON.stringify({
+                id: result.insertedId
+            }));
+        }
     } finally {
         await client.close();
     }
 });
-
-
 module.exports = router;
