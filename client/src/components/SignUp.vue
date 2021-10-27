@@ -88,8 +88,9 @@ export default {
     },
     async createUser() {
       const user = {
-        firstName: this.firstName,
-        lastName: this.lastName,
+        firstname: this.firstName,
+        lastname: this.lastName,
+
         email: this.email,
         password: this.password,
       };
@@ -99,6 +100,8 @@ export default {
       if(this.err === false) {
         const resHttp = await fetch('/api/users', {
           method: 'POST',
+           headers:{'content-type' : 'application/json'
+          },
           body: JSON.stringify(user),
         });
 
