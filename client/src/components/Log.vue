@@ -59,7 +59,7 @@
           </div>
 
           <div class="mt-6">
-            <v-form action="#" method="POST" class="space-y-6">
+            <v-form @submit.prevent.stop class="space-y-6">
               <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">
                   Email address
@@ -80,7 +80,7 @@
 
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                  <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+                  <input v-model="remember" id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
                   <label for="remember-me" class="ml-2 block text-sm text-gray-900">
                     Remember me
                   </label>
@@ -94,7 +94,7 @@
               </div>
 
               <div>
-                <button class="But bg-blue hover:bg-dark text-white font-bold py-2 px-4 rounded-full" type="submit">
+                <button class="But bg-blue hover:bg-dark text-white font-bold py-2 px-4 rounded-full" type="submit" @click="Log">
                   Sign Up
                 </button>
               </div>
@@ -112,26 +112,27 @@
 <script>
 export default {
   name: "Log",
-//   data() {
-//     return {
-//       email: "",
-//       password: "",
-//     }
-//   },
-//   methods: {
-//      async logUser() {
-//       const user = {
-//          email: this.email,
-//         password: this.password,
-//   };
-//   // real Backend JSON
-//         const res = await resHttp.json();
-//         if (res.id) {
-//           this.email = '';
-//           this.password = '';
-//         }
-//      }
-//   }
+  data() {
+    return {
+      email: "",
+      password: "",
+    }
+  },
+  methods: {
+     async Log() {
+      const user = {
+         email: this.email,
+         password: this.password,
+  };
+  const res = await fetch('/api/users/login', {
+          method: 'POST',
+           headers:{'content-type' : 'application/json'
+          },
+          body: JSON.stringify(user),
+        });
+        console.log(res)
+     }
+  }
  }
 </script>
 
