@@ -1,7 +1,7 @@
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb')
 const bcrypt = require('bcryptjs')
-
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
@@ -61,4 +61,38 @@ router.post('/', async (req, res) => {
         await client.close();
     }
 });
+
 module.exports = router;
+
+//Login handler for
+
+router.post('/login', async (req, res) =>{
+    await client.connect();
+        const database = client.db('babel');
+        const userCol = database.collection("users");
+
+    const { email, password } = req.body
+ // Match user
+userCol.findOne({
+  email: email
+}).then(user => {
+  if (!user) {
+    return res.status(200).json('No user found')
+  }
+
+  // Match password
+  bcrypt.compare(password, user.password, (err, isMatch) => {
+    if (err) throw err;
+    if (isMatch) {
+      jwt.sign({ user, iat: Math.floor(Date.now() / 1000) + (60 * 60), }, 'token', (err, token) => {
+        res.status(200).json({
+          user,
+          token
+        });
+      });
+    } else {
+      return res.status(200).json('Wrong password')
+    }
+  })
+})
+})
