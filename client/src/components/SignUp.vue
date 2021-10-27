@@ -90,7 +90,6 @@ export default {
       const user = {
         firstname: this.firstName,
         lastname: this.lastName,
-
         email: this.email,
         password: this.password,
       };
