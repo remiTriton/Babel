@@ -57,7 +57,6 @@ router.post('/', async (req, res) =>{
                     //MDP securisé
                     doc.password = hash;
             }))
-            
 
         const result = await userCol.insertOne(doc);
         res.send(JSON.stringify({
