@@ -1,5 +1,5 @@
 const express = require('express');
-const { MongoClient, ObjectId } = require('mongodb')
+const {MongoClient, ObjectId} = require('mongodb')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const router = express.Router();
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
         const database = client.db('babel');
         const userCol = database.collection('users');
 
-        const query = { _id: new ObjectId(req.params.id) };
+        const query = {_id: new ObjectId(req.params.id)};
 
         const users = await userCol.findOne(query);
         res.send(users);
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) =>{
+router.post('/', async (req, res) => {
     try {
         await client.connect();
         const database = client.db('babel');
@@ -49,20 +49,39 @@ router.post('/', async (req, res) =>{
             password: req.body.password,
         }
 
-        if(!doc.firstname ||!doc.lastname ||!doc.email ||!doc.password ){
+        if (!doc.firstname || !doc.lastname || !doc.email || !doc.password) {
             res.send('Please fill all fields')
-        }else{
-                bcrypt.genSalt(10, (err, salt) => bcrypt.hash(doc.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    //MDP securisé
-                    doc.password = hash;
-            }))
-            
+        } else {
+            const query = { email: doc.email };
+            const user = await userCol.findOne(query);
 
-        const result = await userCol.insertOne(doc);
-        res.send(JSON.stringify({
-          id: result.insertedId
-        }));}
+            if (user) {
+                res.status(500);
+                res.send('existing email');
+                return;
+            }
+
+            const hash = await new Promise((resolve, reject) => {
+                bcrypt.genSalt(10, (err, salt) => bcrypt.hash(doc.password, salt, (err, hash) => {
+                    if (err) {
+                        reject(err)
+                        return;
+                    }
+
+                    resolve(hash)
+                    return;
+                }))
+            })
+
+            //MDP securise
+            doc.password = hash;
+
+            const result = await userCol.insertOne(doc);
+
+            res.send(JSON.stringify({
+                id: result.insertedId
+            }));
+        }
     } finally {
         await client.close();
     }
@@ -72,33 +91,33 @@ module.exports = router;
 
 //Login handler for
 
-router.post('/login', async (req, res) =>{
+router.post('/login', async (req, res) => {
     await client.connect();
-        const database = client.db('babel');
-        const userCol = database.collection("users");
+    const database = client.db('babel');
+    const userCol = database.collection("users");
 
-    const { email, password } = req.body
- // Match user
-userCol.findOne({
-  email: email
-}).then(user => {
-  if (!user) {
-    return res.status(200).json('No user found')
-  }
+    const {email, password} = req.body
+    // Match user
+    userCol.findOne({
+        email: email
+    }).then(user => {
+        if (!user) {
+            return res.status(200).json('No user found')
+        }
 
-  // Match password
-  bcrypt.compare(password, user.password, (err, isMatch) => {
-    if (err) throw err;
-    if (isMatch) {
-      jwt.sign({ user, iat: Math.floor(Date.now() / 1000) + (60 * 60), }, 'token', (err, token) => {
-        res.status(200).json({
-          user,
-          token
-        });
-      });
-    } else {
-      return res.status(200).json('Wrong password')
-    }
-  })
-})
+        // Match password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+            if (err) throw err;
+            if (isMatch) {
+                jwt.sign({user, iat: Math.floor(Date.now() / 1000) + (60 * 60),}, 'token', (err, token) => {
+                    res.status(200).json({
+                        user,
+                        token
+                    });
+                });
+            } else {
+                return res.status(200).json('Wrong password')
+            }
+        })
+    })
 })
