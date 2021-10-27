@@ -43,6 +43,9 @@ router.post('/', async (req, res) => {
     const doc = {
       domain: req.body.domain,
       winemaker: req.body.winemaker,
+      grapeVariety: req.body.grapeVariety,
+      year: req.body.year,
+      technicalSpecification: req.body.technicalSpecification,
       wineName: req.body.wineName,
       color: req.body.color,
       city: req.body.city,
