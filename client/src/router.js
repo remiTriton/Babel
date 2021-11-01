@@ -30,6 +30,11 @@ const routes = [{
     component: () => import('./components/Unique.vue/'),
   },
   {
+    path: "/Admin",
+    name: "Admin",
+    component: () => import('./views/Admin.vue/'),
+  },
+  {
   path: "/AddWine",
   name: "add",
   component: () => import('./components/Add.vue'),
