@@ -1,9 +1,8 @@
 const express = require('express');
-const {MongoClient, ObjectId} = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const router = express.Router();
-
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
 
@@ -24,7 +23,7 @@ router.get('/:id', async (req, res) => {
         await client.connect();
         const database = client.db('babel');
         const userCol = database.collection('users');
-        const query = {_id: new ObjectId(req.params.id)};
+        const query = { _id: new ObjectId(req.params.id) };
         const users = await userCol.findOne(query);
         res.send(users);
     } finally {
@@ -92,7 +91,7 @@ router.post('/login', async (req, res) => {
     const database = client.db('babel');
     const userCol = database.collection("users");
 
-    const {email, password} = req.body
+    const { email, password } = req.body
     // Match user
     userCol.findOne({
         email: email
@@ -105,7 +104,7 @@ router.post('/login', async (req, res) => {
         bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-                jwt.sign({user, iat: Math.floor(Date.now() / 1000) + (60 * 60),}, 'token', (err, token) => {
+                jwt.sign({ user, iat: Math.floor(Date.now() / 1000) + (60 * 60), }, 'token', (err, token) => {
                     res.status(200).json({
                         user,
                         token
