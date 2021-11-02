@@ -58,6 +58,7 @@ router.post('/', async (req, res) => {
 
             const hash = await new Promise((resolve, reject) => {
                 bcrypt.genSalt(10, (err, salt) => bcrypt.hash(doc.password, salt, (err, hash) => {
+
                     if (err) {
                         reject(err)
                         return;
@@ -77,6 +78,7 @@ router.post('/', async (req, res) => {
                 id: result.insertedId
             }));
         }
+
     } finally {
         await client.close();
     }
