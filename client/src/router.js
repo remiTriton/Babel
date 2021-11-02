@@ -32,7 +32,12 @@ const routes = [{
   {
     path: "/Admin",
     name: "Admin",
-    component: () => import('./views/Admin.vue/'),
+    component: () => import('./views/Admin.vue'),
+  },
+  {
+    path: "/Order",
+    name: "OrderSheet",
+    component: () => import('./components/Cart.vue'),
   },
   {
   path: "/AddWine",

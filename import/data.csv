@@ -1,7 +1,7 @@
 id,Domaine,Nom,Departement,Pays,Annee,Cepage,Producteur
 
 1,Antocyame,18H17,Midi-Pyrénées,France,2018,syrah,Benoît + Sébastien Danjou
-2,Arena,Carco,Corse,France,2018,100 %nielluccio,Antoine-Marie Arena
+2,Arena,Carco,Corse,France,2018,100 %2C,Antoine-Marie Arena
 3,Auprès de mon cep,La Soif du Bagnard,Hérault,France,2015,syrah grenach vermentino nero,Ian Lu
 4,Aurélien Lefort,Buisson Ardent,Auvergne,France,2017,gamay d’Auvergne,Aurélien Lefort
 5,Azienda agricola,Foradori,Lezèr,Trentino-Alto-Adige,Italie,2018,teroldego,Elisabetta Foradori
@@ -9,4 +9,4 @@ id,Domaine,Nom,Departement,Pays,Annee,Cepage,Producteur
 7,Barranco Oscuro,Cerro la Monjas 1368,Andalousie,Espagne,2015,sauvignon cabernet franc merlot et grenache,la Famille Valenzuela
 8,Calabretta vini,Piedefranco,Sicile,Italie,2017,nerello mascalese,Massimiliano Calabretta
 9,Calcarius,Hellen,Pouilles,Italie,2018,100 % nero di troia,Valentina Pasalaqua + Danilo Marcucci
-10,Calcarius,Rosso,Pouilles,Italie,2017,100 % negroamaro,Valentina Pasalaqua + Danilo Marcucci
+10,Calcarius,Rosso,Pouilles,Italie,2017,100 % negroamaro,Vaentina Pasalaqua + Danilo Marcucci
