@@ -83,7 +83,22 @@ router.get('/date/:year', async (req, res) => {
     const wineCol = database.collection('wines');
 
     const query = {year: req.params.year };
-    const wine =  await wineCol.find(query).toArray();
+    const wine = await wineCol.find(query).toArray();
+    res.send(wine);
+    console.log(wine)
+  } finally {
+    await client.close();
+  }
+})
+
+router.get('/color/:color', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('babel');
+    const wineCol = database.collection('wines');
+
+    const query = {color: req.params.color };
+    const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine)
   } finally {

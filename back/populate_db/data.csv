@@ -1,12 +1,13 @@
-id;Domaine;Nom;Departement;Pays;Annee;Cepage;Producteur
+color;Domaine;Nom;Departement;Pays;Annee;Cepage;Producteur
 
-1;Antocyame;18H17;Midi-Pyrénées;France;2018;syrah;Benoît + Sébastien Danjou
-2;Arena;Carco;Corse;France;2018;100 %2C;Antoine-Marie Arena
-3;Auprès de mon cep;La Soif du Bagnard;Hérault;France;2015;syrah grenach vermentino nero;Ian Lu
-4;Aurélien Lefort;Buisson Ardent;Auvergne;France;2017;gamay d’Auvergne;Aurélien Lefort
-5;Azienda agricola;Foradori;Lezèr;Trentino-Alto-Adige;Italie;2018;teroldego;Elisabetta Foradori
-6;Balansa;Can del Rey;Aude;France;2017;carignan grenache noir syrah;Céline Peyre + Alex Gresent
-7;Barranco Oscuro;Cerro la Monjas 1368;Andalousie;Espagne;2015;sauvignon cabernet franc merlot et grenache;la Famille Valenzuela
-8;Calabretta vini;Piedefranco;Sicile;Italie;2017;nerello mascalese;Massimiliano Calabretta
-9;Calcarius;Hellen;Pouilles;Italie;2018;100 % nero di troia;Valentina Pasalaqua + Danilo Marcucci
-10;Calcarius;Rosso;Pouilles;Italie;2017;100 % negroamaro;Vaentina Pasalaqua + Danilo Marcucci
+
+Rouge;Antocyame;18H17;Midi-Pyrénées;France;2018;syrah;Benoît + Sébastien Danjou
+Rouge;Arena;Carco;Corse;France;2018;100 % nielluccio;Antoine-Marie Arena
+Rouge;Auprès de mon cep ;La Soif du Bagnard;Hérault;France;2015;syrah, grenach, vermentino nero;Ian Lu
+Rouge;Aurélien Lefort ;Buisson Ardent;Auvergne;France;2017;gamay d’Auvergne;Aurélien Lefort
+Rouge;Azienda agricola Foradori;Lezèr;Trentino-Alto-Adige;Italie ;2018;teroldego;Elisabetta Foradori
+Rouge;Balansa;Can del Rey;Aude;France;2017;carignan, grenache noir, syrah;Céline Peyre + Alex Gresent
+Rouge;Barranco Oscuro;Cerro la Monjas 1368;Andalousie;Espagne;2015;sauvignon, cabernet franc, merlot et grenache;la Famille Valenzuela
+Rouge;Calabretta vini;Piedefranco ;Sicile;Italie;2017;nerello mascalese;Massimiliano Calabretta
+Rouge;Calcarius;Hellen;Pouilles ;Italie ;2018;100 % nero di troia;Valentina Pasalaqua + Danilo Marcucci
+Rouge;Calcarius;Rosso ;Pouilles ;Italie;2017;100 % negroamaro;Valentina Pasalaqua + Danilo Marcucci
