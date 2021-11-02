@@ -266,7 +266,7 @@
             "
             for="grid-city"
           >
-            City
+            Region
           </label>
           <input
             v-model="city"
