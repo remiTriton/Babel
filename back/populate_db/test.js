@@ -10,13 +10,18 @@ const main = async () => {
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
-    const fileContent = await fs.readFile('./import/data.csv');
+    const fileContent = await fs.readFile('./data.csv');
     const fileContentStr = String(fileContent);
     const json = fileContentStr
         .split('\n')
         .filter((line) => !!line.trim())
         .map((line) => {
             const [id, domain, name, dpt, country, year, cepage, owner] = line.split(';')
+
+            wineCol.findOne(id);
+            if (id) {
+                return
+            };
             return {
                 id,
                 domain,
@@ -27,12 +32,9 @@ const main = async () => {
                 cepage,
                 owner,
             };
-        });
 
-    await wineCol.findById(id);
-    if (id) {
-        return;
-    }
+        })
+        .filter(Boolean);
 
     await wineCol.insertMany(json);
     console.log(json)
