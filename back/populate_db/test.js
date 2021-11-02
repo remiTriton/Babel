@@ -10,15 +10,28 @@ const main = async () => {
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
-    const fileContent = await fs.readFile('./import/data.csv');
+    const fileContent = await fs.readFile('./populate_db/data.csv');
     const fileContentStr = String(fileContent);
-    const json = fileContentStr
+
+    const data = fileContentStr
+        // each wine is on a new line
         .split('\n')
+
+        // remove blank line
         .filter((line) => !!line.trim())
-        .map((line) => {
-            const [ id, domain, name, dpt, country, year, cepage, owner ] = line.split(';')
+
+        // map string split by `;` to document
+        .map((line, i) => {
+            // escape first line
+            if (!i) {
+                return null;
+            }
+
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+            const [ color, domain, name, dpt, country, year, cepage, owner ] = line.split(';')
+
             return {
-                id,
+                color,
                 domain,
                 name,
                 dpt,
@@ -27,11 +40,17 @@ const main = async () => {
                 cepage,
                 owner,
             };
-        });
-    
-    
-    await wineCol.insertMany(json);
-    console
+        })
+
+        // remove NULL document (first line of the doc)
+        .filter(Boolean);
+
+
+
+    await wineCol.insertMany(data);
+
+    console.log('done');
+    process.exit(0);
 }
 main();
 
