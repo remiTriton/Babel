@@ -61,4 +61,49 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/search/:name', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('babel');
+    const wineCol = database.collection('wines');
+
+    const query = {name: req.params.name };
+    const wine = await wineCol.findOne(query);
+    res.send(wine);
+    console.log(wine)
+  } finally {
+    await client.close();
+  }
+})
+
+router.get('/date/:year', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('babel');
+    const wineCol = database.collection('wines');
+
+    const query = {year: req.params.year };
+    const wine = await wineCol.find(query).toArray();
+    res.send(wine);
+    console.log(wine)
+  } finally {
+    await client.close();
+  }
+})
+
+router.get('/color/:color', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('babel');
+    const wineCol = database.collection('wines');
+
+    const query = {color: req.params.color };
+    const wine = await wineCol.find(query).toArray();
+    res.send(wine);
+    console.log(wine)
+  } finally {
+    await client.close();
+  }
+})
+
 module.exports = router;

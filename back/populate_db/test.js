@@ -1,4 +1,4 @@
-const {MongoClient} = require("mongodb");
+const { MongoClient } = require("mongodb");
 const fs = require('fs').promises;
 
 // convert users.csv file to JSON array
@@ -10,7 +10,9 @@ const main = async () => {
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
+
     const fileContent = await fs.readFile('./populate_db/data.csv');
+
     const fileContentStr = String(fileContent);
 
     const data = fileContentStr
@@ -19,6 +21,7 @@ const main = async () => {
 
         // remove blank line
         .filter((line) => !!line.trim())
+
 
         // map string split by `;` to document
         .map((line, i) => {
@@ -30,6 +33,7 @@ const main = async () => {
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
             const [ color, domain, name, dpt, country, year, cepage, owner ] = line.split(';')
 
+
             return {
                 color,
                 domain,
@@ -40,6 +44,7 @@ const main = async () => {
                 cepage,
                 owner,
             };
+
         })
 
         // remove NULL document (first line of the doc)
