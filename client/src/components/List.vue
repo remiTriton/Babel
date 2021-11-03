@@ -80,6 +80,8 @@
             br-5
             rounded
           "
+          :value="bubble"
+          @click="filter('bubble')"
         >
           Bubble
         </button></span
@@ -96,6 +98,7 @@
             br-5
             rounded
           "
+          @click="filter('Rouge')"
         >
           Red
         </button></span
@@ -112,6 +115,7 @@
             br-5
             rounded
           "
+          @click="filter('Blanc')"
         >
           White
         </button></span
@@ -128,6 +132,7 @@
             br-5
             rounded
           "
+          @click="filter('rose')"
         >
           Rosé
         </button></span
@@ -144,6 +149,7 @@
             br-5
             rounded
           "
+          @click="filter('beer')"
         >
           Beer
         </button></span
@@ -182,17 +188,17 @@
                 overflow-hidden
                 xl:aspect-w-7 xl:aspect-h-8
               "
-              
-            ><router-link :to="{name : 'Print', params : { id : product._id }}">
-              <img
-                src="src/images/../assets/Chuck.jpg"
-                :alt="product.name"
-                class="
-                  w-full
-                  h-full
-                  object-center object-cover
-                  group-hover:opacity-75
-                "
+            >
+              <router-link :to="{ name: 'Print', params: { id: product._id } }">
+                <img
+                  src="src/images/../assets/Chuck.jpg"
+                  :alt="product.name"
+                  class="
+                    w-full
+                    h-full
+                    object-center object-cover
+                    group-hover:opacity-75
+                  "
               /></router-link>
             </div>
             <h3 class="mt-4 text-sm text-gray-700">
@@ -299,6 +305,12 @@ export default {
       const res = await fetch(
         "http://localhost:3001/api/wines/" + type + "/" + searchQuery
       );
+      const data = await res.json();
+      this.products = data;
+      console.log(data);
+    },
+    async filter(value) {
+      const res = await fetch("http://localhost:3001/api/wines/color/" + value);
       const data = await res.json();
       this.products = data;
       console.log(data);

@@ -62,6 +62,21 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/color/:color', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('babel');
+    const wineCol = database.collection('wines');
+
+    const query = {color: req.params.color };
+    const wine = await wineCol.find(query).toArray();
+    res.send(wine);
+    console.log(wine)
+  } finally {
+    await client.close();
+  }
+})
+
 router.get('/search/:name', async (req, res) => {
   try {
     await client.connect();
