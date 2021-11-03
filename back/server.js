@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/users', usersRouter);
 app.use('/api/wines', winesRouter);
+app.use(cors());
 
 // error handler
 app.use((err, req, res, next) => {

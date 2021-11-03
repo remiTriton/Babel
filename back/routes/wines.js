@@ -5,6 +5,7 @@ const router = express.Router();
 
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
+ 
 
 router.get('/', async (req, res) => {
   try {
@@ -91,7 +92,7 @@ router.get('/domain/:domain', async (req, res) => {
   }
 })
 
-router.get('/color/:color', async (req, res) => {
+router.get('/wines/:name', async (req, res) => {
   try {
     await client.connect();
     const database = client.db('babel');
