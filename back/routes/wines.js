@@ -76,13 +76,13 @@ router.get('/search/:name', async (req, res) => {
   }
 })
 
-router.get('/date/:year', async (req, res) => {
+router.get('/domain/:domain', async (req, res) => {
   try {
     await client.connect();
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
-    const query = {year: req.params.year };
+    const query = {domain: req.params.domain };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine)
@@ -98,6 +98,21 @@ router.get('/color/:color', async (req, res) => {
     const wineCol = database.collection('wines');
 
     const query = {color: req.params.color };
+    const wine = await wineCol.find(query).toArray();
+    res.send(wine);
+    console.log(wine)
+  } finally {
+    await client.close();
+  }
+})
+
+router.get('/dpt/:dpt', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('babel');
+    const wineCol = database.collection('wines');
+
+    const query = {dpt: req.params.dpt };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine)
