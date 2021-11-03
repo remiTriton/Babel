@@ -11,7 +11,7 @@ const main = async () => {
     const wineCol = database.collection('wines');
 
 
-    const fileContent = await fs.readFile('./populate_db/data.csv');
+    const fileContent = await fs.readFile('./data.csv');
 
     const fileContentStr = String(fileContent);
 
@@ -29,11 +29,8 @@ const main = async () => {
             if (!i) {
                 return null;
             }
-
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
             const [ color, domain, name, dpt, country, year, cepage, owner ] = line.split(';')
-
-
             return {
                 color,
                 domain,
@@ -44,16 +41,10 @@ const main = async () => {
                 cepage,
                 owner,
             };
-
         })
-
         // remove NULL document (first line of the doc)
         .filter(Boolean);
-
-
-
     await wineCol.insertMany(data);
-
     console.log('done');
     process.exit(0);
 }

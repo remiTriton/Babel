@@ -40,7 +40,7 @@
                   class="form-radio"
                   name="accountType"
                   v-model="type"
-                  value='dpt'
+                  value="dpt"
                 />
                 <span class="ml-2">Département</span>
               </label>
@@ -49,7 +49,7 @@
                   type="radio"
                   class="form-radio"
                   name="accountType"
-                  value='domain'
+                  value="domain"
                   v-model="type"
                 />
                 <span class="ml-2">Domaine</span>
@@ -59,7 +59,7 @@
                   type="radio"
                   class="form-radio"
                   name="accountType"
-                  v-model='type'
+                  v-model="type"
                   value="search"
                 />
                 <span class="ml-2">Nom</span>
@@ -172,12 +172,7 @@
             xl:grid-cols-4 xl:gap-x-8
           "
         >
-          <a
-            v-for="product in products"
-            :key="product.id"
-            :href="product.href"
-            class="group"
-          >
+          <div v-for="product in products" :key="product.id">
             <div
               class="
                 w-full
@@ -187,17 +182,18 @@
                 overflow-hidden
                 xl:aspect-w-7 xl:aspect-h-8
               "
-            >
+              
+            ><router-link :to="{name : 'Print', params : { id : product._id }}">
               <img
-                :src="product.imageSrc"
-                :alt="product.imageAlt"
+                src="src/images/../assets/Chuck.jpg"
+                :alt="product.name"
                 class="
                   w-full
                   h-full
                   object-center object-cover
                   group-hover:opacity-75
                 "
-              />
+              /></router-link>
             </div>
             <h3 class="mt-4 text-sm text-gray-700">
               {{ product.name }}
@@ -205,7 +201,7 @@
             <p class="mt-1 text-lg font-medium text-gray-900">
               {{ product.price }}
             </p>
-          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -249,56 +245,62 @@
 </template>
 
 <script>
-const products = [
-  {
-    id: 1,
-    name: "Chuck is Back",
-    href: "/Print",
-    price: "50€",
-    imageSrc: "src/images/../assets/Chuck.jpg",
-    imageAlt: "La Sorga",
-  },
-  {
-    id: 2,
-    name: "Maître Splinter",
-    href: "/Print",
-    price: "40€",
-    imageSrc: "src/images/../assets/MS.jpg",
-    imageAlt: "Maître Splinter",
-  },
-  {
-    id: 3,
-    name: "Bruce Lee",
-    href: "/Print",
-    price: "89€",
-    imageSrc: "src/images/../assets/BL.jpg",
-    imageAlt: "Bruce Lee",
-  },
-  {
-    id: 4,
-    name: "Yodel Master",
-    href: "/Print",
-    price: "35€",
-    imageSrc: "src/images/../assets/YM.jpg",
-    imageAlt: "Yodel Master",
-  },
-  // More products...
-];
+// const products = [
+//   {
+//     id: 1,
+//     name: "Chuck is Back",
+//     href: "/Print",
+//     price: "50€",
+//     imageSrc: "src/images/../assets/Chuck.jpg",
+//     imageAlt: "La Sorga",
+//   },
+//   {
+//     id: 2,
+//     name: "Maître Splinter",
+//     href: "/Print",
+//     price: "40€",
+//     imageSrc: "src/images/../assets/MS.jpg",
+//     imageAlt: "Maître Splinter",
+//   },
+//   {
+//     id: 3,
+//     name: "Bruce Lee",
+//     href: "/Print",
+//     price: "89€",
+//     imageSrc: "src/images/../assets/BL.jpg",
+//     imageAlt: "Bruce Lee",
+//   },
+//   {
+//     id: 4,
+//     name: "Yodel Master",
+//     href: "/Print",
+//     price: "35€",
+//     imageSrc: "src/images/../assets/YM.jpg",
+//     imageAlt: "Yodel Master",
+//   },
+//   // More products...
+// ];
 
 export default {
-  setup() {
+  data() {
     return {
-      products,
+      products: [],
     };
+  },
+
+  async created() {
+    const res = await fetch("http://localhost:3001/api/wines");
+    const data = await res.json();
+    this.products = data;
+    console.log(data);
   },
   methods: {
     async searchWine(searchQuery, type) {
-
-
       const res = await fetch(
-        "http://localhost:3001/api/wines/"+ type +"/" + searchQuery
+        "http://localhost:3001/api/wines/" + type + "/" + searchQuery
       );
       const data = await res.json();
+      this.products = data;
       console.log(data);
     },
   },

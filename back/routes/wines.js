@@ -5,7 +5,7 @@ const router = express.Router();
 
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
- 
+
 
 router.get('/', async (req, res) => {
   try {
@@ -68,7 +68,7 @@ router.get('/search/:name', async (req, res) => {
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
-    const query = {name: req.params.name };
+    const query = { name: req.params.name };
     const wine = await wineCol.findOne(query);
     res.send(wine);
     console.log(wine)
@@ -83,7 +83,7 @@ router.get('/domain/:domain', async (req, res) => {
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
-    const query = {domain: req.params.domain };
+    const query = { domain: req.params.domain };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine)
@@ -98,7 +98,7 @@ router.get('/wines/:name', async (req, res) => {
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
-    const query = {color: req.params.color };
+    const query = { color: req.params.color };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine)
@@ -113,10 +113,24 @@ router.get('/dpt/:dpt', async (req, res) => {
     const database = client.db('babel');
     const wineCol = database.collection('wines');
 
-    const query = {dpt: req.params.dpt };
+    const query = { dpt: req.params.dpt };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine)
+  } finally {
+    await client.close();
+  }
+})
+
+router.delete('/:id', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('babel');
+    const wineCol = database.collection('wines');
+
+    const query = { _id: new ObjectId(req.params.id) };
+    await wineCol.deleteOne(query);
+    res.send('Successfully deleted!');
   } finally {
     await client.close();
   }

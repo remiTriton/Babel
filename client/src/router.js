@@ -25,7 +25,7 @@ const routes = [{
     component: () => import('./views/WineList.vue'),
   },
   {
-    path: "/Print",
+    path: "/Print/:id",
     name: "Print",
     component: () => import('./components/Unique.vue/'),
   },
