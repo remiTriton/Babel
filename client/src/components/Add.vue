@@ -154,12 +154,12 @@
               font-bold
               mb-2
             "
-            for="grid-technical-Specification"
+            for="grid-Description"
           >
-            Technical Specification
+            Description
           </label>
           <input
-            v-model="technicalSpecification"
+            v-model="Description"
             class="
               appearance-none
               block
@@ -242,7 +242,7 @@
                   <option>White</option>
                   <option>Rosé</option>
                   <option>Bubble</option>
-                  <option>Bierre</option>
+                  <option>Biere</option>
                 </select>
               </div>
             </div>
