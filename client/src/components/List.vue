@@ -81,7 +81,7 @@
             rounded
           "
           :value="bubble"
-          @click="filter('bubble')"
+          @click="filter('Bubble')"
         >
           Bubble
         </button></span
@@ -132,7 +132,7 @@
             br-5
             rounded
           "
-          @click="filter('rose')"
+          @click="filter('Rose')"
         >
           Rosé
         </button></span
@@ -149,7 +149,7 @@
             br-5
             rounded
           "
-          @click="filter('beer')"
+          @click="filter('Beer')"
         >
           Beer
         </button></span
@@ -166,7 +166,7 @@
           lg:max-w-7xl lg:px-8
         "
       >
-        <h2 class="sr-only">Products</h2>
+        <h2 class="sr-only">wines</h2>
 
         <div
           class="
@@ -178,7 +178,7 @@
             xl:grid-cols-4 xl:gap-x-8
           "
         >
-          <div v-for="product in products" :key="product.id">
+          <div v-for="wine in wines" :key="wine.id">
             <div
               class="
                 w-full
@@ -189,10 +189,10 @@
                 xl:aspect-w-7 xl:aspect-h-8
               "
             >
-              <router-link :to="{ name: 'Print', params: { id: product._id } }">
+              <router-link :to="{ name: 'Print', params: { id: wine._id } }">
                 <img
                   src="src/images/../assets/Chuck.jpg"
-                  :alt="product.name"
+                  :alt="wine.name"
                   class="
                     w-full
                     h-full
@@ -202,10 +202,10 @@
               /></router-link>
             </div>
             <h3 class="mt-4 text-sm text-gray-700">
-              {{ product.name }}
+              {{ wine.name }}
             </h3>
             <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ product.price }}
+              {{ wine.price }}
             </p>
           </div>
         </div>
@@ -288,17 +288,13 @@
 // ];
 
 export default {
-  data() {
-    return {
-      products: [],
-    };
+  created() {
+    this.$store.dispatch("wines/fetchWines");
   },
-
-  async created() {
-    const res = await fetch("http://localhost:3001/api/wines");
-    const data = await res.json();
-    this.products = data;
-    console.log(data);
+  computed: {
+    wines() {
+      return this.$store.state.wines.wines;
+    },
   },
   methods: {
     async searchWine(searchQuery, type) {
