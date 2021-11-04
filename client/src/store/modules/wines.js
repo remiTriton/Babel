@@ -10,6 +10,10 @@ const wines = {
         setwines(state, list) {
             state.wines = list;
         },
+        setwine(state, list) {
+            state.wine = list;
+        },
+
     },
     actions: {
         //ON RECUPERE LES winesS
@@ -29,7 +33,7 @@ const wines = {
                 "method": "GET",
             })
             const data = await res.json();
-            context.commit("setwines", data);
+            context.commit("setwine", data);
         },
         
         //On cherche un wines 
