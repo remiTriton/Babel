@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="formulaire">
       <v-form @submit.prevent.stop class="w-full max-w-lg mt-40">
         <div class="flex flex-wrap -mx-1 mb-6 mt-6">
@@ -360,7 +359,7 @@
               Quantity
             </label>
             <input
-              v-model="wine.quantity"
+              v-model="quantity"
               class="
                 appearance-none
                 block
@@ -430,7 +429,7 @@
             mt-10
           "
           type="submit"
-          @click="updateWine(wine)"
+          @click="updateWine()"
         >
           Submit
         </button>
@@ -440,34 +439,46 @@
 </template>
 
 <script>
-
 export default {
   name: "SignUp",
-  created(){
-    this.$store.dispatch("wines/findOnewines" , this.$route.params.id)
+  props: ["id"],
+  created() {
+    this.$store.dispatch("wines/findOnewines", this.$route.params.id);
   },
-  computed:{
-      wine(){
-      return this.$store.state.wines.wine
-  }},
-  data() {
-    return {
-      domain: "",
-      winemaker: "",
-      grapeVariety: "",
-      year: "",
-      technicalSpecification: "",
-      wineName: "",
-      color: "",
-      city: "",
-      state: "",
-      quantity: "",
-    };
-  },
-  methods: {
-    async updateWine(wine) {
-      await this.$store.dispatch('wines/updateWine',[this.$route.params.id, wine]);
+  computed: {
+    wine() {
+      return this.$store.state.wines.wine;
     },
+  },
+  data(){
+      return{
+    domain: "",
+        winemaker: "",
+        grapeVariety: "",
+        year: "",
+        technicalSpecification: "",
+        wineName: "",
+        color: "",
+        city:"",
+        state: "",
+        quantity: "",
+  }},
+  methods: {
+    async updateWine() {
+      await this.$store.dispatch("wines/updateWine",[this.$route.params.id, {
+        domain: this.wine.domain,
+        winemaker: this.wine.winemaker,
+        grapeVariety: this.wine.grapeVariety,
+        year: this.wine.year,
+        Description: this.wine.Description,
+        wineName: this.wine.wineName,
+        color: this.wine.color,
+        city: this.wine.city,
+        state: this.wine.state,
+        quantity: this.quantity + this.wine.quantity,
+      }]);
+    },
+    
   },
 };
 </script>
@@ -477,7 +488,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-top: 20px;
 }
 
