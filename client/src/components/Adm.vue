@@ -95,6 +95,9 @@
           </div>
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <!-- Replace with your content -->
+            <div v-on:click="add = !add">
+            <Add />
+            </div>
             <div class="py-4">
               <div class="border-4 border-dashed border-gray-200 rounded-lg h-96" />
             </div>
@@ -186,12 +189,14 @@ import {
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Order Sheet', href: '/Order', icon: UsersIcon, current: false },
-  { name: 'Import', href: '#', icon: FolderIcon, current: false },
+  { name: 'Bon de commande', href: '/Order', icon: UsersIcon, current: false },
+  { name: 'Nouveaux vins', href: '#', icon: FolderIcon, current: false },
   { name: 'Calendar', href: '/Cal', icon: CalendarIcon, current: false },
   { name: 'Documents', href: '#', icon: InboxIcon, current: false },
   { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
 ]
+
+import Add from "../components/Add.vue"
 
 export default {
   name:"Adm",
@@ -202,6 +207,7 @@ export default {
     TransitionRoot,
     MenuIcon,
     XIcon,
+    Add,
   },
   setup() {
     const sidebarOpen = ref(false)

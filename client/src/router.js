@@ -3,13 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 const routes = [{
   path: '/',
   name: 'Home',
-  component: () => import('./components/Add.vue'),
+  component: () => import('./components/Log.vue'),
 },
   {
     path: "/login",
     name: "Login",
     component: () => import('./views/Login.vue'),
-  },{
+  },
+  {
     path: "/Register",
     name: "Register",
     component: () => import('./views/Register.vue'),
