@@ -33,7 +33,8 @@ const wines = {
         "method": "GET",
       })
       const data = await res.json();
-      context.commit("setwines", data);
+      console.log(data)
+      context.commit("setwine", data);
     },
 
     //On cherche un wines 
@@ -73,8 +74,8 @@ const wines = {
       })
       context.commit('setwines')
     },
-    async updateWine(context, body){
-      await fetch("http://localhost:3001/api/wines/" + wine._id , {
+    async updateWine(context, [_id, body]){
+      await fetch("http://localhost:3001/api/wines/" + _id , {
         "method" : "PATCH",
         headers : {
           "Content-type" : "application/json",
