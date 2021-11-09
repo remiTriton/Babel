@@ -120,15 +120,14 @@
 export default {
   name: "Unique",
 
-  
-     created() {
-    this.$store.dispatch("wines/findOnewines" , this.$route.params.id)
+  created() {
+    this.$store.dispatch("wines/findOnewines", this.$route.params.id);
   },
   computed: {
     wine() {
       return this.$store.state.wines.wine;
     },
-  }
+  },
 };
 </script>
 
