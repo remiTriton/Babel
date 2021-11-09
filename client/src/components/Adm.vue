@@ -331,6 +331,7 @@ export default {
       this.dashboard = !this.dashboard;
     },
   },
+  
 };
 </script>
 

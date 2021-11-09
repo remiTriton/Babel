@@ -2,7 +2,7 @@
   <div>
     <HelloWorld />
     <div class="formulaire">
-      <v-form @submit.prevent.stop class="w-full max-w-lg mt-40">
+      <v-form @submit.prevent.stop class="w-full max-w-lg mt-10">
         <div class="flex flex-wrap -mx-1 mb-6 mt-6">
           <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
             <label
