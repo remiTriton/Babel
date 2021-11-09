@@ -6,11 +6,15 @@ const wines = {
     wine: {}
   },
 
-  mutations: {
-    setwines(state, list) {
-      state.wines = list;
+    mutations: {
+        setwines(state, list) {
+            state.wines = list;
+        },
+        setwine(state, list) {
+            state.wine = list;
+        },
     },
-  },
+  
   actions: {
     //ON RECUPERE LES winesS
 

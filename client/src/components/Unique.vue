@@ -46,10 +46,10 @@
             lg:gap-x-8
           "
         >
-          <div v-if="product" class="border-t border-gray-200 pt-4">
-            <dt class="font-medium text-gray-900">{{ product.name }}</dt>
-            <dt class="font-medium text-gray-900">{{ product.year }}</dt>
-            <dd class="mt-2 text-sm text-gray-500">{{ product.domain }}</dd>
+          <div v-if="wine" class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">{{ wine.name }}</dt>
+            <dt class="font-medium text-gray-900">{{ wine.year }}</dt>
+            <dd class="mt-2 text-sm text-gray-500">{{ wine.domain }}</dd>
           </div>
         </dl>
       </div>
@@ -120,19 +120,15 @@
 export default {
   name: "Unique",
 
-  data() {
-    return {
-      product: {},
-    };
+  
+     created() {
+    this.$store.dispatch("wines/findOnewines" , this.$route.params.id)
   },
-  async created() {
-    const res = await fetch(
-      "http://localhost:3001/api/wines/" + this.$route.params.id
-    );
-    const data = await res.json();
-    this.product = data;
-    console.log(data);
-  },
+  computed: {
+    wine() {
+      return this.$store.state.wines.wine;
+    },
+  }
 };
 </script>
 
