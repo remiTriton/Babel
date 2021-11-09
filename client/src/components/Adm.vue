@@ -1,7 +1,5 @@
 <template>
   <div>
-   
-
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
@@ -10,7 +8,7 @@
       >
         <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
           <div
-          @click.prevent='toggle()'
+            @click.prevent="toggle()"
             :icon="HomeIcon"
             class="
               bg-gray-100
@@ -25,7 +23,7 @@
               rounded-md
             "
           >
-            Dashboard
+            Ajouter
           </div>
           <div
             class="
@@ -44,7 +42,7 @@
             Bon de Commande
           </div>
           <div
-          @click.prevent='toggle()'
+            @click.prevent="toggle()"
             class="
               bg-gray-100
               text-gray-900
@@ -58,7 +56,7 @@
               rounded-md
             "
           >
-            Ajouter
+            Dashboard
           </div>
           <div
             class="
@@ -181,20 +179,16 @@
           </div>
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <!-- Replace with your content -->
-            <div v-on:click="add = !add">
-            <Add />
-            </div>
+
             <div class="py-4">
               <div v-if="add">
                 <Add />
               </div>
-              <div v-if='dashboard'
-                class="border-4 border-dashed border-gray-200 rounded-lg h-96"
-              />
+              <div v-if="dashboard" />
             </div>
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="flex flex-col">
-              <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="my-2 overflow-x-auto sm:-mx-center lg:-mx-center">
                 <div
                   class="
                     py-2
@@ -213,68 +207,10 @@
                       sm:rounded-lg
                     "
                   >
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table>
                       <thead class="bg-gray-50">
                         <tr>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Name
-                          </th>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Title
-                          </th>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Status
-                          </th>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Role
-                          </th>
-                          <th scope="col" class="relative px-6 py-3">
-                            <span class="sr-only">Edit</span>
-                          </th>
+                          
                         </tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
@@ -372,8 +308,6 @@ import {
 } from "@headlessui/vue";
 import { MenuIcon, XIcon } from "@heroicons/vue/outline";
 
-import Add from "../components/Add.vue"
-
 export default {
   name: "Adm",
   components: {
@@ -384,19 +318,23 @@ export default {
     TransitionRoot,
     MenuIcon,
     XIcon,
-    Add,
   },
   data() {
     return {
       add: false,
-      dashboard:true,
+      dashboard: true,
     };
   },
-  methods:{
-    toggle(){
+  methods: {
+    toggle() {
       this.add = !this.add;
       this.dashboard = !this.dashboard;
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style>
+.my-2 {
+}
+</style>
