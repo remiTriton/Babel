@@ -6,15 +6,15 @@ const wines = {
     wine: {}
   },
 
-    mutations: {
-        setwines(state, list) {
-            state.wines = list;
-        },
-        setwine(state, list) {
-            state.wine = list;
-        },
+  mutations: {
+    setwines(state, list) {
+      state.wines = list;
     },
-  
+    setwine(state, list) {
+      state.wine = list;
+    },
+  },
+
   actions: {
     //ON RECUPERE LES winesS
 
@@ -33,7 +33,6 @@ const wines = {
         "method": "GET",
       })
       const data = await res.json();
-      console.log(data)
       context.commit("setwine", data);
     },
 
@@ -46,10 +45,10 @@ const wines = {
       const data = await res.json();
       context.commit("setwines", data);
     },
-    
+
     //filter by color
-     async searchWinesByColor(context, query) {
-      const res = await fetch("http://localhost:3001/api/wines/color/"+ query, {
+    async searchWinesByColor(context, query) {
+      const res = await fetch("http://localhost:3001/api/wines/color/" + query, {
         "method": "GET",
       })
       const data = await res.json();
@@ -65,24 +64,25 @@ const wines = {
     },
 
     async addWine(context, body) {
-     await fetch("http://localhost:3001/api/wines/", {
+      await fetch("http://localhost:3001/api/wines/", {
         "method": "POST",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(body)
       })
       context.commit('setwines')
     },
-    async updateWine(context, [_id, body]){
-      await fetch("http://localhost:3001/api/wines/" + _id , {
-        "method" : "PATCH",
-        headers : {
-          "Content-type" : "application/json",
-        },
-        body : JSON.stringify(body)
+    async updateWine(context, [id, wine]) {
+      await fetch("http://localhost:3001/api/wines/" + id, {
+        "method": "PATCH", 
+        body: JSON.stringify(wine),
+        "headers": {
+          "Content-type": "application/json",
+      }
       })
-      context.commit('setwines')
+      console.log(wine)
+      context.commit('setwines', context.state.wine)
     }
   }
 }
