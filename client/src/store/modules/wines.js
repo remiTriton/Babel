@@ -72,6 +72,16 @@ const wines = {
         body: JSON.stringify(body)
       })
       context.commit('setwines')
+    },
+    async updateWine(context, body){
+      await fetch("http://localhost:3001/api/wines/" + wine._id , {
+        "method" : "PATCH",
+        headers : {
+          "Content-type" : "application/json",
+        },
+        body : JSON.stringify(body)
+      })
+      context.commit('setwines')
     }
   }
 }

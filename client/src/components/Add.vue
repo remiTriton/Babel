@@ -504,7 +504,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .block {
@@ -512,7 +512,7 @@ export default {
 }
 
 .sub {
-  margin-top: 35px;
+  margin-top: 20px;
 }
 .col {
   align-items: center;
