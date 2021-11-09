@@ -143,20 +143,11 @@ router.patch("/:id", async (req, res) => {
     await wineCol.updateOne(
       { _id: new ObjectId(req.params.id) },
       {
-        $set: {
-          domain: req.body.domain,
-          winemaker: req.body.winemaker,
-          grapeVariety: req.body.grapeVariety,
-          year: req.body.year,
-          technicalSpecification: req.body.technicalSpecification,
-          wineName: req.body.wineName,
-          color: req.body.color,
-          city: req.body.city,
-          state: req.body.state,
-          quantity: req.body.quantity,
-        },
+        $set: 
+          req.body
       }
     );
+    res.send("Wine updated");
   } finally {
     await client.close();
   }
