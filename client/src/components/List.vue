@@ -3,7 +3,7 @@
     <div class="container mt-40">
       <div class="flex items-center text-black">
         <v-form @submit.prevent.stop>
-          <button type="submit" @click="searchWine(searchQuery, type)">
+          <button type="submit" @click="searchWine(type, query)">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-4 h-4 mr-2 text-gray-600"
@@ -23,7 +23,7 @@
             type="text"
             name="name"
             placeholder="Search..."
-            v-model="searchQuery"
+            v-model="query"
             class="
               w-/10
               py-2
@@ -178,7 +178,7 @@
             xl:grid-cols-4 xl:gap-x-8
           "
         >
-          <div v-for="wine in wines" :key="wine.id">
+          <div v-for="wine in wines" :key='wine.id'>
             <div
               class="
                 w-full
@@ -188,6 +188,7 @@
                 overflow-hidden
                 xl:aspect-w-7 xl:aspect-h-8
               "
+              v-if='wine._id'
             >
               <router-link :to="{ name: 'Print', params: { id: wine._id } }">
                 <img
@@ -205,7 +206,7 @@
               {{ wine.name }}
             </h3>
             <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.price }}
+              {{ wine.domain }}
             </p>
           </div>
         </div>
@@ -251,42 +252,6 @@
 </template>
 
 <script>
-// const products = [
-//   {
-//     id: 1,
-//     name: "Chuck is Back",
-//     href: "/Print",
-//     price: "50€",
-//     imageSrc: "src/images/../assets/Chuck.jpg",
-//     imageAlt: "La Sorga",
-//   },
-//   {
-//     id: 2,
-//     name: "Maître Splinter",
-//     href: "/Print",
-//     price: "40€",
-//     imageSrc: "src/images/../assets/MS.jpg",
-//     imageAlt: "Maître Splinter",
-//   },
-//   {
-//     id: 3,
-//     name: "Bruce Lee",
-//     href: "/Print",
-//     price: "89€",
-//     imageSrc: "src/images/../assets/BL.jpg",
-//     imageAlt: "Bruce Lee",
-//   },
-//   {
-//     id: 4,
-//     name: "Yodel Master",
-//     href: "/Print",
-//     price: "35€",
-//     imageSrc: "src/images/../assets/YM.jpg",
-//     imageAlt: "Yodel Master",
-//   },
-//   // More products...
-// ];
-
 export default {
   created() {
     this.$store.dispatch("wines/fetchWines");
@@ -297,19 +262,12 @@ export default {
     },
   },
   methods: {
-    async searchWine(searchQuery, type) {
-      const res = await fetch(
-        "http://localhost:3001/api/wines/" + type + "/" + searchQuery
-      );
-      const data = await res.json();
-      this.products = data;
-      console.log(data);
+    async searchWine(type, query) {
+      await this.$store.dispatch("wines/searchWinesByName", [type, query]);
     },
+
     async filter(value) {
-      const res = await fetch("http://localhost:3001/api/wines/color/" + value);
-      const data = await res.json();
-      this.products = data;
-      console.log(data);
+      await this.$store.dispatch("wines/searchWinesByColor", value);
     },
   },
 };

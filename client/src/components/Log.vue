@@ -299,8 +299,8 @@ export default {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(user),
       });
-      const data = await res.json()
-      localStorage.setItem("token", data.token)
+      const data = await res.json();
+      localStorage.setItem('token', data.token);
       this.$router.push("/");
     },
   },

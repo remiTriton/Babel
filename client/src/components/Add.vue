@@ -472,25 +472,27 @@ export default {
         state: this.state,
         quantity: this.quantity,
       };
-      const resHttp = await fetch("/api/wines", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(wine),
-      });
+
+      await this.$store.dispatch('wines/addWine', wine);
+      // const resHttp = await fetch("/api/wines", {
+      //   method: "POST",
+      //   headers: { "content-type": "application/json" },
+      //   body: JSON.stringify(wine),
+      // });
 
       // real Backend JSON
 
-      this.createdwine = true;
-      this.domain = "";
-      this.winemaker = "";
-      this.grapeVariety = "";
-      this.year = "";
-      this.technicalSpecification = "";
-      this.wineName = "";
-      this.color = "";
-      this.city = "";
-      this.state = "";
-      this.quantity = "";
+      // this.createdwine = true;
+      // this.domain = "";
+      // this.winemaker = "";
+      // this.grapeVariety = "";
+      // this.year = "";
+      // this.technicalSpecification = "";
+      // this.wineName = "";
+      // this.color = "";
+      // this.city = "";
+      // this.state = "";
+      // this.quantity = "";
     },
   },
 };
@@ -502,7 +504,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .block {
@@ -510,7 +512,7 @@ export default {
 }
 
 .sub {
-  margin-top: 35px;
+  margin-top: 20px;
 }
 .col {
   align-items: center;

@@ -84,7 +84,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-module.exports = router;
 
 //Login handler for
 
@@ -118,3 +117,6 @@ router.post('/login', async (req, res) => {
         })
     })
 })
+
+module.exports = router;
+
