@@ -158,7 +158,7 @@
               <div v-if="add">
                 <Add/>
               </div>
-              <div v-if="dashboard"/>
+              <div v-if="Dashboard"/>
             </div>
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="flex flex-col">
@@ -293,6 +293,7 @@ export default {
     return {
       add: false,
       dashboard: true,
+      wines: [],
     };
   },
   methods: {
@@ -301,11 +302,23 @@ export default {
       this.dashboard = !this.dashboard;
     },
   },
+    wines(el) {
+      if (el) {
+        this.wines.push(el)
+      }
+    },
+
+  beforeUpdate() {
+    this.wines = []
+  },
+  updated() {
+    console.log(this.wines)
+  }
+
 
 };
 </script>
 
 <style>
-.my-2 {
-}
+
 </style>

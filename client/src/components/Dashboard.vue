@@ -46,7 +46,7 @@
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{ wine.title }}</div>
+                <div class="text-sm text-gray-900">{{ wine.name }}</div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                   <span
@@ -81,12 +81,12 @@ const wines = [
     status: '',
     color: '',
   },
-  // More people...
+  // More wines...
 ]
 
 export default {
   name: "Dashboard",
-  setup() {
+  data() {
     return {
       wines,
     }

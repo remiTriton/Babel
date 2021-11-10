@@ -50,6 +50,11 @@ const routes = [{
   name: "Register",
   component: () => import('./components/Update.vue'),
 },
+  {
+    path: "/404",
+    name: "NotFound",
+    component: () => import('./components/NotFound.vue'),
+  },
 
 
 ];
