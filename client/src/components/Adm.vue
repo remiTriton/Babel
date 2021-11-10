@@ -1,16 +1,19 @@
 <template>
   <div>
+    <SearchB/>
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
+
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div
-        class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white"
+          class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white"
       >
+
         <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
           <div
-            @click.prevent="toggle()"
-            :icon="HomeIcon"
-            class="
+              @click.prevent="toggle()"
+              :icon="HomeIcon"
+              class="
               bg-gray-100
               text-gray-900
               group
@@ -26,7 +29,7 @@
             Ajouter
           </div>
           <div
-            class="
+              class="
               bg-gray-100
               text-gray-900
               group
@@ -42,8 +45,8 @@
             Bon de Commande
           </div>
           <div
-            @click.prevent="toggle()"
-            class="
+              @click.prevent="toggle()"
+              class="
               bg-gray-100
               text-gray-900
               group
@@ -59,7 +62,7 @@
             Dashboard
           </div>
           <div
-            class="
+              class="
               bg-gray-100
               text-gray-900
               group
@@ -75,7 +78,7 @@
             Importer
           </div>
           <div
-            class="
+              class="
               bg-gray-100
               text-gray-900
               group
@@ -91,7 +94,7 @@
             Calendrier
           </div>
           <div
-            class="
+              class="
               bg-gray-100
               text-gray-900
               group
@@ -113,14 +116,14 @@
           <div class="flex items-center">
             <div>
               <img
-                class="inline-block h-9 w-9 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
+                  class="inline-block h-9 w-9 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
               />
             </div>
             <div class="ml-3">
               <p
-                class="
+                  class="
                   text-sm
                   font-medium
                   text-gray-700
@@ -130,7 +133,7 @@
                 Tom Cook
               </p>
               <p
-                class="
+                  class="
                   text-xs
                   font-medium
                   text-gray-500
@@ -146,11 +149,11 @@
     </div>
     <div class="md:pl-64 flex flex-col flex-1">
       <div
-        class="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-white"
+          class="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-white"
       >
         <button
-          type="button"
-          class="
+            type="button"
+            class="
             -ml-0.5
             -mt-0.5
             h-12
@@ -166,31 +169,31 @@
             focus:ring-inset
             focus:ring-indigo-500
           "
-          @click="sidebarOpen = true"
+            @click="sidebarOpen = true"
         >
           <span class="sr-only">Open sidebar</span>
-          <MenuIcon class="h-6 w-6" aria-hidden="true" />
+          <MenuIcon class="h-6 w-6" aria-hidden="true"/>
         </button>
       </div>
       <main class="flex-1">
         <div class="py-6">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
+
           </div>
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <!-- Replace with your content -->
 
             <div class="py-4">
               <div v-if="add">
-                <Add />
+                <Add/>
               </div>
-              <div v-if="dashboard" />
+              <div v-if="dashboard"/>
             </div>
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="flex flex-col">
               <div class="my-2 overflow-x-auto sm:-mx-center lg:-mx-center">
                 <div
-                  class="
+                    class="
                     py-2
                     align-middle
                     inline-block
@@ -200,7 +203,7 @@
                   "
                 >
                   <div
-                    class="
+                      class="
                       shadow
                       overflow-hidden
                       border-b border-gray-200
@@ -209,42 +212,42 @@
                   >
                     <table>
                       <thead class="bg-gray-50">
-                        <tr>
-                          
-                        </tr>
+                      <tr>
+
+                      </tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
-                        <tr v-for="person in people" :key="person.email">
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="flex-shrink-0 h-10 w-10">
-                                <img
+                      <tr v-for="person in people" :key="person.email">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10">
+                              <img
                                   class="h-10 w-10 rounded-full"
                                   :src="person.image"
                                   alt=""
-                                />
+                              />
+                            </div>
+                            <div class="ml-4">
+                              <div class="text-sm font-medium text-gray-900">
+                                {{ person.name }}
                               </div>
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  {{ person.name }}
-                                </div>
-                                <div class="text-sm text-gray-500">
-                                  {{ person.email }}
-                                </div>
+                              <div class="text-sm text-gray-500">
+                                {{ person.email }}
                               </div>
                             </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">
-                              {{ person.title }}
-                            </div>
-                            <div class="text-sm text-gray-500">
-                              {{ person.department }}
-                            </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="text-sm text-gray-900">
+                            {{ person.title }}
+                          </div>
+                          <div class="text-sm text-gray-500">
+                            {{ person.department }}
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
                             <span
-                              class="
+                                class="
                                 px-2
                                 inline-flex
                                 text-xs
@@ -257,18 +260,18 @@
                             >
                               Active
                             </span>
-                          </td>
-                          <td
+                        </td>
+                        <td
                             class="
                               px-6
                               py-4
                               whitespace-nowrap
                               text-sm text-gray-500
                             "
-                          >
-                            {{ person.role }}
-                          </td>
-                          <td
+                        >
+                          {{ person.role }}
+                        </td>
+                        <td
                             class="
                               px-6
                               py-4
@@ -276,14 +279,14 @@
                               text-right text-sm
                               font-medium
                             "
-                          >
-                            <a
+                        >
+                          <a
                               href="#"
                               class="text-indigo-600 hover:text-indigo-900"
-                              >Edit</a
-                            >
-                          </td>
-                        </tr>
+                          >Edit</a
+                          >
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
@@ -300,18 +303,21 @@
 
 <script>
 import Add from "../components/Add.vue";
+import SearchB from "../components/SearchB.vue";
+
 import {
   Dialog,
   DialogOverlay,
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import { MenuIcon, XIcon } from "@heroicons/vue/outline";
+import {MenuIcon, XIcon} from "@heroicons/vue/outline";
 
 export default {
   name: "Adm",
   components: {
     Add,
+    SearchB,
     Dialog,
     DialogOverlay,
     TransitionChild,
@@ -331,7 +337,7 @@ export default {
       this.dashboard = !this.dashboard;
     },
   },
-  
+
 };
 </script>
 

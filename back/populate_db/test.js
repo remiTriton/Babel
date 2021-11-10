@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+const {MongoClient} = require("mongodb");
 const fs = require('fs').promises;
 
 // convert users.csv file to JSON array
@@ -30,7 +30,7 @@ const main = async () => {
                 return null;
             }
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-            const [ color, domain, name, dpt, country, year, cepage, owner ] = line.split(';')
+            const [color, domain, name, dpt, country, year, cepage, owner] = line.split(';')
             return {
                 color,
                 domain,
