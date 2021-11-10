@@ -114,35 +114,6 @@
       <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
         <a href="#" class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
-            <div>
-              <img
-                  class="inline-block h-9 w-9 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-              />
-            </div>
-            <div class="ml-3">
-              <p
-                  class="
-                  text-sm
-                  font-medium
-                  text-gray-700
-                  group-hover:text-gray-900
-                "
-              >
-                Tom Cook
-              </p>
-              <p
-                  class="
-                  text-xs
-                  font-medium
-                  text-gray-500
-                  group-hover:text-gray-700
-                "
-              >
-                View profile
-              </p>
-            </div>
           </div>
         </a>
       </div>
@@ -217,32 +188,25 @@
                       </tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
-                      <tr v-for="person in people" :key="person.email">
+                      <tr v-for="wines in wine" :key="wine.name">
                         <td class="px-6 py-4 whitespace-nowrap">
                           <div class="flex items-center">
                             <div class="flex-shrink-0 h-10 w-10">
-                              <img
-                                  class="h-10 w-10 rounded-full"
-                                  :src="person.image"
-                                  alt=""
-                              />
                             </div>
                             <div class="ml-4">
                               <div class="text-sm font-medium text-gray-900">
-                                {{ person.name }}
+                                {{ wines.name }}
                               </div>
                               <div class="text-sm text-gray-500">
-                                {{ person.email }}
+                                {{ wines.stock }}
+                              </div>
+                              <div class="text-sm text-gray-500">
+                                {{ wines.status }}
+                              </div>
+                              <div class="text-sm text-gray-500">
+                                {{ wines.color }}
                               </div>
                             </div>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="text-sm text-gray-900">
-                            {{ person.title }}
-                          </div>
-                          <div class="text-sm text-gray-500">
-                            {{ person.department }}
                           </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -269,7 +233,7 @@
                               text-sm text-gray-500
                             "
                         >
-                          {{ person.role }}
+                          {{ wine.role }}
                         </td>
                         <td
                             class="

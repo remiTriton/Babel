@@ -10,7 +10,7 @@
                 Name
               </th>
               <th scope="col" class="px-6 py-3 text-align text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Quantite
+                Stock
               </th>
               <th scope="col" class="px-6 py-3 text- text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
@@ -24,24 +24,29 @@
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-            <tr v-for="person in people" :key="person.email">
+            <tr v-for="wine in wines" :key="wine.name">
               <td class="px-6 py-4 whitespace-nowrap min-w-full">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
                   </div>
                   <div class="ml-4">
                     <div class="text-center-sm font-medium text-gray-900">
-                      {{ person.name }}
+                      {{ wines.name }}
                     </div>
                     <div class="text-sm text-gray-500">
-                      {{ person.email }}
+                      {{ wines.stock }}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {{ wines.status }}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {{ wines.color }}
                     </div>
                   </div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{ person.title }}</div>
-                <div class="text-sm text-gray-500">{{ person.department }}</div>
+                <div class="text-sm text-gray-900">{{ wine.title }}</div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                   <span
@@ -50,7 +55,7 @@
                   </span>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {{ person.role }}
+                {{ wines.role }}
               </td>
               <div class="model">
                 <td class="cru px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -69,37 +74,30 @@
 </template>
 
 <script>
-const people = [
+const wines = [
   {
-    name: 'Chuck is Back',
-    color: 'Sparkling Red',
-    domain: 'La Sorga',
-    image: 'src/images/../assets/Chuck.jpg',
+    name: '',
+    stock: '',
+    status: '',
+    color: '',
   },
   // More people...
 ]
 
 export default {
   name: "Dashboard",
-  data() {
+  setup() {
     return {
-      people,
       wines,
-      domain: this.domain,
-      winemaker: this.winemaker,
-      grapeVariety: this.grapeVariety,
-      year: this.year,
-      description: this.description,
-      wineName: this.wineName,
-      region: this.region,
-      state: this.state,
-      quantity: this.quantity,
-
     }
   },
   methods: {
     async onClick() {
       await this.$store.dispatch("wine/updateWines", {
+        name: this.name,
+        stock: this.quantity,
+        status: this.status,
+        color: this.color,
         domain: this.domain,
         winemaker: this.winemaker,
         grapeVariety: this.grapeVariety,
@@ -111,9 +109,7 @@ export default {
         quantity: this.quantity,
       });
     },
-    reload() {
-      this.$router.go();
-    },
+
   }
 
 }
