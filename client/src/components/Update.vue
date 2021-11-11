@@ -477,8 +477,8 @@ export default {
         state: this.wine.state,
         quantity: this.quantity + this.wine.quantity,
       }]);
+      this.$router.push('/Admin');
     },
-    
   },
 };
 </script>

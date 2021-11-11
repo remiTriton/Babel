@@ -47,7 +47,7 @@ const routes = [{
 },
 {
   path: "/update/:id",
-  name: "Register",
+  name: "Update",
   component: () => import('./components/Update.vue'),
 },
   {
