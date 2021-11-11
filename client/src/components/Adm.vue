@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchB />
+    <SearchB  v-on:searchWine='search' v-on:color='filter'/>
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
@@ -304,7 +304,12 @@ export default {
       this.add = !this.add;
       this.dashboard = !this.dashboard;
     },
-  },
+    async search(type, query) {
+      await this.$store.dispatch("wines/searchWinesByName", [type, query]);
+    },
+async filter(color) {
+      await this.$store.dispatch("wines/searchWinesByColor", color);
+    },  },
 };
 </script>
 

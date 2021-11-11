@@ -74,7 +74,6 @@
             class="
             test
             bg-transparent
-            text-#2a574c
             font-bold
             hover:text-#2a574c hover:border-transparent
             br-5
@@ -160,10 +159,47 @@
 
 <script>
 export default {
-  name: "SearchB.vue"
+  name: "SearchB.vue",
+data(){
+  return {
+    query:'',
+    type:'',
+  }
+},
+methods:{
+  searchWine(type, query){
+    this.$emit('searchWine', type, query)
+  },
+  filter(color){
+    this.$emit('color', color)
+  }
+}
+
 }
 </script>
 
 <style scoped>
+.bbl {
+  background-color: #2a574c;
+  text-decoration-color: #2a574c;
+}
 
+.test {
+  border-color: #2a574c;
+  color: #2a574c;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: large;
+}
+
+.back {
+  color: #2a574c;
+  float: right;
+  position: relative;
+}
 </style>
