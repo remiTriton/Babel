@@ -241,7 +241,7 @@
                 <router-link :to="{name:'Update', params:{id:wine._id}}">
                   <button class="text-indigo-600 hover:text-indigo-900 ml-5">Update</button>
                 </router-link>
-                  <button class="text-red-600 hover:text-red-900 ml-5 mr-5" @click="Delete">Delete</button>
+                  <button class="text-red-600 hover:text-red-900 ml-5 mr-5" @click.prevent="Delete(wine._id)">Delete</button>
                 </td>
               </div>
                           </td>

@@ -55,7 +55,7 @@ const wines = {
       context.commit("setwines", data);
     },
 
-    //delte one wine
+    //delete one wine
     async deleteWine(context, _id) {
       await fetch("http://localhost:3001/api/wines/" + _id, {
         "method": "DELETE",

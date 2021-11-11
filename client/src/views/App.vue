@@ -15,7 +15,6 @@ export default {
 <template>
 <NavBar />
 <router-view></router-view>
-  <Footer />
 </template>
 
 <style>
