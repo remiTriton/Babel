@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchB  v-on:searchWine='search' v-on:color='filter'/>
+    <SearchB v-on:searchWine="search" v-on:color="filter" />
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
@@ -236,16 +236,47 @@
                               font-medium
                             "
                           >
-                          <div class="model">
-                <td class="cru px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <router-link :to="{name:'Update', params:{id:wine._id}}">
-                  <button class="text-indigo-600 hover:text-indigo-900 ml-5">Update</button>
-                </router-link>
-                  <button class="text-red-600 hover:text-red-900 ml-5 mr-5" @click.prevent="Delete(wine._id)">Delete</button>
-                </td>
-              </div>
+                            <div class="model">
+                              <td
+                                class="
+                                  cru
+                                  px-6
+                                  py-4
+                                  whitespace-nowrap
+                                  text-right text-sm
+                                  font-medium
+                                "
+                              >
+                                <router-link
+                                  :to="{
+                                    name: 'Update',
+                                    params: { id: wine._id },
+                                  }"
+                                >
+                                  <button
+                                    class="
+                                      text-indigo-600
+                                      hover:text-indigo-900
+                                      ml-5
+                                    "
+                                  >
+                                    Update
+                                  </button>
+                                </router-link>
+                                <button
+                                  class="
+                                    text-red-600
+                                    hover:text-red-900
+                                    ml-5
+                                    mr-5
+                                  "
+                                  @click.prevent="Delete(wine.name, wine._id)"
+                                >
+                                  Delete
+                                </button>
+                              </td>
+                            </div>
                           </td>
-                          
                         </tr>
                       </tbody>
                     </table>
@@ -295,7 +326,7 @@ export default {
     this.$store.dispatch("wines/fetchWines");
   },
   computed: {
-    wines(){
+    wines() {
       return this.$store.state.wines.wines;
     },
   },
@@ -307,9 +338,16 @@ export default {
     async search(type, query) {
       await this.$store.dispatch("wines/searchWinesByName", [type, query]);
     },
-async filter(color) {
+    async filter(color) {
       await this.$store.dispatch("wines/searchWinesByColor", color);
-    },  },
+    },
+    async Delete(name, id) {
+      if (confirm("Attention : Vous êtes sur le point de supprimer "+ name)) {
+        await this.$store.dispatch("wines/deleteWine", id);
+        await this.$store.dispatch("wines/fetchWines");
+      }
+    },
+  },
 };
 </script>
 
