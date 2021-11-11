@@ -1,5 +1,6 @@
 import Vuex from "vuex";
 import wines from './modules/wines';
+import auth from './modules/auth';
 
 export default new Vuex.Store({
   name: "store",
@@ -11,6 +12,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    wines
+    wines,
+    auth
   },
 })
