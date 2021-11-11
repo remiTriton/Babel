@@ -178,7 +178,7 @@
             xl:grid-cols-4 xl:gap-x-8
           "
         >
-          <div v-for="wine in wines" :key='wine.id'>
+          <div v-for="wine in wines" :key="wine.id">
             <div
               class="
                 w-full
@@ -188,7 +188,7 @@
                 overflow-hidden
                 xl:aspect-w-7 xl:aspect-h-8
               "
-              v-if='wine._id'
+              v-if="wine._id"
             >
               <router-link :to="{ name: 'Print', params: { id: wine._id } }">
                 <img
@@ -265,7 +265,6 @@ export default {
     async searchWine(type, query) {
       await this.$store.dispatch("wines/searchWinesByName", [type, query]);
     },
-
     async filter(value) {
       await this.$store.dispatch("wines/searchWinesByColor", value);
     },

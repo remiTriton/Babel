@@ -356,7 +356,7 @@
               "
               for="grid-zip"
             >
-              Quantity
+              Add Quantity ( Current : {{wine.quantity }}) 
             </label>
             <input
               v-model="quantity"
@@ -450,19 +450,6 @@ export default {
       return this.$store.state.wines.wine;
     },
   },
-  data(){
-      return{
-    domain: "",
-        winemaker: "",
-        grapeVariety: "",
-        year: "",
-        technicalSpecification: "",
-        wineName: "",
-        color: "",
-        city:"",
-        state: "",
-        quantity: "",
-  }},
   methods: {
     async updateWine() {
       await this.$store.dispatch("wines/updateWine",[this.$route.params.id, {
