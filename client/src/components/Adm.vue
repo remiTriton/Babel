@@ -186,9 +186,11 @@
                             <div class="flex items-center">
                               <div class="flex-shrink-0 h-10 w-10"></div>
                               <div class="ml-4">
+                              <router-link :to="{ name: 'Print', params: { id: wine._id } }">
                                 <div class="text-sm font-medium text-gray-900">
                                   {{ wine.name }}
                                 </div>
+                              </router-link>
                                 <div class="text-sm text-gray-500">
                                   {{ wine.quantity }}
                                 </div>
