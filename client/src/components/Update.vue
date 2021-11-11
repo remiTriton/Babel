@@ -450,19 +450,7 @@ export default {
       return this.$store.state.wines.wine;
     },
   },
-  data(){
-      return{
-    domain: "",
-        winemaker: "",
-        grapeVariety: "",
-        year: "",
-        technicalSpecification: "",
-        wineName: "",
-        color: "",
-        city:"",
-        state: "",
-        quantity: "",
-  }},
+
   methods: {
     async updateWine() {
       await this.$store.dispatch("wines/updateWine",[this.$route.params.id, {
@@ -477,7 +465,8 @@ export default {
         state: this.wine.state,
         quantity: this.quantity + this.wine.quantity,
       }]);
-      this.$router.push('/Admin');
+      await this.$store.dispatch("wines/fetchWines");
+      await this.$router.push('/Admin');
     },
   },
 };

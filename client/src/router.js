@@ -51,7 +51,7 @@ const routes = [{
   component: () => import('./components/Update.vue'),
 },
   {
-    path: "/404",
+    path: "/:catchAll(.*)",
     name: "NotFound",
     component: () => import('./components/NotFound.vue'),
   },
