@@ -12,7 +12,7 @@
 
           <!-- This example requires Tailwind CSS v2.0+ -->
           <div class="flex flex-col">
-            <div class="my-2 overflow-x-auto  sm:-mx-center lg:-mx-center">
+            <div class="my-2 overflow-x-auto sm:-mx-center lg:-mx-center">
               <div
                 class="
                   py-2
@@ -57,7 +57,14 @@
                   <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                       <div
-                        class="py-2 min-w-full align-middle inline-block sm:px-6 lg:px-8"
+                        class="
+                          py-2
+                          min-w-full
+                          align-middle
+                          inline-block
+                          sm:px-6
+                          lg:px-8
+                        "
                       >
                         <div
                           class="
@@ -72,7 +79,7 @@
                               <tr>
                                 <th
                                   scope="col"
-                                  class="                        
+                                  class="
                                     px-6
                                     py-3
                                     text-left text-xs
@@ -95,7 +102,6 @@
                                     text-gray-500
                                     uppercase
                                     tracking-wider
-                                    
                                   "
                                 >
                                   Quantity
@@ -169,6 +175,7 @@
                   <!-- end of category bar -->
                   <table>
                     <thead class="bg-gray-50"></thead>
+
                     <tbody class="bg-white divide-y divide-gray-200">
                       <tr v-for="wine in wines" :key="wine.id">
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -185,15 +192,25 @@
                                   {{ wine.name }}
                                 </div>
                               </router-link>
-                              <div class="text-sm text-gray-500">
-                                {{ wine.quantity }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ wine.status }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ wine.color }}
-                              </div>
+                              
+
+                              <td>
+                                <div class="text-sm text-gray-500">
+                                  {{ wine.quantity }}
+                                </div>
+                              </td>
+
+                              <td>
+                                <div class="text-sm text-gray-500">
+                                  {{ wine.status }}
+                                </div>
+                              </td>
+                              
+                              <td>
+                                <div class="text-sm text-gray-500">
+                                  {{ wine.color }}
+                                </div>
+                              </td>
                             </div>
                           </div>
                         </td>
@@ -256,7 +273,6 @@
                                     text-indigo-600
                                     hover:text-indigo-900
                                     mr-35
-                                    
                                   "
                                 >
                                   Update
@@ -327,15 +343,12 @@ export default {
 </script>
 
 <style>
-.head{
-
-justify-content: space-evenly;
+.head {
+  justify-content: space-evenly;
 }
-.up{
-margin-inline-start: 600px;
+.up {
+  margin-inline-start: 550px;
 }
-.de{
-
+.de {
 }
-
 </style>
