@@ -42,7 +42,7 @@
                                 </div>
                               </router-link>
                               <div class="text-sm text-gray-500">
-                                {{ user.quantity }}
+                                {{ user.email }}
                               </div>
                               <div class="text-sm text-gray-500">
                                 {{ user.status }}
