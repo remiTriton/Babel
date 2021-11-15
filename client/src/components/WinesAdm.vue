@@ -162,7 +162,7 @@
 
                     <!-- end of category bar -->
 
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="bg-white divide-y divide-gray-200 m-96">
                       <tr v-for="wine in wines" :key="wine.id">
                         <td class="text-gray-900">
                           <router-link
