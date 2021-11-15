@@ -59,7 +59,7 @@
             </div>
             <div class="mb-4">
               <label
-                class="block text-grey-darker text-sm font-bold mb-2"
+                class="blocku text-grey-darker text-sm font-bold mb-2"
                 for="email"
                 >Email Address</label
               >
@@ -81,25 +81,32 @@
             </div>
             <div> <div class="w-1/2 mr-1">
                 <label
-                  class="block text-grey-darker text-sm font-bold mb-2"
+                  class="block text-white text-sm font-bold mb-2"
                   for="first_name"
                   >Role</label
                 >
-                <input
-                  v-model="user.role"
-                  class="
-                    appearance-none
-                    border
-                    rounded
-                    w-full
-                    py-2
-                    px-3
-                    text-black
-                  "
-                  id="first_name"
-                  type="text"
-                  placeholder="Role"
-                />
+              <select
+                v-model="user.role"
+                class="
+                  block
+                  appearance-none
+                  w-full
+                  bg-white-200
+                  border border-gray-200
+                  text-white-700
+                  py-3
+                  px-4
+                  pr-8
+                  rounded
+                  leading-tight
+                  focus:outline-none focus:bg-white focus:border-white-500
+                "
+                id="grid-state"
+              >
+                <option>Admin</option>
+                <option>Manager</option>
+                <option>Serveur</option>
+              </select>
               </div>
               <button
                 class="But hover:bg-dark font-bold py-2 px-4 rounded-full"

@@ -160,12 +160,7 @@
                       </tr>
                     </thead>
                     <!-- end of category bar -->
-<<<<<<< HEAD
-
-                    <tbody class="bg-white divide-y divide-gray-200">
-=======
                     <tbody>
->>>>>>> bd72444d721f676d09dbc69a7c70d06ee3ae4a05
                       <tr v-for="wine in wines" :key="wine.id">
                         <td
                           class="
@@ -313,13 +308,3 @@ export default {
   },
 };
 </script>
-<<<<<<< HEAD
-
-<style>
-.head {
-  justify-content: space-evenly;
-}
-
-</style>
-=======
->>>>>>> bd72444d721f676d09dbc69a7c70d06ee3ae4a05
