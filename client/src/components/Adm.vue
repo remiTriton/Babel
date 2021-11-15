@@ -1,7 +1,10 @@
 <template>
   <div>
+    
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
+    
+    
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div
         class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white"
@@ -146,6 +149,7 @@
     <div v-if="showWines"><WinesAdm /></div>
     <div v-if="showUsers"><Users /></div>
   </div>
+  
 </template>
 
 <script>
@@ -178,7 +182,7 @@ export default {
     return {
       add: false,
       showWines: true,
-      showUsers: true,
+      showUsers: false,
     };
   },
   methods: {

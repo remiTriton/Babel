@@ -23,52 +23,93 @@
                     sm:rounded-lg
                   "
                 >
-                  <table>
-                    <thead class="bg-gray-50"></thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                  <table class='w-full'>
+                      <thead class="bg-gray-50">
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Prénom
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Nom
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Status
+                        </th>          <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Edit/Delete
+                        </th>
+                      </thead>
+
+                    <tbody>
                       <tr v-for="user in users" :key="user.id">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="flex items-center">
-                            <div class="flex-shrink-0 h-10 w-10"></div>
-                            <div class="ml-4">
-                              <router-link
-                                :to="{
-                                  name: 'Print',
-                                  params: { id: user._id },
-                                }"
-                              >
-                                <div class="text-sm font-medium text-gray-900">
-                                  {{ user.firstname }}
-                                </div>
-                              </router-link>
-                              <div class="text-sm text-gray-500">
-                                {{ user.email }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ user.status }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ user.color }}
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <span
-                            class="
-                              px-2
-                              inline-flex
-                              text-xs
-                              leading-5
-                              font-semibold
-                              rounded-full
-                              bg-green-100
-                              text-green-800
-                            "
+                        <td>
+                          <router-link
+                            :to="{
+                              name: 'Print',
+                              params: { id: user._id },
+                            }"
                           >
-                            Active
-                          </span>
+                            {{ user.firstName }}
+                          </router-link>
                         </td>
+                        <td>{{ user.lastName }}</td>
+
                         <td
                           class="
                             px-6
@@ -77,7 +118,16 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ user.lastname }}
+                          {{ user.email }}
+                        </td>    <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
+                          {{ user.role }}
                         </td>
                         <td
                           class="
@@ -88,46 +138,24 @@
                             font-medium
                           "
                         >
-                          <div class="model">
-                            <td
-                              class="
-                                cru
-                                px-6
-                                py-4
-                                whitespace-nowrap
-                                text-right text-sm
-                                font-medium
-                              "
+                          <router-link
+                            :to="{
+                              name: 'UpdateUser',
+                              params: { id: user._id },
+                            }"
+                          >
+                            <button
+                              class="text-indigo-600 hover:text-indigo-900 ml-5"
                             >
-                              <router-link
-                                :to="{
-                                  name: 'UpdateUser',
-                                  params: { id: user._id },
-                                }"
-                              >
-                                <button
-                                  class="
-                                    text-indigo-600
-                                    hover:text-indigo-900
-                                    ml-5
-                                  "
-                                >
-                                  Update
-                                </button>
-                              </router-link>
-                              <button
-                                class="
-                                  text-red-600
-                                  hover:text-red-900
-                                  ml-5
-                                  mr-5
-                                "
-                                @click.prevent="Delete(user.email, user._id)"
-                              >
-                                Delete
-                              </button>
-                            </td>
-                          </div>
+                              Update
+                            </button>
+                          </router-link>
+                          <button
+                            class="text-red-600 hover:text-red-900 ml-5 mr-5"
+                            @click.prevent="Delete(user.email, user._id)"
+                          >
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     </tbody>
