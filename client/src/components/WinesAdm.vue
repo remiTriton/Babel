@@ -54,7 +54,7 @@
                       </div>
                     </div>
                   </div>
-                  <table class="w-full divide-y divide-gray-200">
+                  <table id="mama" class="w-full divide-y divide-gray-200" >
                     <thead class="head bg-gray-50">
                       <tr>
                         <!--bloc crud-->
@@ -162,7 +162,7 @@
 
                     <!-- end of category bar -->
 
-                    <tbody class="bg-white divide-y divide-gray-200 m-96">
+                    <tbody class="bg-white divide-y divide-gray-200">
                       <tr v-for="wine in wines" :key="wine.id">
                         <td class="text-gray-900">
                           <router-link
@@ -262,4 +262,5 @@ export default {
 .head {
   justify-content: space-evenly;
 }
+
 </style>
