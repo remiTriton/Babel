@@ -23,82 +23,90 @@
                     sm:rounded-lg
                   "
                 >
-                  <table class='w-full'>
-                      <thead class="bg-gray-50">
-                        <th
-                          scope="col"
-                          class="
-                            px-6
-                            py-3
-                            text-center text-xs
-                            font-medium
-                            text-gray-500
-                            uppercase
-                            tracking-wider
-                          "
-                        >
-                          Prénom
-                        </th>
-                        <th
-                          scope="col"
-                          class="
-                            px-6
-                            py-3
-                            text-center text-xs
-                            font-medium
-                            text-gray-500
-                            uppercase
-                            tracking-wider
-                          "
-                        >
-                          Nom
-                        </th>
-                        <th
-                          scope="col"
-                          class="
-                            px-6
-                            py-3
-                            text-center text-xs
-                            font-medium
-                            text-gray-500
-                            uppercase
-                            tracking-wider
-                          "
-                        >
-                          Email
-                        </th>
-                        <th
-                          scope="col"
-                          class="
-                            px-6
-                            py-3
-                            text-center text-xs
-                            font-medium
-                            text-gray-500
-                            uppercase
-                            tracking-wider
-                          "
-                        >
-                          Status
-                        </th>          <th
-                          scope="col"
-                          class="
-                            px-6
-                            py-3
-                            text-center text-xs
-                            font-medium
-                            text-gray-500
-                            uppercase
-                            tracking-wider
-                          "
-                        >
-                          Edit/Delete
-                        </th>
-                      </thead>
+                  <table class="w-full">
+                    <thead class="bg-gray-50">
+                      <th
+                        scope="col"
+                        class="
+                          px-6
+                          py-3
+                          text-center text-xs
+                          font-medium
+                          text-gray-500
+                          uppercase
+                          tracking-wider
+                        "
+                      >
+                        Prénom
+                      </th>
+                      <th
+                        scope="col"
+                        class="
+                          px-6
+                          py-3
+                          text-center text-xs
+                          font-medium
+                          text-gray-500
+                          uppercase
+                          tracking-wider
+                        "
+                      >
+                        Nom
+                      </th>
+                      <th
+                        scope="col"
+                        class="
+                          px-6
+                          py-3
+                          text-center text-xs
+                          font-medium
+                          text-gray-500
+                          uppercase
+                          tracking-wider
+                        "
+                      >
+                        Email
+                      </th>
+                      <th
+                        scope="col"
+                        class="
+                          px-6
+                          py-3
+                          text-center text-xs
+                          font-medium
+                          text-gray-500
+                          uppercase
+                          tracking-wider
+                        "
+                      >
+                        Status
+                      </th>
+                      <th
+                        scope="col"
+                        class="
+                          px-6
+                          py-3
+                          text-center text-xs
+                          font-medium
+                          text-gray-500
+                          uppercase
+                          tracking-wider
+                        "
+                      >
+                        Edit/Delete
+                      </th>
+                    </thead>
 
                     <tbody>
                       <tr v-for="user in users" :key="user.id">
-                        <td>
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
                           <router-link
                             :to="{
                               name: 'Print',
@@ -108,7 +116,16 @@
                             {{ user.firstName }}
                           </router-link>
                         </td>
-                        <td>{{ user.lastName }}</td>
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
+                          {{ user.lastName }}
+                        </td>
 
                         <td
                           class="
@@ -119,7 +136,8 @@
                           "
                         >
                           {{ user.email }}
-                        </td>    <td
+                        </td>
+                        <td
                           class="
                             px-6
                             py-4

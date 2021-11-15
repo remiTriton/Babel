@@ -38,13 +38,13 @@ router.post('/', async (req, res) => {
         const userCol = database.collection("users")
         // create a document to insert
         const doc = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
         }
 
-        if (!doc.firstname || !doc.lastname || !doc.email || !doc.password) {
+        if (!doc.firstName || !doc.lastName || !doc.email || !doc.password) {
             res.send('Please fill all fields')
         } else {
             const query = { email: doc.email };
