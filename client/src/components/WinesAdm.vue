@@ -55,11 +55,23 @@
                       </div>
                     </div>
                   </div>
-                  <table id="mama" class="w-full divide-y divide-gray-200" >
+                  <Multiselect
+                    class="text-black"
+                    v-model="value"
+                    :options="[
+                      { value: 'name', label: 'name' },
+                      { value: 'quantity', label: 'quantity' },
+                      { value: 'color', label: 'color' },
+                    ]"
+                    mode="tags"
+                    @select="toggleSelected(value)"
+                  />
+                  <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
                         <!--bloc crud-->
                         <th
+                          v-if="value != 'name'"
                           scope="col"
                           class="
                             px-6
@@ -84,6 +96,7 @@
                             uppercase
                             tracking-wider
                           "
+                          v-if="value[''] != 'quantity'"
                         >
                           Quantity
                         </th>
@@ -98,6 +111,7 @@
                             uppercase
                             tracking-wider
                           "
+                          v-if="value != 'color'"
                         >
                           Colors
                         </th>
@@ -170,6 +184,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
+                          v-if="value != 'name'"
                         >
                           <router-link
                             :to="{
@@ -188,6 +203,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
+                          v-if="value != 'quantity'"
                         >
                           {{ wine.quantity }}
                         </td>
@@ -199,6 +215,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
+                          v-if="value != 'color'"
                         >
                           {{ wine.color }}
                         </td>
@@ -278,9 +295,15 @@
 </template>
 
 <script>
+import Multiselect from "@vueform/multiselect";
 export default {
   name: "WinesAdm",
-
+  components: { Multiselect },
+  data() {
+    return {
+      value: [""],
+    };
+  },
   created() {
     this.$store.dispatch("wines/fetchWines");
   },
@@ -306,6 +329,17 @@ export default {
         await this.$store.dispatch("wines/fetchWines");
       }
     },
+    toggleSelected(value) {
+      alert(`${value.name}`);
+      console.log(" >> " + `${value}`);
+    },
   },
 };
 </script>
+<style src="@vueform/multiselect/themes/default.css"></style>
+
+<style scoped>
+* {
+  color: black;
+}
+</style>

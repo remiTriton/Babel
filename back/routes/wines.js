@@ -67,7 +67,6 @@ router.get("/color/:color", async (req, res) => {
     await client.connect();
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-
     const query = { color: req.params.color };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
@@ -80,13 +79,14 @@ router.get("/color/:color", async (req, res) => {
 router.get("/search/:name", async (req, res) => {
   try {
     await client.connect();
+    const q = req.params.name
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-
-    const query = { name: req.params.name };
-    const wine = await wineCol.findOne(query);
+    const wine =  await wineCol.find({ name: {$regex : new RegExp(q)}}).toArray();
     res.send(wine);
+    console.log(q);
     console.log(wine);
+
   } finally {
     await client.close();
   }
@@ -95,11 +95,10 @@ router.get("/search/:name", async (req, res) => {
 router.get("/domain/:domain", async (req, res) => {
   try {
     await client.connect();
+    const q = req.params.domain
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-
-    const query = { domain: req.params.domain };
-    const wine = await wineCol.find(query).toArray();
+    const wine =  await wineCol.find({ domain: {$regex : new RegExp(q)}}).toArray();
     res.send(wine);
     console.log(wine);
   } finally {
@@ -107,7 +106,7 @@ router.get("/domain/:domain", async (req, res) => {
   }
 });
 
-router.get("/wines/:name", async (req, res) => {
+router.get("/wines/:color", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("babel");

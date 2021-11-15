@@ -17,7 +17,7 @@ export default {
 <router-view></router-view>
 </template>
 
-<style>
+<style >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,4 +28,6 @@ export default {
 #NavBar {
   background-color: #2a574c;
 }
+
+
 </style>

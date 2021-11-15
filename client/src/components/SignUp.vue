@@ -32,14 +32,14 @@
               <input v-model="password" class="appearance-none border rounded w-full py-2 px-3 text-black" id="password"
                      type="password"
                      placeholder="Your secure password">
-              <p class="text-grey text-xs mt-1">At least 6 characters</p>
+              <p class="text-grey text-xs mt-1">At least 8 characters</p>
             </div>
             <div class="mb-4">
               <label class="block text-grey-darker text-sm font-bold " for="password">Confirm Password</label>
               <input v-model="confirmPassword" class="appearance-none border rounded w-full py-2 px-3 text-black"
                      type="password"
                      placeholder="Confirm Password">
-              <p class="text-grey text-xs mt-1">At least 6 characters</p>
+              <p class="text-grey text-xs mt-1">At least 8 characters</p>
             </div>
             <div>
               <button class="But hover:bg-dark font-bold py-2 px-4 rounded-full" type="submit"
@@ -88,8 +88,8 @@ export default {
     },
     async createUser() {
       const user = {
-        firstname: this.firstName,
-        lastname: this.lastName,
+        firstName: this.firstName,
+        lastName: this.lastName,
         email: this.email,
         password: this.password,
       };
@@ -103,6 +103,8 @@ export default {
           },
           body: JSON.stringify(user),
         });
+
+        console.log(user)
 
         // real Backend JSON
         const res = await resHttp.json();

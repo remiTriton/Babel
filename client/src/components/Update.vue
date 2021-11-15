@@ -376,7 +376,21 @@
               id="grid-zip"
               type="number"
               placeholder="0"
-            />    <input
+            />
+            <label
+              class="
+                block
+                uppercase
+                tracking-wide
+                text-gray-700 text-xs
+                font-bold
+                mb-2
+              "
+              for="grid-zip"
+            >
+              Price
+            </label>
+            <input
               v-model="wine.price"
               class="
                 appearance-none
@@ -395,7 +409,6 @@
               type="text"
             />
           </div>
-          
         </div>
 
         <div class="w-full md:w-2/8 px-3">
@@ -471,21 +484,24 @@ export default {
 
   methods: {
     async updateWine() {
-      await this.$store.dispatch("wines/updateWine",[this.$route.params.id, {
-        domain: this.wine.domain,
-        winemaker: this.wine.winemaker,
-        grapeVariety: this.wine.grapeVariety,
-        year: this.wine.year,
-        Description: this.wine.Description,
-        wineName: this.wine.wineName,
-        color: this.wine.color,
-        city: this.wine.city,
-        state: this.wine.state,
-        quantity: this.quantity + this.wine.quantity,
-        price:this.wine.price,
-      }]);
+      await this.$store.dispatch("wines/updateWine", [
+        this.$route.params.id,
+        {
+          domain: this.wine.domain,
+          winemaker: this.wine.winemaker,
+          grapeVariety: this.wine.grapeVariety,
+          year: this.wine.year,
+          Description: this.wine.Description,
+          wineName: this.wine.wineName,
+          color: this.wine.color,
+          city: this.wine.city,
+          state: this.wine.state,
+          quantity: this.quantity + this.wine.quantity,
+          price: this.wine.price,
+        },
+      ]);
       await this.$store.dispatch("wines/fetchWines");
-      await this.$router.push('/Admin');
+      await this.$router.push("/Admin");
     },
   },
 };
