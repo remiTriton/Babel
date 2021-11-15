@@ -3,7 +3,7 @@
     <SearchB v-on:searchWine="search" v-on:color="filter" />
     <main class="flex-1">
       <div class="py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <div class=" mx-auto px-4 sm:px-6 md:px-8">
           <!-- Replace with your content -->
 
           <div class="py-4">
@@ -77,17 +77,18 @@
                           <table class="min-w-full divide-y divide-gray-200">
                             <thead class="head bg-gray-50">
                               <tr>
-                                <th
+                              <!--bloc crud-->
+                                <th 
                                   scope="col"
                                   class="
                                     px-6
-                                    py-3
-                                    text-left text-xs
+                                    py-3                           
+                                    text-center text-xs
                                     font-medium
                                     text-gray-500
                                     uppercase
-                                    tracking-wider
-                                    ml-5
+                                    tracking-wider 
+                                                                    
                                   "
                                 >
                                   Nom
@@ -97,7 +98,7 @@
                                   class="
                                     px-6
                                     py-3
-                                    text-left text-xs
+                                    text-center text-xs
                                     font-medium
                                     text-gray-500
                                     uppercase
@@ -111,7 +112,21 @@
                                   class="
                                     px-6
                                     py-3
-                                    text-left text-xs
+                                    text-center text-xs
+                                    font-medium
+                                    text-gray-500
+                                    uppercase
+                                    tracking-wider
+                                  "
+                                >
+                                  Colors
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="
+                                    px-6
+                                    py-3
+                                    text-center text-xs
                                     font-medium
                                     text-gray-500
                                     uppercase
@@ -125,7 +140,7 @@
                                   class="
                                     px-6
                                     py-3
-                                    text-left text-xs
+                                    text-center text-xs
                                     font-medium
                                     text-gray-500
                                     uppercase
@@ -139,7 +154,7 @@
                                   class="
                                     px-6
                                     py-3
-                                    text-left text-xs
+                                    text-center text-xs
                                     font-medium
                                     text-gray-500
                                     uppercase
@@ -148,20 +163,7 @@
                                 >
                                   PVC
                                 </th>
-                                <th
-                                  scope="col"
-                                  class="
-                                    px-6
-                                    py-3
-                                    text-left text-xs
-                                    font-medium
-                                    text-gray-500
-                                    uppercase
-                                    tracking-wider
-                                  "
-                                >
-                                  Colors
-                                </th>
+                                
                                 <th scope="col" class="relative px-6 py-3">
                                   <span class="sr-only">Edit</span>
                                 </th>
@@ -178,10 +180,12 @@
 
                     <tbody class="bg-white divide-y divide-gray-200">
                       <tr v-for="wine in wines" :key="wine.id">
-                        <td class="px-6 py-4 whitespace-nowrap">
+                        
+                        <td>
                           <div class="flex items-center">
                             <div class="flex-shrink-0 h-10 w-10"></div>
                             <div class="ml-4">
+                            <td>
                               <router-link
                                 :to="{
                                   name: 'Print',
@@ -192,11 +196,17 @@
                                   {{ wine.name }}
                                 </div>
                               </router-link>
-                              
+                            </td>
 
                               <td>
-                                <div class="text-sm text-gray-500">
+                                <div class="text-sm text-gray-500 ml-60">
                                   {{ wine.quantity }}
+                                </div>
+                              </td>
+
+                              <td>
+                                <div class="text-sm text-gray-500 ml-60">
+                                  {{ wine.color }}
                                 </div>
                               </td>
 
@@ -205,30 +215,10 @@
                                   {{ wine.status }}
                                 </div>
                               </td>
-                              
-                              <td>
-                                <div class="text-sm text-gray-500">
-                                  {{ wine.color }}
-                                </div>
-                              </td>
+                                                   
                             </div>
                           </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <span
-                            class="
-                              px-2
-                              inline-flex
-                              text-xs
-                              leading-5
-                              font-semibold
-                              rounded-full
-                              bg-green-100
-                              text-green-800
-                            "
-                          >
-                            Active
-                          </span>
+                        
                         </td>
                         <td
                           class="
@@ -249,6 +239,7 @@
                             font-medium
                           "
                         >
+                        </td>
                           <div class="model">
                             <td
                               class="
@@ -272,7 +263,8 @@
                                     up
                                     text-indigo-600
                                     hover:text-indigo-900
-                                    mr-35
+                                    position-relative
+                                    ml-60
                                   "
                                 >
                                   Update
@@ -284,15 +276,15 @@
                                   text-red-600
                                   hover:text-red-900
                                   ml-5
-                                  mr-35
+                                 
                                 "
                                 @click.prevent="Delete(wine.name, wine._id)"
                               >
                                 Delete
                               </button>
                             </td>
+                          
                           </div>
-                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -349,6 +341,5 @@ export default {
 .up {
   margin-inline-start: 550px;
 }
-.de {
-}
+
 </style>
