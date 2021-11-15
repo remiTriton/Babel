@@ -42,13 +42,7 @@
                                 </div>
                               </router-link>
                               <div class="text-sm text-gray-500">
-                                {{ user.quantity }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ user.status }}
-                              </div>
-                              <div class="text-sm text-gray-500">
-                                {{ user.color }}
+                                {{ user.email }}
                               </div>
                             </div>
                           </div>

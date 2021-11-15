@@ -3,7 +3,7 @@
     <SearchB v-on:searchWine="search" v-on:color="filter" />
     <main class="flex-1">
       <div class="py-6">
-        <div class=" mx-auto px-4 sm:px-6 md:px-8">
+        <div class="mx-auto px-4 sm:px-6 md:px-8">
           <!-- Replace with your content -->
 
           <div class="py-4">
@@ -54,237 +54,161 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flex flex-col">
-                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                      <div
-                        class="
-                          py-2
-                          min-w-full
-                          align-middle
-                          inline-block
-                          sm:px-6
-                          lg:px-8
-                        "
-                      >
-                        <div
+                  <table class="w-full divide-y divide-gray-200">
+                    <thead class="head bg-gray-50">
+                      <tr>
+                        <!--bloc crud-->
+                        <th
+                          scope="col"
                           class="
-                            shadow
-                            overflow-hidden
-                            border-b border-gray-200
-                            sm:rounded-lg
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-900
+                            uppercase
+                            tracking-wider
                           "
                         >
-                          <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="head bg-gray-50">
-                              <tr>
-                              <!--bloc crud-->
-                                <th 
-                                  scope="col"
-                                  class="
-                                    px-6
-                                    py-3                           
-                                    text-center text-xs
-                                    font-medium
-                                    text-gray-500
-                                    uppercase
-                                    tracking-wider 
-                                                                    
-                                  "
-                                >
-                                  Nom
-                                </th>
-                                <th
-                                  scope="col"
-                                  class="
-                                    px-6
-                                    py-3
-                                    text-center text-xs
-                                    font-medium
-                                    text-gray-500
-                                    uppercase
-                                    tracking-wider
-                                  "
-                                >
-                                  Quantity
-                                </th>
-                                <th
-                                  scope="col"
-                                  class="
-                                    px-6
-                                    py-3
-                                    text-center text-xs
-                                    font-medium
-                                    text-gray-500
-                                    uppercase
-                                    tracking-wider
-                                  "
-                                >
-                                  Colors
-                                </th>
-                                <th
-                                  scope="col"
-                                  class="
-                                    px-6
-                                    py-3
-                                    text-center text-xs
-                                    font-medium
-                                    text-gray-500
-                                    uppercase
-                                    tracking-wider
-                                  "
-                                >
-                                  PAHT
-                                </th>
-                                <th
-                                  scope="col"
-                                  class="
-                                    px-6
-                                    py-3
-                                    text-center text-xs
-                                    font-medium
-                                    text-gray-500
-                                    uppercase
-                                    tracking-wider
-                                  "
-                                >
-                                  PVTTC
-                                </th>
-                                <th
-                                  scope="col"
-                                  class="
-                                    px-6
-                                    py-3
-                                    text-center text-xs
-                                    font-medium
-                                    text-gray-500
-                                    uppercase
-                                    tracking-wider
-                                  "
-                                >
-                                  PVC
-                                </th>
-                                
-                                <th scope="col" class="relative px-6 py-3">
-                                  <span class="sr-only">Edit</span>
-                                </th>
-                              </tr>
-                            </thead>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end of category bar -->
-                  <table>
-                    <thead class="bg-gray-50"></thead>
+                          Nom
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Colors
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          PAHT
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          PVTTC
+                        </th>
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          PVC
+                        </th>
+
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Edit
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <!-- end of category bar -->
 
                     <tbody class="bg-white divide-y divide-gray-200">
                       <tr v-for="wine in wines" :key="wine.id">
-                        
-                        <td>
-                          <div class="flex items-center">
-                            <div class="flex-shrink-0 h-10 w-10"></div>
-                            <div class="ml-4">
-                            <td>
-                              <router-link
-                                :to="{
-                                  name: 'Print',
-                                  params: { id: wine._id },
-                                }"
-                              >
-                                <div class="text-sm font-medium text-gray-900">
-                                  {{ wine.name }}
-                                </div>
-                              </router-link>
-                            </td>
-
-                              <td>
-                                <div class="text-sm text-gray-500 ml-60">
-                                  {{ wine.quantity }}
-                                </div>
-                              </td>
-
-                              <td>
-                                <div class="text-sm text-gray-500 ml-60">
-                                  {{ wine.color }}
-                                </div>
-                              </td>
-
-                              <td>
-                                <div class="text-sm text-gray-500">
-                                  {{ wine.status }}
-                                </div>
-                              </td>
-                                                   
-                            </div>
-                          </div>
-                        
+                        <td class="text-gray-900">
+                          <router-link
+                            :to="{
+                              name: 'Print',
+                              params: { id: wine._id },
+                            }"
+                          >
+                            {{ wine.name }}
+                          </router-link>
                         </td>
-                        <td
-                          class="
-                            px-6
-                            py-4
-                            whitespace-nowrap
-                            text-sm text-gray-500
-                          "
-                        >
-                          {{ wine.role }}
+
+                        <td class="text-gray-900">
+                          {{ wine.quantity }}
                         </td>
-                        <td
-                          class="
-                            px-6
-                            py-4
-                            whitespace-nowrap
-                            text-right text-sm
-                            font-medium
-                          "
-                        >
+
+                        <td class="text-gray-900">
+                          {{ wine.color }}
                         </td>
-                          <div class="model">
-                            <td
-                              class="
-                                cru
-                                px-6
-                                py-4
-                                whitespace-nowrap
-                                text-right text-sm
-                                font-medium
-                                ml-50
-                              "
+
+                        <td class="text-gray-900">30</td>
+
+                        <td class="text-gray-900">hello</td>
+
+                        <td class="text-gray-900">holl</td>
+
+                        <td class="text-gray-900">
+                          <router-link
+                            :to="{
+                              name: 'Update',
+                              params: { id: wine._id },
+                            }"
+                          >
+                            <button
+                              class="text-indigo-600 hover:text-indigo-900"
                             >
-                              <router-link
-                                :to="{
-                                  name: 'Update',
-                                  params: { id: wine._id },
-                                }"
-                              >
-                                <button
-                                  class="
-                                    up
-                                    text-indigo-600
-                                    hover:text-indigo-900
-                                    position-relative
-                                    ml-60
-                                  "
-                                >
-                                  Update
-                                </button>
-                              </router-link>
-                              <button
-                                class="
-                                  de
-                                  text-red-600
-                                  hover:text-red-900
-                                  ml-5
-                                 
-                                "
-                                @click.prevent="Delete(wine.name, wine._id)"
-                              >
-                                Delete
-                              </button>
-                            </td>
-                          
-                          </div>
+                              Update
+                            </button>
+                          </router-link>
+                          <button
+                            class="text-red-600 hover:text-red-900"
+                            @click.prevent="Delete(wine.name, wine._id)"
+                          >
+                            Delete
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -338,8 +262,4 @@ export default {
 .head {
   justify-content: space-evenly;
 }
-.up {
-  margin-inline-start: 550px;
-}
-
 </style>
