@@ -71,7 +71,7 @@
                       <tr>
                         <!--bloc crud-->
                         <th
-                          v-if="value != 'name'"
+                          v-if="value !== 'name'"
                           scope="col"
                           class="
                             px-6
