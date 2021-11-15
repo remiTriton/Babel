@@ -51,6 +51,8 @@ router.post("/", async (req, res) => {
       city: req.body.city,
       state: req.body.state,
       quantity: req.body.quantity,
+      quantity: req.body.price,
+
     };
 
     const result = await wineCol.insertOne(doc);

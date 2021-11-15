@@ -376,8 +376,26 @@
               id="grid-zip"
               type="number"
               placeholder="0"
+            />    <input
+              v-model="wine.price"
+              class="
+                appearance-none
+                block
+                w-full
+                bg-gray-200
+                text-gray-700
+                border border-gray-200
+                rounded
+                py-3
+                px-4
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-gray-500
+              "
+              id="grid-city"
+              type="text"
             />
           </div>
+          
         </div>
 
         <div class="w-full md:w-2/8 px-3">
@@ -464,6 +482,7 @@ export default {
         city: this.wine.city,
         state: this.wine.state,
         quantity: this.quantity + this.wine.quantity,
+        price:this.wine.price,
       }]);
       await this.$store.dispatch("wines/fetchWines");
       await this.$router.push('/Admin');

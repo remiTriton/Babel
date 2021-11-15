@@ -159,12 +159,22 @@
                         </th>
                       </tr>
                     </thead>
-
                     <!-- end of category bar -->
+<<<<<<< HEAD
 
                     <tbody class="bg-white divide-y divide-gray-200">
+=======
+                    <tbody>
+>>>>>>> bd72444d721f676d09dbc69a7c70d06ee3ae4a05
                       <tr v-for="wine in wines" :key="wine.id">
-                        <td class="text-gray-900">
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
                           <router-link
                             :to="{
                               name: 'Print',
@@ -175,21 +185,69 @@
                           </router-link>
                         </td>
 
-                        <td class="text-gray-900">
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
                           {{ wine.quantity }}
                         </td>
 
-                        <td class="text-gray-900">
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
                           {{ wine.color }}
                         </td>
 
-                        <td class="text-gray-900">30</td>
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
+                          {{ wine.price }}
+                        </td>
 
-                        <td class="text-gray-900">hello</td>
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
+                          {{ wine.price * 1.2 }}
+                        </td>
 
-                        <td class="text-gray-900">holl</td>
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
+                          holl
+                        </td>
 
-                        <td class="text-gray-900">
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
                           <router-link
                             :to="{
                               name: 'Update',
@@ -224,8 +282,6 @@
 </template>
 
 <script>
-import SearchB from "../components/SearchB.vue";
-
 export default {
   name: "WinesAdm",
 
@@ -257,6 +313,7 @@ export default {
   },
 };
 </script>
+<<<<<<< HEAD
 
 <style>
 .head {
@@ -264,3 +321,5 @@ export default {
 }
 
 </style>
+=======
+>>>>>>> bd72444d721f676d09dbc69a7c70d06ee3ae4a05

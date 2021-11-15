@@ -182,7 +182,7 @@ export default {
     return {
       add: false,
       showWines: true,
-      showUsers: true,
+      showUsers: false,
     };
   },
   methods: {
