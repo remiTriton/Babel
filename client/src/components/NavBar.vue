@@ -12,10 +12,6 @@
           ml-10
           hover:text-white hover:border-white
           text-3xl
-<<<<<<< HEAD
-          ml-5
-=======
->>>>>>> 6c4362b3bc8543087f007e2e0fad6dfe9b2c1798
         "
       >
         Blog
@@ -85,12 +81,7 @@
           >
         </div>
         <div>
-<<<<<<< HEAD
-          <button
-            to="/login"
-=======
           <button v-if='auth'
->>>>>>> 6c4362b3bc8543087f007e2e0fad6dfe9b2c1798
             class="
               cat
               inline-block
@@ -106,14 +97,9 @@
               mt-4
               lg:mt-0
             "
-<<<<<<< HEAD
-=======
             @click.prevent='logout'
             >Logout</button
->>>>>>> 6c4362b3bc8543087f007e2e0fad6dfe9b2c1798
           >
-            Logout
-          </button>
         </div>
         <div>
           <router-link
