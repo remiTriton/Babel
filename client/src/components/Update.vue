@@ -13,12 +13,12 @@
                 font-bold
                 
               "
-              for="grid-domain"
+              for="grid-cuvee"
             >
-              Domain
+              Cuvée
             </label>
             <input
-              v-model="wine.domain"
+              v-model="wine.cuvee"
               class="
                 border border-gray-200
                 appearance-none
@@ -47,12 +47,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-vigneron"
+              for="grid-domaine"
             >
-              vigneron
+              Domaine
             </label>
             <input
-              v-model="wine.vigneron"
+              v-model="wine.domaine"
               class="
                 appearance-none
                 block
@@ -66,7 +66,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white focus:border-gray-500
               "
-              id="grid-vigneron"
+              id="grid-domaine"
               type="text"
             />
           </div>
@@ -117,12 +117,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-annee"
+              for="grid-millesime"
             >
-              Année
+              Millésime
             </label>
             <input
-              v-model="wine.annee"
+              v-model="wine.millesime"
               class="
                 appearance-none
                 block
@@ -137,44 +137,10 @@
                 focus:outline-none focus:bg-white focus:border-gray-500
                 text-overflow
               "
-              id="grid-annee"
+              id="grid-millesime"
               type="text"
             />
           </div>
-        </div>
-
-        <div class="w-full md:w-2/8 px-3">
-          <label
-            class="
-              block
-              uppercase
-              tracking-wide
-              text-gray-700 text-xs
-              font-bold
-              mb-2
-            "
-            for="grid-Description"
-          >
-            Description
-          </label>
-          <input
-            v-model="wine.Description"
-            class="
-              appearance-none
-              block
-              w-full
-              bg-gray-200
-              text-gray-700
-              border border-gray-200
-              rounded
-              py-3
-              px-4
-              leading-tight
-              focus:outline-none focus:bg-white focus:border-gray-500
-            "
-            id="grid-technical-Specification"
-            type="text"
-          />
         </div>
 
         <div class="flex flex-wrap -mx-1 mt-5 mb-6">
@@ -191,12 +157,12 @@
                 overflow:
                 scroll;
               "
-              for="grid-wine-name"
+              for="grid-vigneron"
             >
-              Wine Name
+              Vigneron
             </label>
             <input
-              v-model="wine.wineName"
+              v-model="wine.vigneron"
               class="
                 appearance-none
                 block
@@ -247,6 +213,41 @@
             </div>
           </div>
         </div>
+
+<div class="w-full md:w-2/8 px-3">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="grid-description"
+          >
+            Description
+          </label>
+          <input
+            v-model="wine.description"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-gray-200
+              rounded
+              py-3
+              px-4
+              leading-tight
+              focus:outline-none focus:bg-white focus:border-gray-500
+            "
+            id="grid-description"
+            type="text"
+          />
+        </div><br>
+
         <div class="flex flex-wrap -mx-1 mb-2">
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label
@@ -258,12 +259,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-city"
+              for="grid-region"
             >
               Region
             </label>
             <input
-              v-model="wine.city"
+              v-model="wine.region"
               class="
                 appearance-none
                 block
@@ -277,7 +278,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white focus:border-gray-500
               "
-              id="grid-city"
+              id="grid-region"
               type="text"
             />
           </div>
@@ -291,13 +292,13 @@
                 font-bold
                 mb-2
               "
-              for="grid-state"
+              for="grid-pays"
             >
-              State
+              Pays
             </label>
             <div class="relative">
               <select
-                v-model="wine.state"
+                v-model="wine.pays"
                 class="
                   block
                   appearance-none
@@ -312,7 +313,7 @@
                   leading-tight
                   focus:outline-none focus:bg-white focus:border-gray-500
                 "
-                id="grid-state"
+                id="grid-pays"
               >
                 <option>France</option>
                 <option>Italie</option>
@@ -356,10 +357,10 @@
               "
               for="grid-zip"
             >
-              Quantity
+              Quantité
             </label>
             <input
-              v-model="quantity"
+              v-model="quantite"
               class="
                 appearance-none
                 block
@@ -376,7 +377,7 @@
               id="grid-zip"
               type="number"
               placeholder="0"
-            />
+            /><br>
             <label
               class="
                 block
@@ -388,10 +389,10 @@
               "
               for="grid-zip"
             >
-              Price
+              Prix
             </label>
             <input
-              v-model="wine.price"
+              v-model="wine.prix"
               class="
                 appearance-none
                 block
@@ -405,7 +406,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white focus:border-gray-500
               "
-              id="grid-city"
+              id="grid-prix"
               type="text"
             />
           </div>
