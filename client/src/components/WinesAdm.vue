@@ -48,23 +48,22 @@
                       </div>
                     </div>
                   </div>
-                  <!--
+
                   <Multiselect
-                    class="text-black"
                     v-model="value"
+                    class="text-black"
                     :options="[
-                      { value: 'name', label: 'name' },
-                      { value: 'quantity', label: 'quantity' },
-                      { value: 'color', label: 'color' },
+                      { name: 'Name', label: 'name' },
+                      { name: 'Quantity', label: 'quantity' },
+                      { name: 'Color', label: 'color' },
                     ]"
                     mode="tags"
-                    @select="toggleSelected(value)"
-                  />-->
+                  />
+                  <p class="text-gray-900">{{ value }}</p>
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
                         <th
-                          v-if="value !== 'name'"
                           scope="col"
                           class="
                             px-6
@@ -89,7 +88,7 @@
                             uppercase
                             tracking-wider
                           "
-                          v-if="value[''] != 'quantity'"
+                          v-if="value['label'] != 'quantity'"
                         >
                           Quantity
                         </th>
@@ -352,7 +351,7 @@ export default {
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
   data() {
     return {
-      value: [""],
+      value: [],
     };
   },
   created() {
@@ -391,7 +390,7 @@ export default {
       }
     },
     toggleSelected(value) {
-      alert(`${value.name}`);
+      alert(`${value}`);
       console.log(" >> " + `${value}`);
     },
   },
