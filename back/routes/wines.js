@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
       city: req.body.city,
       state: req.body.state,
       quantity: req.body.quantity,
-      quantity: req.body.price,
+      price: req.body.price,
 
     };
 
@@ -136,7 +136,7 @@ router.get("/dpt/:dpt", async (req, res) => {
   }
 });
 
-router.patch("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("babel");
