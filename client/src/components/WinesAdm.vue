@@ -48,7 +48,7 @@
                       </div>
                     </div>
                   </div>
-
+<!--
                   <Multiselect
                     class="text-black"
                     v-model="value"
@@ -59,7 +59,7 @@
                     ]"
                     mode="tags"
                     @select="toggleSelected(value)"
-                  />
+                  />-->
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
@@ -400,16 +400,8 @@ export default {
 <style src="@vueform/multiselect/themes/default.css"></style>
 
 <style scoped>
-<<<<<<< HEAD
-* {
-  color: black;
-}
-.round{
-background-color: #2a574c;
-=======
 .round {
   background-color: #2a574c;
   color: white;
->>>>>>> 34eebe61505563239cf1e8b20bd23761a1084e7a
 }
 </style>
