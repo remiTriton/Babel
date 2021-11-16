@@ -117,7 +117,7 @@ router.post('/login', async (req, res) => {
     })
 })
 
-router.patch("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
       await client.connect();
       const database = client.db("babel");

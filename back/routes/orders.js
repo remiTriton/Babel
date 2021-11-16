@@ -28,11 +28,11 @@ router.post("/", async (req, res) => {
         const wineCol = database.collection('wines');
         const id = req.body.id;
         const product = await wineCol.findOne(new ObjectId(id));
-        console.log(product)
         // create a document to insert
         const doc = {
             wines:
                 [{
+                    id:product._id,
                     name: product.name,
                     quantity: req.body.quantity,
                 }],
@@ -57,25 +57,23 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.patch("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         await client.connect();
         const database = client.db("babel");
         const orderCol = database.collection("orders");
         const wineCol = database.collection('wines');
-        req.orders.wines = [];
-
         const id = req.body.id;
         const product = await wineCol.findOne(new ObjectId(id));
         await orderCol.updateOne(
-            { _id: new ObjectId(req.params.id) },
+            { _id: new ObjectId(req.params.id)},
             {
                 $push: {
                     wines:
-                        [{
+                        {   id:product._id,
                             name: product.name,
                             quantity: req.body.quantity,
-                        }],
+                        }
                 }
             }
         );
