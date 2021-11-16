@@ -14,7 +14,8 @@
           py-2
           rounded
           hover:text-white hover:border-white
-          text-2xl
+          text-3xl
+          ml-5
         "
       >
         Blog</router-link
@@ -84,7 +85,7 @@
           >
         </div>
         <div>
-          <router-link
+          <button
             to="/login"
             class="
               cat
@@ -101,8 +102,9 @@
               mt-4
               lg:mt-0
             "
-            >Logout</router-link
           >
+            Logout
+          </button>
         </div>
 
         <div>

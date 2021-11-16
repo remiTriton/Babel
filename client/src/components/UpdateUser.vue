@@ -105,7 +105,6 @@
               >
                 <option>Admin</option>
                 <option>Manager</option>
-                <option>Serveur</option>
               </select>
               </div>
               <button

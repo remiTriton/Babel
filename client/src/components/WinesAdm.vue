@@ -48,18 +48,12 @@
                       </div>
                     </div>
                   </div>
-                  <!--
+
                   <Multiselect
                     class="text-black"
-                    v-model="value"
-                    :options="[
-                      { value: 'name', label: 'name' },
-                      { value: 'quantity', label: 'quantity' },
-                      { value: 'color', label: 'color' },
-                    ]"
-                    mode="tags"
-                    @select="toggleSelected(value)"
-                  />-->
+                    v-model="selected"
+                    :options="options"             
+                  mode="tags" @select="toggleSelected(value)"></Multiselect>
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
@@ -352,7 +346,13 @@ export default {
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
   data() {
     return {
-      value: [""],
+       value: [],
+      options: [
+        { name: 'Nom.', label: 'Nom' },
+        { name: 'Quantity', label: 'Quantity' },
+        { name: 'Color', label: 'Color' },
+      ]
+    
     };
   },
   created() {
@@ -403,5 +403,9 @@ export default {
 .round {
   background-color: #2a574c;
   color: white;
+}
+.text{
+  color: black;
+
 }
 </style>
