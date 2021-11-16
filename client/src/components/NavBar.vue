@@ -87,7 +87,7 @@
               border-white
               hover:border-transparent
               hover:text-teal-500
-              hover:bg-white
+              hover:bg-whiteq
               mt-4
               lg:mt-0
             "
