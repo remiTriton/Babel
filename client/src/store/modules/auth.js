@@ -29,17 +29,13 @@ const auth = {
       const data = await res.json();
       context.commit("setUsers", data);
     },
-
     //On récupère un user
-
     async getOneUser(context, _id) {
       const res = await fetch("http://localhost:3001/api/users/" + _id)
       const data = await res.json();
       context.commit("setUser", data);
     },
-
     //On cherche un user 
-
     async getUserByName(context, query) {
       const res = await fetch("http://localhost:3001/api/users/" + query)
       const data = await res.json();
@@ -53,14 +49,14 @@ const auth = {
       context.commit("setUsers", data);
     },
 
-    //delete one wine
+    //supression d'un utilisateur
     async delUser(context, _id) {
       await fetch("http://localhost:3001/api/users/" + _id, {
         "method": "DELETE",
       });
       context.commit("setUsers");
     },
-
+    //ajout d'un utilisateur via crud admin et/ou register
     async addUser(context, body) {
       await fetch("http://localhost:3001/api/users/", {
         "method": "POST",
@@ -71,6 +67,7 @@ const auth = {
       })
       context.commit('setUsers')
     },
+    //Update d'un utilsiateur version crud admin
     async updateUserCrud(context, [id, user]) {
       await fetch("http://localhost:3001/api/users/" + id, {
         "method": "PUT",
@@ -81,6 +78,7 @@ const auth = {
       })
       context.commit('setUsers', context.state.user)
     },
+    //Connection d'un utilisateur
     async login(context, body) {
       const res = await fetch("http://localhost:3001/api/users/login", {
         "method": "POST",
@@ -94,6 +92,7 @@ const auth = {
       console.log(data)
       context.commit('setAuth', data.token)
     },
+    //Deconnection d'un utilisateur 
     logout(context) {
       let token = null;
       context.commit("logout", token);

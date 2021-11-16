@@ -42,9 +42,10 @@ router.post('/', async (req, res) => {
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
+            role: "Serveur",
         }
 
-        if (!doc.firstName || !doc.lastName || !doc.email || !doc.password) {
+        if (!doc.firstName || !doc.lastName || !doc.email || !doc.password || !doc.role) {
             res.send('Please fill all fields')
         } else {
             const query = { email: doc.email };
@@ -58,12 +59,10 @@ router.post('/', async (req, res) => {
 
             const hash = await new Promise((resolve, reject) => {
                 bcrypt.genSalt(10, (err, salt) => bcrypt.hash(doc.password, salt, (err, hash) => {
-
                     if (err) {
                         reject(err)
                         return;
                     }
-
                     resolve(hash)
                     return;
                 }))
@@ -71,11 +70,10 @@ router.post('/', async (req, res) => {
 
             //MDP securise
             doc.password = hash;
-
+            console.log(doc)
             const result = await userCol.insertOne(doc);
-
             res.send(JSON.stringify({
-                id: result.insertedId
+                id: result
             }));
         }
 
@@ -104,9 +102,14 @@ router.post('/login', async (req, res) => {
         bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-                jwt.sign({ user, iat: Math.floor(Date.now() / 1000) + (60 * 60), }, 'token', (err, token) => {
+                jwt.sign({
+                    user: {
+                        id: user._id,
+                        email: user.email,
+                        role: user.role,
+                    }, iat: Math.floor(Date.now() / 1000) + (60 * 60),
+                }, 'token', (err, token) => {
                     res.status(200).json({
-                        user,
                         token
                     });
                 });

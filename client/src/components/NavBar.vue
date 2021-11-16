@@ -1,25 +1,25 @@
 <template>
   <div>
+
     <nav class="flexo flex justify-between flex-wrap p-6">
-      <!-- <div class="flex items-center flex-shrink-0 text-white mr-6">
-    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
-    <span class="font-semibold text-xl tracking-tight">Tailwind CSS</span>
-  </div> -->
       <router-link
-        to="/Blog"
+        to="/blog"
         class="
           flex
           items-center
           px-3
           py-2
-          rounded
+          ml-10
           hover:text-white hover:border-white
           text-3xl
+<<<<<<< HEAD
           ml-5
+=======
+>>>>>>> 6c4362b3bc8543087f007e2e0fad6dfe9b2c1798
         "
       >
-        Blog</router-link
-      >
+        Blog
+      </router-link>
       <div class="block lg:hidden">
         <button
           class="
@@ -32,7 +32,6 @@
             text-teal-200
             border-teal-400
             hover:text-white hover:border-white
-            text-4xl
           "
         >
           <svg
@@ -48,7 +47,7 @@
       <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div class="text-sm lg:flex-grow">
           <router-link
-            to="/wineList"
+            to="/WineList"
             class="
               cat
               block
@@ -65,6 +64,7 @@
 
         <div>
           <router-link
+          v-if='!auth'
             to="/login"
             class="
               cat
@@ -85,8 +85,12 @@
           >
         </div>
         <div>
+<<<<<<< HEAD
           <button
             to="/login"
+=======
+          <button v-if='auth'
+>>>>>>> 6c4362b3bc8543087f007e2e0fad6dfe9b2c1798
             class="
               cat
               inline-block
@@ -102,13 +106,18 @@
               mt-4
               lg:mt-0
             "
+<<<<<<< HEAD
+=======
+            @click.prevent='logout'
+            >Logout</button
+>>>>>>> 6c4362b3bc8543087f007e2e0fad6dfe9b2c1798
           >
             Logout
           </button>
         </div>
-
         <div>
           <router-link
+          v-if='!auth'
             to="/register"
             class="
               cat
@@ -157,6 +166,17 @@
 <script>
 export default {
   name: "NavBar",
+ computed:{
+   auth(){
+     return this.$store.state.auth.token
+   }
+ },
+  
+  methods:{
+    async logout(){
+      await this.$store.dispatch('auth/logout')
+    }
+  }
 };
 </script>
 

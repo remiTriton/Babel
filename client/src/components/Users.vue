@@ -79,7 +79,7 @@
                           tracking-wider
                         "
                       >
-                        Status
+                        Role
                       </th>
                       <th
                         scope="col"
