@@ -102,6 +102,7 @@ export default {
 }
 .back{
 background-color: #2a574c;
+float: right;
 }
 
 </style>

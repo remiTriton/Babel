@@ -294,8 +294,9 @@ export default {
 }
 
 .back {
-  color: #2a574c;
+  color: white;
+  background-color: #2a574c;
+  border-radius: 20px;
   float: right;
-  position: relative;
 }
 </style>
