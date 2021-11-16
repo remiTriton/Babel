@@ -387,6 +387,5 @@ export default {
 }
 .round{
 background-color: #2a574c;
-color: white;
 }
 </style>
