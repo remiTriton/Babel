@@ -14,12 +14,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-domain"
+              for="grid-domcuveeain"
             >
-              Domain
+              Cuvée
             </label>
             <input
-              v-model="domain"
+              v-model="cuvee"
               class="
                 border border-gray-200
                 appearance-none
@@ -34,7 +34,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-              id="grid-domain"
+              id="grid-cuvee"
               type="text"
             />
           </div>
@@ -48,12 +48,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-winemaker"
+              for="grid-domaine"
             >
-              Winemaker
+              Domaine
             </label>
             <input
-              v-model="winemaker"
+              v-model="domaine"
               class="
                 appearance-none
                 block
@@ -67,7 +67,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white focus:border-gray-500
               "
-              id="grid-winemaker"
+              id="grid-domaine"
               type="text"
             />
           </div>
@@ -118,12 +118,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-year"
+              for="grid-millesime"
             >
-              Year
+              Millésime
             </label>
             <input
-              v-model="year"
+              v-model="millesime"
               class="
                 appearance-none
                 block
@@ -138,9 +138,80 @@
                 focus:outline-none focus:bg-white focus:border-gray-500
                 text-overflow
               "
-              id="grid-year"
+              id="grid-millesime"
               type="text"
             />
+          </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-1 mt-5 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label
+              class="
+                block
+                uppercase
+                tracking-wide
+                text-gray-700 text-xs
+                font-bold
+                mb-2
+                text-overflow
+                overflow:
+                scroll;
+              "
+              for="grid-vigneron"
+            >
+              Vigneron
+            </label>
+            <input
+              v-model="vigneron"
+              class="
+                appearance-none
+                block
+                w-full
+                bg-gray-200
+                text-gray-700
+                border border-gray-200
+                rounded
+                py-3
+                px-4
+                mb-3
+                leading-tight
+                focus:outline-none focus:bg-white
+              "
+              type="text"
+            />
+          </div>
+
+          <div class="w-full md:w-1/2 px-3 mb-8 md:mb-0">
+            <div class="relative">
+              <div class="col">
+                <select
+                  v-model="couleur"
+                  class="
+                    block
+                    uppercase
+                    appearance-none
+                    w-full
+                    bg-gray-200
+                    border border-gray-200
+                    text-gray-700
+                    py-3
+                    px-4
+                    mb-3
+                    rounded
+                    leading-tight
+                    focus:outline-none focus:bg-white focus:border-gray-500
+                  "
+                  id="grid-state"
+                >
+                  <option>Red</option>
+                  <option>White</option>
+                  <option>Rosé</option>
+                  <option>Bubble</option>
+                  <option>Biere</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -174,80 +245,10 @@
               focus:outline-none focus:bg-white focus:border-gray-500
             "
             id="grid-technical-Specification"
-            type="text"
+            type="textarea"
           />
-        </div>
+        </div><br>
 
-        <div class="flex flex-wrap -mx-1 mt-5 mb-6">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="
-                block
-                uppercase
-                tracking-wide
-                text-gray-700 text-xs
-                font-bold
-                mb-2
-                text-overflow
-                overflow:
-                scroll;
-              "
-              for="grid-wine-name"
-            >
-              Wine Name
-            </label>
-            <input
-              v-model="wineName"
-              class="
-                appearance-none
-                block
-                w-full
-                bg-gray-200
-                text-gray-700
-                border border-gray-200
-                rounded
-                py-3
-                px-4
-                mb-3
-                leading-tight
-                focus:outline-none focus:bg-white
-              "
-              type="text"
-            />
-          </div>
-
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <div class="relative">
-              <div class="col">
-                <select
-                  v-model="color"
-                  class="
-                    block
-                    uppercase
-                    appearance-none
-                    w-full
-                    bg-gray-200
-                    border border-gray-200
-                    text-gray-700
-                    py-3
-                    px-4
-                    mb-3
-                    rounded
-                    leading-tight
-                    focus:outline-none focus:bg-white focus:border-gray-500
-                  "
-                  id="grid-state"
-                >
-                  <option>Red</option>
-                  <option>White</option>
-                  <option>Rosé</option>
-                  <option>Bubble</option>
-                  <option>Biere</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="flex flex-wrap -mx-1 mb-2">
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label
@@ -259,12 +260,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-city"
+              for="grid-region"
             >
               Region
             </label>
             <input
-              v-model="city"
+              v-model="region"
               class="
                 appearance-none
                 block
@@ -278,7 +279,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white focus:border-gray-500
               "
-              id="grid-city"
+              id="grid-region"
               type="text"
             />
           </div>
@@ -292,13 +293,13 @@
                 font-bold
                 mb-2
               "
-              for="grid-state"
+              for="grid-pays"
             >
-              State
+              Pays
             </label>
             <div class="relative">
               <select
-                v-model="state"
+                v-model="pays"
                 class="
                   block
                   appearance-none
@@ -313,7 +314,7 @@
                   leading-tight
                   focus:outline-none focus:bg-white focus:border-gray-500
                 "
-                id="grid-state"
+                id="grid-pays"
               >
                 <option>France</option>
                 <option>Italie</option>
@@ -357,10 +358,10 @@
               "
               for="grid-zip"
             >
-              Quantity
+              Quantité
             </label>
             <input
-              v-model="quantity"
+              v-model="quantité"
               class="
                 appearance-none
                 block

@@ -40,17 +40,17 @@ router.post("/", async (req, res) => {
 
     // create a document to insert
     const doc = {
-      domain: req.body.domain,
-      vigneron: req.body.vigneron,
+      cuvee: req.body.cuvee,
+      domaine: req.body.domaine,
       cepage: req.body.cepage,
-      annee: req.body.annee,
-      technicalSpecification: req.body.technicalSpecification,
-      wineName: req.body.wineName,
-      color: req.body.color,
-      city: req.body.city,
-      state: req.body.state,
-      quantity: req.body.quantity,
-      price: req.body.price,
+      millesime: req.body.millesime,
+      description: req.body.descritpion,
+      vigneron: req.body.vigneron,
+      couleur: req.body.couleur,
+      departement: req.body.departement,
+      region: req.body.region,
+      quantite: req.body.quantite,
+      prix: req.body.prix,
 
     };
 

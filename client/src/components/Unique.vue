@@ -68,40 +68,10 @@
         
       </div>
       <router-link to="/winelist">
-      <button
-          class="
-          back
-          border border-teal-500
-          text-teal-500
-          block
-          rounded-m
-          font-bold
-          py-4
-          px-6
-          mr-2
-          mb-350
-          flex
-          items-center
-          hover:bg-teal-500 hover:text-white
-        "
-      >
-        <svg
-            class="h-5 w-5 mr-2 fill-current"
-            version="1.1"
-            id="Layer_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="-49 141 512 512"
-            style="enable-background: new -49 141 512 512"
-            xml:space="preserve"
-        >
-          <path
-              id="XMLID_10_"
-              d="M438,372H36.355l72.822-72.822c9.763-9.763,9.763-25.592,0-35.355c-9.763-9.764-25.593-9.762-35.355,0 l-115.5,115.5C-46.366,384.01-49,390.369-49,397s2.634,12.989,7.322,17.678l115.5,115.5c9.763,9.762,25.593,9.763,35.355,0 c9.763-9.763,9.763-25.592,0-35.355L36.355,422H438c13.808,0,25-11.193,25-25S451.808,372,438,372z"
-          ></path>
-        </svg>
+      <button type="button" class="back inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+</svg>
       </button>
     </router-link>
       <div></div>
@@ -129,6 +99,9 @@ export default {
   margin-top: 10px;
   background-color: #2a574c;
   color: white;
+}
+.back{
+background-color: #2a574c;
 }
 
 </style>
