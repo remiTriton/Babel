@@ -24,7 +24,6 @@ router.get("/:id", async (req, res) => {
     await client.connect();
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-
     const query = { _id: new ObjectId(req.params.id) };
     const wine = await wineCol.findOne(query);
     res.send(wine);

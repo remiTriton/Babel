@@ -71,9 +71,9 @@ const wines = {
         body: JSON.stringify(wine),
         "headers": {
           "Content-type": "application/json",
-      }
+        }
       });
-      
+
       context.commit('setwine')
     }
   }

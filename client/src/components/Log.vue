@@ -294,14 +294,9 @@ export default {
         email: this.email,
         password: this.password,
       };
-      const res = await fetch("/api/users/login", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(user),
-      });
-      const data = await res.json();
-      localStorage.setItem('token', data.token);
-      this.$router.push("/");
+      await this.$store.dispatch('auth/login',user);
+            this.$router.push("/Admin");
+
     },
   },
 };
