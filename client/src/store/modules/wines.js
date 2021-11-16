@@ -80,9 +80,9 @@ const wines = {
         "headers": {
           "Content-type": "application/json",
       }
-      })
-      console.log(wine)
-      context.commit('setwines', context.state.wine)
+      });
+      
+      context.commit('setwine')
     }
   }
 }

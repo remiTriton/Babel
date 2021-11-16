@@ -1,16 +1,10 @@
 <template>
   <div class="md:pl-64 flex flex-col flex-1">
     <SearchB v-on:searchWine="search" v-on:color="filter" />
+
     <main class="flex-1">
       <div class="py-6">
         <div class="mx-auto px-4 sm:px-6 md:px-8">
-          <!-- Replace with your content -->
-
-          <div class="py-4">
-            <div v-if="Dashboard" />
-          </div>
-
-          <!-- This example requires Tailwind CSS v2.0+ -->
           <div class="flex flex-col">
             <div class="my-2 overflow-x-auto sm:-mx-center lg:-mx-center">
               <div
@@ -54,7 +48,7 @@
                       </div>
                     </div>
                   </div>
-                  <!----
+
                   <Multiselect
                     class="text-black"
                     v-model="value"
@@ -65,7 +59,7 @@
                     ]"
                     mode="tags"
                     @select="toggleSelected(value)"
-                  /> -->
+                  />
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
@@ -159,6 +153,20 @@
                           Commande
                         </th>
 
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Add
+                        </th>
                         <th
                           scope="col"
                           class="
@@ -283,6 +291,7 @@
                               focus:ring-offset-2
                               focus:ring-#2a574c-500
                             "
+                            @click="addOrder(wine._id, wine.quantity, quantity)"
                           >
                             <PlusSmIconSolid
                               class="h-5 w-5"
@@ -334,13 +343,13 @@
 
 <script>
 import Multiselect from "@vueform/multiselect";
-import { PlusSmIcon as PlusSmIconSolid } from '@heroicons/vue/solid'
-import { PlusSmIcon as PlusSmIconOutline } from '@heroicons/vue/outline'
+import { PlusSmIcon as PlusSmIconSolid } from "@heroicons/vue/solid";
+import { PlusSmIcon as PlusSmIconOutline } from "@heroicons/vue/outline";
+import SearchB from "./SearchB.vue";
 
 export default {
   name: "WinesAdm",
-  components: { Multiselect, PlusSmIconOutline,
-    PlusSmIconSolid, },
+  components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
   data() {
     return {
       value: [""],
@@ -359,6 +368,16 @@ export default {
       this.add = !this.add;
       this.dashboard = !this.dashboard;
     },
+    async addOrder(id, wine, quantity) {
+      await this.$store.dispatch("wines/updateWine", [
+        id,
+        {
+          quantity: wine - quantity,
+        },
+      ]);
+      this.quantity = "";
+      await this.$store.dispatch("wines/fetchWines");
+    },
     async search(type, query) {
       await this.$store.dispatch("wines/searchWinesByName", [type, query]);
     },
@@ -376,17 +395,13 @@ export default {
       console.log(" >> " + `${value}`);
     },
   },
-  
 };
 </script>
 <style src="@vueform/multiselect/themes/default.css"></style>
 
 <style scoped>
-* {
-  color: black;
-}
-.round{
-background-color: #2a574c;
-color: white;
+.round {
+  background-color: #2a574c;
+  color: white;
 }
 </style>
