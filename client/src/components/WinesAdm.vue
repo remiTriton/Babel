@@ -1,5 +1,4 @@
 <template>
-
   <div class="md:pl-64 flex flex-col flex-1">
     <SearchB v-on:searchWine="search" v-on:color="filter" />
     <main class="flex-1">
@@ -55,6 +54,7 @@
                       </div>
                     </div>
                   </div>
+                  <!----
                   <Multiselect
                     class="text-black"
                     v-model="value"
@@ -65,11 +65,10 @@
                     ]"
                     mode="tags"
                     @select="toggleSelected(value)"
-                  />
+                  /> -->
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
-                        <!--bloc crud-->
                         <th
                           v-if="value !== 'name'"
                           scope="col"
@@ -129,20 +128,7 @@
                         >
                           PAHT
                         </th>
-                        <th
-                          scope="col"
-                          class="
-                            px-6
-                            py-3
-                            text-center text-xs
-                            font-medium
-                            text-gray-500
-                            uppercase
-                            tracking-wider
-                          "
-                        >
-                          PVTTC
-                        </th>
+
                         <th
                           scope="col"
                           class="
@@ -156,6 +142,21 @@
                           "
                         >
                           PVC
+                        </th>
+
+                        <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Commande
                         </th>
 
                         <th
@@ -241,16 +242,53 @@
                         >
                           {{ wine.price * 1.2 }}
                         </td>
-
-                        <td
-                          class="
-                            px-6
-                            py-4
-                            whitespace-nowrap
-                            text-sm text-gray-500
-                          "
-                        >
-                          holl
+                        <td>
+                          <input
+                            v-model="quantity"
+                            class="
+                              appearance-none
+                              block
+                              bg-gray-200
+                              text-gray-700
+                              border border-gray-200
+                              rounded
+                              py-3
+                              px-4
+                              leading-tight
+                              focus:outline-none
+                              focus:bg-white
+                              focus:border-gray-500
+                            "
+                            id="grid-zip"
+                            type="number"
+                            placeholder="0"
+                          />
+                        </td>
+                        <td>
+                          <button
+                            type="button"
+                            class="
+                              round
+                              inline-flex
+                              items-center
+                              p-2
+                              border border-transparent
+                              rounded-full
+                              shadow-sm
+                              text-white
+                              bg-#2a574c-600
+                              hover:bg-#2a574c-700
+                              focus:outline-none
+                              focus:ring-2
+                              focus:ring-offset-2
+                              focus:ring-#2a574c-500
+                            "
+                          >
+                            <PlusSmIconSolid
+                              class="h-5 w-5"
+                              aria-hidden="true"
+                            />
+                          </button>
                         </td>
 
                         <td
@@ -296,9 +334,13 @@
 
 <script>
 import Multiselect from "@vueform/multiselect";
+import { PlusSmIcon as PlusSmIconSolid } from '@heroicons/vue/solid'
+import { PlusSmIcon as PlusSmIconOutline } from '@heroicons/vue/outline'
+
 export default {
   name: "WinesAdm",
-  components: { Multiselect },
+  components: { Multiselect, PlusSmIconOutline,
+    PlusSmIconSolid, },
   data() {
     return {
       value: [""],
@@ -334,6 +376,7 @@ export default {
       console.log(" >> " + `${value}`);
     },
   },
+  
 };
 </script>
 <style src="@vueform/multiselect/themes/default.css"></style>
@@ -341,5 +384,9 @@ export default {
 <style scoped>
 * {
   color: black;
+}
+.round{
+background-color: #2a574c;
+color: white;
 }
 </style>
