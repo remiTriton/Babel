@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="full bg-white">
     <div
       class="
         max-w-2xl
@@ -15,18 +15,18 @@
       "
     >
       <div>
-        <h2
+        <h4
           class="
-            text-3xl
+            text-xl
             font-extrabold
             tracking-tight
             text-gray-900
-            sm:text-4xl
+            sm:text-2xl
             -mt-24
           "
         >
-          Technical Specifications
-        </h2>
+          Description 
+        </h4>
         <p class="mt-4 text-gray-500">
           This sparkling Gamay comes from sandstone soils in the south of the
           Ardèche. The grapes macerate in whole bunches, then a direct pressing
@@ -35,25 +35,26 @@
           disgorged by Antony Tortul himself. Chuck may well have mechanics on
           the label, its strawberry aromas will work perfectly with an aperitif
           or dessert. Aging potential: five years.
-        </p>
-
+        </p><br><br>
         <dl
           class="
-            mt-16
+            
+            mx-auto
             grid grid-cols-1
             gap-x-6 gap-y-10
-            sm:grid-cols-2 sm:gap-y-16
-            lg:gap-x-8
+            
+            
           "
         >
           <div v-if="wine" class="border-t border-gray-200 pt-4">
-            <dt class="font-medium text-gray-900">{{ wine.name }}</dt>
-            <dt class="font-medium text-gray-900">{{ wine.year }}</dt>
-            <dd class="mt-2 text-sm text-gray-500">{{ wine.domain }}</dd>
+            <dt class="text-6xl font-medium text-gray-900">{{ wine.name }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.year }}</dt><br>
+            <dd class="text-2xl mt-2 text-sm text-gray-500">{{ wine.domain }}</dd>
+            
           </div>
         </dl>
       </div>
-      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
+      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8 mt-5">
         <img
           src="../assets/CN/Chuck.jpg"
           alt="Chuck is Back."
@@ -64,52 +65,7 @@
           alt="Top down view of walnut card tray with embedded magnets and card groove."
           class="bg-gray-100 rounded-lg"
         />
-        <div>
-          <input
-            v-model="quantity"
-            class="
-              appearance-none
-              block
-              w-full
-              bg-gray-200
-              text-gray-700
-              border border-gray-200
-              rounded
-              py-3
-              px-4
-              leading-tight
-              focus:outline-none focus:bg-white focus:border-gray-500
-            "
-            id="grid-zip"
-            type="number"
-            placeholder="0"
-          />
-        </div>
-        <div>
-          <button>
-            <span
-              class="
-                btn
-                inline-flex
-                items-center
-                px-3
-                py-0.5
-                rounded-full
-                xl:text-xl
-                font-medium
-                bg-indigo-100
-                text-indigo-800
-              "
-            >
-              <svg
-                class="-ml-1 mr-1.5 mt-35px h-2 w-2 text-indigo-400"
-                fill="currentColor"
-                viewBox="0 0 8 8"
-              ></svg>
-              Add to Cart
-            </span>
-          </button>
-        </div>
+        
       </div>
       <router-link to="/winelist">
       <button
@@ -118,11 +74,12 @@
           border border-teal-500
           text-teal-500
           block
-          rounded-sm
+          rounded-m
           font-bold
           py-4
           px-6
           mr-2
+          mb-350
           flex
           items-center
           hover:bg-teal-500 hover:text-white
@@ -173,4 +130,5 @@ export default {
   background-color: #2a574c;
   color: white;
 }
+
 </style>
