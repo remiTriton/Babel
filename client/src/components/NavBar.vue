@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <nav class="flexo flex justify-between flex-wrap p-6">
       <router-link
         to="/blog"
@@ -56,8 +57,10 @@
             <img class="bb" src="../assets/arches.png" atl="" />
           </router-link>
         </div>
+
         <div>
           <router-link
+          v-if='!auth'
             to="/login"
             class="
               cat
@@ -77,9 +80,30 @@
             >Login</router-link
           >
         </div>
-
+        <div>
+          <button v-if='auth'
+            class="
+              cat
+              inline-block
+              text-sm
+              px-4
+              py-2
+              leading-none
+              border
+              rounded
+              text-white
+              border-white
+              hover:border-transparent hover:text-teal-500 hover:bg-whiteq
+              mt-4
+              lg:mt-0
+            "
+            @click.prevent='logout'
+            >Logout</button
+          >
+        </div>
         <div>
           <router-link
+          v-if='!auth'
             to="/register"
             class="
               cat
@@ -128,6 +152,17 @@
 <script>
 export default {
   name: "NavBar",
+ computed:{
+   auth(){
+     return this.$store.state.auth.token
+   }
+ },
+  
+  methods:{
+    async logout(){
+      await this.$store.dispatch('auth/logout')
+    }
+  }
 };
 </script>
 

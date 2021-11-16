@@ -92,6 +92,7 @@ export default {
         lastName: this.lastName,
         email: this.email,
         password: this.password,
+        role:'Serveur'
       };
 
       this.err = !this.verifyPassword(this.password, this.confirmPassword);
