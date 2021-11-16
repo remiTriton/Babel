@@ -84,12 +84,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-grape-variety"
+              for="grid-cepage"
             >
-              Grape Variety
+              Cepage
             </label>
             <input
-              v-model="grapeVariety"
+              v-model="cepage"
               class="
                 appearance-none
                 block
@@ -104,7 +104,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-              id="grid-grape-variety"
+              id="grid-cepage"
               type="text"
             />
           </div>
@@ -448,7 +448,7 @@ export default {
     return {
       domain: "",
       winemaker: "",
-      grapeVariety: "",
+      cepage: "",
       year: "",
       technicalSpecification: "",
       wineName: "",
@@ -463,7 +463,7 @@ export default {
       const wine = {
         domain: this.domain,
         winemaker: this.winemaker,
-        grapeVariety: this.grapeVariety,
+        cepage: this.cepage,
         year: this.year,
         technicalSpecification: this.technicalSpecification,
         wineName: this.wineName,

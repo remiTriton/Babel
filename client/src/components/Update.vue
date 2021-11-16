@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="formulaire">
-      <v-form @submit.prevent.stop class="w-full max-w-lg mt-40">
+      <v-form @submit.prevent.stop class="w-full max-w-lg mt-20">
         <div class="flex flex-wrap -mx-1 mb-6 mt-6">
           <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
             <label
@@ -11,7 +11,7 @@
                 tracking-wide
                 text-gray-700 text-xs
                 font-bold
-                mb-2
+                
               "
               for="grid-domain"
             >
@@ -47,12 +47,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-winemaker"
+              for="grid-vigneron"
             >
-              Winemaker
+              vigneron
             </label>
             <input
-              v-model="wine.winemaker"
+              v-model="wine.vigneron"
               class="
                 appearance-none
                 block
@@ -66,7 +66,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white focus:border-gray-500
               "
-              id="grid-winemaker"
+              id="grid-vigneron"
               type="text"
             />
           </div>
@@ -83,12 +83,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-grape-variety"
+              for="grid-cepage"
             >
-              Grape Variety
+              Cepage
             </label>
             <input
-              v-model="wine.grapeVariety"
+              v-model="wine.cepage"
               class="
                 appearance-none
                 block
@@ -103,7 +103,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-              id="grid-grape-variety"
+              id="grid-cepage"
               type="text"
             />
           </div>
@@ -117,12 +117,12 @@
                 font-bold
                 mb-2
               "
-              for="grid-year"
+              for="grid-annee"
             >
-              Year
+              Année
             </label>
             <input
-              v-model="wine.year"
+              v-model="wine.annee"
               class="
                 appearance-none
                 block
@@ -137,7 +137,7 @@
                 focus:outline-none focus:bg-white focus:border-gray-500
                 text-overflow
               "
-              id="grid-year"
+              id="grid-annee"
               type="text"
             />
           </div>
@@ -488,9 +488,9 @@ export default {
         this.$route.params.id,
         {
           domain: this.wine.domain,
-          winemaker: this.wine.winemaker,
-          grapeVariety: this.wine.grapeVariety,
-          year: this.wine.year,
+          vigneron: this.wine.vigneron,
+          cepage: this.wine.cepage,
+          annee: this.wine.annee,
           Description: this.wine.Description,
           wineName: this.wine.wineName,
           color: this.wine.color,

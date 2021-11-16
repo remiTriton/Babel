@@ -300,6 +300,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                            ml-5
                           "
                         >
                           <router-link
@@ -309,7 +310,7 @@
                             }"
                           >
                             <button
-                              class="text-indigo-600 hover:text-indigo-900"
+                              class="text-indigo-600 hover:text-indigo-900 ml-5"
                             >
                               Update
                             </button>

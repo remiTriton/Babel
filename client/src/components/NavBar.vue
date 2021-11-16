@@ -9,7 +9,7 @@
           items-center
           px-3
           py-2
-          ml-10
+          ml-5
           hover:text-white hover:border-white
           text-3xl
         "
@@ -48,7 +48,7 @@
               cat
               block
               mt-4
-              ml-40
+              ml-30
               lg:inline-block lg:mt-0
               text-teal-200
               hover:text-white
