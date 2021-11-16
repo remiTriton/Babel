@@ -2,7 +2,6 @@ const express = require('express')
 const usersRouter = require('./routes/users');
 const winesRouter = require('./routes/wines');
 const ordersRouter = require('./routes/orders');
-
 const port = process.env.APP_PORT || 3001;
 const app = express();
 const cors = require('cors');
@@ -13,7 +12,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/users', usersRouter);
 app.use('/api/wines', winesRouter);
 app.use('/api/orders', ordersRouter);
-
 app.use(cors());
 
 // error handler

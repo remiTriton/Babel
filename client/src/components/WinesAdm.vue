@@ -48,7 +48,7 @@
                       </div>
                     </div>
                   </div>
-
+<!--
                   <Multiselect
                     class="text-black"
                     v-model="value"
@@ -59,7 +59,7 @@
                     ]"
                     mode="tags"
                     @select="toggleSelected(value)"
-                  />
+                  />-->
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>

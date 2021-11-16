@@ -1,5 +1,5 @@
 const express = require("express");
-const { MongoClient, ObjectId } = require("mongodb");
+const {MongoClient, ObjectId} = require("mongodb");
 
 const router = express.Router();
 
@@ -49,7 +49,7 @@ router.get("/:id", async (req, res) => {
         await client.connect();
         const database = client.db("babel");
         const orderCol = database.collection("orders");
-        const query = { _id: new ObjectId(req.params.id) };
+        const query = {_id: new ObjectId(req.params.id)};
         const order = await orderCol.findOne(query);
         res.send(order);
     } finally {
@@ -57,6 +57,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// GET / PUT / POST / DELETE
 router.put("/:id", async (req, res) => {
     try {
         await client.connect();

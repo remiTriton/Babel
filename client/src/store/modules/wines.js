@@ -19,9 +19,7 @@ const wines = {
     //ON RECUPERE LES winesS
 
     async fetchWines(context) {
-      const res = await fetch("http://localhost:3001/api/wines/", {
-        "method": "GET",
-      })
+      const res = await fetch("http://localhost:3001/api/wines/")
       const data = await res.json();
       context.commit("setwines", data);
     },
@@ -29,9 +27,7 @@ const wines = {
     //Print d'un wines
 
     async findOnewines(context, _id) {
-      const res = await fetch("http://localhost:3001/api/wines/" + _id, {
-        "method": "GET",
-      })
+      const res = await fetch("http://localhost:3001/api/wines/" + _id)
       const data = await res.json();
       context.commit("setwine", data);
     },
@@ -39,18 +35,14 @@ const wines = {
     //On cherche un wines 
 
     async searchWinesByName(context, [type, query]) {
-      const res = await fetch("http://localhost:3001/api/wines/" + type + "/" + query, {
-        "method": "GET",
-      })
+      const res = await fetch("http://localhost:3001/api/wines/" + type + "/" + query)
       const data = await res.json();
       context.commit("setwines", data);
     },
 
     //filter by color
     async searchWinesByColor(context, query) {
-      const res = await fetch("http://localhost:3001/api/wines/color/" + query, {
-        "method": "GET",
-      })
+      const res = await fetch("http://localhost:3001/api/wines/color/" + query)
       const data = await res.json();
       context.commit("setwines", data);
     },
@@ -75,7 +67,7 @@ const wines = {
     },
     async updateWine(context, [id, wine]) {
       await fetch("http://localhost:3001/api/wines/" + id, {
-        "method": "PATCH", 
+        "method": "PUT",
         body: JSON.stringify(wine),
         "headers": {
           "Content-type": "application/json",
