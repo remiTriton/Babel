@@ -44,11 +44,11 @@ router.post("/", async (req, res) => {
       domaine: req.body.domaine,
       cepage: req.body.cepage,
       millesime: req.body.millesime,
-      description: req.body.descritpion,
       vigneron: req.body.vigneron,
       couleur: req.body.couleur,
-      departement: req.body.departement,
+      description: req.body.descritpion,
       region: req.body.region,
+      departemepaysnt: req.body.pays,
       quantite: req.body.quantite,
       prix: req.body.prix,
 

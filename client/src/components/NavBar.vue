@@ -9,12 +9,12 @@
           items-center
           px-3
           py-2
-          ml-5
+          ml-20
           hover:text-white hover:border-white
-          text-3xl
+          text-4xl
         "
       >
-        Blog
+        ISI
       </router-link>
       <div class="block lg:hidden">
         <button

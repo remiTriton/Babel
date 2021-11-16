@@ -70,7 +70,7 @@
                             tracking-wider
                           "
                         >
-                          Nom
+                          Cuvée
                         </th>
                         <th
                           scope="col"
@@ -85,7 +85,7 @@
                           "
                           v-if="value[''] != 'quantity'"
                         >
-                          Quantity
+                          Quantité
                         </th>
                         <th
                           scope="col"
@@ -100,7 +100,7 @@
                           "
                           v-if="value != 'color'"
                         >
-                          Colors
+                          Couleur
                         </th>
                         <th
                           scope="col"

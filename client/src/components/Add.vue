@@ -202,7 +202,7 @@
                     leading-tight
                     focus:outline-none focus:bg-white focus:border-gray-500
                   "
-                  id="grid-state"
+                  id="grid-couleur"
                 >
                   <option>Red</option>
                   <option>White</option>
@@ -230,7 +230,7 @@
             Description
           </label>
           <input
-            v-model="Description"
+            v-model="description"
             class="
               appearance-none
               block
@@ -447,31 +447,31 @@ export default {
   name: "SignUp",
   data() {
     return {
-      domain: "",
-      winemaker: "",
+      cuvee: "",
+      domaine: "",
       cepage: "",
-      year: "",
-      technicalSpecification: "",
-      wineName: "",
-      color: "",
-      city: "",
-      state: "",
-      quantity: "",
+      millesime: "",
+      vigneron: "",
+      couleur: "",
+      description: "",
+      region: "",
+      pays: "",
+      quantite: "",
     };
   },
   methods: {
     async createWine() {
       const wine = {
-        domain: this.domain,
-        winemaker: this.winemaker,
+        cuvee: this.cuvee,
+        domaine: this.domaine,
         cepage: this.cepage,
-        year: this.year,
-        technicalSpecification: this.technicalSpecification,
-        wineName: this.wineName,
-        color: this.color,
-        city: this.city,
-        state: this.state,
-        quantity: this.quantity,
+        millesime: this.millesime,
+        vigneron: this.vigneron,
+        couleur: this.couleur,
+        description: this.description,
+        region: this.region,
+        pays: this.pays,
+        quantite: this.quantite,
       };
 
       await this.$store.dispatch('wines/addWine', wine);
