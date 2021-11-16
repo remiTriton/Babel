@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
       city: req.body.city,
       state: req.body.state,
       quantity: req.body.quantity,
-      quantity: req.body.price,
+      price: req.body.price,
 
     };
 
