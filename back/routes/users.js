@@ -119,34 +119,34 @@ router.post('/login', async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     try {
-      await client.connect();
-      const database = client.db("babel");
-      const userCol = database.collection("users");
-      await userCol.updateOne(
-        { _id: new ObjectId(req.params.id) },
-        {
-          $set: 
-            req.body
-        }
-      );
-      res.send("User updated");
+        await client.connect();
+        const database = client.db("babel");
+        const userCol = database.collection("users");
+        await userCol.updateOne(
+            { _id: new ObjectId(req.params.id) },
+            {
+                $set:
+                    req.body
+            }
+        );
+        res.send("User updated");
     } finally {
-      await client.close();
+        await client.close();
     }
-  });
+});
 
-  router.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
-      await client.connect();
-      const database = client.db("babel");
-      const userCol = database.collection("users");
-      const query = { _id: new ObjectId(req.params.id) };
-      await userCol.deleteOne(query);
-      res.send("Successfully deleted!");
+        await client.connect();
+        const database = client.db("babel");
+        const userCol = database.collection("users");
+        const query = { _id: new ObjectId(req.params.id) };
+        await userCol.deleteOne(query);
+        res.send("Successfully deleted!");
     } finally {
-      await client.close();
+        await client.close();
     }
-  });
+});
 
 module.exports = router;
 

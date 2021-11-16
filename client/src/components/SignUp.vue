@@ -97,25 +97,10 @@ export default {
       this.err = !this.verifyPassword(this.password, this.confirmPassword);
 
       if(this.err === false) {
-        const resHttp = await fetch('/api/users', {
-          method: 'POST',
-           headers:{'content-type' : 'application/json'
-          },
-          body: JSON.stringify(user),
-        });
-
-        console.log(user)
-
-        // real Backend JSON
-        const res = await resHttp.json();
-        if (res.id) {
-          this.createdUser = true;
-          this.firstName = '';
-          this.lastName = '';
-          this.email = '';
-          this.password = '';
-        }
-      }
+        await this.$store.dispatch("auth/addUser", user);
+        this.$router.push('/login')
+      }else{
+      alert('Vérifier les mots de passes')}
     }
   }
 }
