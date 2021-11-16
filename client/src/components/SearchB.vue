@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mt-40">
+    <div class="container mt-10">
       <div class="flex items-center text-black">
         <v-form @submit.prevent.stop>
           <button type="submit" @click="searchWine(type, query)">
@@ -42,7 +42,7 @@
                     v-model="type"
                     value="dpt"
                 />
-                <span class="ml-2">Département</span>
+                <span class="text-gray-500 ml-2">Département</span>
               </label>
               <label class="inline-flex items-center ml-6">
                 <input
@@ -52,7 +52,7 @@
                     value="domain"
                     v-model="type"
                 />
-                <span class="ml-2">Domaine</span>
+                <span class="text-gray-500 ml-2">Domaine</span>
               </label>
               <label class="inline-flex items-center ml-6">
                 <input
@@ -62,7 +62,7 @@
                     v-model="type"
                     value="search"
                 />
-                <span class="ml-2">Nom</span>
+                <span class="text-gray-500 ml-2">Nom</span>
               </label>
             </div>
           </div></v-form
