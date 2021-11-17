@@ -52,7 +52,9 @@ const wines = {
       await fetch("http://localhost:3001/api/wines/" + _id, {
         "method": "DELETE",
       });
-      context.commit("setwines");
+      const res = await fetch("http://localhost:3001/api/wines/")
+      const data = await res.json();
+      context.commit("setwines", data);
     },
 
     async addWine(context, body) {

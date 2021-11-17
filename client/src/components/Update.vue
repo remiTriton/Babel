@@ -11,7 +11,6 @@
                 tracking-wide
                 text-gray-700 text-xs
                 font-bold
-                
               "
               for="grid-cuvee"
             >
@@ -214,7 +213,7 @@
           </div>
         </div>
 
-<div class="w-full md:w-2/8 px-3">
+        <div class="w-full md:w-2/8 px-3">
           <label
             class="
               block
@@ -246,7 +245,8 @@
             id="grid-description"
             type="text"
           />
-        </div><br>
+        </div>
+        <br />
 
         <div class="flex flex-wrap -mx-1 mb-2">
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -377,7 +377,7 @@
               id="grid-zip"
               type="number"
               placeholder="0"
-            /><br>
+            /><br />
             <label
               class="
                 block
@@ -485,23 +485,45 @@ export default {
 
   methods: {
     async updateWine() {
-      await this.$store.dispatch("wines/updateWine", [
-        this.$route.params.id,
-        {
-          domain: this.wine.domain,
-          vigneron: this.wine.vigneron,
-          cepage: this.wine.cepage,
-          annee: this.wine.annee,
-          Description: this.wine.Description,
-          wineName: this.wine.wineName,
-          color: this.wine.color,
-          city: this.wine.city,
-          state: this.wine.state,
-          quantity: this.quantity + this.wine.quantity,
-          price: this.wine.price,
-        },
-      ]);
-      await this.$store.dispatch("wines/fetchWines");
+      if (!this.wine.quantite) {
+        await this.$store.dispatch("wines/updateWine", [
+          this.$route.params.id,
+          {
+            cuvee: this.wine.cuvee,
+            domaine: this.wine.domaine,
+            cepage: this.wine.cepage,
+            millesime: this.wine.millesime,
+            vigneron: this.wine.vigneron,
+            cuvee: this.wine.wineName,
+            couleur: this.wine.couleur,
+            description: this.wine.description,
+            region: this.wine.region,
+            pays: this.wine.pays,
+            quantite: this.quantite,
+            prix: this.wine.prix,
+          },
+        ]);
+      } else {
+        await this.$store.dispatch("wines/updateWine", [
+          this.$route.params.id,
+          {
+            cuvee: this.wine.cuvee,
+            domaine: this.wine.domaine,
+            cepage: this.wine.cepage,
+            millesime: this.wine.millesime,
+            vigneron: this.wine.vigneron,
+            cuvee: this.wine.wineName,
+            couleur: this.wine.couleur,
+            description: this.wine.description,
+            region: this.wine.region,
+            pays: this.wine.pays,
+            quantite: this.quantite + this.wine.quantite,
+            prix: this.wine.prix,
+          },
+        ]);
+      }
+      await this.$store.dispatch("wines/findOnewines", this.$route.params.id);
+
       await this.$router.push("/Admin");
     },
   },

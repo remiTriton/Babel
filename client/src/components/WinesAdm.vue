@@ -195,7 +195,7 @@
                               params: { id: wine._id },
                             }"
                           >
-                            {{ wine.name }}
+                            {{ wine.cuvee }}
                           </router-link>
                         </td>
 
@@ -208,7 +208,7 @@
                           "
                           v-if="value != 'quantity'"
                         >
-                          {{ wine.quantity }}
+                          {{ wine.quantite }}
                         </td>
 
                         <td
@@ -220,7 +220,7 @@
                           "
                           v-if="value != 'color'"
                         >
-                          {{ wine.color }}
+                          {{ wine.couleur }}
                         </td>
 
                         <td
@@ -231,7 +231,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.price }}
+                          {{ wine.prix }} €
                         </td>
 
                         <td
@@ -242,11 +242,11 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.price * 1.2 }}
+                          {{parseFloat(wine.prix*1.2).toFixed(2) }} €
                         </td>
                         <td>
                           <input
-                            v-model="quantity"
+                            v-model="quantite"
                             class="
                               appearance-none
                               block
@@ -285,7 +285,7 @@
                               focus:ring-offset-2
                               focus:ring-#2a574c-500
                             "
-                            @click="addOrder(wine._id, wine.quantity, quantity)"
+                            @click="addOrder(wine._id, wine.quantite, quantite)"
                           >
                             <PlusSmIconSolid
                               class="h-5 w-5"
@@ -369,11 +369,11 @@ export default {
       this.add = !this.add;
       this.dashboard = !this.dashboard;
     },
-    async addOrder(id, wine, quantity) {
+    async addOrder(id, wine, quantite) {
       await this.$store.dispatch("wines/updateWine", [
         id,
         {
-          quantity: wine - quantity,
+          quantite: wine - quantite,
         },
       ]);
       this.quantity = "";
@@ -386,10 +386,9 @@ export default {
       await this.$store.dispatch("wines/searchWinesByColor", color);
     },
     async Delete(name, id) {
-      if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
+      // if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
         await this.$store.dispatch("wines/deleteWine", id);
-        await this.$store.dispatch("wines/fetchWines");
-      }
+      // }
     },
     toggleSelected(value) {
       alert(`${value.name}`);
