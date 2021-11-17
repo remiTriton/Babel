@@ -194,7 +194,7 @@
               <router-link :to="{ name: 'Print', params: { id: wine._id } }">
                 <img
                     src="src/images/../assets/Chuck.jpg"
-                    :alt="wine.name"
+                    :alt="wine.cuvee"
                     class="
                     w-full
                     h-full
@@ -204,10 +204,34 @@
                 /></router-link>
             </div>
             <h3 class="mt-4 text-sm text-gray-700">
-              {{ wine.name }}
+              {{ wine.cuvee }}
             </h3>
             <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.domain }}
+              {{ wine.domaine }}
+            </p>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.cepage }}
+            </p>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.millesime }}
+            </p>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.vigneron }}
+            </p>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.couleur }}
+            </p>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.description }}
+            </p>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.region }}
+            </p>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.pays }}
+            </p>
+          <p class="mt-1 text-lg font-medium text-gray-900">
+              {{ wine.quantite }}
             </p>
           </div>
         </div>

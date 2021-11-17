@@ -28,13 +28,7 @@
           Description 
         </h4>
         <p class="mt-4 text-gray-500">
-          This sparkling Gamay comes from sandstone soils in the south of the
-          Ardèche. The grapes macerate in whole bunches, then a direct pressing
-          juice is poured over the top and the whole continues to macerate for
-          twenty-four days. The wine is bottled by gravity and the bottles are
-          disgorged by Antony Tortul himself. Chuck may well have mechanics on
-          the label, its strawberry aromas will work perfectly with an aperitif
-          or dessert. Aging potential: five years.
+          {{wine.description}}
         </p><br><br>
         <dl
           class="
@@ -47,9 +41,16 @@
           "
         >
           <div v-if="wine" class="border-t border-gray-200 pt-4">
-            <dt class="text-6xl font-medium text-gray-900">{{ wine.name }}</dt><br>
-            <dt class="text-xl font-medium text-gray-900">{{ wine.year }}</dt><br>
-            <dd class="text-2xl mt-2 text-sm text-gray-500">{{ wine.domain }}</dd>
+            <dt class="text-6xl font-medium text-gray-900">{{ wine.cuvee }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.domaine }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.cepage }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.millesime }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.vigneron }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.couleur }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.region }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.pays }}</dt><br>
+            <dt class="text-xl font-medium text-gray-900">{{ wine.quantite }}</dt><br>
+            <dd class="text-2xl mt-2 text-sm text-gray-500">{{ wine.prix }}</dd>
             
           </div>
         </dl>
