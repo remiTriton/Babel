@@ -30,9 +30,7 @@
               border-b-2 border-gray-400
               outline-none
               focus:border-green-400
-            "
-            @input="searchWine(type, query)"
-          />
+            "          />
           <div class="mt-4">
             <div class="mt-2">
               <label class="inline-flex items-center">
