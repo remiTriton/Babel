@@ -1,8 +1,6 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
-
 const router = express.Router();
-
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
@@ -95,7 +93,6 @@ router.get("/color/:couleur", async (req, res) => {
     await client.connect();
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-
     const query = { couleur: req.params.couleur };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
@@ -105,16 +102,16 @@ router.get("/color/:couleur", async (req, res) => {
   }
 });
 
-router.get("/dpt/:dpt", async (req, res) => {
+router.get("/region/:region", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("babel");
     const wineCol = database.collection("wines");
+    const q = req.params.region
 
-    const query = { dpt: req.params.dpt };
+    const query = { region:  {$regex : new RegExp(q)} };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
-    console.log(wine);
   } finally {
     await client.close();
   }

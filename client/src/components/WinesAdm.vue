@@ -380,7 +380,7 @@ export default {
       await this.$store.dispatch("wines/fetchWines");
     },
     async search(type, query) {
-      await this.$store.dispatch("wines/searchWinesByName", [type, query]);
+      await this.$store.dispatch("wines/searchWinesByName", [type,query.charAt(0).toUpperCase()+query.slice(1)]);
     },
     async filter(color) {
       await this.$store.dispatch("wines/searchWinesByColor", color);
