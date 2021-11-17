@@ -193,7 +193,7 @@
             Utilisateurs
           </div>
           <div>
-          <button type="button" class="B outline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-10">
+          <button @click='nouveauBon()' type="button" class="B outline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-10">
  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
 </svg>
@@ -203,7 +203,7 @@
       </div>
     </div>
     <div v-if="add"><Add /></div>
-    <div v-if="showWines"><WinesAdm /></div>
+    <div v-if="showWines"><WinesAdm v-bind:command="command" /></div>
     <div v-if="showUsers"><Users /></div>
   </div>
 </template>
@@ -239,6 +239,7 @@ export default {
       add: false,
       showWines: true,
       showUsers: false,
+      command:false,
     };
   },
   methods: {
@@ -255,6 +256,9 @@ export default {
       this.showWines = true;
       this.showUsers = false;
     },
+    nouveauBon() {
+      this.command = true;
+    }
   },
 };
 </script>

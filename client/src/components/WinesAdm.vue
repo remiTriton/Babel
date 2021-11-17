@@ -1,4 +1,5 @@
 <template>
+
   <div class="md:pl-64 flex flex-col flex-1">
     <SearchB v-on:searchWine="search" v-on:color="filter" />
 
@@ -49,16 +50,15 @@
                     </div>
                   </div>
 
-                  <Multiselect
+                  <!-- <Multiselect
                     class="text-black"
                     v-model="selected"
                     :options="options"             
-                  mode="tags" @select="toggleSelected(value)"></Multiselect>
+                  mode="tags" @select="toggleSelected(value)"></Multiselect> -->
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
                         <th
-                          v-if="value !== 'cuvee'"
                           scope="col"
                           class="
                             px-6
@@ -83,7 +83,6 @@
                             uppercase
                             tracking-wider
                           "
-                          v-if="value[''] != 'quantite'"
                         >
                           Quantité
                         </th>
@@ -98,7 +97,6 @@
                             uppercase
                             tracking-wider
                           "
-                          v-if="value != 'couleur'"
                         >
                           Couleur
                         </th>
@@ -133,6 +131,7 @@
                         </th>
 
                         <th
+                          v-if="command"
                           scope="col"
                           class="
                             px-6
@@ -148,6 +147,7 @@
                         </th>
 
                         <th
+                          v-if="command"
                           scope="col"
                           class="
                             px-6
@@ -187,7 +187,6 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'cuvee'"
                         >
                           <router-link
                             :to="{
@@ -206,7 +205,6 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'quantite'"
                         >
                           {{ wine.quantite }}
                         </td>
@@ -218,7 +216,6 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'couleur'"
                         >
                           {{ wine.couleur }}
                         </td>
@@ -242,9 +239,9 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{parseFloat(wine.prix*1.2).toFixed(2) }} €
+                          {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
                         </td>
-                        <td>
+                        <td v-if="command">
                           <input
                             v-model="quantite"
                             class="
@@ -266,7 +263,7 @@
                             placeholder="0"
                           />
                         </td>
-                        <td>
+                        <td v-if="command">
                           <button
                             type="button"
                             class="
@@ -345,17 +342,8 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
-  data() {
-    return {
-       value: [],
-      options: [
-        { name: 'Nom.', label: 'Nom' },
-        { name: 'Quantity', label: 'Quantity' },
-        { name: 'Color', label: 'Color' },
-      ]
-    
-    };
-  },
+  props:['command'],
+
   created() {
     this.$store.dispatch("wines/fetchWines");
   },
@@ -380,19 +368,18 @@ export default {
       await this.$store.dispatch("wines/fetchWines");
     },
     async search(type, query) {
-      await this.$store.dispatch("wines/searchWinesByName", [type,query.charAt(0).toUpperCase()+query.slice(1)]);
+      await this.$store.dispatch("wines/searchWinesByName", [
+        type,
+        query.charAt(0).toUpperCase() + query.slice(1),
+      ]);
     },
     async filter(color) {
       await this.$store.dispatch("wines/searchWinesByColor", couleur);
     },
     async Delete(name, id) {
       // if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
-        await this.$store.dispatch("wines/deleteWine", id);
+      await this.$store.dispatch("wines/deleteWine", id);
       // }
-    },
-    toggleSelected(value) {
-      alert(`${value.cuvee}`);
-      console.log(" >> " + `${value}`);
     },
   },
 };
@@ -404,8 +391,7 @@ export default {
   background-color: #2a574c;
   color: white;
 }
-.text{
+.text {
   color: black;
-
 }
 </style>
