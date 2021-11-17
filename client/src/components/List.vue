@@ -237,7 +237,6 @@
         </div>
       </div>
     </div>
-    <router-link to="/">
       <button
           class="
           back
@@ -253,6 +252,7 @@
           items-center
           hover:bg-teal-500 hover:text-white
         "
+        @click='back()'
       >
         <svg
             class="h-5 w-5 mr-2 fill-current"
@@ -272,7 +272,6 @@
           ></path>
         </svg>
       </button>
-    </router-link>
   </div>
 </template>
 
@@ -294,6 +293,9 @@ export default {
     async filter(value) {
       await this.$store.dispatch("wines/searchWinesByColor", value);
     },
+    back(){
+      this.$router.back(-1);
+    }
   },
 };
 </script>
