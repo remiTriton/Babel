@@ -210,29 +210,9 @@
               {{ wine.domaine }}
             </p>
             <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.cepage }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
               {{ wine.millesime }}
             </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.vigneron }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.couleur }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.description }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.region }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.pays }}
-            </p>
-          <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.quantite }}
-            </p>
+         
           </div>
         </div>
       </div>

@@ -58,13 +58,13 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/search/:name", async (req, res) => {
+router.get("/search/:cuvee", async (req, res) => {
   try {
     await client.connect();
-    const q = req.params.name
+    const q = req.params.cuvee
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-    const wine =  await wineCol.find({ name: {$regex : new RegExp(q)}}).toArray();
+    const wine =  await wineCol.find({ cuvee: {$regex : new RegExp(q)}}).toArray();
     res.send(wine);
     console.log(q);
     console.log(wine);
