@@ -31,6 +31,7 @@
               outline-none
               focus:border-green-400
             "
+            @input="searchWine(type, query)"
           />
           <div class="mt-4">
             <div class="mt-2">
@@ -40,7 +41,7 @@
                     class="form-radio"
                     name="accountType"
                     v-model="type"
-                    value="dpt"
+                    value="region"
                 />
                 <span class="text-gray-500 ml-2">Département</span>
               </label>
@@ -49,7 +50,7 @@
                     type="radio"
                     class="form-radio"
                     name="accountType"
-                    value="domain"
+                    value="domaine"
                     v-model="type"
                 />
                 <span class="text-gray-500 ml-2">Domaine</span>
@@ -114,7 +115,7 @@
             br-5
             rounded
           "
-            @click="filter('Blanc ')"
+            @click="filter('Blanc')"
         >
           White
         </button></span

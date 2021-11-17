@@ -30,7 +30,11 @@ const main = async () => {
                 return null;
             }
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+<<<<<<< HEAD
             const [couleur, cuvee, domaine, region, pays, millesime, cepage, vigneron, prix] = line.split(';')
+=======
+            const [couleur, cuvee, domaine, region, pays, millesime, cepage, vigneron, prix, quantite] = line.split(';')
+>>>>>>> 1c24c3cae8590777c5700bc375126ae4f68f590b
             return {
                 couleur,
                 domaine,
@@ -40,7 +44,12 @@ const main = async () => {
                 millesime,
                 cepage,
                 vigneron,
+<<<<<<< HEAD
                 prix
+=======
+                prix,
+                quantite
+>>>>>>> 1c24c3cae8590777c5700bc375126ae4f68f590b
             };
         })
         // remove NULL document (first line of the doc)

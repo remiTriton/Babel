@@ -231,7 +231,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.prix }}
+                          {{ wine.prix }} €
                         </td>
 
                         <td
@@ -242,7 +242,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.prix * 1.2 }}
+                          {{parseFloat(wine.prix*1.2).toFixed(2) }} €
                         </td>
                         <td>
                           <input
@@ -380,16 +380,15 @@ export default {
       await this.$store.dispatch("wines/fetchWines");
     },
     async search(type, query) {
-      await this.$store.dispatch("wines/searchWinesByName", [type, query]);
+      await this.$store.dispatch("wines/searchWinesByName", [type,query.charAt(0).toUpperCase()+query.slice(1)]);
     },
     async filter(color) {
       await this.$store.dispatch("wines/searchWinesByColor", couleur);
     },
     async Delete(name, id) {
-      if (confirm("Attention : Vous êtes sur le point de supprimer " + cuvee)) {
+      // if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
         await this.$store.dispatch("wines/deleteWine", id);
-        await this.$store.dispatch("wines/fetchWines");
-      }
+      // }
     },
     toggleSelected(value) {
       alert(`${value.cuvee}`);

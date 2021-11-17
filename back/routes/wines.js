@@ -1,8 +1,6 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
-
 const router = express.Router();
-
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
@@ -48,28 +46,13 @@ router.post("/", async (req, res) => {
       couleur: req.body.couleur,
       description: req.body.descritpion,
       region: req.body.region,
-      departemepaysnt: req.body.pays,
+      pays: req.body.pays,
       quantite: req.body.quantite,
       prix: req.body.prix,
-
     };
 
     const result = await wineCol.insertOne(doc);
     res.send(`A document was inserted with the _id: ${result.insertedId}`);
-  } finally {
-    await client.close();
-  }
-});
-
-router.get("/color/:color", async (req, res) => {
-  try {
-    await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
-    const query = { color: req.params.color };
-    const wine = await wineCol.find(query).toArray();
-    res.send(wine);
-    console.log(wine);
   } finally {
     await client.close();
   }
@@ -91,13 +74,13 @@ router.get("/search/:name", async (req, res) => {
   }
 });
 
-router.get("/domain/:domain", async (req, res) => {
+router.get("/domain/:domaine", async (req, res) => {
   try {
     await client.connect();
-    const q = req.params.domain
+    const q = req.params.domaine
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-    const wine =  await wineCol.find({ domain: {$regex : new RegExp(q)}}).toArray();
+    const wine =  await wineCol.find({ domaine: {$regex : new RegExp(q)}}).toArray();
     res.send(wine);
     console.log(wine);
   } finally {
@@ -105,13 +88,12 @@ router.get("/domain/:domain", async (req, res) => {
   }
 });
 
-router.get("/wines/:color", async (req, res) => {
+router.get("/color/:couleur", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-
-    const query = { color: req.params.color };
+    const query = { couleur: req.params.couleur };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine);
@@ -120,16 +102,16 @@ router.get("/wines/:color", async (req, res) => {
   }
 });
 
-router.get("/dpt/:dpt", async (req, res) => {
+router.get("/region/:region", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("babel");
     const wineCol = database.collection("wines");
+    const q = req.params.region
 
-    const query = { dpt: req.params.dpt };
+    const query = { region:  {$regex : new RegExp(q)} };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
-    console.log(wine);
   } finally {
     await client.close();
   }
