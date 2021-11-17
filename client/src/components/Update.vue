@@ -184,7 +184,7 @@
             <div class="relative">
               <div class="col">
                 <select
-                  v-model="wine.color"
+                  v-model="wine.couleur"
                   class="
                     block
                     uppercase
@@ -461,7 +461,7 @@
             mt-10
           "
           type="submit"
-          @click="updateWine()"
+          @click="updateWine(quantite)"
         >
           Submit
         </button>

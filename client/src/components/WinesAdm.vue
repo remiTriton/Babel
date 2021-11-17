@@ -58,7 +58,7 @@
                     <thead class="head bg-gray-50">
                       <tr>
                         <th
-                          v-if="value !== 'name'"
+                          v-if="value !== 'cuvee'"
                           scope="col"
                           class="
                             px-6
@@ -83,7 +83,7 @@
                             uppercase
                             tracking-wider
                           "
-                          v-if="value[''] != 'quantity'"
+                          v-if="value[''] != 'quantite'"
                         >
                           Quantité
                         </th>
@@ -98,7 +98,7 @@
                             uppercase
                             tracking-wider
                           "
-                          v-if="value != 'color'"
+                          v-if="value != 'couleur'"
                         >
                           Couleur
                         </th>
@@ -187,7 +187,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'name'"
+                          v-if="value != 'cuvee'"
                         >
                           <router-link
                             :to="{
@@ -206,7 +206,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'quantity'"
+                          v-if="value != 'quantite'"
                         >
                           {{ wine.quantite }}
                         </td>
@@ -218,7 +218,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'color'"
+                          v-if="value != 'couleur'"
                         >
                           {{ wine.couleur }}
                         </td>
@@ -317,7 +317,7 @@
                           </router-link>
                           <button
                             class="text-red-600 hover:text-red-900"
-                            @click.prevent="Delete(wine.name, wine._id)"
+                            @click.prevent="Delete(wine.cuvee, wine._id)"
                           >
                             Delete
                           </button>
@@ -376,14 +376,14 @@ export default {
           quantite: wine - quantite,
         },
       ]);
-      this.quantity = "";
+      this.quantite = "";
       await this.$store.dispatch("wines/fetchWines");
     },
     async search(type, query) {
       await this.$store.dispatch("wines/searchWinesByName", [type,query.charAt(0).toUpperCase()+query.slice(1)]);
     },
     async filter(color) {
-      await this.$store.dispatch("wines/searchWinesByColor", color);
+      await this.$store.dispatch("wines/searchWinesByColor", couleur);
     },
     async Delete(name, id) {
       // if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
@@ -391,7 +391,7 @@ export default {
       // }
     },
     toggleSelected(value) {
-      alert(`${value.name}`);
+      alert(`${value.cuvee}`);
       console.log(" >> " + `${value}`);
     },
   },

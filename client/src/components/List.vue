@@ -42,7 +42,7 @@
                     v-model="type"
                     value="dpt"
                 />
-                <span class="ml-2">Département</span>
+                <span class="ml-2">Région</span>
               </label>
               <label class="inline-flex items-center ml-6">
                 <input
@@ -62,7 +62,7 @@
                     v-model="type"
                     value="search"
                 />
-                <span class="ml-2">Nom</span>
+                <span class="ml-2">Cuvée</span>
               </label>
             </div>
           </div>
@@ -210,29 +210,9 @@
               {{ wine.domaine }}
             </p>
             <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.cepage }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
               {{ wine.millesime }}
             </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.vigneron }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.couleur }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.description }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.region }}
-            </p>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.pays }}
-            </p>
-          <p class="mt-1 text-lg font-medium text-gray-900">
-              {{ wine.quantite }}
-            </p>
+         
           </div>
         </div>
       </div>
