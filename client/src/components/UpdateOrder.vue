@@ -52,11 +52,17 @@
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             <input v-model="wine.quantite" type="number" />
           </td>
-          <td><button class="text-sm text-gray">Supprimer</button></td>
+          <td>
+            <button
+              @click.prevent="updateOrd(wine.id, wine.quantite)"
+              class="text-black"
+            >
+              Editer
+            </button>
+          </td>
         </tbody>
       </table>
     </div>
-    <button @click.prevent='updateOrd()' class="text-black">Editer commande</button>
     <button class="text-black">Valider commande</button>
   </div>
 </template>
@@ -72,9 +78,15 @@ export default {
       return this.$store.state.orders.order;
     },
   },
-  methods:{
-      updateOrd()
-  }
+  methods: {
+    async updateOrd(id, quantite) {
+      await this.$store.dispatch("orders/updateOrder", [
+        this.$route.params.id,
+        { wines:{
+        }},
+      ]);
+    },
+  },
 };
 </script>
 

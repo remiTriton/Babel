@@ -196,7 +196,7 @@
           <div>
             <button
             v-if='!command'
-              @click="nouveauBon()"
+              @click="nouveauBon(auth.email)"
               type="button"
               class="
                 B
@@ -282,6 +282,14 @@ export default {
       command: false,
     };
   },
+  created(){
+    this.$store.dispatch("auth/getOneUser")
+  },
+  computed:{
+    auth(){
+      return this.$store.state.auth.token
+    }
+  },
   methods: {
     newWine() {
       this.add = !this.add;
@@ -304,10 +312,10 @@ export default {
       this.showUsers = false;
       this.showBills = true;
     },
-    async nouveauBon() {
+    async nouveauBon(user) {
       this.command = true;
       await this.$store.dispatch("orders/newOrder", {
-        email: "jarjar@sw.fr",
+        email: user,
       });
     },
   },

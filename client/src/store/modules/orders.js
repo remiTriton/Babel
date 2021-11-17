@@ -35,7 +35,7 @@ const orders = {
       //On cherche un orders 
   
       //delete one wine
-      async deleteWine(context, _id) {
+      async deleteOrder(context, _id) {
         await fetch("http://localhost:3001/api/orders/" + _id, {
           "method": "DELETE",
         });
@@ -56,6 +56,7 @@ const orders = {
         console.log(data)
         context.commit('setOrder', data)
       },
+      
       async addProductToOrder(context, [id, order]) {
         await fetch("http://localhost:3001/api/orders/" + id, {
           "method": "PUT",
