@@ -1,5 +1,6 @@
 <template>
   <div class="md:pl-64 flex flex-col flex-1">
+  
     <SearchB v-on:searchWine="search" v-on:color="filter" />
 
     <main class="flex-1">
@@ -132,7 +133,7 @@
                           PVC
                         </th>
 
-                        <th
+                        <th v-if="command"
                           scope="col"
                           class="
                             px-6
@@ -147,7 +148,7 @@
                           Commande
                         </th>
 
-                        <th
+                        <th v-if="command"
                           scope="col"
                           class="
                             px-6
@@ -244,7 +245,7 @@
                         >
                           {{parseFloat(wine.prix*1.2).toFixed(2) }} €
                         </td>
-                        <td>
+                        <td v-if="command">
                           <input
                             v-model="quantite"
                             class="
@@ -266,7 +267,7 @@
                             placeholder="0"
                           />
                         </td>
-                        <td>
+                        <td v-if="command">
                           <button
                             type="button"
                             class="
@@ -345,15 +346,12 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
+
+  props: ["command"],
   data() {
     return {
        value: [],
-      options: [
-        { name: 'Nom.', label: 'Nom' },
-        { name: 'Quantity', label: 'Quantity' },
-        { name: 'Color', label: 'Color' },
-      ]
-    
+
     };
   },
   created() {
@@ -406,6 +404,9 @@ export default {
 }
 .text{
   color: black;
-
+}
+.add{
+ display: flexbox;
+flex-direction: row-reverse;
 }
 </style>
