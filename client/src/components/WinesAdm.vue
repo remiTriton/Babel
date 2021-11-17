@@ -1,7 +1,7 @@
 <template>
   <div class="md:pl-64 flex flex-col flex-1">
     <SearchB v-on:searchWine="search" v-on:color="filter" />
-
+    <!-- <p class="text-black">{{ order }}</p> -->
     <main class="flex-1">
       <div class="py-6">
         <div class="mx-auto px-4 sm:px-6 md:px-8">
@@ -281,7 +281,13 @@
                               focus:ring-offset-2
                               focus:ring-#2a574c-500
                             "
-                            @click="addOrder(wine._id, wine.quantite, quantite)"
+                            @click="
+                              addToOrder(
+                                order.insertedId || order._id,
+                                wine._id,
+                                quantite
+                              )
+                            "
                           >
                             <PlusSmIconSolid
                               class="h-5 w-5"
@@ -321,6 +327,14 @@
                       </tr>
                     </tbody>
                   </table>
+                  <router-link
+                    v-if="order._id"
+                    :to="{
+                      name: 'updateOrder',
+                      params: { id: order._id || order.insertedId },
+                    }"
+                    ><button class="text-gray-900">Valider</button></router-link
+                  >
                 </div>
               </div>
             </div>
@@ -350,21 +364,26 @@ export default {
     wines() {
       return this.$store.state.wines.wines;
     },
+    order() {
+      return this.$store.state.orders.order;
+    },
   },
   methods: {
     toggle() {
       this.add = !this.add;
       this.dashboard = !this.dashboard;
     },
-    async addOrder(id, wine, quantite) {
-      await this.$store.dispatch("wines/updateWine", [
-        id,
+
+    async addToOrder(order, wine, quantite) {
+      await this.$store.dispatch("orders/addProductToOrder", [
+        order,
         {
-          quantite: wine - quantite,
+          id: wine,
+          quantite: quantite,
         },
       ]);
       this.quantite = "";
-      await this.$store.dispatch("wines/fetchWines");
+      await this.$store.dispatch("orders/findOneOrder", order);
     },
     async search(type, query) {
       await this.$store.dispatch("wines/searchWinesByName", [
@@ -372,7 +391,7 @@ export default {
         query.charAt(0).toUpperCase() + query.slice(1),
       ]);
     },
-    async filter(color) {
+    async filter(couleur) {
       await this.$store.dispatch("wines/searchWinesByColor", couleur);
     },
     async Delete(name, id) {

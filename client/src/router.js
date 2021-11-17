@@ -66,6 +66,16 @@ const routes = [{
   name: "UpdateUser",
   component: () => import('./components/UpdateUser.vue'),
 },
+{
+  path:'/orders',
+  name:'OrderCrud',
+  component: () => import('./components/Orders.vue'),
+},
+{
+  path: "/updateOrder/:id",
+  name: "updateOrder",
+  component: () => import('./components/UpdateOrder.vue'),
+},
 
 
 ];

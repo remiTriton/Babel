@@ -23,21 +23,29 @@ router.post("/", async (req, res) => {
         const database = client.db("babel");
         const orderCol = database.collection("orders");
         const wineCol = database.collection('wines');
-        const id = req.body.id;
-        const product = await wineCol.findOne(new ObjectId(id));
-        // create a document to insert
-        const doc = {
-            userEmail : request.body.email,
-            userId : request.body._id,
-            wines:
-                [{
-                    id: product._id,
-                    name: product.name,
-                    quantity: req.body.quantity,
-                }],
-        };
-        const result = await orderCol.insertOne(doc);
-        res.send(`A document was inserted with the _id: ${result.insertedId}`);
+        if(req.body.id){
+            const id = req.body.id;
+            const product = await wineCol.findOne(new ObjectId(id));
+            // create a document to insert
+            const doc = {
+                userEmail : req.body.email,
+                wines:
+                    [{
+                        id: product._id,
+                        cuvee: product.cuvee,
+                        quantite: req.body.quantite,
+                    }],
+            };
+            const result = await orderCol.insertOne(doc);
+            res.send(result);
+        }else{
+            const doc = {
+                userEmail : req.body.email,
+            };
+            const result = await orderCol.insertOne(doc);
+            res.send(result);
+        }
+       
     } finally {
         await client.close();
     }
@@ -72,8 +80,8 @@ router.put("/:id", async (req, res) => {
                     wines:
                     {
                         id: product._id,
-                        name: product.name,
-                        quantity: req.body.quantity,
+                        cuvee: product.cuvee,
+                        quantite: req.body.quantite,
                     }
                 }
             }
