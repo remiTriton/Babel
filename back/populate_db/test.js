@@ -30,16 +30,17 @@ const main = async () => {
                 return null;
             }
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-            const [color, domain, name, dpt, country, year, cepage, owner] = line.split(';')
+            const [couleur, cuvee, domaine, region, pays, millesime, cepage, vigneron, prix] = line.split(';')
             return {
-                color,
-                domain,
-                name,
-                dpt,
-                country,
-                year,
+                couleur,
+                domaine,
+                cuvee,
+                region,
+                pays,
+                millesime,
                 cepage,
-                owner,
+                vigneron,
+                prix
             };
         })
         // remove NULL document (first line of the doc)

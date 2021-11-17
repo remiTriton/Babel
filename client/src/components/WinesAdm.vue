@@ -58,7 +58,7 @@
                     <thead class="head bg-gray-50">
                       <tr>
                         <th
-                          v-if="value !== 'name'"
+                          v-if="value !== 'cuvee'"
                           scope="col"
                           class="
                             px-6
@@ -83,7 +83,7 @@
                             uppercase
                             tracking-wider
                           "
-                          v-if="value[''] != 'quantity'"
+                          v-if="value[''] != 'quantite'"
                         >
                           Quantité
                         </th>
@@ -98,7 +98,7 @@
                             uppercase
                             tracking-wider
                           "
-                          v-if="value != 'color'"
+                          v-if="value != 'couleur'"
                         >
                           Couleur
                         </th>
@@ -187,7 +187,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'name'"
+                          v-if="value != 'cuvee'"
                         >
                           <router-link
                             :to="{
@@ -195,7 +195,7 @@
                               params: { id: wine._id },
                             }"
                           >
-                            {{ wine.name }}
+                            {{ wine.cuvee }}
                           </router-link>
                         </td>
 
@@ -206,9 +206,9 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'quantity'"
+                          v-if="value != 'quantite'"
                         >
-                          {{ wine.quantity }}
+                          {{ wine.quantite }}
                         </td>
 
                         <td
@@ -218,20 +218,9 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
-                          v-if="value != 'color'"
+                          v-if="value != 'couleur'"
                         >
-                          {{ wine.color }}
-                        </td>
-
-                        <td
-                          class="
-                            px-6
-                            py-4
-                            whitespace-nowrap
-                            text-sm text-gray-500
-                          "
-                        >
-                          {{ wine.price }}
+                          {{ wine.couleur }}
                         </td>
 
                         <td
@@ -242,11 +231,22 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.price * 1.2 }}
+                          {{ wine.prix }}
+                        </td>
+
+                        <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
+                          {{ wine.prix * 1.2 }}
                         </td>
                         <td>
                           <input
-                            v-model="quantity"
+                            v-model="quantite"
                             class="
                               appearance-none
                               block
@@ -285,7 +285,7 @@
                               focus:ring-offset-2
                               focus:ring-#2a574c-500
                             "
-                            @click="addOrder(wine._id, wine.quantity, quantity)"
+                            @click="addOrder(wine._id, wine.quantite, quantite)"
                           >
                             <PlusSmIconSolid
                               class="h-5 w-5"
@@ -317,7 +317,7 @@
                           </router-link>
                           <button
                             class="text-red-600 hover:text-red-900"
-                            @click.prevent="Delete(wine.name, wine._id)"
+                            @click.prevent="Delete(wine.cuvee, wine._id)"
                           >
                             Delete
                           </button>
@@ -369,30 +369,30 @@ export default {
       this.add = !this.add;
       this.dashboard = !this.dashboard;
     },
-    async addOrder(id, wine, quantity) {
+    async addOrder(id, wine, quantite) {
       await this.$store.dispatch("wines/updateWine", [
         id,
         {
-          quantity: wine - quantity,
+          quantite: wine - quantite,
         },
       ]);
-      this.quantity = "";
+      this.quantite = "";
       await this.$store.dispatch("wines/fetchWines");
     },
     async search(type, query) {
       await this.$store.dispatch("wines/searchWinesByName", [type, query]);
     },
     async filter(color) {
-      await this.$store.dispatch("wines/searchWinesByColor", color);
+      await this.$store.dispatch("wines/searchWinesByColor", couleur);
     },
     async Delete(name, id) {
-      if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
+      if (confirm("Attention : Vous êtes sur le point de supprimer " + cuvee)) {
         await this.$store.dispatch("wines/deleteWine", id);
         await this.$store.dispatch("wines/fetchWines");
       }
     },
     toggleSelected(value) {
-      alert(`${value.name}`);
+      alert(`${value.cuvee}`);
       console.log(" >> " + `${value}`);
     },
   },

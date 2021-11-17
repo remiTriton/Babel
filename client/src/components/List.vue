@@ -42,7 +42,7 @@
                     v-model="type"
                     value="dpt"
                 />
-                <span class="ml-2">Département</span>
+                <span class="ml-2">Région</span>
               </label>
               <label class="inline-flex items-center ml-6">
                 <input
@@ -62,7 +62,7 @@
                     v-model="type"
                     value="search"
                 />
-                <span class="ml-2">Nom</span>
+                <span class="ml-2">Cuvée</span>
               </label>
             </div>
           </div>

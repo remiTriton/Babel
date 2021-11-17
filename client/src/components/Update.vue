@@ -185,7 +185,7 @@
             <div class="relative">
               <div class="col">
                 <select
-                  v-model="wine.color"
+                  v-model="wine.couleur"
                   class="
                     block
                     uppercase
@@ -461,7 +461,7 @@
             mt-10
           "
           type="submit"
-          @click="updateWine()"
+          @click="updateWine(quantite)"
         >
           Submit
         </button>
@@ -484,24 +484,24 @@ export default {
   },
 
   methods: {
-    async updateWine() {
+    async updateWine(quantite) {
       await this.$store.dispatch("wines/updateWine", [
         this.$route.params.id,
         {
-          domain: this.wine.domain,
-          vigneron: this.wine.vigneron,
+          cuvee: this.wine.cuvee,
+          domaine: this.wine.domaine,
           cepage: this.wine.cepage,
-          annee: this.wine.annee,
-          Description: this.wine.Description,
-          wineName: this.wine.wineName,
-          color: this.wine.color,
-          city: this.wine.city,
-          state: this.wine.state,
-          quantity: this.quantity + this.wine.quantity,
-          price: this.wine.price,
+          millesime: this.wine.millesime,
+          vigneron: this.wine.vigneron,
+          couleur: this.wine.couleur,
+          decription: this.wine.description,
+          region: this.wine.region,
+          pays: this.wine.pays,
+          quantite: quantite + this.wine.quantite,
+          prix: this.wine.prix,
         },
       ]);
-      await this.$store.dispatch("wines/fetchWines");
+
       await this.$router.push("/Admin");
     },
   },
