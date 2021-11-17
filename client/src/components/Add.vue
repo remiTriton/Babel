@@ -183,8 +183,24 @@
           </div>
 
           <div class="w-full md:w-1/2 px-3 mb-8 md:mb-0">
+                <label
+              class="
+                block
+                uppercase
+                tracking-wide
+                text-gray-700 text-xs
+                font-bold
+                text-overflow
+                overflow:
+                scroll;
+              "
+              for="grid-vigneron"
+            >
+              Couleur
+            </label>
             <div class="relative">
               <div class="col">
+               
                 <select
                   v-model="couleur"
                   class="

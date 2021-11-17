@@ -114,7 +114,7 @@
             br-5
             rounded
           "
-            @click="filter('Blanc ')"
+            @click="filter('Blanc')"
         >
           White
         </button></span

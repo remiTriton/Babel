@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
       couleur: req.body.couleur,
       description: req.body.descritpion,
       region: req.body.region,
-      departemepaysnt: req.body.pays,
+      pays: req.body.pays,
       quantite: req.body.quantite,
       prix: req.body.prix,
 
@@ -56,20 +56,6 @@ router.post("/", async (req, res) => {
 
     const result = await wineCol.insertOne(doc);
     res.send(`A document was inserted with the _id: ${result.insertedId}`);
-  } finally {
-    await client.close();
-  }
-});
-
-router.get("/color/:color", async (req, res) => {
-  try {
-    await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
-    const query = { color: req.params.color };
-    const wine = await wineCol.find(query).toArray();
-    res.send(wine);
-    console.log(wine);
   } finally {
     await client.close();
   }
@@ -91,13 +77,13 @@ router.get("/search/:name", async (req, res) => {
   }
 });
 
-router.get("/domain/:domain", async (req, res) => {
+router.get("/domain/:domaine", async (req, res) => {
   try {
     await client.connect();
-    const q = req.params.domain
+    const q = req.params.domaine
     const database = client.db("babel");
     const wineCol = database.collection("wines");
-    const wine =  await wineCol.find({ domain: {$regex : new RegExp(q)}}).toArray();
+    const wine =  await wineCol.find({ domaine: {$regex : new RegExp(q)}}).toArray();
     res.send(wine);
     console.log(wine);
   } finally {
@@ -105,13 +91,13 @@ router.get("/domain/:domain", async (req, res) => {
   }
 });
 
-router.get("/wines/:color", async (req, res) => {
+router.get("/wines/:couleur", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("babel");
     const wineCol = database.collection("wines");
 
-    const query = { color: req.params.color };
+    const query = { couleur: req.params.couleur };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
     console.log(wine);
