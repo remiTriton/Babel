@@ -51,7 +51,6 @@ router.post("/", async (req, res) => {
       pays: req.body.pays,
       quantite: req.body.quantite,
       prix: req.body.prix,
-
     };
 
     const result = await wineCol.insertOne(doc);
@@ -91,7 +90,7 @@ router.get("/domain/:domaine", async (req, res) => {
   }
 });
 
-router.get("/wines/:couleur", async (req, res) => {
+router.get("/color/:couleur", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("babel");
