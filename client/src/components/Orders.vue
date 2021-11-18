@@ -185,6 +185,12 @@ export default {
       return this.$store.state.orders.orders;
     },
   },
+  methods: {
+    async Delete(id){
+      await this.$store.dispatch("orders/deleteOrder" , id )
+       
+    }
+  }
 };
 </script>
 

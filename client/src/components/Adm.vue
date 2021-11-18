@@ -196,7 +196,7 @@
           <div>
             <button
             v-if='!command'
-              @click="nouveauBon(auth.email)"
+              @click="nouveauBon(auth.user.email)"
               type="button"
               class="
                 B

@@ -110,7 +110,8 @@ router.post('/login', async (req, res) => {
                     }, iat: Math.floor(Date.now() / 1000) + (60 * 60),
                 }, 'token', (err, token) => {
                     res.status(200).json({
-                        token
+                        token :token,
+                        user :user
                     });
                 });
             } else {
