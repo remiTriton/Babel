@@ -63,14 +63,16 @@
                   v-if="!command"
                   @click="nouveauBon(auth.user.email)"
                   type="button"
-                  class="B
-                  px-6
-                py-3
-                text-center text-xs
-                font-medium
-                text-gray-500
-                uppercase
-                tracking-wider"
+                  class="
+                    B
+                    px-6
+                    py-3
+                    text-center text-xs
+                    font-medium
+                    text-gray-500
+                    uppercase
+                    tracking-wider
+                  "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -128,8 +130,7 @@
         </tbody>
       </table>
     </div>
-    <button class="text-black">
-    Valider commande</button>
+    <button class="text-black">Valider commande</button>
   </div>
 </template>
 
@@ -148,11 +149,7 @@ export default {
     async updateOrd(cuvee, couleur, quantite) {
       await this.$store.dispatch("orders/updateOrder", [
         this.$route.params.id,
-<<<<<<< HEAD
-        { wines: {} },
-=======
         { cuvee: cuvee, couleur: couleur, quantite: quantite },
->>>>>>> 3449a9efd28fe4783b9f8a6138d5f86a34a44f84
       ]);
     },
   },
