@@ -9,3 +9,8 @@ services:
     volumes:
       - ./data:/data/db
 
+  www:
+    build: ./client
+    ports:
+      - 8989:80
+
