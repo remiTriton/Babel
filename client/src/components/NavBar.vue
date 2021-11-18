@@ -42,7 +42,16 @@
         <div class="text-sm lg:flex-grow">
           <router-link
             to="/WineList"
-            class="block lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+            class="
+              
+              block
+              mt-4
+              ml-30
+              text-center
+              lg:inline-block lg:mt-0
+              text-teal-200
+              hover:text-white
+            "
           >
             <img class="bb" src="../assets/arches.png" atl="" />
           </router-link>
@@ -53,6 +62,7 @@
             v-if="!auth"
             to="/login"
             class="
+              
               inline-block
               text-sm
               px-4
@@ -155,6 +165,7 @@ export default {
 
 <style>
 .flexo {
+display: flex;
   background-color: #2a574c;
   display: flex;
   justify-content: space-around;
@@ -162,5 +173,6 @@ export default {
 .bb {
   width: 150px;
   height: 150px;
+  
 }
 </style>
