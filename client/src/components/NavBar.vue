@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <nav class="flexo flex justify-between flex-wrap p-6">
+    <nav class="flexo ">
       <router-link
         to="/blog"
         class="
@@ -45,10 +45,11 @@
           <router-link
             to="/WineList"
             class="
-              cat
+              
               block
               mt-4
               ml-30
+              text-center
               lg:inline-block lg:mt-0
               text-teal-200
               hover:text-white
@@ -63,7 +64,7 @@
           v-if='!auth'
             to="/login"
             class="
-              cat
+              
               inline-block
               text-sm
               px-4
@@ -168,15 +169,13 @@ export default {
 
 <style>
 .flexo {
+display: flex;
   background-color: #2a574c;
 }
 .bb {
   width: 150px;
   height: 150px;
+  
 }
-.cat {
-  font-size: 30px;
-  display: flex;
-  justify-content: space-between;
-}
+
 </style>

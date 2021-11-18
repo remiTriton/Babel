@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <MiniSearchBar />
   <div
     px-6
     py-3
@@ -9,7 +11,6 @@
     uppercase
     tracking-wider
   >
-    Commandé par : {{ order.userEmail }}
 
     <div>
       <table class="table-auto">
@@ -131,13 +132,22 @@
     <button class="text-black">
     Valider commande</button>
   </div>
+  <div>Commandé par : {{ order.userEmail }}</div>
+  </div>
 </template>
 
 <script>
+
+import MiniSearchBar from './MiniSearchBar.vue';
+
+
 export default {
   name: "UpdateOrder",
+
+  components:{MiniSearchBar},
+
   created() {
-    this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
+   this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
   computed: {
     order() {
@@ -148,11 +158,7 @@ export default {
     async updateOrd(cuvee, couleur, quantite) {
       await this.$store.dispatch("orders/updateOrder", [
         this.$route.params.id,
-<<<<<<< HEAD
-        { wines: {} },
-=======
         { cuvee: cuvee, couleur: couleur, quantite: quantite },
->>>>>>> 3449a9efd28fe4783b9f8a6138d5f86a34a44f84
       ]);
     },
   },
