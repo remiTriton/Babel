@@ -81,6 +81,8 @@ router.put("/:id", async (req, res) => {
                     {
                         id: product._id,
                         cuvee: product.cuvee,
+                        couleur: product.couleur,
+
                         quantite: req.body.quantite,
                     }
                 }

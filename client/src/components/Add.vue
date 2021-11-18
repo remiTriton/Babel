@@ -489,27 +489,7 @@ export default {
         pays: this.pays,
         quantite: this.quantite,
       };
-
       await this.$store.dispatch('wines/addWine', wine);
-      // const resHttp = await fetch("/api/wines", {
-      //   method: "POST",
-      //   headers: { "content-type": "application/json" },
-      //   body: JSON.stringify(wine),
-      // });
-
-      // real Backend JSON
-
-      // this.createdwine = true;
-      // this.domain = "";
-      // this.winemaker = "";
-      // this.grapeVariety = "";
-      // this.year = "";
-      // this.technicalSpecification = "";
-      // this.wineName = "";
-      // this.color = "";
-      // this.city = "";
-      // this.state = "";
-      // this.quantity = "";
     },
   },
 };

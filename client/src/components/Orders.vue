@@ -143,7 +143,7 @@
                         >
                           <router-link
                             :to="{
-                              name: 'Update',
+                              name: 'updateOrder',
                               params: { id: order._id },
                             }"
                           >
@@ -183,6 +183,11 @@ export default {
   computed: {
     orders() {
       return this.$store.state.orders.orders;
+    },
+  },
+  methods: {
+    async Delete(id) {
+      await this.$store.dispatch("orders/deleteOrder", id);
     },
   },
 };

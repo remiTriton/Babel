@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- Static sidebar for desktop -->
+   <!-- <p class='text-black'> {{auth}}</p> -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div
@@ -196,7 +197,7 @@
           <div>
             <button
             v-if='!command'
-              @click="nouveauBon(auth.email)"
+              @click="nouveauBon(auth.user.email)"
               type="button"
               class="
                 B
