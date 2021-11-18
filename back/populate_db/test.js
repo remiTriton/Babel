@@ -11,7 +11,7 @@ const main = async () => {
     const wineCol = database.collection('wines');
 
 
-    const fileContent = await fs.readFile('./data.csv');
+    const fileContent = await fs.readFile('./populate_db/data.csv');
 
     const fileContentStr = String(fileContent);
 
