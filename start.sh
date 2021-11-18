@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker-compose up --builnstall
+docker-compose up --build
 
 ./stop.sh
