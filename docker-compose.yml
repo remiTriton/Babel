@@ -9,8 +9,20 @@ services:
     volumes:
       - ./data:/data/db
 
+  back:
+    build: ./back
+    depends_on:
+      - "db"
+    command: npm run start
+    environment:
+      - MONGODB_URI=mongodb://db:27017
+
   www:
     build: ./client
     ports:
       - 8989:80
+    depends_on:
+      - "back"
+    restart: always
+
 
