@@ -68,7 +68,7 @@ const orders = {
   
         context.commit('setOrder')
       },
-      async updateOrder(context, [id, order]) {
+      async updateOrder(context,[id, order]) {
         await fetch("http://localhost:3001/api/orders/confirm/" + id, {
           "method": "PUT",
           body: JSON.stringify(order),
@@ -76,9 +76,7 @@ const orders = {
             "Content-type": "application/json",
           }
         });
-  
-        context.commit('setOrder')
-      }
+        }
     }
   }
   export default orders;

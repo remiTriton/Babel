@@ -29,7 +29,7 @@
             >
               Cuvée
             </th>
-                  <th
+            <th
               scope="col"
               class="
                 px-6
@@ -64,13 +64,16 @@
             <input v-model="wine.cuvee" />
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            <input v-model="wine.couleur" /></td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <input v-model="wine.couleur" />
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             <input v-model="wine.quantite" type="number" />
           </td>
           <td>
             <button
-              @click.prevent="updateOrd(wine.id, wine.quantite)"
+              @click.prevent="
+                updateOrd(wine.cuvee, wine.couleur, wine.quantite)
+              "
               class="text-black"
             >
               Editer
@@ -95,11 +98,10 @@ export default {
     },
   },
   methods: {
-    async updateOrd(id, quantite) {
+    async updateOrd(cuvee, couleur, quantite) {
       await this.$store.dispatch("orders/updateOrder", [
         this.$route.params.id,
-        { wines:{
-        }},
+        { cuvee: cuvee, couleur: couleur, quantite: quantite },
       ]);
     },
   },
