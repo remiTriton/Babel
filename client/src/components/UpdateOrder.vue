@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MiniSearchBar />
+    <MiniSearchBar  v-on:searchWine="search" />
   <div
     px-6
     py-3
@@ -161,6 +161,9 @@ export default {
         this.$route.params.id,
         { cuvee: cuvee, couleur: couleur, quantite: quantite },
       ]);
+    },
+    async search(query) {
+      await this.$store.dispatch("wines/searchWinesByName", ["search", query.charAt(0).toUpperCase()+query.slice(1)]);
     },
   },
 };
