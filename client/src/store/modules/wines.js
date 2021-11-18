@@ -19,7 +19,7 @@ const wines = {
     //ON RECUPERE LES winesS
 
     async fetchWines(context) {
-      const res = await fetch("http://localhost:3001/api/wines/")
+      const res = await fetch("/api/wines/")
       const data = await res.json();
       context.commit("setwines", data);
     },
@@ -27,7 +27,7 @@ const wines = {
     //Print d'un wines
 
     async findOnewines(context, _id) {
-      const res = await fetch("http://localhost:3001/api/wines/" + _id)
+      const res = await fetch("/api/wines/" + _id)
       const data = await res.json();
       context.commit("setwine", data);
     },
@@ -35,30 +35,30 @@ const wines = {
     //On cherche un wines 
 
     async searchWinesByName(context, [type, query]) {
-      const res = await fetch("http://localhost:3001/api/wines/" + type + "/" + query)
+      const res = await fetch("/api/wines/" + type + "/" + query)
       const data = await res.json();
       context.commit("setwines", data);
     },
 
     //filter by color
     async searchWinesByColor(context, query) {
-      const res = await fetch("http://localhost:3001/api/wines/color/" + query)
+      const res = await fetch("/api/wines/color/" + query)
       const data = await res.json();
       context.commit("setwines", data);
     },
 
     //delete one wine
     async deleteWine(context, _id) {
-      await fetch("http://localhost:3001/api/wines/" + _id, {
+      await fetch("/api/wines/" + _id, {
         "method": "DELETE",
       });
-      const res = await fetch("http://localhost:3001/api/wines/")
+      const res = await fetch("/api/wines/")
       const data = await res.json();
       context.commit("setwines", data);
     },
 
     async addWine(context, body) {
-      await fetch("http://localhost:3001/api/wines/", {
+      await fetch("/api/wines/", {
         "method": "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const wines = {
       context.commit('setwines')
     },
     async updateWine(context, [id, wine]) {
-      await fetch("http://localhost:3001/api/wines/" + id, {
+      await fetch("/api/wines/" + id, {
         "method": "PUT",
         body: JSON.stringify(wine),
         "headers": {
