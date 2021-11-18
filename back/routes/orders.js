@@ -79,10 +79,9 @@ router.put("/:id", async (req, res) => {
                 $push: {
                     wines:
                     {
-                        id: product._id,
+                        wineId: product._id,
                         cuvee: product.cuvee,
                         couleur: product.couleur,
-
                         quantite: req.body.quantite,
                     }
                 }
@@ -99,16 +98,14 @@ router.put("/confirm/:id", async (req, res) => {
         await client.connect();
         const database = client.db("babel");
         const orderCol = database.collection("orders");
-        // const userEmail = database.collection("userOrder");
-        await orderCol.updateOne(
-            { _id: new ObjectId(req.params.id) },
+        const result =   await orderCol.updateOne(
+            { _id: new ObjectId(req.params.id), "wines.cuvee" : req.body.cuvee, "wines.couleur" : req.body.couleur },
             {
-                $set:
-                    req.body
-                    // req.userEmail
+                $set:{"wines.$.quantite" : req.body.quantite}
+                   
             }
         );
-        res.send("Order updated");
+        res.send(result);
     } finally {
         await client.close();
     }

@@ -104,7 +104,9 @@
           </td>
           <td>
             <button
-              @click.prevent="updateOrd(wine.id, wine.quantite)"
+              @click.prevent="
+                updateOrd(wine.cuvee, wine.couleur, wine.quantite)
+              "
               class="text-black"
             >
               <svg
@@ -143,10 +145,14 @@ export default {
     },
   },
   methods: {
-    async updateOrd(id, quantite) {
+    async updateOrd(cuvee, couleur, quantite) {
       await this.$store.dispatch("orders/updateOrder", [
         this.$route.params.id,
+<<<<<<< HEAD
         { wines: {} },
+=======
+        { cuvee: cuvee, couleur: couleur, quantite: quantite },
+>>>>>>> 3449a9efd28fe4783b9f8a6138d5f86a34a44f84
       ]);
     },
   },
