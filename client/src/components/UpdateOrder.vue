@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MiniSearchBar />
+    <MiniSearchBar  v-on:searchWine="search" />
   <div
     px-6
     py-3
@@ -64,14 +64,16 @@
                   v-if="!command"
                   @click="nouveauBon(auth.user.email)"
                   type="button"
-                  class="B
-                  px-6
-                py-3
-                text-center text-xs
-                font-medium
-                text-gray-500
-                uppercase
-                tracking-wider"
+                  class="
+                    B
+                    px-6
+                    py-3
+                    text-center text-xs
+                    font-medium
+                    text-gray-500
+                    uppercase
+                    tracking-wider
+                  "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -129,8 +131,7 @@
         </tbody>
       </table>
     </div>
-    <button class="text-black">
-    Valider commande</button>
+    <button class="text-black">Valider commande</button>
   </div>
   <div>Commandé par : {{ order.userEmail }}</div>
   </div>
@@ -160,6 +161,9 @@ export default {
         this.$route.params.id,
         { cuvee: cuvee, couleur: couleur, quantite: quantite },
       ]);
+    },
+    async search(query) {
+      await this.$store.dispatch("wines/searchWinesByName", ["search", query.charAt(0).toUpperCase()+query.slice(1)]);
     },
   },
 };

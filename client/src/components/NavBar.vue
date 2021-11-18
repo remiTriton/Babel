@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <nav class="flexo ">
+    <nav class="flexo">
       <router-link
         to="/blog"
         class="
@@ -19,7 +18,6 @@
       <div class="block lg:hidden">
         <button
           class="
-            flex
             items-center
             px-3
             py-2
@@ -55,13 +53,13 @@
               hover:text-white
             "
           >
-            <img class="bb" src="../assets/arches.png" atl="" />
+            <img class="bb" src="../assets/Arches.png" atl="" />
           </router-link>
         </div>
 
         <div>
           <router-link
-          v-if='!auth'
+            v-if="!auth"
             to="/login"
             class="
               
@@ -82,9 +80,9 @@
           >
         </div>
         <div>
-          <button v-if='auth'
+          <button
+            v-if="auth"
             class="
-              cat
               inline-block
               text-sm
               px-4
@@ -98,16 +96,16 @@
               mt-4
               lg:mt-0
             "
-            @click.prevent='logout'
-            >Logout</button
+            @click.prevent="logout"
           >
+            Logout
+          </button>
         </div>
         <div>
           <router-link
-          v-if='!auth'
+            v-if="!auth"
             to="/register"
             class="
-              cat
               inline-block
               text-sm
               px-4
@@ -129,7 +127,6 @@
         <router-link
           to="/Admin"
           class="
-            cat
             inline-block
             text-sm
             px-4
@@ -153,17 +150,16 @@
 <script>
 export default {
   name: "NavBar",
- computed:{
-   auth(){
-     return this.$store.state.auth.token
-   }
- },
-  
-  methods:{
-    async logout(){
-      await this.$store.dispatch('auth/logout')
-    }
-  }
+  computed: {
+    auth() {
+      return this.$store.state.auth.token;
+    },
+  },
+  methods: {
+    async logout() {
+      await this.$store.dispatch("auth/logout");
+    },
+  },
 };
 </script>
 
@@ -171,11 +167,12 @@ export default {
 .flexo {
 display: flex;
   background-color: #2a574c;
+  display: flex;
+  justify-content: space-around;
 }
 .bb {
   width: 150px;
   height: 150px;
   
 }
-
 </style>
