@@ -30,11 +30,12 @@
         >          
         </button>
       </div>
-      <div class="w-full ml-20 lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm ">
+      <div class=" w-full ml-20 lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm relative ">
           <router-link
             to="/WineList"
             class="
+            
               mt-4
               mx-96            
               lg:inline-block lg:mt-0
@@ -42,12 +43,12 @@
               hover:text-white
             "
           >
-            <img class="bb" src="../assets/Arches.png" atl="" />
+            <img class="bb " src="../assets/Arches.png" atl="" />
           </router-link>
         </div>
         
-
-        <div>
+<div class="flex space-x-4  mr-28">
+        <div >
           <router-link
             v-if="!auth"
             to="/login"
@@ -64,7 +65,7 @@
               border-white
               hover:border-transparent hover:text-teal-500 hover:bg-white
               mt-4
-              ml-36
+              ml-28
               lg:mt-0
             "
             >Login</router-link
@@ -133,6 +134,7 @@
           "
           >Admin</router-link
         >
+      </div>
       </div>
       </div>
     </nav>

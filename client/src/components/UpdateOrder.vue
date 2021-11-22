@@ -95,7 +95,10 @@
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             <input v-model="wine.quantite" type="number" />
           </td>
-          <button @click.prevent="Delete(wine.cuvee, wine.couleur, wine.quantite)" class="remove">
+          <button
+            @click.prevent="Delete(wine.cuvee, wine.couleur, wine.quantite)"
+            class="remove"
+          >
             <td class="px-6 py-4 whitespace-nowrap">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +143,9 @@
       </table>
     </div>
 
-    <button class="btn bg-green-900 text-2xl ml-5 rounded-full py-3 px-6">↵</button>
+    <button class="btn bg-green-900 text-2xl ml-5 rounded-full py-3 px-6">
+      ↵
+    </button>
 
     <div>Commandé par : {{ order.userEmail }}</div>
   </div>
@@ -176,10 +181,10 @@ export default {
         query.charAt(0).toUpperCase() + query.slice(1),
       ]);
     },
-     async Delete(name, id) {
-       if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
-      await this.$store.dispatch("wines/deleteWine", id);
-       }
+    async Delete(name, id) {
+      if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
+        await this.$store.dispatch("wines/deleteWine", id);
+      }
     },
   },
 };
@@ -198,7 +203,7 @@ export default {
   background-color: #2a574c;
   color: white;
 }
-.btn{
+.btn {
   color: white;
 }
 </style>
