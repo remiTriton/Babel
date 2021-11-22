@@ -1,19 +1,9 @@
 <template>
-  <div>
-    <MiniSearchBar  v-on:searchWine="search" />
-  <div
-    px-6
-    py-3
-    text-center
-    text-xs
-    font-medium
-    text-gray-500
-    uppercase
-    tracking-wider
-  >
+  <div class="mt-10">
+    <MiniSearchBar v-on:searchWine="search" />
 
-    <div>
-      <table class="table-auto">
+    <div class='mx-96'>
+      <table class="table-auto mx-96">
         <thead>
           <tr>
             <th
@@ -113,6 +103,7 @@
               class="text-black"
             >
               <svg
+                v-if="Ajout"
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6"
                 fill="none"
@@ -131,24 +122,24 @@
         </tbody>
       </table>
     </div>
+
     <button class="text-black">Valider commande</button>
+
+    <div>Commandé par : {{ order.userEmail }}</div>
   </div>
-  <div>Commandé par : {{ order.userEmail }}</div>
-  </div>
+  <WinesAdmOrder />
 </template>
 
 <script>
-
-import MiniSearchBar from './MiniSearchBar.vue';
-
+import MiniSearchBar from "./MiniSearchBar.vue";
+import WinesAdmOrder from "./WinesAdmOrder.vue";
 
 export default {
   name: "UpdateOrder",
-
-  components:{MiniSearchBar},
+  components: { MiniSearchBar, WinesAdmOrder },
 
   created() {
-   this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
+    this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
   computed: {
     order() {
@@ -163,7 +154,10 @@ export default {
       ]);
     },
     async search(query) {
-      await this.$store.dispatch("wines/searchWinesByName", ["search", query.charAt(0).toUpperCase()+query.slice(1)]);
+      await this.$store.dispatch("wines/searchWinesByName", [
+        "search",
+        query.charAt(0).toUpperCase() + query.slice(1),
+      ]);
     },
   },
 };
