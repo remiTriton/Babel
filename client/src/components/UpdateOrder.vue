@@ -1,8 +1,8 @@
 <template>
   <div class="mt-10">
-    <MiniSearchBar v-on:searchWine="search" v-bind:crudWine="crudWine" />
+    <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
 
-    <div class="mx-96">
+    <div class="mx-60">
       <table class="table-auto mx-96">
         <thead>
           <tr>
@@ -48,40 +48,6 @@
             >
               Quantité
             </th>
-            <th>
-              <div>
-                <button
-                  v-if="!command"
-                  @click="nouveauBon(auth.user.email)"
-                  type="button"
-                  class="
-                    B
-                    px-6
-                    py-3
-                    text-center text-xs
-                    font-medium
-                    text-gray-500
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </th>
           </tr>
         </thead>
 
@@ -95,10 +61,7 @@
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             <input v-model="wine.quantite" type="number" />
           </td>
-          <button
-            @click.prevent="Delete(wine.cuvee, wine.couleur, wine.quantite)"
-            class="remove"
-          >
+          <button @click.prevent="Delete(wine._id)" class="remove">
             <td class="px-6 py-4 whitespace-nowrap">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +86,6 @@
               class="text-black"
             >
               <svg
-                v-if="Ajout"
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6"
                 fill="none"
@@ -148,7 +110,7 @@
     </button>
 
     <div>Commandé par : {{ order.userEmail }}</div>
-    <div v-if="crudWine"><WinesAdmOrder /></div>
+    <div  v-if="showWines"><WinesAdmOrder /></div>
   </div>
 </template>
 
@@ -158,9 +120,11 @@ import WinesAdmOrder from "./WinesAdmOrder.vue";
 
 export default {
   name: "UpdateOrder",
-  props: ["crudWine"],
 
   components: { MiniSearchBar, WinesAdmOrder },
+  data(){
+    return{showWines:false}
+  },
   created() {
     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
@@ -187,6 +151,10 @@ export default {
         await this.$store.dispatch("wines/deleteWine", id);
       }
     },
+    show(){
+      this.showWines = !this.showWines
+      console.log(this.showWines)
+    }
   },
 };
 </script>
@@ -195,11 +163,6 @@ export default {
 * {
   color: gray;
 }
-
-.B {
-  color: #2a574c;
-}
-
 .round {
   background-color: #2a574c;
   color: white;

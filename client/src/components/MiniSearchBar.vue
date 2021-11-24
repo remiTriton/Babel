@@ -3,8 +3,8 @@
   <input class="m-10 rounded-md" type="search" v-model='query'> 
   <button type="search"  @click="searchWine(query)"> Search</button>
 
-  <input  class="m-5" type="radio" v-model='type' value='commande'> Commande
-  <input  class="m-5" type="radio" @click.prevent='crud()' value='vins'> Ajout
+  <input  class="m-5" type="radio" v-model='type' value='commande' /> Commande
+  <button  class="m-5" type="button"  @click='crud()'> Ajout</button>
   </div>
 </template>
 
@@ -15,23 +15,19 @@ name :"MiniSearchBar",
 data(){
     return{
         query:"",
-        crudWine:false,
     }
 },
 methods:{
     searchWine(query){
     this.$emit('searchWine', query)
   },
-  async crud(){
-    if(this.crudWine == false){
-     return this.crudWine == true
-    }else{
-      return this.crudWine == false
+   crud(){
+      this.$emit('toggleCrud')
     }
   }
 
 }
-}
+
 </script>
 
 <style>
