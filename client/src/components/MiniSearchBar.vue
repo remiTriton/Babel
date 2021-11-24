@@ -4,7 +4,7 @@
   <button type="search"  @click="searchWine(query)"> Search</button>
 
   <input  class="m-5" type="radio" v-model='type' value='commande'> Commande
-  <button  class="m-5" type="button"  value='vins'> Ajout</button>
+  <button  class="m-5" type="button"> Ajout</button>
   </div>
 </template>
 
