@@ -110,7 +110,7 @@
     </button>
 
     <div>Commandé par : {{ order.userEmail }}</div>
-    <div  v-if="showWines"><WinesAdmOrder /></div>
+    <div v-if="showWines"><WinesAdmOrder /></div>
   </div>
 </template>
 
@@ -122,8 +122,8 @@ export default {
   name: "UpdateOrder",
 
   components: { MiniSearchBar, WinesAdmOrder },
-  data(){
-    return{showWines:false}
+  data() {
+    return { showWines: false };
   },
   created() {
     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
@@ -140,21 +140,20 @@ export default {
         { cuvee: cuvee, couleur: couleur, quantite: quantite },
       ]);
     },
-    async search(query) {
-      await this.$store.dispatch("wines/searchWinesByName", [
-        "search",
-        query.charAt(0).toUpperCase() + query.slice(1),
-      ]);
+    search(query) {
+      return order.filter((order) => {
+        return this.order.wines.cuvee.indexOf(query) > -1;
+      });
     },
     async Delete(name, id) {
       if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
         await this.$store.dispatch("wines/deleteWine", id);
       }
     },
-    show(){
-      this.showWines = !this.showWines
-      console.log(this.showWines)
-    }
+    show() {
+      this.showWines = !this.showWines;
+      console.log(this.showWines);
+    },
   },
 };
 </script>

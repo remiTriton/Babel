@@ -102,7 +102,6 @@ router.put("/confirm/:id", async (req, res) => {
             { _id: new ObjectId(req.params.id), "wines.cuvee" : req.body.cuvee, "wines.couleur" : req.body.couleur },
             {
                 $set:{"wines.$.quantite" : req.body.quantite}
-                   
             }
         );
         res.send(result);
