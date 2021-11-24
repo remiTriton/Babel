@@ -1,7 +1,6 @@
 <template>
   <div class="md:pl-64 flex flex-col flex-1">
     <SearchB v-on:searchWine="search" v-on:color="filter" />
-    <!-- <p class="text-black">{{ order }}</p> -->
     <main class="flex-1">
       <div class="py-6">
         <div class="mx-auto px-4 sm:px-6 md:px-8">
@@ -240,7 +239,7 @@
                         >
                           {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
                         </td>
-                        <td>
+                        <td v-if="command">
                           <input
                             v-model="quantite"
                             class="
@@ -262,7 +261,7 @@
                             placeholder="0"
                           />
                         </td>
-                        <td >
+                        <td v-if="command">
                           <button
                             type="button"
                             class="
@@ -355,8 +354,9 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
-  props: ["command"],
-
+  data(){
+    return {command : true}
+  },
   created() {
     this.$store.dispatch("wines/fetchWines");
   },
@@ -395,9 +395,9 @@ export default {
       await this.$store.dispatch("wines/searchWinesByColor", couleur);
     },
     async Delete(name, id) {
-      // if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
+       if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
       await this.$store.dispatch("wines/deleteWine", id);
-      // }
+       }
     },
   },
 };

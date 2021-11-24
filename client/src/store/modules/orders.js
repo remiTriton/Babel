@@ -76,6 +76,16 @@ const orders = {
           "Content-type": "application/json",
         }
       });
+    },
+
+    async delWine(context, [id, wine]) {
+      await fetch("http://localhost:3001/api/orders/deleteOneWine/" + id, {
+        "method": "PUT",
+        body: JSON.stringify(wine),
+        "headers": {
+          "Content-type": "application/json",
+        }
+      });
     }
   }
 }

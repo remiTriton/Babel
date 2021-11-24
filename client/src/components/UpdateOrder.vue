@@ -1,6 +1,6 @@
 <template>
   <div class="mt-10">
-    <MiniSearchBar v-on:searchWine="search" />
+    <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
 
     <div class="mx-60">
       <table class="table-auto mx-96">
@@ -61,10 +61,7 @@
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             <input v-model="wine.quantite" type="number" />
           </td>
-          <button
-            @click.prevent="Delete(wine._id)"
-            class="remove"
-          >
+          <button @click.prevent="deleteWine(wine.wineId)" class="remove">
             <td class="px-6 py-4 whitespace-nowrap">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -82,12 +79,7 @@
             </td>
           </button>
           <td>
-            <button
-              @click.prevent="
-                updateOrd(wine.cuvee, wine.couleur, wine.quantite)
-              "
-              class="text-black"
-            >
+            <button @click.prevent="updateOrd(wine.cuvee, wine.couleur, wine.quantite)" class="text-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6"
@@ -113,8 +105,8 @@
     </button>
 
     <div>Commandé par : {{ order.userEmail }}</div>
+    <div v-if="showWines"><WinesAdmOrder /></div>
   </div>
-  <WinesAdmOrder />
 </template>
 
 <script>
@@ -123,8 +115,11 @@ import WinesAdmOrder from "./WinesAdmOrder.vue";
 
 export default {
   name: "UpdateOrder",
-  components: { MiniSearchBar, WinesAdmOrder },
 
+  components: { MiniSearchBar, WinesAdmOrder },
+  data() {
+    return { showWines: false };
+  },
   created() {
     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
@@ -146,10 +141,21 @@ export default {
         query.charAt(0).toUpperCase() + query.slice(1),
       ]);
     },
-    async Delete(name, id) {
-      if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
-        await this.$store.dispatch("wines/deleteWine", id);
+    async deleteWine(id) {
+      if (confirm("Attention : Vous êtes sur le point de supprimer ")) {
+        await this.$store.dispatch("orders/delWine", [
+          this.$route.params.id,
+          { wineId: id },
+        ]);
+        await this.$store.dispatch(
+          "orders/findOneOrder",
+          this.$route.params.id
+        );
       }
+    },
+    show() {
+      this.showWines = !this.showWines;
+      console.log(this.showWines);
     },
   },
 };

@@ -2,9 +2,7 @@
   <div>
   <input class="m-10 rounded-md" type="search" v-model='query'> 
   <button type="search"  @click="searchWine(query)"> Search</button>
-
-  <input  class="m-5" type="radio" v-model='type' value='commande'> Commande
-  <button  class="m-5" type="button"> Ajout</button>
+  <button  class="m-5" type="button"  @click='crud()'> Ajout</button>
   </div>
 </template>
 
@@ -21,10 +19,13 @@ methods:{
     searchWine(query){
     this.$emit('searchWine', query)
   },
+   crud(){
+      this.$emit('toggleCrud')
+    }
   }
 
-
 }
+
 </script>
 
 <style>
