@@ -116,6 +116,20 @@ router.get("/region/:region", async (req, res) => {
     await client.close();
   }
 });
+router.get("/pays/:pays", async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db("babel");
+    const wineCol = database.collection("wines");
+    const q = req.params.pays
+
+    const query = { pays:  {$regex : new RegExp(q)} };
+    const wine = await wineCol.find(query).toArray();
+    res.send(wine);
+  } finally {
+    await client.close();
+  }
+});
 
 router.put("/:id", async (req, res) => {
   try {

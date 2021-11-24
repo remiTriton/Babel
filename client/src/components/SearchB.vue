@@ -35,17 +35,17 @@
           />
           <div class="mt-4">
             <div class="mt-2">
-              <label class="inline-flex items-center">
+                 <label class="inline-flex items-center ml-6">
                 <input
                   type="radio"
                   class="form-radio"
                   name="accountType"
                   v-model="type"
-                  value="region"
+                  value="search"
                 />
-                <span class="text-gray-500 ml-2">Département</span>
+                <span class="text-gray-500 ml-2">Cuvée</span>
               </label>
-              <label class="inline-flex items-center ml-6">
+                 <label class="inline-flex items-center ml-6">
                 <input
                   type="radio"
                   class="form-radio"
@@ -55,16 +55,28 @@
                 />
                 <span class="text-gray-500 ml-2">Domaine</span>
               </label>
+                 <label class="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  value="pays"
+                  v-model="type"
+                />
+                <span class="text-gray-500 ml-2">Pays</span>
+              </label>
               <label class="inline-flex items-center ml-6">
                 <input
                   type="radio"
                   class="form-radio"
                   name="accountType"
                   v-model="type"
-                  value="search"
+                  value="region"
                 />
-                <span class="text-gray-500 ml-2">Nom</span>
+                <span class="text-gray-500 ml-2">Région</span>
               </label>
+           
+           
             </div>
           </div></v-form
         >
