@@ -4,7 +4,7 @@
   <button type="search"  @click="searchWine(query)"> Search</button>
 
   <input  class="m-5" type="radio" v-model='type' value='commande'> Commande
-  <input  class="m-5" type="radio" v-model='type' value='vins'> Ajout
+  <button  class="m-5" type="button"  value='vins'> Ajout</button>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ data(){
     }
 },
 methods:{
-    searchWine(query){tigh
+    searchWine(query){
     this.$emit('searchWine', query)
   },
   }
