@@ -1,7 +1,6 @@
 <template>
   <div class="md:pl-64 flex flex-col flex-1">
     <SearchB v-on:searchWine="search" v-on:color="filter" />
-    <!-- <p class="text-black">{{ order }}</p> -->
     <main class="flex-1">
       <div class="py-6">
         <div class="mx-auto px-4 sm:px-6 md:px-8">
@@ -355,8 +354,6 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
-  props: ["command"],
-
   created() {
     this.$store.dispatch("wines/fetchWines");
   },

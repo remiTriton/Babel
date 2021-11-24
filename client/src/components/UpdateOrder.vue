@@ -1,19 +1,9 @@
 <template>
-  <div>
-    <MiniSearchBar  v-on:searchWine="search" />
-  <div
-    px-6
-    py-3
-    text-center
-    text-xs
-    font-medium
-    text-gray-500
-    uppercase
-    tracking-wider
-  >
+  <div class="mt-10">
+    <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
 
-    <div>
-      <table class="table-auto">
+    <div class="mx-60">
+      <table class="table-auto mx-96">
         <thead>
           <tr>
             <th
@@ -58,40 +48,6 @@
             >
               Quantité
             </th>
-            <th>
-              <div>
-                <button
-                  v-if="!command"
-                  @click="nouveauBon(auth.user.email)"
-                  type="button"
-                  class="
-                    B
-                    px-6
-                    py-3
-                    text-center text-xs
-                    font-medium
-                    text-gray-500
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </th>
           </tr>
         </thead>
 
@@ -105,6 +61,23 @@
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             <input v-model="wine.quantite" type="number" />
           </td>
+          <button @click.prevent="Delete(wine._id)" class="remove">
+            <td class="px-6 py-4 whitespace-nowrap">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                stroke="red"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </td>
+          </button>
           <td>
             <button
               @click.prevent="
@@ -131,24 +104,29 @@
         </tbody>
       </table>
     </div>
-    <button class="text-black">Valider commande</button>
-  </div>
-  <div>Commandé par : {{ order.userEmail }}</div>
+
+    <button class="btn bg-green-900 text-2xl ml-5 rounded-full py-3 px-6">
+      ↵
+    </button>
+
+    <div>Commandé par : {{ order.userEmail }}</div>
+    <div v-if="showWines"><WinesAdmOrder /></div>
   </div>
 </template>
 
 <script>
-
-import MiniSearchBar from './MiniSearchBar.vue';
-
+import MiniSearchBar from "./MiniSearchBar.vue";
+import WinesAdmOrder from "./WinesAdmOrder.vue";
 
 export default {
   name: "UpdateOrder",
 
-  components:{MiniSearchBar},
-
+  components: { MiniSearchBar, WinesAdmOrder },
+  data() {
+    return { showWines: false };
+  },
   created() {
-   this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
+    this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
   computed: {
     order() {
@@ -162,8 +140,19 @@ export default {
         { cuvee: cuvee, couleur: couleur, quantite: quantite },
       ]);
     },
-    async search(query) {
-      await this.$store.dispatch("wines/searchWinesByName", ["search", query.charAt(0).toUpperCase()+query.slice(1)]);
+    search(query) {
+      return order.filter((order) => {
+        return this.order.wines.cuvee.indexOf(query) > -1;
+      });
+    },
+    async Delete(name, id) {
+      if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
+        await this.$store.dispatch("wines/deleteWine", id);
+      }
+    },
+    show() {
+      this.showWines = !this.showWines;
+      console.log(this.showWines);
     },
   },
 };
@@ -173,13 +162,11 @@ export default {
 * {
   color: gray;
 }
-
-.B {
-  color: #2a574c;
-}
-
 .round {
   background-color: #2a574c;
+  color: white;
+}
+.btn {
   color: white;
 }
 </style>
