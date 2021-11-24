@@ -124,4 +124,20 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
+router.get("/:id/:cuvee", async (req, res) => {
+    try {
+      await client.connect();
+      const database = client.db("babel");
+      const orderCol = database.collection("orders");
+      const query = { _id: req.params.id,
+            wines:{$elemMatch:{cuvee :req.params.cuvee }}};
+      const order = await orderCol.findOne();
+      res.send(order);
+      console.log(query);
+    } finally {
+      await client.close();
+    }
+  });
+
+
 module.exports = router;
