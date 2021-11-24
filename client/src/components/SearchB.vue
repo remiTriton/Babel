@@ -19,7 +19,8 @@
               />
             </svg>
           </button>
-          <input
+          <input 
+              v-on:keyup.enter="searchWine(type, query)"
               type="text"
               name="name"
               placeholder="Search..."
