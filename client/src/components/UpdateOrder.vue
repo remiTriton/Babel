@@ -1,6 +1,6 @@
 <template>
   <div class="mt-10">
-    <MiniSearchBar v-on:searchWine="search" />
+    <MiniSearchBar v-on:searchWine="search" v-bind:crudWine="crudWine" />
 
     <div class="mx-96">
       <table class="table-auto mx-96">
@@ -148,8 +148,8 @@
     </button>
 
     <div>Commandé par : {{ order.userEmail }}</div>
+    <div v-if="crudWine"><WinesAdmOrder /></div>
   </div>
-  <WinesAdmOrder />
 </template>
 
 <script>
@@ -158,8 +158,9 @@ import WinesAdmOrder from "./WinesAdmOrder.vue";
 
 export default {
   name: "UpdateOrder",
-  components: { MiniSearchBar, WinesAdmOrder },
+  props: ["crudWine"],
 
+  components: { MiniSearchBar, WinesAdmOrder },
   created() {
     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },

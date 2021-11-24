@@ -4,7 +4,7 @@
   <button type="search"  @click="searchWine(query)"> Search</button>
 
   <input  class="m-5" type="radio" v-model='type' value='commande'> Commande
-  <input  class="m-5" type="radio" v-model='type' value='vins'> Ajout
+  <input  class="m-5" type="radio" @click.prevent='crud()' value='vins'> Ajout
   </div>
 </template>
 
@@ -15,15 +15,22 @@ name :"MiniSearchBar",
 data(){
     return{
         query:"",
+        crudWine:false,
     }
 },
 methods:{
-    searchWine(query){tigh
+    searchWine(query){
     this.$emit('searchWine', query)
   },
+  async crud(){
+    if(this.crudWine == false){
+     return this.crudWine == true
+    }else{
+      return this.crudWine == false
+    }
   }
 
-
+}
 }
 </script>
 
