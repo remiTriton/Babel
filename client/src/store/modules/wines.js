@@ -32,6 +32,13 @@ const wines = {
       context.commit("setwine", data);
     },
 
+    async getWineQuantity ( context, _id){
+      const res = await fetch("/api/wines/" + _id)
+      const data = await res.json();
+      context.commit("setwine", data.quantite);
+      console.log(data.quantite)
+    },
+    
     //On cherche un wines 
 
     async searchWinesByName(context, [type, query]) {

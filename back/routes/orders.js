@@ -128,19 +128,13 @@ router.get("/wine/:id", async (req, res) => {
         await client.connect();
         const database = client.db("babel");
         const orderCol = database.collection("orders");
-        // // const query = {
-        // //     _id: new ObjectId(req.params.id),
-        // //     wines:  { cuvee: {$eq:req.body.cuvee}} } 
-        // // ;
-        // // const order = await orderCol.findOne(query);
-        // const order = orderCol.aggregate([
-        //     {$unwind:"$wines"},
-        //     {$match:{"wines.cuvee":req.body.cuvee}}
-        // ])
-
-       const order =  await orderCol.find({
-            _id:new ObjectId(req.params.id),
-            wines : { $elemMatch : {cuvee : req.body.cuvee, couleur : "Rouge"}}
+        const order = await orderCol.find({
+            _id: new ObjectId(req.params.id),
+            wines: {
+                $elemMatch: {
+                    cuvee: req.body.cuvee,
+                }
+            }
         }).toArray();
         res.send(order);
     } finally {

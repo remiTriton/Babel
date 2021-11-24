@@ -105,7 +105,10 @@
       </table>
     </div>
 
-    <button class="btn bg-green-900 text-2xl ml-5 rounded-full py-3 px-6">
+    <button
+      @click.prevent="confirm()"
+      class="btn bg-green-900 text-2xl ml-5 rounded-full py-3 px-6"
+    >
       ↵
     </button>
 
@@ -147,12 +150,27 @@ export default {
     },
     async Delete(name, id) {
       if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
-        await this.$store.dispatch("wines/deleteWine", id);
+        await this.$store.dispatch("wines/de<leteWine", id);
       }
     },
     show() {
       this.showWines = !this.showWines;
       console.log(this.showWines);
+    },
+    async confirm() {
+      for (let i = 0; i < this.order.wines.length; i++) {
+        const res = await fetch("/api/wines/" + this.order.wines[i].wineId);
+        const data = await res.json();
+        const quantity = data.quantite;
+
+        await this.$store.dispatch("wines/updateWine", [
+          this.order.wines[i].wineId,
+          {
+            quantite: quantity - this.order.wines[i].quantite,
+          },
+        ]);
+        console.log(this.order.wines[i].wineId);
+      }
     },
   },
 };
