@@ -155,7 +155,6 @@ export default {
     },
     show() {
       this.showWines = !this.showWines;
-      console.log(this.showWines);
     },
     async confirm() {
       for (let i = 0; i < this.order.wines.length; i++) {
@@ -169,7 +168,6 @@ export default {
             quantite: quantity - this.order.wines[i].quantite,
           },
         ]);
-        console.log(this.order.wines[i].wineId);
       }
     },
   },
