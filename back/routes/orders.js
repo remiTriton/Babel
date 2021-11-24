@@ -23,12 +23,12 @@ router.post("/", async (req, res) => {
         const database = client.db("babel");
         const orderCol = database.collection("orders");
         const wineCol = database.collection('wines');
-        if(req.body.id){
+        if (req.body.id) {
             const id = req.body.id;
             const product = await wineCol.findOne(new ObjectId(id));
             // create a document to insert
             const doc = {
-                userEmail : req.body.email,
+                userEmail: req.body.email,
                 wines:
                     [{
                         id: product._id,
@@ -38,14 +38,14 @@ router.post("/", async (req, res) => {
             };
             const result = await orderCol.insertOne(doc);
             res.send(result);
-        }else{
+        } else {
             const doc = {
-                userEmail : req.body.email,
+                userEmail: req.body.email,
             };
             const result = await orderCol.insertOne(doc);
             res.send(result);
         }
-       
+
     } finally {
         await client.close();
     }
@@ -98,10 +98,10 @@ router.put("/confirm/:id", async (req, res) => {
         await client.connect();
         const database = client.db("babel");
         const orderCol = database.collection("orders");
-        const result =   await orderCol.updateOne(
-            { _id: new ObjectId(req.params.id), "wines.cuvee" : req.body.cuvee, "wines.couleur" : req.body.couleur },
+        const result = await orderCol.updateOne(
+            { _id: new ObjectId(req.params.id), "wines.cuvee": req.body.cuvee, "wines.couleur": req.body.couleur },
             {
-                $set:{"wines.$.quantite" : req.body.quantite}
+                $set: { "wines.$.quantite": req.body.quantite }
             }
         );
         res.send(result);
@@ -123,20 +123,30 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-router.get("/:id/:cuvee", async (req, res) => {
+router.get("/wine/:id", async (req, res) => {
     try {
-      await client.connect();
-      const database = client.db("babel");
-      const orderCol = database.collection("orders");
-      const query = { _id: req.params.id,
-            wines:{$elemMatch:{cuvee :req.params.cuvee }}};
-      const order = await orderCol.findOne();
-      res.send(order);
-      console.log(query);
+        await client.connect();
+        const database = client.db("babel");
+        const orderCol = database.collection("orders");
+        // // const query = {
+        // //     _id: new ObjectId(req.params.id),
+        // //     wines:  { cuvee: {$eq:req.body.cuvee}} } 
+        // // ;
+        // // const order = await orderCol.findOne(query);
+        // const order = orderCol.aggregate([
+        //     {$unwind:"$wines"},
+        //     {$match:{"wines.cuvee":req.body.cuvee}}
+        // ])
+
+       const order =  await orderCol.find({
+            _id:new ObjectId(req.params.id),
+            wines : { $elemMatch : {cuvee : req.body.cuvee, couleur : "Rouge"}}
+        }).toArray();
+        res.send(order);
     } finally {
-      await client.close();
+        await client.close();
     }
-  });
+});
 
 
 module.exports = router;
