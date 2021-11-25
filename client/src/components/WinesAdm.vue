@@ -377,7 +377,7 @@ export default {
     async addToOrder(order, wine, quantite) {
       await this.$store.dispatch("orders/addProductToOrder", [
         order,
-        {
+        { status:'En cours',
           id: wine,
           quantite: quantite,
         },

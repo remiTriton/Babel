@@ -29,6 +29,7 @@ router.post("/", async (req, res) => {
             // create a document to insert
             const doc = {
                 userEmail: req.body.email,
+                status: 'Waiting',
                 wines:
                     [{
                         id: product._id,
@@ -76,6 +77,7 @@ router.put("/:id", async (req, res) => {
         await orderCol.updateOne(
             { _id: new ObjectId(req.params.id) },
             {
+                $set: { status: req.body.status },
                 $push: {
                     wines:
                     {
@@ -92,6 +94,23 @@ router.put("/:id", async (req, res) => {
         await client.close();
     }
 });
+router.put("/validate/:id", async (req, res) => {
+    try {
+        await client.connect();
+        const database = client.db("babel");
+        const orderCol = database.collection("orders");
+        await orderCol.updateOne(
+            { _id: new ObjectId(req.params.id) },
+            {
+                $set: { status: req.body.status }
+            }
+        );
+        res.send("Order updated");
+    } finally {
+        await client.close();
+    }
+});
+
 
 router.put("/confirm/:id", async (req, res) => {
     try {

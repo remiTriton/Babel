@@ -53,16 +53,26 @@
 
         <tbody v-for="wine in order.wines" :key="wine.id">
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            <input v-model="wine.cuvee" />
+            <input v-if="order.status != 'Confirmed'" v-model="wine.cuvee" />
+            <p v-else class="text-gray-500 text-sm">{{ wine.cuvee }}</p>
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            <input v-model="wine.couleur" />
+            <input v-if="order.status != 'Confirmed'" v-model="wine.couleur" />
+            <p v-else class="text-gray-500 text-sm">{{ wine.couleur }}</p>
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            <input v-model="wine.quantite" type="number" />
+            <input
+              v-if="order.status != 'Confirmed'"
+              v-model="wine.quantite"
+              type="number"
+            />
+            <p v-else class="text-gray-500 text-sm">{{ wine.quantite }}</p>
           </td>
           <button @click.prevent="Delete(wine._id)" class="remove">
-            <td class="px-6 py-4 whitespace-nowrap">
+            <td
+              class="px-6 py-4 whitespace-nowrap"
+              v-if="order.status != 'Confirmed'"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6"
@@ -78,7 +88,7 @@
               </svg>
             </td>
           </button>
-          <td>
+          <td v-if="order.status != 'Confirmed'">
             <button
               @click.prevent="
                 updateOrd(wine.cuvee, wine.couleur, wine.quantite)
@@ -103,6 +113,7 @@
           </td>
         </tbody>
       </table>
+      <div>Commandé par : {{ order.userEmail }}</div>
     </div>
 
     <button
@@ -112,7 +123,6 @@
       ↵
     </button>
 
-    <div>Commandé par : {{ order.userEmail }}</div>
     <div v-if="showWines"><WinesAdmOrder /></div>
   </div>
 </template>
@@ -150,13 +160,17 @@ export default {
     },
     async Delete(name, id) {
       if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
-        await this.$store.dispatch("wines/de<leteWine", id);
+        await this.$store.dispatch("wines/deleteWine", id);
       }
     },
     show() {
       this.showWines = !this.showWines;
     },
     async confirm() {
+      if (this.order.status == "Confirmed") {
+        console.log("nope");
+        return;
+      }
       for (let i = 0; i < this.order.wines.length; i++) {
         const res = await fetch("/api/wines/" + this.order.wines[i].wineId);
         const data = await res.json();
@@ -169,6 +183,14 @@ export default {
           },
         ]);
       }
+      await this.$store.dispatch("orders/validateOrder", [
+        this.$route.params.id,
+        {
+          status: "Confirmed",
+        },
+      ]);
+
+      this.$router.push("/Admin");
     },
   },
 };

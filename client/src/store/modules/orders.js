@@ -68,6 +68,17 @@ const orders = {
 
       context.commit('setOrder')
     },
+    async validateOrder(context, [id, order]) {
+      await fetch("/api/orders/validate/" + id, {
+        "method": "PUT",
+        body: JSON.stringify(order),
+        "headers": {
+          "Content-type": "application/json",
+        }
+      });
+
+      context.commit('setOrder')
+    },
     async updateOrder(context, [id, order]) {
       await fetch("/api/orders/confirm/" + id, {
         "method": "PUT",
