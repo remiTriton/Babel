@@ -3,13 +3,12 @@ const { MongoClient, ObjectId } = require("mongodb");
 const router = express.Router();
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
+const database = client.db("babel");
+const wineCol = database.collection("wines");
 
 router.get("/", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
-
     const wines = await wineCol.find().toArray();
     res.send(wines);
   } finally {
@@ -20,8 +19,6 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
     const query = { _id: new ObjectId(req.params.id) };
     const wine = await wineCol.findOne(query);
     res.send(wine);
@@ -33,9 +30,6 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
-
     // create a document to insert
     const doc = {
       cuvee: req.body.cuvee,
@@ -62,8 +56,6 @@ router.get("/search/:cuvee", async (req, res) => {
   try {
     await client.connect();
     const q = req.params.cuvee
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
     const wine =  await wineCol.find({ cuvee: {$regex : new RegExp(q)}}).toArray();
     res.send(wine);
     console.log(q);
@@ -78,8 +70,6 @@ router.get("/domain/:domaine", async (req, res) => {
   try {
     await client.connect();
     const q = req.params.domaine
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
     const wine =  await wineCol.find({ domaine: {$regex : new RegExp(q)}}).toArray();
     res.send(wine);
     console.log(wine);
@@ -91,8 +81,6 @@ router.get("/domain/:domaine", async (req, res) => {
 router.get("/color/:couleur", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
     const query = { couleur: req.params.couleur };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
@@ -105,10 +93,7 @@ router.get("/color/:couleur", async (req, res) => {
 router.get("/region/:region", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
     const q = req.params.region
-
     const query = { region:  {$regex : new RegExp(q)} };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
@@ -119,10 +104,7 @@ router.get("/region/:region", async (req, res) => {
 router.get("/pays/:pays", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
     const q = req.params.pays
-
     const query = { pays:  {$regex : new RegExp(q)} };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
@@ -134,8 +116,6 @@ router.get("/pays/:pays", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
     await wineCol.updateOne(
       { _id: new ObjectId(req.params.id) },
       {
@@ -152,9 +132,6 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     await client.connect();
-    const database = client.db("babel");
-    const wineCol = database.collection("wines");
-
     const query = { _id: new ObjectId(req.params.id) };
     await wineCol.deleteOne(query);
     res.send("Successfully deleted!");

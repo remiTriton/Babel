@@ -3,13 +3,13 @@ const { MongoClient, ObjectId } = require("mongodb");
 const router = express.Router();
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
-
+const database = client.db("babel");
+const orderCol = database.collection("orders");
+const wineCol = database.collection('wines');
 
 router.get("/", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
         const orders = await orderCol.find().toArray();
         res.send(orders);
     } finally {
@@ -20,9 +20,6 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
-        const wineCol = database.collection('wines');
         if (req.body.id) {
             const id = req.body.id;
             const product = await wineCol.findOne(new ObjectId(id));
@@ -41,6 +38,8 @@ router.post("/", async (req, res) => {
             res.send(result);
         } else {
             const doc = {
+                Created: Date(),
+
                 userEmail: req.body.email,
             };
             const result = await orderCol.insertOne(doc);
@@ -55,8 +54,6 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
         const query = { _id: new ObjectId(req.params.id) };
         const order = await orderCol.findOne(query);
         res.send(order);
@@ -69,9 +66,6 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
-        const wineCol = database.collection('wines');
         const id = req.body.id;
         const product = await wineCol.findOne(new ObjectId(id));
         await orderCol.updateOne(
@@ -97,8 +91,6 @@ router.put("/:id", async (req, res) => {
 router.put("/validate/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
         await orderCol.updateOne(
             { _id: new ObjectId(req.params.id) },
             {
@@ -115,8 +107,6 @@ router.put("/validate/:id", async (req, res) => {
 router.put("/confirm/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
         const result = await orderCol.updateOne(
             { _id: new ObjectId(req.params.id), "wines.cuvee": req.body.cuvee, "wines.couleur": req.body.couleur },
             {
@@ -132,8 +122,6 @@ router.put("/confirm/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
         const query = { _id: new ObjectId(req.params.id) };
         await orderCol.deleteOne(query);
         res.send("Successfully deleted!");
@@ -145,8 +133,6 @@ router.delete("/:id", async (req, res) => {
 router.get("/wine/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const orderCol = database.collection("orders");
         const order = await orderCol.find({
             _id: new ObjectId(req.params.id),
             wines: {

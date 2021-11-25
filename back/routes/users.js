@@ -5,12 +5,13 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
+const database = client.db('babel');
+const userCol = database.collection('users');
+
 
 router.get('/', async (req, res) => {
     try {
         await client.connect();
-        const database = client.db('babel');
-        const userCol = database.collection('users');
         const users = await userCol.find().toArray();
         res.send(users);
     } finally {
@@ -21,8 +22,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         await client.connect();
-        const database = client.db('babel');
-        const userCol = database.collection('users');
         const query = { _id: new ObjectId(req.params.id) };
         const users = await userCol.findOne(query);
         res.send(users);
@@ -34,8 +33,6 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         await client.connect();
-        const database = client.db('babel');
-        const userCol = database.collection("users")
         // create a document to insert
         const doc = {
             firstName: req.body.firstName,
@@ -76,7 +73,6 @@ router.post('/', async (req, res) => {
                 id: result
             }));
         }
-
     } finally {
         await client.close();
     }
@@ -87,8 +83,6 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     await client.connect();
-    const database = client.db('babel');
-    const userCol = database.collection("users");
     const { email, password } = req.body
     // Match user
     userCol.findOne({
@@ -123,8 +117,6 @@ router.post('/login', async (req, res) => {
 router.put("/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const userCol = database.collection("users");
         await userCol.updateOne(
             { _id: new ObjectId(req.params.id) },
             {
@@ -141,8 +133,6 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         await client.connect();
-        const database = client.db("babel");
-        const userCol = database.collection("users");
         const query = { _id: new ObjectId(req.params.id) };
         await userCol.deleteOne(query);
         res.send("Successfully deleted!");

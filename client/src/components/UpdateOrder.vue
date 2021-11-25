@@ -190,7 +190,7 @@ export default {
         },
       ]);
 
-      this.$router.push("/Admin");
+      this.$router.back(-1);
     },
   },
 };
