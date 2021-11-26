@@ -145,7 +145,7 @@
           </div>
 
           <div class="mt-6">
-            <v-form @submit.prevent.stop class="space-y-6">
+            <form @submit.prevent.stop class="space-y-6">
               <div>
                 <label
                   for="email"
@@ -215,7 +215,6 @@
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
                   <input
-                    v-model="remember"
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
@@ -264,7 +263,7 @@
                   Sign Up
                 </button>
               </div>
-            </v-form>
+            </form>
           </div>
         </div>
       </div>

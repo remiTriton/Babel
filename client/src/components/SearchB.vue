@@ -2,7 +2,7 @@
   <div>
     <div class="container mt-10">
       <div class="flex items-center text-black">
-        <v-form @submit.prevent.stop>
+        <form @submit.prevent.stop>
           <button type="submit" @click.prevent="searchWine(type, query)">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@
                 <span class="text-gray-500 ml-2">Région</span>
               </label>
             </div>
-          </div></v-form
+          </div></form
         >
       </div>
 

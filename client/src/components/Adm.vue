@@ -196,7 +196,6 @@
           </div>
           <div>
             <button
-            v-if='!order || (order && order.status == "Confirmed")'
               @click="nouveauBon(auth.user.email)"
               type="button"
               class="
@@ -281,6 +280,7 @@ export default {
       showUsers: false,
       showBills: false,
       command: false,
+      quantite:"",
     };
   },
   computed:{

@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-10">
+  <div class="mt-10" >
     <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
-    <div class="mx-60">
+    <div class="mx-60" v-if='order'>
       <table class="table-auto mx-96">
         <thead>
           <tr>

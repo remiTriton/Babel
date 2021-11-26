@@ -48,12 +48,6 @@
                       </div>
                     </div>
                   </div>
-
-                  <!-- <Multiselect
-                    class="text-black"
-                    v-model="selected"
-                    :options="options"             
-                  mode="tags" @select="toggleSelected(value)"></Multiselect> -->
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
@@ -283,7 +277,7 @@
                             "
                             @click="
                               addToOrder(
-                                order.insertedId || order._id,
+                                (order.insertedId || order._id ),
                                 wine._id,
                                 quantite
                               )
@@ -356,6 +350,11 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
+  data(){
+    return { 
+      quantite:"",
+    }
+  },
   created() {
     this.$store.dispatch("wines/fetchWines");
   },
@@ -375,7 +374,7 @@ export default {
 
     async addToOrder(order, wine, quantite) {
       await this.$store.dispatch("orders/addProductToOrder", [
-        order,
+        this.order._id,
         { status: "En cours", id: wine, quantite: quantite },
       ]);
       this.quantite = "";
