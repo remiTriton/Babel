@@ -283,9 +283,6 @@ export default {
       command: false,
     };
   },
-  created(){
-    this.$store.dispatch("auth/getOneUser")
-  },
   computed:{
     auth(){
       return this.$store.state.auth.token
