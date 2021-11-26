@@ -79,8 +79,7 @@ const orders = {
           "Content-type": "application/json",
         }
       });
-      let order = null;
-      context.commit('setOrder', order)
+      context.commit('setOrder')
     },
 
     //On modifie les quantites dans un order    
