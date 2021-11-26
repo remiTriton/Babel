@@ -1,7 +1,6 @@
 <template>
   <div class="mt-10">
     <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
-
     <div class="mx-60">
       <table class="table-auto mx-96">
         <thead>
@@ -127,15 +126,11 @@
 
 <script>
 import MiniSearchBar from "./MiniSearchBar.vue";
-import WinesAdmOrder from "./WinesAdmOrder.vue";
 
 export default {
-  name: "UpdateOrder",
+  name: "newOrder",
 
-  components: { MiniSearchBar, WinesAdmOrder },
-  data() {
-    return { showWines: false };
-  },
+  components: { MiniSearchBar },
   created() {
     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },

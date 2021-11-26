@@ -1,19 +1,18 @@
 <template>
   <div>
-      <UpdateOrder/>
-  <WinesAdm/>
+    <NewOrder />
+    <WinesAdmOrder />
   </div>
 </template>
 
 <script>
-import WinesAdmOrder from "../components/WinesAdm.vue"
-import UpdateOrder from "../components/UpdateOrder.vue"
+import WinesAdmOrder from "../components/WinesAdm.vue";
+import NewOrder from "../components/UpdateOrder.vue";
 
 export default {
-components:{ UpdateOrder, WinesAdmOrder}
-}
+  components: { NewOrder, WinesAdmOrder },
+};
 </script>
 
 <style>
-
 </style>
