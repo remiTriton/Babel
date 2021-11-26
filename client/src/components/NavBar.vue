@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div class=" flexo w-auto">
+  <div class=" flexo">
     <nav class="grid grid-cols-2 gap-1">
       <router-link
         to="/blog"
