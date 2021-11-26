@@ -1,6 +1,6 @@
 <template>
-  <div class="ml-80 mr-7 mt-10 border-dashed border-2 border-gray-600" v-if="order._id">
-    <p class="ml-5 text-gray-500 text-sm mt-10">Bon de commande en cours :</p>
+  <div class="ml-80 mr-16 mt-10 border-dashed border-2 border-gray-600" v-if="order._id">
+    <p class="ml-16 text-gray-500 text-sm mt-10">Bon de commande en cours :</p>
 <div class=" px-2 py-1 ">
     <table class="mx-auto table-auto mt-10 text-center border-2 border-light-blue-500 border-opacity-25">
       <thead>
