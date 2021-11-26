@@ -171,26 +171,32 @@ export default {
         console.log("nope");
         return;
       }
-      for (let i = 0; i < this.order.wines.length; i++) {
-        const res = await fetch("/api/wines/" + this.order.wines[i].wineId);
-        const data = await res.json();
-        const quantity = data.quantite;
+      if (
+        confirm(
+          "Attention, une fois validée, vous ne pourrez plus modifier le bon de commande."
+        )
+      ) {
+        for (let i = 0; i < this.order.wines.length; i++) {
+          const res = await fetch("/api/wines/" + this.order.wines[i].wineId);
+          const data = await res.json();
+          const quantity = data.quantite;
 
-        await this.$store.dispatch("wines/updateWine", [
-          this.order.wines[i].wineId,
+          await this.$store.dispatch("wines/updateWine", [
+            this.order.wines[i].wineId,
+            {
+              quantite: quantity - this.order.wines[i].quantite,
+            },
+          ]);
+        }
+        await this.$store.dispatch("orders/validateOrder", [
+          this.$route.params.id,
           {
-            quantite: quantity - this.order.wines[i].quantite,
+            status: "Confirmed",
           },
         ]);
       }
-      await this.$store.dispatch("orders/validateOrder", [
-        this.$route.params.id,
-        {
-          status: "Confirmed",
-        },
-      ]);
 
-      this.$router.back(-1);
+      this.$router.push('/Admin');
     },
   },
 };

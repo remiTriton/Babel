@@ -240,7 +240,7 @@
       </div>
     </div>
     <div v-if="add"><Add /></div>
-    <div v-if="showWines"><WinesAdm v-bind:command="command" /></div>
+    <div v-if="showWines"><WinesAdm /></div>
     <div v-if="showUsers"><Users /></div>
     <div v-if="showBills"><Orders /></div>
   </div>

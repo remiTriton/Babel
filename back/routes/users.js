@@ -8,7 +8,6 @@ const client = new MongoClient(uri);
 const database = client.db('babel');
 const userCol = database.collection('users');
 
-
 router.get('/', async (req, res) => {
     try {
         await client.connect();

@@ -130,7 +130,7 @@
                         </th>
 
                         <th
-                          v-if="command"
+                          v-if="order"
                           scope="col"
                           class="
                             px-6
@@ -146,7 +146,7 @@
                         </th>
 
                         <th
-                          v-if="command"
+                          v-if="order"
                           scope="col"
                           class="
                             px-6
@@ -240,7 +240,7 @@
                         >
                           {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
                         </td>
-                        <td v-if="command">
+                        <td v-if="order">
                           <input
                             v-model="quantite"
                             class="
@@ -262,7 +262,7 @@
                             placeholder="0"
                           />
                         </td>
-                        <td v-if="command">
+                        <td v-if="order">
                           <button
                             type="button"
                             class="
@@ -328,7 +328,7 @@
                     </tbody>
                   </table>
                   <router-link
-                    v-if="order._id"
+                    v-if="order"
                     :to="{
                       name: 'updateOrder',
                       params: { id: order._id || order.insertedId },
@@ -355,8 +355,6 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
-  props: ["command"],
-
   created() {
     this.$store.dispatch("wines/fetchWines");
   },
@@ -364,9 +362,9 @@ export default {
     wines() {
       return this.$store.state.wines.wines;
     },
-    order() {
-      return this.$store.state.orders.order;
-    },
+    order(){
+      return this.$store.state.orders.order
+    }
   },
   methods: {
     toggle() {
@@ -385,15 +383,18 @@ export default {
       this.quantite = "";
       await this.$store.dispatch("orders/findOneOrder", order);
     },
+
     async search(type, query) {
       await this.$store.dispatch("wines/searchWinesByName", [
         type,
         query.charAt(0).toUpperCase() + query.slice(1),
       ]);
     },
+
     async filter(couleur) {
       await this.$store.dispatch("wines/searchWinesByColor", couleur);
     },
+
     async Delete(name, id) {
        if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
       await this.$store.dispatch("wines/deleteWine", id);

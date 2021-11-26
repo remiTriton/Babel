@@ -354,11 +354,6 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
-  data(){
-    return{ 
-      command:true,
-    }
-  },
   created() {
     this.$store.dispatch("wines/fetchWines");
   },

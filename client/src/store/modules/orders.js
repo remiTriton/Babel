@@ -32,9 +32,7 @@ const orders = {
       context.commit("setOrder", data);
     },
 
-    //On cherche un orders 
-
-    //delete one wine
+    //On supprime un order 
     async deleteOrder(context, _id) {
       await fetch("/api/orders/" + _id, {
         "method": "DELETE",
@@ -43,6 +41,8 @@ const orders = {
       const data = await res.json();
       context.commit("setOrders", data);
     },
+
+    //Nouvel order
 
     async newOrder(context, body) {
       const res = await fetch("/api/orders/", {
@@ -57,6 +57,8 @@ const orders = {
       context.commit('setOrder', data)
     },
 
+    //On ajoute un vin au Bon
+
     async addProductToOrder(context, [id, order]) {
       await fetch("/api/orders/" + id, {
         "method": "PUT",
@@ -65,20 +67,23 @@ const orders = {
           "Content-type": "application/json",
         }
       });
-
       context.commit('setOrder')
     },
-    async validateOrder(context, [id, order]) {
+
+    //On valide un bon ( plus modifiable par la suite )
+    async validateOrder(context, [id, body]) {
       await fetch("/api/orders/validate/" + id, {
         "method": "PUT",
-        body: JSON.stringify(order),
+        body: JSON.stringify(body),
         "headers": {
           "Content-type": "application/json",
         }
       });
-
-      context.commit('setOrder')
+      let order = null;
+      context.commit('setOrder', order)
     },
+
+    //On modifie les quantites dans un order    
     async updateOrder(context, [id, order]) {
       await fetch("/api/orders/confirm/" + id, {
         "method": "PUT",
@@ -87,7 +92,8 @@ const orders = {
           "Content-type": "application/json",
         }
       });
-    }
+      context.commit('setOrder')
+    },
   }
 }
 export default orders;
