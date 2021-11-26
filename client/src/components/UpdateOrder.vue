@@ -122,8 +122,6 @@
     >
       ↵
     </button>
-
-    <div v-if="showWines"><WinesAdmOrder /></div>
   </div>
 </template>
 
