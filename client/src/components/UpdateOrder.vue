@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-10" >
+  <div class="mt-10">
     <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
-    <div class="mx-60" v-if='order'>
+    <div class="mx-60" v-if="order">
       <table class="table-auto mx-96">
         <thead>
           <tr>
@@ -67,7 +67,7 @@
             />
             <p v-else class="text-gray-500 text-sm">{{ wine.quantite }}</p>
           </td>
-          <button @click.prevent="Delete(wine._id)" class="remove">
+          <button @click.prevent="Delete(wine.wineId)" class="remove">
             <td
               class="px-6 py-4 whitespace-nowrap"
               v-if="order.status != 'Confirmed'"
@@ -131,8 +131,8 @@ export default {
   name: "newOrder",
 
   components: { MiniSearchBar },
-   created() {
-     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
+  created() {
+    this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
   computed: {
     order() {
@@ -151,46 +151,55 @@ export default {
         return this.order.wines.cuvee.indexOf(query) > -1;
       });
     },
-    async Delete(name, id) {
-      if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
-        await this.$store.dispatch("wines/deleteWine", id);
-      }
-    },
+  
     show() {
       this.showWines = !this.showWines;
     },
-    
+
+    async Delete(id) {
+      if (confirm("Attention : Vous êtes sur le point de supprimer ")) {
+        await this.$store.dispatch("orders/delWine", [
+          this.$route.params.id,
+          { wineId: id },
+        ]);
+        await this.$store.dispatch(
+          "orders/findOneOrder",
+          this.$route.params.id
+        );
+      }
+    },
     async confirm() {
       if (this.order.status == "Confirmed") {
         console.log("nope");
         return;
-      }else{
-      if (
-        confirm(
-          "Attention, une fois validée, vous ne pourrez plus modifier le bon de commande."
-        )
-      ) {
-        for (let i = 0; i < this.order.wines.length; i++) {
-          const res = await fetch("/api/wines/" + this.order.wines[i].wineId);
-          const data = await res.json();
-          const quantity = data.quantite;
+      } else {
+        if (
+          confirm(
+            "Attention, une fois validée, vous ne pourrez plus modifier le bon de commande."
+          )
+        ) {
+          for (let i = 0; i < this.order.wines.length; i++) {
+            const res = await fetch("/api/wines/" + this.order.wines[i].wineId);
+            const data = await res.json();
+            const quantity = data.quantite;
 
-          await this.$store.dispatch("wines/updateWine", [
-            this.order.wines[i].wineId,
+            await this.$store.dispatch("wines/updateWine", [
+              this.order.wines[i].wineId,
+              {
+                quantite: quantity - this.order.wines[i].quantite,
+              },
+            ]);
+          }
+          await this.$store.dispatch("orders/validateOrder", [
+            this.$route.params.id,
             {
-              quantite: quantity - this.order.wines[i].quantite,
+              status: "Confirmed",
             },
           ]);
         }
-        await this.$store.dispatch("orders/validateOrder", [
-          this.$route.params.id,
-          {
-            status: "Confirmed",
-          },
-        ]);
+        this.$router.push("/Admin");
       }
-      this.$router.push('/Admin');
-    }},
+    },
   },
 };
 </script>

@@ -147,5 +147,21 @@ router.get("/wine/:id", async (req, res) => {
     }
 });
 
+router.put("/deleteOneWine/:id", async (req, res) => {
+    try {
+        await client.connect();
+        const order = await orderCol.updateOne({
+
+            _id: new ObjectId(req.params.id)
+        },
+            { $pull: { wines: { wineId: ObjectId(req.body.wineId) } } },
+            { multi: true }
+        );
+        res.send(order)
+    } finally {
+        await client.close();
+    }
+});
+
 
 module.exports = router;
