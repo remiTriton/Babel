@@ -2,7 +2,7 @@ import Vuex from "vuex";
 import wines from './modules/wines';
 import auth from './modules/auth';
 import orders from './modules/orders';
-import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from 'vuex-persistedstate';
 
 export default new Vuex.Store({
   name: "store",
