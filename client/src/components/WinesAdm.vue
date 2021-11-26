@@ -49,11 +49,6 @@
                     </div>
                   </div>
 
-                  <!-- <Multiselect
-                    class="text-black"
-                    v-model="selected"
-                    :options="options"             
-                  mode="tags" @select="toggleSelected(value)"></Multiselect> -->
                   <table class="w-full divide-y divide-gray-200">
                     <thead class="head bg-gray-50">
                       <tr>
@@ -130,7 +125,7 @@
                         </th>
 
                         <th
-                          v-if="order"
+                          v-if="order && order.status != 'Confirmed'"
                           scope="col"
                           class="
                             px-6
@@ -146,7 +141,7 @@
                         </th>
 
                         <th
-                          v-if="order"
+                          v-if="order && order.status != 'Confirmed'"
                           scope="col"
                           class="
                             px-6
@@ -240,7 +235,7 @@
                         >
                           {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
                         </td>
-                        <td v-if="order">
+                        <td v-if="order && order.status != 'Confirmed'">
                           <input
                             v-model="quantite"
                             class="
@@ -262,7 +257,7 @@
                             placeholder="0"
                           />
                         </td>
-                        <td v-if="order">
+                        <td v-if="order && order.status != 'Confirmed'">
                           <button
                             type="button"
                             class="
@@ -328,12 +323,13 @@
                     </tbody>
                   </table>
                   <router-link
-                    v-if="order && (order._id || order.insertedId)"
-                    :to="{
-                      name: 'updateOrder',
-                      params: { id: order._id || order.insertedId },
+                    v-if="order &&  (order._id || order.insertedId) && order.status != 'Confirmed'"
+                    :to="{name: 'updateOrder',
+                      params: { id: order._id || order.insertedId }
                     }"
-                    ><button class="text-gray-900">Valider</button></router-link
+                    ><button class="text-gray-900">
+                      Valider
+                    </button></router-link
                   >
                 </div>
               </div>
@@ -355,6 +351,12 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
+
+  data(){
+    return {
+      quantite: "",
+    }
+  },
   created() {
     this.$store.dispatch("wines/fetchWines");
   },
@@ -362,9 +364,9 @@ export default {
     wines() {
       return this.$store.state.wines.wines;
     },
-    order(){
-      return this.$store.state.orders.order
-    }
+    order() {
+      return this.$store.state.orders.order;
+    },
   },
   methods: {
     toggle() {
@@ -375,10 +377,7 @@ export default {
     async addToOrder(order, wine, quantite) {
       await this.$store.dispatch("orders/addProductToOrder", [
         order,
-        { status:'En cours',
-          id: wine,
-          quantite: quantite,
-        },
+        { status: "En cours", id: wine, quantite: quantite },
       ]);
       this.quantite = "";
       await this.$store.dispatch("orders/findOneOrder", order);
@@ -396,9 +395,9 @@ export default {
     },
 
     async Delete(name, id) {
-       if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
-      await this.$store.dispatch("wines/deleteWine", id);
-       }
+      if (confirm("Attention : Vous êtes sur le point de supprimer " + name)) {
+        await this.$store.dispatch("wines/deleteWine", id);
+      }
     },
   },
 };

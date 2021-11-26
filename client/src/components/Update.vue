@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="formulaire">
-      <v-form @submit.prevent.stop class="w-full max-w-lg mt-20">
+      <form @submit.prevent.stop class="w-full max-w-lg mt-20">
         <div class="flex flex-wrap -mx-1 mb-6 mt-6">
           <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
             <label
@@ -465,7 +465,7 @@
         >
           Submit
         </button>
-      </v-form>
+      </form>
     </div>
   </div>
 </template>

@@ -196,7 +196,7 @@
           </div>
           <div>
             <button
-            v-if='!command'
+            
               @click="nouveauBon(auth.user.email)"
               type="button"
               class="
@@ -276,6 +276,7 @@ export default {
   },
   data() {
     return {
+      quantite: "",
       add: false,
       showWines: true,
       showUsers: false,
@@ -286,6 +287,9 @@ export default {
   computed:{
     auth(){
       return this.$store.state.auth.token
+    },
+    order(){
+      return this.$store.state.orders.order
     }
   },
   methods: {

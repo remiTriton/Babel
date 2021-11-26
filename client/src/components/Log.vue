@@ -145,7 +145,7 @@
           </div>
 
           <div class="mt-6">
-            <v-form @submit.prevent.stop class="space-y-6">
+            <form @submit.prevent.stop class="space-y-6">
               <div>
                 <label
                   for="email"
@@ -264,7 +264,7 @@
                   Sign Up
                 </button>
               </div>
-            </v-form>
+            </form>
           </div>
         </div>
       </div>
