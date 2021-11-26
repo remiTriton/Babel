@@ -159,6 +159,7 @@ export default {
     show() {
       this.showWines = !this.showWines;
     },
+    
     async confirm() {
       if (this.order.status == "Confirmed") {
         console.log("nope");
