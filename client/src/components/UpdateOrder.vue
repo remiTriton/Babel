@@ -131,8 +131,8 @@ export default {
   name: "newOrder",
 
   components: { MiniSearchBar },
-  created() {
-    this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
+   created() {
+     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
   computed: {
     order() {
@@ -163,7 +163,7 @@ export default {
       if (this.order.status == "Confirmed") {
         console.log("nope");
         return;
-      }
+      }else{
       if (
         confirm(
           "Attention, une fois validée, vous ne pourrez plus modifier le bon de commande."
@@ -188,9 +188,8 @@ export default {
           },
         ]);
       }
-
       this.$router.push('/Admin');
-    },
+    }},
   },
 };
 </script>

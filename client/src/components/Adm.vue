@@ -196,7 +196,7 @@
           </div>
           <div>
             <button
-            v-if='!command'
+            v-if='!order || (order && order.status == "Confirmed")'
               @click="nouveauBon(auth.user.email)"
               type="button"
               class="
@@ -286,6 +286,9 @@ export default {
   computed:{
     auth(){
       return this.$store.state.auth.token
+    },
+    order(){
+      return this.$store.state.orders.order
     }
   },
   methods: {
