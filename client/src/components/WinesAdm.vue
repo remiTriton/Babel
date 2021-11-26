@@ -1,4 +1,5 @@
 <template>
+<Suspense>
   <div class="md:pl-64 flex flex-col flex-1">
     <SearchB v-on:searchWine="search" v-on:color="filter" />
     <!-- <p class="text-black">{{ order }}</p> -->
@@ -342,6 +343,7 @@
       </div>
     </main>
   </div>
+</Suspense>
 </template>
 
 <script>
