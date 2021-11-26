@@ -39,11 +39,11 @@ router.post("/", async (req, res) => {
         } else {
             const doc = {
                 Created: Date(),
-
                 userEmail: req.body.email,
             };
             const result = await orderCol.insertOne(doc);
-            res.send(result);
+            const newOrder = await orderCol.findOne({ _id: new ObjectId(result.insertedId) });
+            res.send(newOrder);
         }
 
     } finally {
@@ -83,7 +83,9 @@ router.put("/:id", async (req, res) => {
                 }
             }
         );
-        res.send("Order updated");
+        const order = await orderCol.findOne((new ObjectId(req.params.id)));
+
+        res.send(order);
     } finally {
         await client.close();
     }

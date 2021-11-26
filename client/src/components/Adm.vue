@@ -1,4 +1,4 @@
-<template>
+<template><Suspense>
   <div>
     <!-- Static sidebar for desktop -->
    <!-- <p class='text-black'> {{auth}}</p> -->
@@ -239,13 +239,16 @@
       </div>
     </div>
     <div v-if="add"><Add /></div>
+    <OrderDoing v-if='order._id' />
     <div v-if="showWines"><WinesAdm /></div>
     <div v-if="showUsers"><Users /></div>
     <div v-if="showBills"><Orders /></div>
-  </div>
+  </div></Suspense>
 </template>
 
 <script>
+import OrderDoing from "./OrderDoing.vue";
+
 import Add from "../components/Add.vue";
 import WinesAdm from "../components/WinesAdm.vue";
 import Users from "../components/Users.vue";
@@ -262,6 +265,7 @@ import { MenuIcon, XIcon } from "@heroicons/vue/outline";
 export default {
   name: "Adm",
   components: {
+    OrderDoing,
     Add,
     Dialog,
     DialogOverlay,
