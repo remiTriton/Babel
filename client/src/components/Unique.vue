@@ -70,6 +70,10 @@
             <dd class="mt-2 text-sm text-gray-500">{{ wine.millesime }}</dd>
           </div>
           <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Couleur</dt>
+            <dd class="mt-2 text-sm text-gray-500">{{ wine.couleur }}</dd>
+          </div>
+          <div class="border-t border-gray-200 pt-4">
             <dt class="font-medium text-gray-900">Prix</dt>
             <dd class="mt-2 text-sm text-gray-500">{{ wine.prix }} €</dd>
           </div>
