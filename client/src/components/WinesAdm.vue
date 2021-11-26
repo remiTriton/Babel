@@ -236,7 +236,7 @@
                         </td>
                         <td v-if="order && order.status != 'Confirmed'">
                           <input
-                            v-model="quantite"
+                            v-model="this.quantite"
                             class="
                               appearance-none
                               block
@@ -277,7 +277,7 @@
                             "
                             @click="
                               addToOrder(
-                                (order.insertedId || order._id ),
+                                order.insertedId || order._id,
                                 wine._id,
                                 quantite
                               )
@@ -322,13 +322,16 @@
                     </tbody>
                   </table>
                   <router-link
-                    v-if="order &&  (order._id || order.insertedId) && order.status != 'Confirmed'"
-                    :to="{name: 'updateOrder',
-                      params: { id: order._id || order.insertedId }
+                    v-if="
+                      order &&
+                      (order._id || order.insertedId) &&
+                      order.status != 'Confirmed'
+                    "
+                    :to="{
+                      name: 'updateOrder',
+                      params: { id: order._id || order.insertedId },
                     }"
-                    ><button class="text-gray-900">
-                      Valider
-                    </button></router-link
+                    ><button class="text-gray-900">Valider</button></router-link
                   >
                 </div>
               </div>
@@ -350,10 +353,10 @@ import SearchB from "./SearchB.vue";
 export default {
   name: "WinesAdm",
   components: { Multiselect, PlusSmIconOutline, PlusSmIconSolid, SearchB },
-  data(){
-    return { 
-      quantite:"",
-    }
+  data() {
+    return {
+      quantite: Number,
+    };
   },
   created() {
     this.$store.dispatch("wines/fetchWines");
@@ -374,10 +377,10 @@ export default {
 
     async addToOrder(order, wine, quantite) {
       await this.$store.dispatch("orders/addProductToOrder", [
-        this.order._id,
+        order,
         { status: "En cours", id: wine, quantite: quantite },
       ]);
-      this.quantite = "";
+      this.quantite='',
       await this.$store.dispatch("orders/findOneOrder", order);
     },
 
