@@ -1,7 +1,5 @@
 <template>
   <form @submit.prevent.stop>
-    <p v-if="err" class="text-red-600">Mec tes mots de passes sont faux!</p>
-    <p v-if="createdUser" class="text-green-600">Super t'es inscrit!</p>
     <div class="w-full bg-grey mt-40 ml-10" style="padding-top: 4rem">
       <div class="container mx-auto py-8">
         <div class="block w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
@@ -133,6 +131,7 @@
 export default {
   name: "Updateuser",
   props: ["id"],
+
   created() {
     this.$store.dispatch("auth/getOneUser", this.$route.params.id);
   },

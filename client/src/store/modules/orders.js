@@ -60,14 +60,15 @@ const orders = {
     //On ajoute un vin au Bon
 
     async addProductToOrder(context, [id, order]) {
-      await fetch("/api/orders/" + id, {
+      const res = await fetch("/api/orders/" + id, {
         "method": "PUT",
         body: JSON.stringify(order),
         "headers": {
           "Content-type": "application/json",
         }
-      });
-      context.commit('setOrder')
+      })
+      const data = await res.json();
+      context.commit('setOrder', data)
     },
 
     //On valide un bon ( plus modifiable par la suite )
