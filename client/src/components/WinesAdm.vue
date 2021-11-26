@@ -328,7 +328,7 @@
                     </tbody>
                   </table>
                   <router-link
-                    v-if="order"
+                    v-if="order && (order._id || order.insertedId)"
                     :to="{
                       name: 'updateOrder',
                       params: { id: order._id || order.insertedId },

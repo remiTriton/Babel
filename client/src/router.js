@@ -28,7 +28,7 @@ const routes = [{
 {
   path: "/Print/:id",
   name: "Print",
-  component: () => import('./components/Unique.vue/'),
+  component: () => import('./components/Unique.vue'), // <- .vue js file only
 },
 {
   path: "/Admin",

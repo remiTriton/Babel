@@ -66,10 +66,10 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try {
         await client.connect();
-        const id = req.body.id;
-        const product = await wineCol.findOne(new ObjectId(id));
+        const _id = new ObjectId(req.body.id);
+        const product = await wineCol.findOne(_id);
         await orderCol.updateOne(
-            { _id: new ObjectId(req.params.id) },
+            { _id  },
             {
                 $set: { status: req.body.status },
                 $push: {
