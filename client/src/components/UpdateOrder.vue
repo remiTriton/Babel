@@ -2,18 +2,22 @@
   <Suspense>
     <div class="mt-10">
       <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
-      <div class="mx-60" v-if="order">
-        <table class="table-auto mx-96">
+      <div
+        class="mx-60 ml-58 mr-16 mt-10 border-dashed border-2 border-gray-600"
+        v-if="order"
+      >
+        <table class="table-auto mx-auto mt-5">
           <thead>
-            <tr>
+            <tr class="bg-gray-200">
               <th
-                scope="col"
+                
                 class="
                   px-6
                   py-3
                   text-center text-xs
                   font-medium
                   text-gray-500
+                  text-
                   uppercase
                   tracking-wider
                 "
@@ -21,7 +25,7 @@
                 Cuvée
               </th>
               <th
-                scope="col"
+               
                 class="
                   px-6
                   py-3
@@ -35,7 +39,7 @@
                 Couleur
               </th>
               <th
-                scope="col"
+                
                 class="
                   px-6
                   py-3
@@ -52,7 +56,7 @@
           </thead>
 
           <tbody v-for="wine in order.wines" :key="wine.id">
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <td class="apx-6 py-4 whitespace-nowrap text-sm text-gray-500">
               <input v-if="order.status != 'Confirmed'" v-model="wine.cuvee" />
               <p v-else class="text-gray-500 text-sm">{{ wine.cuvee }}</p>
             </td>
@@ -116,15 +120,38 @@
             </td>
           </tbody>
         </table>
-        <div>Commandé par : {{ order.userEmail }}</div>
+        <div class="ml-5">Commandé par : {{ order.userEmail }}</div>
+        <button
+          @click.prevent="confirm()"
+          class="
+            on
+            ml-32
+            mt-10
+            mb-10
+            hover:bg-blue-700
+            py-2
+            px-4
+            rounded-full
+            text-white
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            text-white
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </button>
       </div>
-
-      <button
-        @click.prevent="confirm()"
-        class="btn bg-green-900 text-2xl ml-5 rounded-full py-3 px-6"
-      >
-        ↵
-      </button>
     </div>
   </Suspense>
 </template>
@@ -218,7 +245,7 @@ export default {
   background-color: #2a574c;
   color: white;
 }
-.btn {
-  color: white;
+.col{
+
 }
 </style>
