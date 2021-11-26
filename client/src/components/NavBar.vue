@@ -1,6 +1,7 @@
 <template>
   <div>
-    <nav class="flexo">
+  <div class=" flexo w-auto">
+    <nav class="grid grid-cols-2 gap-1">
       <router-link
         to="/blog"
         class="
@@ -36,8 +37,7 @@
             to="/WineList"
             class="
             
-              mt-4
-              mx-96            
+              mt-4     
               lg:inline-block lg:mt-0
               text-teal-200
               hover:text-white
@@ -47,13 +47,12 @@
           </router-link>
         </div>
         
-<div class="flex space-x-4  mr-28">
-        <div >
+<div class="flex space-x-4 mr-28 ">
+        <div class="log">
           <router-link
             v-if="!auth"
             to="/login"
-            class="
-              
+            class="   
               inline-block
               text-sm
               px-4
@@ -65,7 +64,6 @@
               border-white
               hover:border-transparent hover:text-teal-500 hover:bg-white
               mt-4
-              ml-28
               lg:mt-0
             "
             >Login</router-link
@@ -138,7 +136,7 @@
       </div>
       </div>
     </nav>
-    
+  </div>
   </div>
   
 </template>
@@ -170,6 +168,8 @@ display: flex;
 .bb {
   width: 150px;
   height: 150px;
-  
+}
+.log{
+  margin-right: 100px;
 }
 </style>

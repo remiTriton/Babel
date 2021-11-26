@@ -413,4 +413,8 @@ export default {
 .text {
   color: black;
 }
+.on{
+background-color: #2a574c;
+
+}
 </style>
