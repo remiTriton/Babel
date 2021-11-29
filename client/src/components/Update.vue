@@ -520,6 +520,7 @@ export default {
             pays: this.wine.pays,
             quantite: this.quantite,
             prix: this.wine.prix,
+            departement: this.wine.departement,
           },
         ]);
       } else {
@@ -538,6 +539,7 @@ export default {
             pays: this.wine.pays,
             quantite: this.quantite + this.wine.quantite,
             prix: this.wine.prix,
+            departement: this.wine.departement
           },
         ]);
       }
