@@ -1,7 +1,7 @@
 <template>
-  <div>
   <div class=" flexo">
-    <nav class="grid grid-cols-2 gap-1">
+  <div>
+    <nav class="grid grid-cols-3 gap-1 m-8">
       <router-link
         to="/blog"
         class="
@@ -9,7 +9,6 @@
           items-center
           px-3
           py-2
-          ml-20
           hover:text-white hover:border-white
           text-4xl
         "
@@ -31,14 +30,11 @@
         >          
         </button>
       </div>
-      <div class=" w-full ml-20 lg:flex lg:items-center lg:w-auto">
+      <div class=" w-full lg:flex lg:items-center lg:w-auto">
         <div class="text-sm relative ">
           <router-link
             to="/WineList"
-            class="
-            
-              mt-4     
-              lg:inline-block lg:mt-0
+            class="     
               text-teal-200
               hover:text-white
             "
@@ -61,10 +57,7 @@
               border
               rounded
               text-white
-              border-white
-              hover:border-transparent hover:text-teal-500 hover:bg-white
-              mt-4
-              lg:mt-0
+              border-white          
             "
             >Login</router-link
           >
@@ -84,9 +77,6 @@
               rounded
               text-white
               border-white
-              hover:border-transparent hover:text-teal-500 hover:bg-white
-              mt-4
-              lg:mt-0
             "
             >Register</router-link
           >
@@ -96,16 +86,12 @@
               inline-block
               text-sm
               px-4
-              py-2
-            
+              py-2           
               leading-none
               border
               rounded
               text-white
               border-white
-              hover:border-transparent hover:text-teal-500 hover:bg-whiteq
-              mt-4
-              lg:mt-0
             "
             @click.prevent="logout"
           >
@@ -127,7 +113,6 @@
             text-white
             border-white
             hover:border-transparent hover:text-teal-500 hover:bg-white
-            mt-4
             lg:mt-0
           "
           >Admin</router-link
