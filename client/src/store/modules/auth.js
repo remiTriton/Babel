@@ -90,12 +90,24 @@ const auth = {
       const data = await res.json();
       localStorage.setItem('token', data.token);
       console.log(data.token)
+
+      const resi = await fetch('api/users/profile', {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + data.token
+        }
+      });
+      const dato = await resi.json();
+      console.log(dato)
       context.commit('setAuth', data.token)
+      context.commit('setUser', dato)
     },
     //Deconnection d'un utilisateur 
     logout(context) {
       let token = null;
+      let user = null;
       context.commit("logout", token);
+      context.commit('user', user)
     },
   }
 }

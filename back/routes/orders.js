@@ -16,7 +16,6 @@ router.get("/", users.verifyToken, async (req, res) => {
             res.status(403).json("Access Forbidden");
         }
         try {
-
             await client.connect();
             const orders = await orderCol.find().toArray();
             res.send(orders);

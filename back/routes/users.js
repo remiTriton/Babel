@@ -143,24 +143,25 @@ router.delete("/:id", verifyToken, async (req, res) => {
                 await client.close();
             }
         }
-    });
-    //Vue profil
-
-
-    router.post('/profile', verifyToken, async (req, res) => {
-        jwt.verify(req.token, 'token', async (err, authData) => {
-            try {
-                await client.connect();
-                const query = { _id: new ObjectId(authData.user.id) };
-                const users = await userCol.findOne(query)
-                res.send(authData);
-            } finally {
-                await client.close();
-            }
-        })
-
     })
 });
+//Vue profil
+
+
+router.post('/profile', verifyToken, async (req, res) => {
+    jwt.verify(req.token, 'token', async (err, authData) => {
+        try {
+            await client.connect();
+            const query = { _id: new ObjectId(authData.user.id) };
+            const users = await userCol.findOne(query)
+            res.send(users);
+        } finally {
+            await client.close();
+        }
+    })
+
+});
+
 
 //On verifie tokenn
 function verifyToken(req, res, next) {
