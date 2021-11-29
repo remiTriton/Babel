@@ -34,6 +34,7 @@ const auth = {
         }
       });
       const data = await res.json();
+      console.log(data)
       context.commit("setUsers", data);
     },
     //On récupère un user
