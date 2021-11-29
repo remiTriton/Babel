@@ -136,10 +136,10 @@ router.put("/:id", verifyToken, async (req, res) => {
                 res.send("User updated");
             } finally {
                 await client.close();
-            }
-        }
-    })
-});
+    } else {
+        return res.status(404).json('Wrong way')
+    
+    });
 
 router.delete("/:id", verifyToken, async (req, res) => {
     jwt.verify(req.token, 'token', async (err, authData) => {
