@@ -435,17 +435,17 @@
                 info
                 uppercase
                 tracking-wide
-                text-black text-xs
+                text-gray-700 text-xs
                 font-bold
                 mb-2
               "
               for="grid-description"
             >
-              Descritpion
+              Description
             </label>
             <textarea 
             v-model="description"
-                class="resize border rounded-md" 
+                class="resize border rounded-md
                 border border-gray-200
                 appearance-none
                 block
@@ -455,7 +455,8 @@
                 px-4
                 mb-3
                 leading-tight
-                focus:outline-none focus:bg-white             
+                focus:outline-none focus:bg-white
+                text-gray-500"             
               id="grid-description"
               type="text"
               >
@@ -523,7 +524,9 @@ export default {
         prix: this.prix,
       };
       await this.$store.dispatch("wines/addWine", wine);
+      await this.$store.dispatch('wines/fetchWines')
     },
+    
   },
 };
 </script>

@@ -7,7 +7,7 @@
       <div
         class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white"
       >
-      <p class='text-black'>{{auth}}</p>
+      <!-- <p class='text-black'>{{auth}}</p> -->
         <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
           <div
             @click.prevent="toggleWines"

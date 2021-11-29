@@ -515,6 +515,7 @@ export default {
             cuvee: this.wine.wineName,
             couleur: this.wine.couleur,
             description: this.wine.description,
+            departement:this.wine.departement,
             region: this.wine.region,
             pays: this.wine.pays,
             quantite: this.quantite,
