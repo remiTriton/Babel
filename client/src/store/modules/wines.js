@@ -58,6 +58,9 @@ const wines = {
     async deleteWine(context, _id) {
       await fetch("/api/wines/" + _id, {
         "method": "DELETE",
+        "headers": {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
       });
       const res = await fetch("/api/wines/")
       const data = await res.json();
@@ -69,6 +72,9 @@ const wines = {
         "method": "POST",
         headers: {
           "Content-Type": "application/json",
+         
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          
         },
         body: JSON.stringify(body)
       })
@@ -80,6 +86,9 @@ const wines = {
         body: JSON.stringify(wine),
         "headers": {
           "Content-type": "application/json",
+        
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          
         }
       });
 

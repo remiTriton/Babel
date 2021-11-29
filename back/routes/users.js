@@ -35,7 +35,7 @@ router.get('/', verifyToken, async (req, res) => {
                     await client.close();
                 }
             }
-        });
+        })});
 
         router.post('/', async (req, res) => {
             try {
@@ -139,7 +139,7 @@ router.get('/', verifyToken, async (req, res) => {
                         await client.close();
                     }
                 }
-            });
+            })});
 
             router.delete("/:id", verifyToken, async (req, res) => {
                 jwt.verify(req.token, 'token', async (err, authData) => {
@@ -171,8 +171,8 @@ router.get('/', verifyToken, async (req, res) => {
                         }
                     })
 
-                })
-            })});
+                });
+            
 
             //On verifie tokenn
             function verifyToken(req, res, next) {
