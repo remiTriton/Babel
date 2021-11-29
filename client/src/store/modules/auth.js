@@ -13,6 +13,9 @@ const auth = {
     setUser(state, list) {
       state.user = list;
     },
+    checkUser(state, list){
+      state.checkUser = list
+    },
     setAuth(state, list) {
       state.token = list;
     },
@@ -31,20 +34,30 @@ const auth = {
     },
     //On récupère un user
     async getOneUser(context, _id) {
-      const res = await fetch("/api/users/" + _id)
+      const res = await fetch("/api/users/" + _id ,{
+        "headers": {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }})
       const data = await res.json();
-      context.commit("setUser", data);
+      context.commit("checkUser", data);
     },
     //On cherche un user 
     async getUserByName(context, query) {
-      const res = await fetch("/api/users/" + query)
+      const res = await fetch("/api/users/" + query,{
+        "headers": {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }})
       const data = await res.json();
       context.commit("setUsers", data);
     },
 
     //Filtre utilisateur par role
     async getUserByRole(context, query) {
-      const res = await fetch("/api/users/role/" + query)
+      const res = await fetch("/api/users/role/" + query,{
+        "headers": {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }})
+      
       const data = await res.json();
       context.commit("setUsers", data);
     },
@@ -53,6 +66,9 @@ const auth = {
     async delUser(context, _id) {
       await fetch("/api/users/" + _id, {
         "method": "DELETE",
+        "headers": {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
       });
       context.commit("setUsers");
     },
@@ -61,7 +77,9 @@ const auth = {
       await fetch("/api/users/", {
         "method": "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json",   
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          
         },
         body: JSON.stringify(body)
       })
@@ -74,6 +92,7 @@ const auth = {
         body: JSON.stringify(user),
         "headers": {
           "Content-type": "application/json",
+          Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       })
       context.commit('setUsers', context.state.user)
@@ -84,7 +103,7 @@ const auth = {
         "method": "POST",
         headers: {
           "Content-Type": "application/json",
-        },
+                },
         body: JSON.stringify(body)
       })
       const data = await res.json();

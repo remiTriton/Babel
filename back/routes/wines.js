@@ -50,7 +50,7 @@ router.post("/", users.verifyToken, async (req, res) => {
         pays: req.body.pays,
         quantite: req.body.quantite,
         prix: req.body.prix,
-        departement: result.body.departement,
+        departement: req.body.departement,
       };
 
       const result = await wineCol.insertOne(doc);

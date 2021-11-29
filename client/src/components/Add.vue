@@ -445,17 +445,18 @@
             </label>
             <textarea 
             v-model="description"
-                class="resize border rounded-md" 
+                class="resize border rounded-md 
                 border border-gray-200
                 appearance-none
                 block
                 bg-gray-200
+                text-black
                 rounded
                 py-3
                 px-4
                 mb-3
                 leading-tight
-                focus:outline-none focus:bg-white             
+                focus:outline-none focus:bg-white "           
               id="grid-description"
               type="text"
               >
@@ -523,6 +524,7 @@ export default {
         prix: this.prix,
       };
       await this.$store.dispatch("wines/addWine", wine);
+      await this.$store.dispatch("wines/fetchWines");
     },
   },
 };
