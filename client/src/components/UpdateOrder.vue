@@ -1,7 +1,7 @@
 <template>
   <Suspense>
     <div class="mt-10">
-      <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" />
+      <!-- <MiniSearchBar v-on:searchWine="search" v-on:toggleCrud="show" /> -->
       <div
         class="mx-60 ml-58 mr-16 mt-10 border-dashed border-2 border-gray-600"
         v-if="order"
@@ -157,12 +157,11 @@
 </template>
 
 <script>
-import MiniSearchBar from "./MiniSearchBar.vue";
+// import MiniSearchBar from "./MiniSearchBar.vue";
 
 export default {
   name: "newOrder",
 
-  components: { MiniSearchBar },
   created() {
     this.$store.dispatch("orders/findOneOrder", this.$route.params.id);
   },
