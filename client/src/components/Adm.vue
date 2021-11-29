@@ -195,7 +195,7 @@
           </div>
           <div>
             <button
-              @click="nouveauBon(auth.email)"
+              @click="nouveauBon(auth.user.email)"
               type="button"
               class="
                 B
@@ -238,7 +238,7 @@
       </div>
     
     <div v-if="add"><Add /></div>
-    <div v-if='order._id'><OrderDoing /></div>
+    <OrderDoing v-if='order' />
     <div v-if="showWines"><WinesAdm /></div>
     <div v-if="showUsers"><Users /></div>
     <div v-if="showBills"><Orders /></div>
@@ -253,25 +253,25 @@ import WinesAdm from "../components/WinesAdm.vue";
 import Users from "../components/Users.vue";
 import Orders from "../components/Orders.vue";
 
-import {
-  Dialog,
-  DialogOverlay,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
-import { MenuIcon, XIcon } from "@heroicons/vue/outline";
+// import {
+//   Dialog,
+//   DialogOverlay,
+//   TransitionChild,
+//   TransitionRoot,
+// } from "@headlessui/vue";
+// import { MenuIcon, XIcon } from "@heroicons/vue/outline";
 
 export default {
   name: "Adm",
   components: {
     OrderDoing,
     Add,
-    Dialog,
-    DialogOverlay,
-    TransitionChild,
-    TransitionRoot,
-    MenuIcon,
-    XIcon,
+    // Dialog,
+    // DialogOverlay,
+    // TransitionChild,
+    // TransitionRoot,
+    // MenuIcon,
+    // XIcon,
     WinesAdm,
     Users,
     Orders,
@@ -282,7 +282,6 @@ export default {
       showWines: true,
       showUsers: false,
       showBills: false,
-      command: false,
       quantite:"",
     };
   },
@@ -317,7 +316,6 @@ export default {
       this.showBills = true;
     },
     async nouveauBon(user) {
-      this.command = true;
       await this.$store.dispatch("orders/newOrder", {
         email: user,
       });

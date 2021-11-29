@@ -49,11 +49,9 @@ const orders = {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       });
-      const res = await fetch("/api/orders/",{
-      headers: {
+      const res = await fetch("/api/orders/", {headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    });
+      }});
       const data = await res.json();
       context.commit("setOrders", data);
     },
@@ -102,7 +100,7 @@ const orders = {
 
         }
       });
-      context.commit('setOrder')
+      context.commit('setOrder' )
     },
 
     //On modifie les quantites dans un order    

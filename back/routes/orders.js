@@ -158,7 +158,7 @@ router.put("/confirm/:id", users.verifyToken, async (req, res) => {
 
 router.delete("/:id", users.verifyToken, async (req, res) => {
     jwt.verify(req.token, 'token', async (err, authData) => {
-        if (authData.user.role === 'Serveur') {
+        if(authData.user.role === 'Serveur') {
             res.status(403).json("Access Forbidden");
         }
         try {

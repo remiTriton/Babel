@@ -99,7 +99,7 @@
           </button>
         </div>
       
-      <div>
+      <div v-if='auth && auth.user.role === "Admin"'>
         <router-link
           to="/Admin"
           class="

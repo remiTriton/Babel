@@ -83,7 +83,7 @@
                         >
                           Numéro de commande
                         </th>
-                            <th
+                        <th
                           scope="col"
                           class="
                             px-6
@@ -144,7 +144,7 @@
                         >
                           {{ order._id }}
                         </td>
-                            <td
+                        <td
                           class="
                             px-6
                             py-4
@@ -152,7 +152,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ order.Created.slice(0,21) }}
+                          {{ order.Created.slice(0, 21) }}
                         </td>
                         <td
                           class="
