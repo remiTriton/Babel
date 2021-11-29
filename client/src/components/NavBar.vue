@@ -131,7 +131,7 @@ export default {
   name: "NavBar",
   computed: {
     auth() {
-      return this.$store.state.auth.token;
+      return this.$store.state.auth.user;
     },
   },
   methods: {
