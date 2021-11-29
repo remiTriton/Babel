@@ -172,7 +172,7 @@
                 focus:outline-none focus:bg-white
               "
               id="grid-pays"
-              >
+            >
 
                <option>France</option>
                 <option>Italie</option>
@@ -315,6 +315,7 @@
                 focus:outline-none focus:bg-white
               "
               id="grid-couleur"
+              
             >
             <option>Rouge</option>
                       <option>Blanc</option>
