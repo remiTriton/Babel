@@ -441,7 +441,7 @@
               "
               for="grid-description"
             >
-              Descritpion
+              Description
             </label>
             <textarea 
             v-model="description"
