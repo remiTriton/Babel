@@ -19,7 +19,11 @@ const orders = {
     //ON RECUPERE LES ordersS
 
     async fetchOrders(context) {
-      const res = await fetch("/api/orders/")
+      const res = await fetch("/api/orders/", {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+      })
       const data = await res.json();
       context.commit("setOrders", data);
     },
@@ -27,7 +31,12 @@ const orders = {
     //Print d'un orders
 
     async findOneOrder(context, _id) {
-      const res = await fetch("/api/orders/" + _id)
+
+      const res = await fetch("/api/orders/" + _id, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+      })
       const data = await res.json();
       context.commit("setOrder", data);
     },
@@ -36,6 +45,9 @@ const orders = {
     async deleteOrder(context, _id) {
       await fetch("/api/orders/" + _id, {
         "method": "DELETE",
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
       });
       const res = await fetch("/api/orders/")
       const data = await res.json();
@@ -49,6 +61,8 @@ const orders = {
         "method": "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+
         },
         body: JSON.stringify(body)
       });
@@ -65,6 +79,8 @@ const orders = {
         body: JSON.stringify(order),
         "headers": {
           "Content-type": "application/json",
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+
         }
       })
       const data = await res.json();
@@ -78,6 +94,8 @@ const orders = {
         body: JSON.stringify(body),
         "headers": {
           "Content-type": "application/json",
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+
         }
       });
       context.commit('setOrder')
@@ -90,6 +108,8 @@ const orders = {
         body: JSON.stringify(order),
         "headers": {
           "Content-type": "application/json",
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+
         }
       });
       context.commit('setOrder')
@@ -101,10 +121,11 @@ const orders = {
         body: JSON.stringify(wine),
         "headers": {
           "Content-type": "application/json",
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+
         }
       });
     }
-
   }
 }
 export default orders;

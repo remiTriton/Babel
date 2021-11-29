@@ -88,9 +88,9 @@ const auth = {
         body: JSON.stringify(body)
       })
       const data = await res.json();
-      localStorage.setItem('token', data);
-      console.log(data)
-      context.commit('setAuth', data)
+      localStorage.setItem('token', data.token);
+      console.log(data.token)
+      context.commit('setAuth', data.token)
     },
     //Deconnection d'un utilisateur 
     logout(context) {

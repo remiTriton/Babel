@@ -1,6 +1,5 @@
 <template>
   <div>
-    <HelloWorld />
     <div class="formulaire">
       <form @submit.prevent.stop class="w-full max-w-lg mt-10">
         ///////
@@ -173,7 +172,7 @@
                 focus:outline-none focus:bg-white
               "
               id="grid-pays"
-              type="select">
+              >
 
                <option>France</option>
                 <option>Italie</option>
@@ -316,7 +315,6 @@
                 focus:outline-none focus:bg-white
               "
               id="grid-couleur"
-              type="text"
             >
             <option>Rouge</option>
                       <option>Blanc</option>
@@ -488,7 +486,6 @@
 </template>
 
 <script>
-import HelloWorld from "../components/HelloWorld.vue";
 
 export default {
   name: "SignUp",

@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     toggle() {
-      console.log(this.toggleCrud);
       this.toggleCrud = !this.toggleCrud;
     },
   },

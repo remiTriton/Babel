@@ -244,7 +244,5 @@ export default {
   background-color: #2a574c;
   color: white;
 }
-.col{
 
-}
 </style>
