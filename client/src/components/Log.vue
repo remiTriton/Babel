@@ -287,15 +287,23 @@ export default {
       password: "",
     };
   },
+  computed:{
+    auth(){
+      return this.$store.state.auth.user;
+    }
+  },
   methods: {
     async Log() {
-      const user = {
+      const logger = {
         email: this.email,
         password: this.password,
       };
-      await this.$store.dispatch('auth/login',user);
-            this.$router.push("/Admin");
-
+      await this.$store.dispatch('auth/login',logger)
+      if(this.auth.user.role === 'Admin'){
+        this.$router.push('/Admin')
+      }else{
+        this.$router.push('/WineList')
+      };
     },
   },
 };

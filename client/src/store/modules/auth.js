@@ -1,3 +1,4 @@
+
 const auth = {
   name: "auth",
   namespaced: true,
@@ -110,30 +111,32 @@ const auth = {
         "method": "POST",
         headers: {
           "Content-Type": "application/json",
-                },
+        },
         body: JSON.stringify(body)
       })
       const data = await res.json();
-      localStorage.setItem('token', data.token);
-      console.log(data.token)
-
-      const resi = await fetch('api/users/profile', {
-        method: 'POST',
-        headers: {
-          Authorization: 'Bearer ' + data.token
-        }
-      });
-      const dato = await resi.json();
-      console.log(dato)
-      context.commit('setAuth', data.token)
-      context.commit('setUser', dato)
+      if (res.status === 200) {
+        localStorage.setItem('token', data.token);
+        const resi = await fetch('api/users/profile', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + data.token
+          }
+        });
+        const dato = await resi.json();
+        console.log(dato)
+        context.commit('setAuth', data.token)
+        context.commit('setUser', dato)
+      } else {
+        alert('VIVE MOI')
+      }
     },
     //Deconnection d'un utilisateur 
     logout(context) {
       let token = null;
       let user = null;
       context.commit("logout", token);
-      context.commit('user', user)
+      context.commit('setUser', user)
     },
   }
 }

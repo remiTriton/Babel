@@ -34,29 +34,30 @@ router.post("/", users.verifyToken, async (req, res) => {
   jwt.verify(req.token, 'token', async (err, authData) => {
     if (authData.user.role === 'Serveur') {
       res.status(403).json("Access Forbidden");
-    }
-    try {
-      await client.connect();
-      // create a document to insert
-      const doc = {
-        cuvee: req.body.cuvee,
-        domaine: req.body.domaine,
-        cepage: req.body.cepage,
-        millesime: req.body.millesime,
-        vigneron: req.body.vigneron,
-        couleur: req.body.couleur,
-        description: req.body.descritpion,
-        region: req.body.region,
-        pays: req.body.pays,
-        quantite: req.body.quantite,
-        prix: req.body.prix,
-        departement:req.body.departement,
-      };
-
-      const result = await wineCol.insertOne(doc);
-      res.send(`A document was inserted with the _id: ${result.insertedId}`);
-    } finally {
-      await client.close();
+      return;
+    } else {
+      try {
+        await client.connect();
+        // create a document to insert
+        const doc = {
+          cuvee: req.body.cuvee,
+          domaine: req.body.domaine,
+          cepage: req.body.cepage,
+          millesime: req.body.millesime,
+          vigneron: req.body.vigneron,
+          couleur: req.body.couleur,
+          description: req.body.descritpion,
+          region: req.body.region,
+          pays: req.body.pays,
+          quantite: req.body.quantite,
+          prix: req.body.prix,
+          departement: req.body.departement,
+        };
+        const result = await wineCol.insertOne(doc);
+        res.send(`A document was inserted with the _id: ${result.insertedId}`);
+      } finally {
+        await client.close();
+      }
     }
   })
 });
@@ -124,7 +125,7 @@ router.get("/pays/:pays", async (req, res) => {
 
 router.put("/:id", users.verifyToken, async (req, res) => {
   jwt.verify(req.token, 'token', async (err, authData) => {
-    if(authData.user.role === 'Serveur') {
+    if (authData.user.role === 'Serveur') {
       res.status(403).json("Access Forbidden");
     }
     try {

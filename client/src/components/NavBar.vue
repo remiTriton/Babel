@@ -99,7 +99,7 @@
           </button>
         </div>
       
-      <div>
+      <div v-if='auth && auth.user.role === "Admin"'>
         <router-link
           to="/Admin"
           class="
@@ -131,7 +131,7 @@ export default {
   name: "NavBar",
   computed: {
     auth() {
-      return this.$store.state.auth.token;
+      return this.$store.state.auth.user;
     },
   },
   methods: {

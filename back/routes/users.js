@@ -96,7 +96,7 @@ router.post('/login', async (req, res) => {
         email: email
     }).then(user => {
         if (!user) {
-            return res.status(200).json('No user found')
+            return res.status(404).json('No user found')
         }
         // Match password
         bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -114,7 +114,7 @@ router.post('/login', async (req, res) => {
                     });
                 });
             } else {
-                return res.status(200).json('Wrong password')
+                return res.status(404).json('Wrong password')
             }
         })
     })
