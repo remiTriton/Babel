@@ -124,7 +124,7 @@
                           </th>
 
                           <th
-                            v-if="order._id && order.status != 'Confirmed'"
+                            v-if="order && order.status != 'Confirmed'"
                             scope="col"
                             class="
                               px-6
@@ -140,7 +140,7 @@
                           </th>
 
                           <th
-                            v-if="order._id && order.status != 'Confirmed'"
+                            v-if="order && order.status != 'Confirmed'"
                             scope="col"
                             class="
                               px-6
@@ -234,7 +234,7 @@
                           >
                             {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
                           </td>
-                          <td v-if="order._id && order.status != 'Confirmed'">
+                          <td v-if="order && order.status != 'Confirmed'">
                             <input
                               v-model="quantite"
                               class="
@@ -256,7 +256,7 @@
                               placeholder="0"
                             />
                           </td>
-                          <td v-if="order._id && order.status != 'Confirmed'">
+                          <td v-if="order && order.status != 'Confirmed'">
                             <button
                               type="button"
                               class="
@@ -320,7 +320,7 @@
                       </tbody>
                     </table>
                     <router-link
-                      v-if="order._id && order.status != 'Confirmed'"
+                      v-if="order && order._id"
                       :to="{
                         name: 'updateOrder',
                         params: { id: order._id },
