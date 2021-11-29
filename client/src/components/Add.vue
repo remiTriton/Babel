@@ -450,6 +450,7 @@
                 appearance-none
                 block
                 bg-gray-200
+                text-black
                 rounded
                 py-3
                 px-4

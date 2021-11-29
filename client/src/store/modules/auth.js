@@ -99,7 +99,6 @@ const auth = {
         "headers": {
           "Content-type": "application/json",
           Authorization: 'Bearer ' + localStorage.getItem('token')
-
         }
       })
       context.commit('setUsers', context.state.user)
@@ -110,7 +109,7 @@ const auth = {
         "method": "POST",
         headers: {
           "Content-Type": "application/json",
-        },
+                },
         body: JSON.stringify(body)
       })
       const data = await res.json();
