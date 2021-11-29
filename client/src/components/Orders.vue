@@ -83,6 +83,20 @@
                         >
                           Numéro de commande
                         </th>
+                            <th
+                          scope="col"
+                          class="
+                            px-6
+                            py-3
+                            text-center text-xs
+                            font-medium
+                            text-gray-500
+                            uppercase
+                            tracking-wider
+                          "
+                        >
+                          Date
+                        </th>
                         <th
                           scope="col"
                           class="
@@ -129,6 +143,16 @@
                           "
                         >
                           {{ order._id }}
+                        </td>
+                            <td
+                          class="
+                            px-6
+                            py-4
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                          "
+                        >
+                          {{ order.Created.slice(0,21) }}
                         </td>
                         <td
                           class="
