@@ -4,7 +4,7 @@
    <!-- <p class='text-black'> {{auth}}</p> -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      
+    
       <!-- <p class='text-black'>{{auth}}</p> -->
         <nav class="mt-5 flex-1 px-2 bg-white ">
           <div
@@ -235,9 +235,10 @@
             </button>
           </div>
         </nav>
-    </div>
+      </div>
+    
     <div v-if="add"><Add /></div>
-    <OrderDoing v-if='order._id' />
+    <div v-if='order._id'><OrderDoing /></div>
     <div v-if="showWines"><WinesAdm /></div>
     <div v-if="showUsers"><Users /></div>
     <div v-if="showBills"><Orders /></div>

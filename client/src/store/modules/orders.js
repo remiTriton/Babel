@@ -49,7 +49,11 @@ const orders = {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       });
-      const res = await fetch("/api/orders/")
+      const res = await fetch("/api/orders/",{
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      }
+    });
       const data = await res.json();
       context.commit("setOrders", data);
     },

@@ -1,11 +1,9 @@
 <template>
 <Adm />
-  
 </template>
 
 <script>
 import Adm from "../components/Adm.vue"
-
 
 
 export default {

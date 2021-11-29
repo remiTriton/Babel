@@ -1,20 +1,18 @@
 <script>
-import HelloWorld from '../components/HelloWorld.vue'
 import NavBar from '../components/NavBar.vue'
 
 
 export default {
   components: {
     NavBar,
-    HelloWorld,
   }
 }
 
 </script>
 
-<template>
+<template><div>
 <NavBar />
-<router-view></router-view>
+<router-view></router-view></div>
 </template>
 
 <style >
