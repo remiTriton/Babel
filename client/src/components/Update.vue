@@ -21,7 +21,7 @@
               Cuvée
             </label>
             <input
-              v-model="cuvee"
+              v-model="wine.cuvee"
               class="
                 border border-gray-200
                 appearance-none
@@ -55,7 +55,7 @@
               Domaine
             </label>
             <input
-              v-model="domaine"
+              v-model="wine.domaine"
               class="
                 border border-gray-200
                 appearance-none
@@ -89,7 +89,7 @@
               Vigneron
             </label>
             <input
-              v-model="vigneron"
+              v-model="wine.vigneron"
               class="
                 border border-gray-200
                 appearance-none
@@ -123,7 +123,7 @@
               Cépage
             </label>
             <input
-              v-model="cepage"
+              v-model="wine.cepage"
               class="
                 border border-gray-200
                 appearance-none
@@ -157,7 +157,7 @@
               Pays
             </label>
             <select
-              v-model="pays"
+              v-model="wine.pays"
               class="
                 border border-gray-200
                 appearance-none
@@ -173,7 +173,7 @@
                 focus:outline-none focus:bg-white
               "
               id="grid-pays"
-              type="select">
+            >
 
                <option>France</option>
                 <option>Italie</option>
@@ -198,7 +198,7 @@
               Région
             </label>
             <input
-              v-model="region"
+              v-model="wine.region"
               class="
                 border border-gray-200
                 appearance-none
@@ -232,7 +232,7 @@
               Département
             </label>
             <input
-              v-model="departement"
+              v-model="wine.departement"
               class="
                 border border-gray-200
                 appearance-none
@@ -266,7 +266,7 @@
               Millésime
             </label>
             <input
-              v-model="millesime"
+              v-model="wine.millesime"
               class="
                 border border-gray-200
                 appearance-none
@@ -300,7 +300,7 @@
               Couleur
             </label>
             <select
-              v-model="couleur"
+              v-model="wine.couleur"
               class="
                 border border-gray-200
                 appearance-none
@@ -316,7 +316,7 @@
                 focus:outline-none focus:bg-white
               "
               id="grid-couleur"
-              type="text"
+
             >
             <option>Rouge</option>
                       <option>Blanc</option>
@@ -340,7 +340,7 @@
               Quantité
             </label>
             <input
-              v-model="quantite"
+              v-model="wine.quantite"
               class="
                 border border-gray-200
                 appearance-none
@@ -375,7 +375,7 @@
               Prix
             </label>
             <input
-              v-model="prix"
+              v-model="wine.prix"
               class="
                 border border-gray-200
                 appearance-none
@@ -442,21 +442,22 @@
               "
               for="grid-description"
             >
-              Descritpion
+              Description
             </label>
             <textarea 
-            v-model="description"
-                class="resize border rounded-md" 
+            v-model="wine.description"
+                class="resize border rounded-md 
                 border border-gray-200
                 appearance-none
                 block
+                text-black
                 bg-gray-200
                 rounded
                 py-3
                 px-4
                 mb-3
                 leading-tight
-                focus:outline-none focus:bg-white             
+                focus:outline-none focus:bg-white "          
               id="grid-description"
               type="text"
               >
