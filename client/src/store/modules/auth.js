@@ -24,6 +24,10 @@ const auth = {
       state.token = token;
       localStorage.removeItem("token");
     },
+    killForgottenPassword(state, token) {
+      state.token = token;
+      localStorage.removeItem("password");
+    }
   },
 
   actions: {
@@ -124,11 +128,10 @@ const auth = {
           }
         });
         const dato = await resi.json();
-        console.log(dato)
         context.commit('setAuth', data.token)
         context.commit('setUser', dato)
       } else {
-        alert('VIVE MOI')
+        alert("Email et / ou mot de passe incorrect.")
       }
     },
     //Deconnection d'un utilisateur 
@@ -138,6 +141,26 @@ const auth = {
       context.commit("logout", token);
       context.commit('setUser', user)
     },
+
+    async forgottenPassword(context, email) {
+      const res = await fetch("/api/password-reset", {
+        method: "POST",
+        body: json.stringify(email)
+      })
+      const data = await res.json();
+      console.log(data);
+      localStorage.setItem('password', data.token);
+    },
+
+    async newPassword(context, [id, password]) {
+      const res = await fetch("/api/password-reset/" + id, {
+        method: "POST",
+        body: json.stringify(password)
+      })
+      const data = await res.json();
+      console.log(data)
+      context.commit('killForgottenPassword')
+    }
   }
 }
 export default auth;
