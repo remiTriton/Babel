@@ -145,7 +145,10 @@ const auth = {
     async forgottenPassword(context, email) {
       const res = await fetch("/api/password-reset", {
         method: "POST",
-        body: json.stringify(email)
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(email)
       })
       const data = await res.json();
       console.log(data);
@@ -153,12 +156,14 @@ const auth = {
     },
 
     async newPassword(context, [id, password]) {
-      const res = await fetch("/api/password-reset/" + id, {
+    await fetch("/api/password-reset/" + id, {
         method: "POST",
-        body: json.stringify(password)
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('password'),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(password)
       })
-      const data = await res.json();
-      console.log(data)
       context.commit('killForgottenPassword')
     }
   }

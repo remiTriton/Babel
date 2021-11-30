@@ -13,18 +13,17 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="New Password" class="sr-only">New Password</label>
-            <input id="New Password" name="New Password" type="password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="New Password" />
+            <input id="New Password" v-model='password' name="New Password" type="password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="New Password" />
           </div>
           <div>
             <label for="password" class="sr-only">Confirm Password</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm Password" />
+            <input id="password" name="password" v-model='confirmpassword' type="password" autocomplete="current-password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm Password" />
           </div>
         </div>
 
         <div>
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button @click.prevent='validatePassword(password, confirmpassword)' type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-              <LockClosedIcon class="val h-5 w-5 text-indigo-500" aria-hidden="true" />
             </span>
             Valider
           </button>
@@ -37,7 +36,26 @@
 <script>
 
 export default ({
-    name: "Reset"
+    name: "Reset",
+    data(){
+      return{
+        password:'',
+        confirmpassword:''
+      }
+    },
+methods:{
+ async validatePassword(password, newpassword){
+    if(password != newpassword){
+      alert('Mots de passes différents, veuillez réessayer')
+    }else{
+      await this.$store.dispatch('auth/newPassword', [this.$route.params.id, {
+        password:password
+      }])
+    }
+
+  }
+}
+
 })
 </script>
 

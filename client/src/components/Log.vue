@@ -173,7 +173,7 @@
                     rounded-full
                   "
                   type="submit"
-                  @click="send"
+                  @click="send(email)"
                 >
                   Send Mail
                 </button>
@@ -223,7 +223,12 @@ export default {
     },
     toggleVal(){
       this.val = !this.val
-    }
+    },
+async send(email){
+  await this.$store.dispatch('auth/forgottenPassword',{email: email});
+  this.val = false;
+}
+
   },
 };
 </script>
