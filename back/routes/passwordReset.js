@@ -27,10 +27,9 @@ router.post("/", async (req, res) => {
             const bearerToken = bearer[1];
             // Set the token
             req.token = bearerToken;
-            console.log("allo?")
             // Next middleware
         } else {
-            const toke = jwt.sign({
+            jwt.sign({
                 user: {
                     id: user._id,
                     email: user.email,
@@ -40,7 +39,6 @@ router.post("/", async (req, res) => {
                 res.status(200).json({
                     user: user, token: token
                 });
-                console.log(toke)
 
             });
         }

@@ -124,7 +124,6 @@ const auth = {
           }
         });
         const dato = await resi.json();
-        console.log(dato)
         context.commit('setAuth', data.token)
         context.commit('setUser', dato)
       } else {
