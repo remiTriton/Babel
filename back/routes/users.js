@@ -139,8 +139,7 @@ router.put("/:id", verifyToken, async (req, res) => {
             } finally {
                 await client.close();
             }
-        }
-    })
+        }})
 });
 
 router.delete("/:id", verifyToken, async (req, res) => {
