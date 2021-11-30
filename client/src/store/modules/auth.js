@@ -156,15 +156,14 @@ const auth = {
     },
 
     async newPassword(context, [id, password]) {
-      const res = await fetch("/api/password-reset/" + id, {
+    await fetch("/api/password-reset/" + id, {
         method: "POST",
         headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('password'),
           "Content-Type": "application/json",
         },
-        body: json.stringify(password)
+        body: JSON.stringify(password)
       })
-      const data = await res.json();
-      console.log(data)
       context.commit('killForgottenPassword')
     }
   }

@@ -62,8 +62,8 @@ const routes = [{
   component: () => import('./views/NewOrder.vue'),
 },
 {
-  path: "/NewP",
-  name: "NewP",
+  path: "/password-reset/:id",
+  name: "password-reset",
   component: () => import('./components/Reset.vue'),
 },
 
