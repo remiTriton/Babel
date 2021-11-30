@@ -60,8 +60,7 @@ const routes = [{
   path: "/updateOrder/:id",
   name: "updateOrder",
   component: () => import('./views/NewOrder.vue'),
-}
-
+},
 ];
 
 export default createRouter({
