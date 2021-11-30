@@ -26,7 +26,7 @@
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <LockClosedIcon class="val h-5 w-5 text-indigo-500" aria-hidden="true" />
             </span>
-            Valide
+            Valider
           </button>
         </div>
       </form>
