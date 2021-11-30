@@ -41,21 +41,11 @@ const routes = [{
   component: () => import('./components/Cart.vue'),
 },
 {
-  path: "/AddWine",
-  name: "add",
-  component: () => import('./components/Add.vue'),
-},
-{
   path: "/update/:id",
   name: "Update",
   component: () => import('./components/Update.vue'),
 },
-{
-  path: '/users',
-  name: 'CrudUsers',
-  component: () => import('./components/Users.vue'),
 
-},
 {
   path: "/:catchAll(.*)",
   name: "NotFound",
@@ -66,11 +56,7 @@ const routes = [{
   name: "UpdateUser",
   component: () => import('./components/UpdateUser.vue'),
 },
-{
-  path:'/orders',
-  name:'OrderCrud',
-  component: () => import('./components/Orders.vue'),
-},
+
 {
   path: "/updateOrder/:id",
   name: "updateOrder",
