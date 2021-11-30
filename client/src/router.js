@@ -61,6 +61,12 @@ const routes = [{
   name: "updateOrder",
   component: () => import('./views/NewOrder.vue'),
 },
+{
+  path: "/NewP",
+  name: "NewP",
+  component: () => import('./components/Reset.vue'),
+},
+
 ];
 
 export default createRouter({
