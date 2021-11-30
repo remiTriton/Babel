@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white flex">
+  <div class="min-h-screen bg-white flex ">
     <div
       class="
         flex-1 flex flex-col
@@ -11,7 +11,7 @@
         xl:px-24
       "
     >
-      <div class="mx-auto w-full max-w-sm lg:w-96" >
+      <div class="mx-auto w-full max-w-sm lg:w-96 mb-60" >
         <div>
           <h2 v-if="!val" class="mt-6 text-3xl font-extrabold text-gray-900">
             Sign in to your account
