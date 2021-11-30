@@ -1,11 +1,12 @@
-<template><Suspense>
-  <div>
-    <!-- Static sidebar for desktop -->
-   <!-- <p class='text-black'> {{auth}}</p> -->
-    <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
-      <!-- Sidebar component, swap this element with another sidebar if you like -->
-    
-      <!-- <p class='text-black'>{{auth}}</p> -->
+<template>
+  <Suspense>
+    <div v-if="auth.user.role === 'Admin' || auth.user.role === 'Manager'">
+      <!-- Static sidebar for desktop -->
+      <!-- <p class='text-black'> {{auth}}</p> -->
+      <div class="hidden md:flex md:w-64 md:flex-col md:fixed">
+        <!-- Sidebar component, swap this element with another sidebar if you like -->
+
+        <!-- <p class='text-black'>{{auth}}</p> -->
         <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
           <div
             @click.prevent="toggleWines"
@@ -82,7 +83,7 @@
               font-medium
               rounded-md
             "
-            @click.prevent='toggleBills()'
+            @click.prevent="toggleBills()"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +130,7 @@
                 d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
               />
             </svg>
-             Dashboard
+            Dashboard
           </div>
           <div
             class="
@@ -236,13 +237,19 @@
           </div>
         </nav>
       </div>
-    
-    <div v-if="add"><Add /></div>
-    <OrderDoing v-if='order' />
-    <div v-if="showWines"><WinesAdm /></div>
-    <div v-if="showUsers"><Users /></div>
-    <div v-if="showBills"><Orders /></div>
-  </div></Suspense>
+
+      <div v-if="add"><Add /></div>
+      <OrderDoing v-if="order" />
+      <div v-if="showWines"><WinesAdm /></div>
+      <div v-if="showUsers"><Users /></div>
+      <div v-if="showBills"><Orders /></div>
+    </div>
+    <div v-else class="text-gray-700">
+      <router-link to="/WineList"
+        >Accès interdit. Veuillez retourner à la page des vins.</router-link
+      >
+    </div>
+  </Suspense>
 </template>
 
 <script>
@@ -282,16 +289,16 @@ export default {
       showWines: true,
       showUsers: false,
       showBills: false,
-      quantite:"",
+      quantite: "",
     };
   },
-  computed:{
-    auth(){
-      return this.$store.state.auth.user
+  computed: {
+    auth() {
+      return this.$store.state.auth.user;
     },
-    order(){
-      return this.$store.state.orders.order
-    }
+    order() {
+      return this.$store.state.orders.order;
+    },
   },
   methods: {
     newWine() {

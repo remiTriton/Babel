@@ -8,7 +8,6 @@ const wineCol = database.collection("wines");
 const users = require('./users')
 const jwt = require('jsonwebtoken');
 
-
 router.get("/", async (req, res) => {
   try {
     await client.connect();
@@ -127,7 +126,8 @@ router.put("/:id", users.verifyToken, async (req, res) => {
   jwt.verify(req.token, 'token', async (err, authData) => {
     if (authData.user.role === 'Serveur') {
       res.status(403).json("Access Forbidden");
-    }
+      return;
+    }else{
     try {
       await client.connect();
       await wineCol.updateOne(
@@ -141,7 +141,7 @@ router.put("/:id", users.verifyToken, async (req, res) => {
     } finally {
       await client.close();
     }
-  })
+  }})
 });
 
 router.delete("/:id", users.verifyToken, async (req, res) => {
