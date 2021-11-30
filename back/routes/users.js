@@ -27,8 +27,9 @@ router.get('/', verifyToken, async (req, res) => {
 router.get('/:id', verifyToken, async (req, res) => {
     jwt.verify(req.token, 'token', async (err, authData) => {
         if (authData.user.role != 'Admin') {
-            res.status(403).send('Accès interdit')}
-            else{
+            res.status(403).send('Accès interdit')
+        }
+        else {
             try {
                 await client.connect();
                 const query = { _id: new ObjectId(req.params.id) };
@@ -123,7 +124,8 @@ router.post('/login', async (req, res) => {
 router.put("/:id", verifyToken, async (req, res) => {
     jwt.verify(req.token, 'token', async (err, authData) => {
         if (authData.user.role != 'Admin') {
-            res.status(403).send('Accès interdit')}else{
+            res.status(403).send('Accès interdit')
+        } else {
             try {
                 await client.connect();
                 await userCol.updateOne(
