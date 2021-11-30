@@ -27,8 +27,9 @@ router.get('/', verifyToken, async (req, res) => {
 router.get('/:id', verifyToken, async (req, res) => {
     jwt.verify(req.token, 'token', async (err, authData) => {
         if (authData.user.role != 'Admin') {
-            res.status(403).send('Accès interdit')}
-            else{
+            res.status(403).send('Accès interdit')
+        }
+        else {
             try {
                 await client.connect();
                 const query = { _id: new ObjectId(req.params.id) };
@@ -123,81 +124,82 @@ router.post('/login', async (req, res) => {
 router.put("/:id", verifyToken, async (req, res) => {
     jwt.verify(req.token, 'token', async (err, authData) => {
         if (authData.user.role != 'Admin') {
-            res.status(403).send('Accès interdit')}else{
-            try {
-                await client.connect();
-                await userCol.updateOne(
-                    { _id: new ObjectId(req.params.id) },
-                    {
-                        $set:
-                            req.body
-                    }
-                );
-                res.send("User updated");
-            } finally {
-                await client.close();
-    } else {
-        return res.status(404).json('Wrong way')
-    
-    });
-
-router.delete("/:id", verifyToken, async (req, res) => {
-    jwt.verify(req.token, 'token', async (err, authData) => {
-        if (authData.user.role != 'Admin') {
             res.status(403).send('Accès interdit')
         } else {
+            return res.status(404).json('Wrong way')
+        }
+    })
+    try {
+        await client.connect();
+        await userCol.updateOne(
+            { _id: new ObjectId(req.params.id) },
+            {
+                $set:
+                    req.body
+            }
+        );
+        res.send("User updated");
+    } finally {
+        await client.close();
+    }}),
+
+    router.delete("/:id", verifyToken, async (req, res) => {
+        jwt.verify(req.token, 'token', async (err, authData) => {
+            if (authData.user.role != 'Admin') {
+                res.status(403).send('Accès interdit')
+            } else {
+                try {
+                    await client.connect();
+                    const query = { _id: new ObjectId(req.params.id) };
+                    await userCol.deleteOne(query);
+                    res.send("Successfully deleted!");
+                } finally {
+                    await client.close();
+                }
+            }
+        })
+    });
+    //Vue profil
+
+
+    router.post('/profile', verifyToken, async (req, res) => {
+        jwt.verify(req.token, 'token', async (err, authData) => {
             try {
                 await client.connect();
-                const query = { _id: new ObjectId(req.params.id) };
-                await userCol.deleteOne(query);
-                res.send("Successfully deleted!");
+                const query = { _id: new ObjectId(authData.user.id) };
+                const users = await userCol.findOne(query);
+                console.log(users)
+                res.send(authData);
             } finally {
                 await client.close();
             }
+        })
+
+    });
+
+
+    //On verifie tokenn
+    function verifyToken(req, res, next) {
+        // Get auth header value
+        const bearerHeader = req.headers['authorization'];
+        // Check if bearer is undefined
+        if (typeof bearerHeader !== 'undefined') {
+            // Split at the space
+            const bearer = bearerHeader.split(' ');
+            // Get token from array
+            const bearerToken = bearer[1];
+            // Set the token
+            req.token = bearerToken;
+            // Next middleware
+            next();
+        } else {
+            // Forbidden
+            res.sendStatus(403);
         }
-    })
-});
-//Vue profil
-
-
-router.post('/profile', verifyToken, async (req, res) => {
-    jwt.verify(req.token, 'token', async (err, authData) => {
-        try {
-            await client.connect();
-            const query = { _id: new ObjectId(authData.user.id) };
-            const users = await userCol.findOne(query);
-            console.log(users)
-            res.send(authData);
-        } finally {
-            await client.close();
-        }
-    })
-
-});
-
-
-//On verifie tokenn
-function verifyToken(req, res, next) {
-    // Get auth header value
-    const bearerHeader = req.headers['authorization'];
-    // Check if bearer is undefined
-    if (typeof bearerHeader !== 'undefined') {
-        // Split at the space
-        const bearer = bearerHeader.split(' ');
-        // Get token from array
-        const bearerToken = bearer[1];
-        // Set the token
-        req.token = bearerToken;
-        // Next middleware
-        next();
-    } else {
-        // Forbidden
-        res.sendStatus(403);
     }
-}
 
-module.exports = {
-    router: router,
-    verifyToken: verifyToken
-};
+    module.exports = {
+        router: router,
+        verifyToken: verifyToken
+    };
 
