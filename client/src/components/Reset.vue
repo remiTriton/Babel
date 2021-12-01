@@ -48,7 +48,7 @@ methods:{
     if(password != newpassword){
       alert('Mots de passes différents, veuillez réessayer')
     }else{
-      await this.$store.dispatch('auth/newPassword', [this.$route.params.id, {
+      await this.$store.dispatch('auth/newPassword', [this.$route.params.id,this.$route.params._id, {
         password:password
       }])
     }
