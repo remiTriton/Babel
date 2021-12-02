@@ -160,4 +160,40 @@ router.delete("/:id", users.verifyToken, async (req, res) => {
   })
 });
 
+router.get("/kpi/sum", async (req, res) => {
+  try {
+    await client.connect();
+    
+    const total =  wineCol.aggregate(
+    [
+      // {
+      //   $group:
+      //     {
+      //       _id: { price: { $pricebycolor: "$couleur"}},
+      //       totalAmount: { $sum: { $multiply: [ "$prix", "$quantite" ] } },
+      //       count: { $sum: 1 }
+      //     }
+      // }
+
+      {
+        partitionBy: "$state",
+        sortBy: { orderprix: 1 },
+        output: {
+           sumQuantityForState: {
+              $sum: "$quantité, $prix",
+              window: {
+                 documents: [ "unbounded", "current" ]
+              }
+           }
+        }
+     }
+  
+    ])
+    
+    res.send(total)
+  } finally {
+    await client.close();
+  }
+})
+
 module.exports = router;
