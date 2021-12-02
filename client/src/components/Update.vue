@@ -443,7 +443,7 @@
             </label>
             <textarea
                 v-model="wine.description"
-                class="resize border rounded-md 
+                class="resize border rounded-md
                 border border-gray-200
                 appearance-none
                 block
@@ -463,7 +463,7 @@
         </div>
 
         <input type="file" @change="previewFile" />
-        <img :src="imgBase64" height="200" alt="Image preview...">
+        <canvas ref="canvas" />
 
         <button
             class="
@@ -479,7 +479,7 @@
             mt-10
           "
             type="submit"
-            @click="updateWine(quantite)"
+            @click="updateWine()"
         >
           Submit
         </button>
@@ -519,12 +519,26 @@ export default {
       const file = e.target.files[0];
       const reader = new FileReader();
 
-      const onLoad = function () {
-        this.imgBase64 = reader.result;
-        reader.removeEventListener('load', onLoad, false);
-      };
-      reader.addEventListener('load', onLoad, false);
+      const maxW = 100;
+      const maxH = 100;
 
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          const iw = img.width;
+          const ih = img.height;
+          const scale = Math.min((maxW / iw), (maxH / ih));
+          const iwScaled = iw * scale;
+          const ihScaled = ih * scale;
+          this.$refs.canvas.width = iwScaled;
+          this.$refs.canvas.height = ihScaled;
+
+          const ctx = this.$refs.canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
+          this.imgBase64 = this.$refs.canvas.toDataURL();
+        }
+        img.src = reader.result;
+      };
       reader.readAsDataURL(file);
     },
     async updateWine() {
@@ -544,7 +558,8 @@ export default {
           pays: this.wine.pays,
           quantite: this.quantite + this.wine.quantite,
           prix: this.wine.prix,
-          departement: this.wine.departement
+          departement: this.wine.departement,
+          imgBase64: this.imgBase64,
         },
       ]);
 
