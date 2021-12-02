@@ -462,6 +462,8 @@
           </div>
         </div>
 
+        <input type="file" @change="previewFile" />
+        <img :src="imgBase64" height="200" alt="Image preview...">
 
         <button
             class="
@@ -493,6 +495,7 @@ export default {
   props: ["id"],
   data() {
     return {
+      imgBase64: '',
       quantite: 0,
       img: "/src/"
     }
@@ -512,6 +515,18 @@ export default {
   },
 
   methods: {
+    previewFile(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      const onLoad = function () {
+        this.imgBase64 = reader.result;
+        reader.removeEventListener('load', onLoad, false);
+      };
+      reader.addEventListener('load', onLoad, false);
+
+      reader.readAsDataURL(file);
+    },
     async updateWine() {
       this.wine.quantite = this.wine.quantite || 0;
 
