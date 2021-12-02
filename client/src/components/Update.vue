@@ -337,7 +337,7 @@
               Quantité
             </label>
             <input
-                v-model="wine.quantite"
+                v-model="quantite"
                 class="
                 border border-gray-200
                 appearance-none
@@ -493,7 +493,13 @@ export default {
   props: ["id"],
   data() {
     return {
+      quantite: 0,
       img: "/src/"
+    }
+  },
+  watch: {
+    'wine.quantite': function(v) {
+      this.quantite = v;
     }
   },
   created() {
@@ -521,7 +527,7 @@ export default {
           description: this.wine.description,
           region: this.wine.region,
           pays: this.wine.pays,
-          quantite: this.wine.quantite,
+          quantite: this.quantite + this.wine.quantite,
           prix: this.wine.prix,
           departement: this.wine.departement
         },
