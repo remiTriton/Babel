@@ -151,12 +151,11 @@ const auth = {
         body: JSON.stringify(email)
       })
       const data = await res.json();
-      console.log(data);
       localStorage.setItem('password', data.token);
     },
 
-    async newPassword(context, [id, password]) {
-    await fetch("/api/password-reset/" + id, {
+    async newPassword(context, [id, _id, password]) {
+    await fetch("/api/password-reset/" + id +"/"+_id, {
         method: "POST",
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('password'),

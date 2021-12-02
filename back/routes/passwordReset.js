@@ -9,7 +9,7 @@ const userCol = database.collection("users");
 const sendEmail = require('../utils/sendEmail');
 const bcrypt = require('bcryptjs')
 const users = require('./users')
-
+const tokenPass = database.collection("tokensPass")
 
 router.post("/", async (req, res) => {
     try {
@@ -42,22 +42,29 @@ router.post("/", async (req, res) => {
 
             });
         }
-        const link = `http://localhost:3000/password-reset/${user._id}`;
+        const tok = await tokenPass.insertOne({ 
+            iat: Math.floor(Date.now() / 1000) + (60 * 60), expiresIn: 60 * 60
+        });
+        const tak = await tokenPass.findOne({_id: new ObjectId(tok.insertedId)})
+
+        console.log(tak)
+
+        const link = `http://localhost:3000/password-reset/${user._id}/${tak._id}`;
         await sendEmail(user.email, "Password reset", "Bonjour, il semblerait que vous ayiez demandé une demande de nouveau mot de passe, Veuillez vous rendre à cette adresse :" + link );
 
     } catch (error) {
-        res.send("oopsi");
         console.log(error)
     } finally {
         await client.close();
     }
 });
 
-router.post('/:userId/', users.verifyToken, async (req, res) => {
+router.post('/:userId/:tokenId', users.verifyToken, async (req, res) => {
     try {
         await client.connect();
         const user = await userCol.findOne({ _id: new ObjectId(req.params.userId) });
-        if (!user)
+        const token = await tokenPass.findOne({_id:new ObjectId(req.params.tokenId)});
+        if (!user || !token)
             return res.status(400).send('invalid link or expired');
 
         const hash = await new Promise((resolve, reject) => {
@@ -76,6 +83,7 @@ router.post('/:userId/', users.verifyToken, async (req, res) => {
                     password: hash
                 }
             });
+            await tokenPass.deleteOne({ _id: new ObjectId(req.params.tokenId)})
         console.log(hash)
         res.status(200).send('password updatedt LUL')
     } finally {
