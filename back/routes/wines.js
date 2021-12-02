@@ -7,6 +7,28 @@ const database = client.db("babel");
 const wineCol = database.collection("wines");
 const users = require('./users')
 const jwt = require('jsonwebtoken');
+const multer = require('multer')
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'assets/upload');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "--" + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if ((file.mimetype).includes('jpeg') || (file.mimetype).includes('png') || (file.mimetype).includes('jpg')) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+
+  }
+
+};
+const upload = multer({ storage: storage, fileFilter: fileFilter, });
 
 router.get("/", async (req, res) => {
   try {
@@ -17,6 +39,25 @@ router.get("/", async (req, res) => {
     await client.close();
   }
 });
+
+router.post('/images/:id', upload.single('photo'), async (req, res) => {
+  try {
+    await client.connect();
+    const wine = await wineCol.findOne({ _id: new ObjectId(req.params.id) });
+    if (!wine) {
+      return console.log('Wine not found')
+    }
+    else {
+      console.log(req.file.filename)
+      const path = req.file.path.replace(/\\/g, "/")
+      await wineCol.updateOne({ _id: new ObjectId(req.params.id) },
+        { $set: { winePicture: req.file.filename } })
+
+    }
+  } finally {
+    await client.close();
+  }
+})
 
 router.get("/:id", async (req, res) => {
   try {
@@ -67,9 +108,6 @@ router.get("/search/:cuvee", async (req, res) => {
     const q = req.params.cuvee
     const wine = await wineCol.find({ cuvee: { $regex: new RegExp(q) } }).toArray();
     res.send(wine);
-    console.log(q);
-    console.log(wine);
-
   } finally {
     await client.close();
   }
@@ -81,7 +119,6 @@ router.get("/domain/:domaine", async (req, res) => {
     const q = req.params.domaine
     const wine = await wineCol.find({ domaine: { $regex: new RegExp(q) } }).toArray();
     res.send(wine);
-    console.log(wine);
   } finally {
     await client.close();
   }
@@ -93,7 +130,6 @@ router.get("/color/:couleur", async (req, res) => {
     const query = { couleur: req.params.couleur };
     const wine = await wineCol.find(query).toArray();
     res.send(wine);
-    console.log(wine);
   } finally {
     await client.close();
   }
@@ -127,21 +163,22 @@ router.put("/:id", users.verifyToken, async (req, res) => {
     if (authData.user.role === 'Serveur') {
       res.status(403).json("Access Forbidden");
       return;
-    }else{
-    try {
-      await client.connect();
-      await wineCol.updateOne(
-        { _id: new ObjectId(req.params.id) },
-        {
-          $set:
-            req.body
-        }
-      );
-      res.send("Wine updated");
-    } finally {
-      await client.close();
+    } else {
+      try {
+        await client.connect();
+        await wineCol.updateOne(
+          { _id: new ObjectId(req.params.id) },
+          {
+            $set:
+              req.body
+          }
+        );
+        res.send("Wine updated");
+      } finally {
+        await client.close();
+      }
     }
-  }})
+  })
 });
 
 router.delete("/:id", users.verifyToken, async (req, res) => {
@@ -159,5 +196,7 @@ router.delete("/:id", users.verifyToken, async (req, res) => {
     }
   })
 });
+
+
 
 module.exports = router;

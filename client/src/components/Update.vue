@@ -484,7 +484,8 @@
           Submit
         </button>
       </form>
-    </div>
+    </div>          <img :src="require(`../assets/upload/${wine.winePicture}`)" />
+
   </div>
 </template>
 
@@ -492,6 +493,11 @@
 export default {
   name: "NewWine",
   props: ["id"],
+  data(){
+    return{
+      img:"/src/"
+    }
+  },
   created() {
     this.$store.dispatch("wines/findOnewines", this.$route.params.id);
   },
