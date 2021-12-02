@@ -201,25 +201,18 @@ router.get("/kpi/sum", async (req, res) => {
   try {
     await client.connect();
     
-    const total =  wineCol.aggregate(
+    const total = await wineCol.aggregate(
     [
-      // {
-      //   $group:
-      //     {
-      //       _id: { price: { $pricebycolor: "$couleur"}},
-      //       totalAmount: { $sum: { $multiply: [ "$prix", "$quantite" ] } },
-      //       count: { $sum: 1 }
-      //     }
-      // }
+        {
+          $group:
+              {
+                _id: "$couleur",
+                sum_prix: { $sum: "$prix" },
+                sum_qtite: { $sum: "$quantite" },
+              }
+        },
+    ]).toArray();
 
-      
-        { $match: { couleur: "Rouge" } },
-                     { $group: { _id: "$_id", total: { $sum: "$prix" } } },
-                     { $sort: { total: -1 } }
-     
-  
-    ])
-    
     res.send(total)
   } finally {
     await client.close();

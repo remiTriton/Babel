@@ -3,8 +3,6 @@
     <div class="formulaire">
       <form @submit.prevent.stop class="w-full max-w-lg mt-20">
 
-      //////
-
 <div class="grid grid-cols-2 gap-8">
           <div>
             <label
@@ -16,7 +14,7 @@
                 font-bold
                 mb-2
               "
-              for="grid-domcuveeain"
+              for="grid-cuvee"
             >
               Cuvée
             </label>
@@ -389,7 +387,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-              id="grid-prix"
+              id="prix"
               type="number"
                 placeholder="0"
             />
@@ -518,7 +516,6 @@ export default {
             cepage: this.wine.cepage,
             millesime: this.wine.millesime,
             vigneron: this.wine.vigneron,
-            cuvee: this.wine.wineName,
             couleur: this.wine.couleur,
             description: this.wine.description,
             departement:this.wine.departement,
@@ -526,7 +523,6 @@ export default {
             pays: this.wine.pays,
             quantite: this.quantite,
             prix: this.wine.prix,
-            departement: this.wine.departement,
           },
         ]);
       } else {
@@ -538,7 +534,6 @@ export default {
             cepage: this.wine.cepage,
             millesime: this.wine.millesime,
             vigneron: this.wine.vigneron,
-            cuvee: this.wine.wineName,
             couleur: this.wine.couleur,
             description: this.wine.description,
             region: this.wine.region,

@@ -40,8 +40,8 @@ const main = async () => {
                 millesime,
                 cepage,
                 vigneron,
-                prix,
-                quantite
+                prix: Number(prix || 0),
+                quantite: Number(quantite || 0)
             };
         })
         // remove NULL document (first line of the doc)
