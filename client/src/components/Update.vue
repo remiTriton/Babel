@@ -179,7 +179,7 @@
                 <option>Grêce</option>
                 <option>Croatie</option>
               </select>
-      
+
           </div>
           <div>
             <label
@@ -441,9 +441,9 @@
             >
               Description
             </label>
-            <textarea 
+            <textarea
             v-model="wine.description"
-                class="resize border rounded-md 
+                class="resize border rounded-md
                 border border-gray-200
                 appearance-none
                 block
@@ -454,7 +454,7 @@
                 px-4
                 mb-3
                 leading-tight
-                focus:outline-none focus:bg-white "          
+                focus:outline-none focus:bg-white "
               id="grid-description"
               type="text"
               >
@@ -482,8 +482,7 @@
           Submit
         </button>
       </form>
-    </div>          <img :src="require(`../assets/upload/${wine.winePicture}`)" />
-
+    </div>
   </div>
 </template>
 
