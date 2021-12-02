@@ -91,5 +91,4 @@ router.post('/:userId/:tokenId', users.verifyToken, async (req, res) => {
     }
 });
 
-
 module.exports = router;
