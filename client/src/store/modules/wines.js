@@ -13,6 +13,9 @@ const wines = {
     setwine(state, list) {
       state.wine = list;
     },
+    setTotal(state, list){
+      state.Total = list;
+    }
   },
 
   actions: {
