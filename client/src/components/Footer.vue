@@ -1,6 +1,6 @@
 <template>
 <div>
-  <footer class="back w-full">
+  <footer class="back">
     <div class="max-w-7xl mx-auto py-12 px-4  md:flex md:items-center md:justify-between lg:px-8">
       <div class="flex justify-center space-x-6 md:order-2">
         <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-gray-400 hover:text-white">
@@ -68,5 +68,6 @@ export default {
 .back {
     background-color: #2a574c;
     color: white;
+    width: 100%;
 }
 </style>
