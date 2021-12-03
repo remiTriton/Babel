@@ -97,6 +97,7 @@ router.post("/", users.verifyToken, async (req, res) => {
           quantite: req.body.quantite,
           prix: req.body.prix,
           departement: req.body.departement,
+          imgBase64:req.body.imgBase64
         };
         const result = await wineCol.insertOne(doc);
         res.send(`A document was inserted with the _id: ${result.insertedId}`);

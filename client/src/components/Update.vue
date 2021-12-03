@@ -7,7 +7,7 @@
         <div class="grid grid-cols-2 gap-8">
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -15,13 +15,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-cuvee"
+              for="grid-cuvee"
             >
               Cuvée
             </label>
             <input
-                v-model="wine.cuvee"
-                class="
+              v-model="wine.cuvee"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -35,13 +35,13 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-cuvee"
-                type="text"
+              id="grid-cuvee"
+              type="text"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -49,13 +49,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-domaine"
+              for="grid-domaine"
             >
               Domaine
             </label>
             <input
-                v-model="wine.domaine"
-                class="
+              v-model="wine.domaine"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -69,13 +69,13 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-domaine"
-                type="text"
+              id="grid-domaine"
+              type="text"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -83,13 +83,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-vigneron"
+              for="grid-vigneron"
             >
               Vigneron
             </label>
             <input
-                v-model="wine.vigneron"
-                class="
+              v-model="wine.vigneron"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -103,13 +103,13 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-vigneron"
-                type="text"
+              id="grid-vigneron"
+              type="text"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -117,13 +117,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-cepage"
+              for="grid-cepage"
             >
               Cépage
             </label>
             <input
-                v-model="wine.cepage"
-                class="
+              v-model="wine.cepage"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -137,13 +137,13 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-cepage"
-                type="text"
+              id="grid-cepage"
+              type="text"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -151,13 +151,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-pays"
+              for="grid-pays"
             >
               Pays
             </label>
             <select
-                v-model="wine.pays"
-                class="
+              v-model="wine.pays"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -171,7 +171,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-pays"
+              id="grid-pays"
             >
               <option>France</option>
               <option>Italie</option>
@@ -182,7 +182,7 @@
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -190,13 +190,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-region"
+              for="grid-region"
             >
               Région
             </label>
             <input
-                v-model="wine.region"
-                class="
+              v-model="wine.region"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -210,13 +210,13 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-region"
-                type="text"
+              id="grid-region"
+              type="text"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -224,13 +224,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-departement"
+              for="grid-departement"
             >
               Département
             </label>
             <input
-                v-model="wine.departement"
-                class="
+              v-model="wine.departement"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -244,13 +244,13 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-departement"
-                type="text"
+              id="grid-departement"
+              type="text"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -258,13 +258,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-millesime"
+              for="grid-millesime"
             >
               Millésime
             </label>
             <input
-                v-model="wine.millesime"
-                class="
+              v-model="wine.millesime"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -278,13 +278,13 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-millesime"
-                type="text"
+              id="grid-millesime"
+              type="text"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -292,13 +292,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-couleur"
+              for="grid-couleur"
             >
               Couleur
             </label>
             <select
-                v-model="wine.couleur"
-                class="
+              v-model="wine.couleur"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -312,7 +312,7 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-couleur"
+              id="grid-couleur"
             >
               <option>Rouge</option>
               <option>Blanc</option>
@@ -323,7 +323,7 @@
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -331,13 +331,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-quantite"
+              for="grid-quantite"
             >
               Quantité
             </label>
             <input
-                v-model="quantite"
-                class="
+              v-model="quantite"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -351,14 +351,14 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="grid-quantite"
-                type="number"
-                placeholder="0"
+              id="grid-quantite"
+              type="number"
+              placeholder="0"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -366,13 +366,13 @@
                 font-bold
                 mb-2
               "
-                for="grid-prix"
+              for="grid-prix"
             >
               Prix
             </label>
             <input
-                v-model="wine.prix"
-                class="
+              v-model="wine.prix"
+              class="
                 border border-gray-200
                 appearance-none
                 block
@@ -386,14 +386,14 @@
                 leading-tight
                 focus:outline-none focus:bg-white
               "
-                id="prix"
-                type="number"
-                placeholder="0"
+              id="prix"
+              type="number"
+              placeholder="0"
             />
           </div>
           <div>
             <label
-                class="
+              class="
                 info
                 uppercase
                 tracking-wide
@@ -401,13 +401,16 @@
                 font-bold
                 mb-2
               "
-                for="grid-description"
+              for="grid-description"
             >
               Description
             </label>
             <textarea
-                v-model="wine.description"
-                class="resize border rounded-md
+              v-model="wine.description"
+              class="
+                resize
+                border
+                rounded-md
                 border border-gray-200
                 appearance-none
                 block
@@ -418,15 +421,16 @@
                 px-4
                 mb-3
                 leading-tight
-                focus:outline-none focus:bg-white "
-                id="grid-description"
-                type="text"
+                focus:outline-none focus:bg-white
+              "
+              id="grid-description"
+              type="text"
             >
             </textarea>
           </div>
           <div>
             <label
-                class="
+              class="
                 block
                 uppercase
                 tracking-wide
@@ -434,17 +438,17 @@
                 font-bold
                 mb-2
               "
-                for="grid-download"
+              for="grid-download"
             >
               Download images
             </label>
             <input type="file" @change="previewFile" />
-        <canvas ref="canvas" />
+            <canvas ref="canvas" />
           </div>
         </div>
 
         <button
-            class="
+          class="
             But
             bg-blue
             hover:bg-dark
@@ -456,8 +460,8 @@
             rounded-full
             mt-10
           "
-            type="submit"
-            @click="updateWine()"
+          type="submit"
+          @click="updateWine()"
         >
           Submit
         </button>
@@ -472,15 +476,15 @@ export default {
   props: ["id"],
   data() {
     return {
-      imgBase64: '',
+      imgBase64: "",
       quantite: 0,
-      img: "/src/"
-    }
+      img: "/src/",
+    };
   },
   watch: {
-    'wine.quantite': function(v) {
+    "wine.quantite": function (v) {
       this.quantite = v;
-    }
+    },
   },
   created() {
     this.$store.dispatch("wines/findOnewines", this.$route.params.id);
@@ -495,16 +499,14 @@ export default {
     previewFile(e) {
       const file = e.target.files[0];
       const reader = new FileReader();
-
-      const maxW = 250;
-      const maxH = 250;
-
+      const maxW = 300;
+      const maxH = 300;
       reader.onload = () => {
         const img = new Image();
         img.onload = () => {
           const iw = img.width;
           const ih = img.height;
-          const scale = Math.min((maxW / iw), (maxH / ih));
+          const scale = Math.min(maxW / iw, maxH / ih);
           const iwScaled = iw * scale;
           const ihScaled = ih * scale;
           this.$refs.canvas.width = iwScaled;
@@ -513,7 +515,7 @@ export default {
           const ctx = this.$refs.canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
           this.imgBase64 = this.$refs.canvas.toDataURL();
-        }
+        };
         img.src = reader.result;
       };
       reader.readAsDataURL(file);
