@@ -213,10 +213,11 @@ router.get("/kpi/sum", async (req, res) => {
           $group:
           {
             _id: "$couleur",
-            sum_prix: { $sum: "$prix" },
+            sum_prix: {$sum: "$prix"},
             sum_qtite: { $sum: "$quantite" },
-          }
-        },
+            // sum_total: {$multiply: "$prix, $quantite"}
+          },
+         
       ]).toArray();
 
     res.send(total)

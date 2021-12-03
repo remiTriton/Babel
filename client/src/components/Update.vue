@@ -496,8 +496,8 @@ export default {
       const file = e.target.files[0];
       const reader = new FileReader();
 
-      const maxW = 250;
-      const maxH = 250;
+      const maxW = 300;
+      const maxH = 300;
 
       reader.onload = () => {
         const img = new Image();

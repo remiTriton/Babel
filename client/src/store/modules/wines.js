@@ -91,6 +91,13 @@ const wines = {
 
         }
       });
+    },
+    async wineKpi(context) {
+      const res = await fetch("/api/wines/kpi/sum"
+      );
+      const data= await res.json();
+      console.log(data)
+      context.commit("setwines", data)
     }
   }
 }

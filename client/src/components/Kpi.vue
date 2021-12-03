@@ -79,7 +79,7 @@
                             text-sm text-gray-500
                           "
                         >
-                            {{ wine.couleur }}
+                            {{ wine._id }}
                        
                         </td>
                         <td
@@ -90,7 +90,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.quantite }}
+                          {{ wine.sum_qtite }}
                         </td>
 
                         <td
@@ -101,7 +101,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.prix }}
+                          {{ wine.sum_prix }}
                         </td>
                         </tr>
                     </tbody>
@@ -122,7 +122,7 @@ export default {
 name :"Kpi",
 
 created() {
-    this.$store.dispatch("wines/fetchWines");
+    this.$store.dispatch("wines/wineKpi");
   },
 
 computed: {
