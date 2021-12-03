@@ -70,22 +70,24 @@
                     </thead>
 
                     <tbody>
-                        <tr v-for="wine in wines" :key="wine.id"> 
+                        <tr v-for="wine in wines[0]" :key="wine.id"> 
                         <td
                           class="
                             px-6
                             py-4
+                             text-center text-xs
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
                         >
-                            {{ wine.couleur }}
+                            {{ wine._id }}
                        
                         </td>
                         <td
                           class="
                             px-6
                             py-4
+                             text-center text-xs
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
@@ -97,13 +99,53 @@
                           class="
                             px-6
                             py-4
+                             text-center text-xs
                             whitespace-nowrap
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.prix }}
+                          {{ wine.prices }}
                         </td>
                         </tr>
+                      <tr v-for="total in wines[1]" :key="total.id"> 
+                      <td
+                          class="
+                            px-8
+                            py-4
+                             text-center text-xs
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                            bg-gray-200
+                          "
+                        >
+                          Total :
+                        </td>
+                    <td
+                          class="
+                            px-6
+                            py-4
+                             text-center text-xs
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                            bg-gray-200
+                          "
+                        >
+                          {{total.prices}}
+                        </td>
+                        <td
+                          class="
+                            px-6
+                            py-4
+                             text-center text-xs
+                            whitespace-nowrap
+                            text-sm text-gray-500
+                            bg-gray-200
+                          "
+                        >
+                          {{total.quantite}}
+                        </td>
+
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -122,7 +164,7 @@ export default {
 name :"Kpi",
 
 created() {
-    this.$store.dispatch("wines/fetchWines");
+    this.$store.dispatch("wines/wineKpi");
   },
 
 computed: {
