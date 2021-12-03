@@ -539,8 +539,6 @@ export default {
           imgBase64: this.imgBase64,
         },
       ]);
-
-      await this.$store.dispatch("wines/findOnewines", this.$route.params.id);
       await this.$router.push("/Admin");
     },
   },

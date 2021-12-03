@@ -32,13 +32,13 @@ const wines = {
       context.commit("setwine", data);
     },
 
-    async getWineQuantity ( context, _id){
+    async getWineQuantity(context, _id) {
       const res = await fetch("/api/wines/" + _id)
       const data = await res.json();
       context.commit("setwine", data.quantite);
       console.log(data.quantite)
     },
-    
+
     //On cherche un wines 
 
     async searchWinesByName(context, [type, query]) {
@@ -72,9 +72,9 @@ const wines = {
         "method": "POST",
         headers: {
           "Content-Type": "application/json",
-         
-            Authorization: 'Bearer ' + localStorage.getItem('token')
-          
+
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+
         },
         body: JSON.stringify(body)
       })
@@ -86,13 +86,11 @@ const wines = {
         body: JSON.stringify(wine),
         "headers": {
           "Content-type": "application/json",
-        
-            Authorization: 'Bearer ' + localStorage.getItem('token')
-          
+
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+
         }
       });
-
-      context.commit('setwine')
     }
   }
 }
