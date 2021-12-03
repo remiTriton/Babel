@@ -104,7 +104,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ vin.prices }}
+                          {{ vin.prices }} €
                         </td>
                         </tr>
                       <tr v-for="tot in Total[1]" :key="tot.id"> 
@@ -130,7 +130,7 @@
                             bg-gray-200
                           "
                         >
-                          {{tot.prices}}
+                          {{tot.quantite}} 
                         </td>
                         <td
                           class="
@@ -142,7 +142,7 @@
                             bg-gray-200
                           "
                         >
-                          {{tot.quantite}}
+                          {{tot.prices}} €
                         </td>
 
                       </tr>

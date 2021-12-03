@@ -79,11 +79,9 @@
           </div>
         </dl>
       </div>
-      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-        <img v-bind:src="wine.imgBase64" />
-        <img v-bind:src="wine.imgBase64" />
-        <img v-bind:src="wine.imgBase64" />
-        <img v-bind:src="wine.imgBase64" />
+      <div class="">
+        <img class="w-full" v-bind:src="wine.imgBase64" />
+        
       </div>
     </div>
     <button
