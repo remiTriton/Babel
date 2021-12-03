@@ -13,6 +13,7 @@
                   min-w-full
                   sm:px-6
                   lg:px-8
+                   text-center text-xs
                 "
               >
                 <div
@@ -21,6 +22,7 @@
                     overflow-hidden
                     border-b border-gray-200
                     sm:rounded-lg
+                     text-center text-xs
                   "
                 >
                   <div class="flex flex-col">
@@ -33,6 +35,7 @@
                           min-w-full
                           sm:px-6
                           lg:px-8
+                           text-center text-xs
                         "
                       >
                         <div
@@ -41,6 +44,7 @@
                             overflow-hidden
                             border-b border-gray-200
                             sm:rounded-lg
+                             text-center text-xs
                           "
                         ></div>
                       </div>
@@ -65,6 +69,7 @@
                             text-gray-900
                             uppercase
                             tracking-wider
+                             text-center text-xs
                           "
                         >
                           Email
@@ -79,6 +84,7 @@
                             text-gray-500
                             uppercase
                             tracking-wider
+                             text-center text-xs
                           "
                         >
                           Numéro de commande
@@ -93,6 +99,7 @@
                             text-gray-500
                             uppercase
                             tracking-wider
+                             text-center text-xs
                           "
                         >
                           Date
@@ -107,6 +114,7 @@
                             text-gray-500
                             uppercase
                             tracking-wider
+                             text-center text-xs
                           "
                         >
                           Edit
@@ -122,6 +130,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                             text-center text-xs
                           "
                         >
                           <router-link
@@ -140,6 +149,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                             text-center text-xs
                           "
                         >
                           {{ i }}
@@ -150,6 +160,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                             text-center text-xs
                           "
                         >
                           {{ order.Created.slice(0, 21) }}
@@ -161,6 +172,7 @@
                             whitespace-nowrap
                             text-sm text-gray-500
                             ml-5
+                             text-center text-xs
                           "
                         >
                           <router-link

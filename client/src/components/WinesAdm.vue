@@ -15,6 +15,7 @@
                     min-w-full
                     sm:px-6
                     lg:px-8
+                     text-center text-xs
                   "
                 >
                   <div
@@ -23,6 +24,7 @@
                       overflow-hidden
                       border-b border-gray-200
                       sm:rounded-lg
+                       text-center text-xs
                     "
                   >
                     <div class="flex flex-col">
@@ -35,6 +37,7 @@
                             min-w-full
                             sm:px-6
                             lg:px-8
+                             text-center text-xs
                           "
                         >
                           <div
@@ -43,6 +46,7 @@
                               overflow-hidden
                               border-b border-gray-200
                               sm:rounded-lg
+                               text-center text-xs
                             "
                           ></div>
                         </div>
@@ -61,6 +65,7 @@
                               text-gray-900
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             Cuvée
@@ -75,6 +80,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             Quantité
@@ -89,6 +95,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             Couleur
@@ -103,6 +110,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             PAHT
@@ -118,6 +126,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             PVC
@@ -134,6 +143,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             Commande
@@ -150,6 +160,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             Add
@@ -164,6 +175,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
+                               text-center text-xs
                             "
                           >
                             Edit
@@ -179,6 +191,7 @@
                               py-4
                               whitespace-nowrap
                               text-sm text-gray-500
+                               text-center text-xs
                             "
                           >
                             <router-link
@@ -197,6 +210,7 @@
                               py-4
                               whitespace-nowrap
                               text-sm text-gray-500
+                               text-center text-xs
                             "
                           >
                             {{ wine.quantite }}
@@ -208,6 +222,7 @@
                               py-4
                               whitespace-nowrap
                               text-sm text-gray-500
+                               text-center text-xs
                             "
                           >
                             {{ wine.couleur }}
@@ -219,6 +234,7 @@
                               py-4
                               whitespace-nowrap
                               text-sm text-gray-500
+                               text-center text-xs
                             "
                           >
                             {{ wine.prix }} €
@@ -230,6 +246,7 @@
                               py-4
                               whitespace-nowrap
                               text-sm text-gray-500
+                               text-center text-xs
                             "
                           >
                             {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
@@ -240,6 +257,7 @@
                               class="
                                 appearance-none
                                 block
+                                 text-center text-xs
                                 bg-gray-200
                                 text-gray-700
                                 border border-gray-200
@@ -263,6 +281,7 @@
                                 round
                                 inline-flex
                                 items-center
+                                 text-center text-xs
                                 p-2
                                 border border-transparent
                                 rounded-full
@@ -288,6 +307,7 @@
                             class="
                               px-6
                               py-4
+                               text-center text-xs
                               whitespace-nowrap
                               text-sm text-gray-500
                               ml-5
@@ -301,6 +321,7 @@
                             >
                               <button
                                 class="
+                                 text-center text-xs
                                   text-indigo-600
                                   hover:text-indigo-900
                                   ml-5
