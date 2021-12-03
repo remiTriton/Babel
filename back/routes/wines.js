@@ -215,7 +215,11 @@ router.get("/kpi/sum", async (req, res) => {
             "$sum" : { 
                 "$multiply" : ["$prix", "$quantite"]
             }
-        }
+           
+        },
+        "quantite" : { 
+          "$sum" : "$quantite",
+          }
     }}
   ]).toArray();
 
