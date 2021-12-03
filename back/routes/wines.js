@@ -91,7 +91,7 @@ router.post("/", users.verifyToken, async (req, res) => {
           millesime: req.body.millesime,
           vigneron: req.body.vigneron,
           couleur: req.body.couleur,
-          description: req.body.descritpion,
+          description: req.body.description,
           region: req.body.region,
           pays: req.body.pays,
           quantite: req.body.quantite,
