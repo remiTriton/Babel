@@ -6,34 +6,41 @@ Any user can view the various wine information by entering the site. For
 be able to add, note or
 to comment on a product, the user must create an account with their login details. Users can search for a particular reference through the help of the search bar.
 
-ARCHITECTURE
+## ARCHITECTURE
 
 
-How to install it ?
+### How to install it ?
 
 First of all, to be able to use our website, you have to run 
-
+```
 npm intall -- save 
-
+```
 Create a back folder:
-
+```
 mkdir back
+```
 
 Create a customer file for the front:
-
+```
 mkdir client
+```
 
-To start the back, and to run the front use the command :
-
+To start the back, and to run the front use the command inside babel/client and babel/back:
+```
 npm run dev 
+```
+To start locally the db, use : 
+```
+docker-compose up db
+```
 
-Installation of services in docker use the following command:
+Installation of all services in docker use the following command:
 
+```
 docker-compose up build
+```
 
-Will allow you to launch your database locally
-
-PROJECT :
+## PROJECT :
 
 Once your project is installed.
 
