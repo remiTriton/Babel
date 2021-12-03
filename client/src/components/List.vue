@@ -39,7 +39,7 @@
             >
               <router-link :to="{ name: 'Print', params: { id: wine._id } }">
                 <img
-                    src="../assets/Chuck.jpg"
+                    v-bind:src="wine.imgBase64"
                     :alt="wine.cuvee"
                     class="
                     w-full
