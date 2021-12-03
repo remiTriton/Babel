@@ -10,6 +10,7 @@
                   py-2
                   align-middle
                   inline-block
+                   text-center text-xs
                   min-w-full
                   sm:px-6
                   lg:px-8
@@ -20,6 +21,7 @@
                     shadow
                     overflow-hidden
                     border-b border-gray-200
+                     text-center text-xs
                     sm:rounded-lg
                   "
                 >
@@ -33,6 +35,7 @@
                           text-center text-xs
                           font-medium
                           text-gray-500
+                           text-center text-xs
                           uppercase
                           tracking-wider
                         "
@@ -47,6 +50,7 @@
                           text-center text-xs
                           font-medium
                           text-gray-500
+                           text-center text-xs
                           uppercase
                           tracking-wider
                         "
@@ -61,6 +65,7 @@
                           text-center text-xs
                           font-medium
                           text-gray-500
+                           text-center text-xs
                           uppercase
                           tracking-wider
                         "
@@ -75,6 +80,7 @@
                           text-center text-xs
                           font-medium
                           text-gray-500
+                           text-center text-xs
                           uppercase
                           tracking-wider
                         "
@@ -89,6 +95,7 @@
                           text-center text-xs
                           font-medium
                           text-gray-500
+                           text-center text-xs
                           uppercase
                           tracking-wider
                         "
@@ -105,6 +112,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                             text-center text-xs
                           "
                         >
                           <router-link
@@ -122,6 +130,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                             text-center text-xs
                           "
                         >
                           {{ user.lastName }}
@@ -133,6 +142,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                             text-center text-xs
                           "
                         >
                           {{ user.email }}
@@ -143,6 +153,7 @@
                             py-4
                             whitespace-nowrap
                             text-sm text-gray-500
+                             text-center text-xs
                           "
                         >
                           {{ user.role }}
@@ -154,6 +165,7 @@
                             whitespace-nowrap
                             text-right text-sm
                             font-medium
+                             text-center text-xs
                           "
                         >
                           <router-link
