@@ -15,15 +15,6 @@ First of all, to be able to use our website, you have to run
 ```
 npm intall -- save 
 ```
-Create a back folder:
-```
-mkdir back
-```
-
-Create a customer file for the front:
-```
-mkdir client
-```
 
 To start the back, and to run the front use the command inside babel/client and babel/back:
 ```
