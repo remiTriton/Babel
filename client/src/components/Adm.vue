@@ -102,7 +102,7 @@
             Historique Bon de Commande
           </div>
           <div
-            @click.prevent="toggle()"
+            @click.prevent="toggleshowKpi()"
             class="
               bg-gray-100
               text-gray-900
@@ -243,6 +243,7 @@
       <div v-if="showWines"><WinesAdm /></div>
       <div v-if="showUsers"><Users /></div>
       <div v-if="showBills"><Orders /></div>
+      <div v-if="showKpi"><Kpi /></div>
     </div>
     <div v-else class="text-gray-700">
       <router-link to="/WineList"
@@ -259,6 +260,7 @@ import Add from "../components/Add.vue";
 import WinesAdm from "../components/WinesAdm.vue";
 import Users from "../components/Users.vue";
 import Orders from "../components/Orders.vue";
+import Kpi from "../components/Kpi.vue";
 
 // import {
 //   Dialog,
@@ -282,6 +284,7 @@ export default {
     WinesAdm,
     Users,
     Orders,
+    Kpi,
   },
   data() {
     return {
@@ -290,6 +293,7 @@ export default {
       showUsers: false,
       showBills: false,
       quantite: "",
+      showKpi: false,
     };
   },
   computed: {
@@ -321,6 +325,14 @@ export default {
       this.showWines = false;
       this.showUsers = false;
       this.showBills = true;
+    },
+    toggleshowKpi() {
+      this.add = false;
+      this.showWines = false;
+      this.showUsers = false;
+      this.showBills = false;
+      this.showKpi = true;
+
     },
     async nouveauBon(user) {
       await this.$store.dispatch("orders/newOrder", {

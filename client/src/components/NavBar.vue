@@ -27,14 +27,14 @@
             border-teal-400
             hover:text-white hover:border-white
           "
-        >          
+        >
         </button>
       </div>
       <div class=" w-full lg:flex lg:items-center lg:w-auto">
         <div class="text-sm relative ">
           <router-link
             to="/WineList"
-            class="     
+            class="
               text-teal-200
               hover:text-white
             "
@@ -42,13 +42,13 @@
             <img class="bb " src="../assets/Arches.png" atl="" />
           </router-link>
         </div>
-        
+
 <div class="flex space-x-4 mr-28 ">
         <div class="log">
           <router-link
             v-if="!auth"
             to="/login"
-            class="   
+            class="
               inline-block
               text-sm
               px-4
@@ -57,12 +57,12 @@
               border
               rounded
               text-white
-              border-white          
+              border-white
             "
             >Login</router-link
           >
         </div>
-        
+
         <div>
           <router-link
             v-if="!auth"
@@ -86,7 +86,7 @@
               inline-block
               text-sm
               px-4
-              py-2           
+              py-2
               leading-none
               border
               rounded
@@ -98,8 +98,8 @@
             Logout
           </button>
         </div>
-      
-      <div v-if='auth && auth.user.role === "Admin"'>
+
+      <div v-if='auth?.user?.role === "Admin"'>
         <router-link
           to="/Admin"
           class="
@@ -123,7 +123,7 @@
     </nav>
   </div>
   </div>
-  
+
 </template>
 
 <script>

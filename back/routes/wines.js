@@ -203,6 +203,27 @@ router.delete("/:id", users.verifyToken, async (req, res) => {
   })
 });
 
+router.get("/kpi/sum", async (req, res) => {
+  try {
+    await client.connect();
+
+    const total = await wineCol.aggregate(
+      [
+        {
+          $group:
+          {
+            _id: "$couleur",
+            sum_prix: { $sum: "$prix" },
+            sum_qtite: { $sum: "$quantite" },
+          }
+        },
+      ]).toArray();
+
+    res.send(total)
+  } finally {
+    await client.close();
+  }
+})
 
 
 module.exports = router;

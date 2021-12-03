@@ -1,4 +1,5 @@
 const {MongoClient} = require("mongodb");
+const bcrypt = require('bcryptjs')
 const fs = require('fs').promises;
 
 // convert users.csv file to JSON array
@@ -9,6 +10,26 @@ const main = async () => {
     await client.connect();
     const database = client.db('babel');
     const wineCol = database.collection('wines');
+    const user = database.collection('users');
+
+  const password = await new Promise((resolve, reject) => {
+    bcrypt.genSalt(10, (err, salt) => bcrypt.hash('admin', salt, (err, hash) => {
+      if (err) {
+        reject(err)
+        return;
+      }
+      resolve(hash)
+      return;
+    }))
+  })
+
+    user.insertOne({
+      firstName: 'admin',
+      lastName: 'admin',
+      email: 'admin@admin',
+      password,
+      role: "Admin",
+    })
 
 
     const fileContent = await fs.readFile('./populate_db/data.csv');
@@ -40,8 +61,8 @@ const main = async () => {
                 millesime,
                 cepage,
                 vigneron,
-                prix,
-                quantite
+                prix: Number(prix || 0),
+                quantite: Number(quantite || 0)
             };
         })
         // remove NULL document (first line of the doc)
