@@ -40,20 +40,25 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post('/images/:id', upload.single('photo'), async (req, res) => {
+
+
+router.post('/images/:id', upload.single('file'), async (req, res) => {
   try {
     await client.connect();
     const wine = await wineCol.findOne({ _id: new ObjectId(req.params.id) });
     if (!wine) {
-      return console.log('Wine not found')
+      return res.send('Wine not found')
     }
     else {
       console.log(req.file.filename)
       const path = req.file.path.replace(/\\/g, "/")
-      await wineCol.updateOne({ _id: new ObjectId(req.params.id) },
-        { $set: { winePicture: req.file.filename } })
-
+      const result = await wineCol.updateOne({ _id: new ObjectId(req.params.id) },
+        { $set: { winePicture: "@/" + path } })
+      res.send(result)
     }
+
+  } catch (err) {
+    res.send(err)
   } finally {
     await client.close();
   }
@@ -164,6 +169,7 @@ router.put("/:id", users.verifyToken, async (req, res) => {
       res.status(403).json("Access Forbidden");
       return;
     } else {
+
       try {
         await client.connect();
         await wineCol.updateOne(

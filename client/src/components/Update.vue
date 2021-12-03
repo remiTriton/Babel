@@ -2,10 +2,9 @@
   <div>
     <div class="formulaire">
       <form @submit.prevent.stop class="w-full max-w-lg mt-20">
+        //////
 
-      //////
-
-<div class="grid grid-cols-2 gap-8">
+        <div class="grid grid-cols-2 gap-8">
           <div>
             <label
               class="
@@ -174,14 +173,12 @@
               "
               id="grid-pays"
             >
-
-               <option>France</option>
-                <option>Italie</option>
-                <option>Espagne</option>
-                <option>Grêce</option>
-                <option>Croatie</option>
-              </select>
-      
+              <option>France</option>
+              <option>Italie</option>
+              <option>Espagne</option>
+              <option>Grêce</option>
+              <option>Croatie</option>
+            </select>
           </div>
           <div>
             <label
@@ -317,12 +314,12 @@
               "
               id="grid-couleur"
             >
-            <option>Rouge</option>
-                      <option>Blanc</option>
-                      <option>Rosé</option>
-                      <option>Bubble</option>
-                      <option>Biere</option>
-                    </select>
+              <option>Rouge</option>
+              <option>Blanc</option>
+              <option>Rosé</option>
+              <option>Bubble</option>
+              <option>Biere</option>
+            </select>
           </div>
           <div>
             <label
@@ -356,7 +353,7 @@
               "
               id="grid-quantite"
               type="number"
-                placeholder="0"
+              placeholder="0"
             />
           </div>
           <div>
@@ -391,7 +388,7 @@
               "
               id="grid-prix"
               type="number"
-                placeholder="0"
+              placeholder="0"
             />
           </div>
           <div>
@@ -427,8 +424,10 @@
               type="file"
               @change="onFileSelected"
               placeholder="..."
+              ref="file"
             />
           </div>
+          <button class="text-gray-700" @click="img($event)">upload</button>
           <div>
             <label
               class="
@@ -443,9 +442,12 @@
             >
               Description
             </label>
-            <textarea 
-            v-model="wine.description"
-                class="resize border rounded-md 
+            <textarea
+              v-model="wine.description"
+              class="
+                resize
+                border
+                rounded-md
                 border border-gray-200
                 appearance-none
                 block
@@ -456,14 +458,14 @@
                 px-4
                 mb-3
                 leading-tight
-                focus:outline-none focus:bg-white "          
+                focus:outline-none focus:bg-white
+              "
               id="grid-description"
               type="text"
-              >
+            >
             </textarea>
           </div>
         </div>
-
 
         <button
           class="
@@ -484,8 +486,8 @@
           Submit
         </button>
       </form>
-    </div>          <img :src="require(`../assets/upload/${wine.winePicture}`)" />
-
+    </div>
+    <img :src="wine.winePicture" />
   </div>
 </template>
 
@@ -493,10 +495,10 @@
 export default {
   name: "NewWine",
   props: ["id"],
-  data(){
-    return{
-      img:"/src/"
-    }
+  data() {
+    return {
+      file: "",
+    };
   },
   created() {
     this.$store.dispatch("wines/findOnewines", this.$route.params.id);
@@ -508,6 +510,24 @@ export default {
   },
 
   methods: {
+    onFileSelected(event) {
+      this.file = event.target.files[0];
+    
+    },
+    async img() {
+      let formData = new FormData();
+      formData.append("file", this.file);
+      console.log(this.file);
+      const res = await fetch("/api/wines/images/" + this.$route.params.id, {
+        method: "POST",
+        headers: {
+          "content-type": "multipart/form-data"
+        },
+        body: formData,
+      });
+      console.log(res);
+    },
+
     async updateWine() {
       if (!this.wine.quantite) {
         await this.$store.dispatch("wines/updateWine", [
@@ -521,7 +541,7 @@ export default {
             cuvee: this.wine.wineName,
             couleur: this.wine.couleur,
             description: this.wine.description,
-            departement:this.wine.departement,
+            departement: this.wine.departement,
             region: this.wine.region,
             pays: this.wine.pays,
             quantite: this.quantite,
@@ -545,12 +565,11 @@ export default {
             pays: this.wine.pays,
             quantite: this.quantite + this.wine.quantite,
             prix: this.wine.prix,
-            departement: this.wine.departement
+            departement: this.wine.departement,
           },
         ]);
       }
       await this.$store.dispatch("wines/findOnewines", this.$route.params.id);
-
       await this.$router.push("/Admin");
     },
   },
