@@ -70,7 +70,7 @@
                     </thead>
 
                     <tbody>
-                        <tr v-for="wine in wines[0]" :key="wine.id"> 
+                        <tr v-for="vin in Total[0]" :key="vin.id"> 
                         <td
                           class="
                             px-6
@@ -80,7 +80,7 @@
                             text-sm text-gray-500
                           "
                         >
-                            {{ wine._id }}
+                            {{ vin._id }}
                        
                         </td>
                         <td
@@ -92,7 +92,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.quantite }}
+                          {{ vin.quantite }}
                         </td>
 
                         <td
@@ -104,10 +104,10 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.prices }}
+                          {{ vin.prices }}
                         </td>
                         </tr>
-                      <tr v-for="total in wines[1]" :key="total.id"> 
+                      <tr v-for="tot in Total[1]" :key="tot.id"> 
                       <td
                           class="
                             px-8
@@ -130,7 +130,7 @@
                             bg-gray-200
                           "
                         >
-                          {{total.prices}}
+                          {{tot.prices}}
                         </td>
                         <td
                           class="
@@ -142,7 +142,7 @@
                             bg-gray-200
                           "
                         >
-                          {{total.quantite}}
+                          {{tot.quantite}}
                         </td>
 
                       </tr>
@@ -168,8 +168,8 @@ created() {
   },
 
 computed: {
-    wines () {
-      return this.$store.state.wines.wines;
+    Total () {
+      return this.$store.state.wines.Total;
     }
   },
 }

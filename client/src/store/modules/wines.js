@@ -3,6 +3,7 @@ const wines = {
   namespaced: true,
   state: {
     wines: [],
+    Total:[],
     wine: {}
   },
 
@@ -100,7 +101,7 @@ const wines = {
       );
       const data= await res.json();
       console.log(data)
-      context.commit("setwines", data)
+      context.commit("setTotal", data)
     }
   }
 }
