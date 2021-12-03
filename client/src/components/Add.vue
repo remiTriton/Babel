@@ -391,41 +391,7 @@
               placeholder="0"
             />
           </div>
-          <div>
-            <label
-              class="
-                block
-                uppercase
-                tracking-wide
-                text-gray-700 text-xs
-                font-bold
-                mb-2
-              "
-              for="grid-download"
-            >
-              Download images
-            </label>
-            <input
-              class="
-                border border-gray-200
-                appearance-none
-                block
-                w-full
-                bg-gray-200
-                text-gray-700
-                rounded
-                py-3
-                px-4
-                mb-3
-                leading-tight
-                focus:outline-none focus:bg-white
-              "
-              id="grid-prix"
-              type="file"
-              @change="onFileSelected"
-              placeholder="..."
-            />
-          </div>
+     
           <div>
             <label
               class="

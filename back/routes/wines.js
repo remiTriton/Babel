@@ -97,7 +97,7 @@ router.post("/", users.verifyToken, async (req, res) => {
           quantite: req.body.quantite,
           prix: req.body.prix,
           departement: req.body.departement,
-          imgBase64:req.body.imgBase64
+          imgBase64: req.body.imgBase64
         };
         const result = await wineCol.insertOne(doc);
         res.send(`A document was inserted with the _id: ${result.insertedId}`);
@@ -208,17 +208,16 @@ router.get("/kpi/sum", async (req, res) => {
   try {
     await client.connect();
 
-    const total = await wineCol.aggregate(
-      [
-        {
-          $group:
-          {
-            _id: "$couleur",
-            sum_prix: { $sum: "$prix" },
-            sum_qtite: { $sum: "$quantite" },
-          }
-        },
-      ]).toArray();
+    const total = await wineCol.aggregate([{
+      "$group" : { 
+        "_id" : "$couleur", 
+        "prices" : { 
+            "$sum" : { 
+                "$multiply" : ["$prix", "$quantite"]
+            }
+        }
+    }}
+  ]).toArray();
 
     res.send(total)
   } finally {
