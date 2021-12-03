@@ -4,7 +4,8 @@ import Footer from '../components/Footer.vue'
 
 export default {
   components: {
-    NavBar, Footer,
+    NavBar, 
+    Footer,
   }
 }
 
@@ -12,8 +13,9 @@ export default {
 
 <template><div>
 <NavBar />
+<router-view></router-view>
 <Footer />
-<router-view></router-view></div>
+</div>
 </template>
 
 <style >

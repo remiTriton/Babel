@@ -133,7 +133,7 @@
                           </th>
 
                           <th
-                            v-if="order && order.status != 'Confirmed'"
+                            v-if="order && order._id"
                             scope="col"
                             class="
                               px-6
@@ -150,7 +150,7 @@
                           </th>
 
                           <th
-                            v-if="order && order.status != 'Confirmed'"
+                            v-if="order && order._id"
                             scope="col"
                             class="
                               px-6
@@ -251,7 +251,7 @@
                           >
                             {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
                           </td>
-                          <td v-if="order && order.status != 'Confirmed'">
+                          <td v-if="order && order._id">
                             <input
                               v-model="quantite"
                               class="
@@ -274,7 +274,7 @@
                               placeholder="0"
                             />
                           </td>
-                          <td v-if="order && order.status != 'Confirmed'">
+                          <td v-if="order && order._id">
                             <button
                               type="button"
                               class="

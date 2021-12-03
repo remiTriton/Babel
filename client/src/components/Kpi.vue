@@ -130,7 +130,7 @@
                             bg-gray-200
                           "
                         >
-                          {{tot.quantite}} 
+                          {{tot.quantite}}
                         </td>
                         <td
                           class="
