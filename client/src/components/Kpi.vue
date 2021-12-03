@@ -90,7 +90,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.sum_qtite }}
+                          {{ wine.quantite }}
                         </td>
 
                         <td
@@ -101,7 +101,7 @@
                             text-sm text-gray-500
                           "
                         >
-                          {{ wine.sum_prix }}
+                          {{ wine.prices }}
                         </td>
                         </tr>
                     </tbody>

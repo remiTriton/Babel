@@ -173,14 +173,12 @@
               "
               id="grid-pays"
             >
-
-               <option>France</option>
-                <option>Italie</option>
-                <option>Espagne</option>
-                <option>Grêce</option>
-                <option>Croatie</option>
-              </select>
-      
+              <option>France</option>
+              <option>Italie</option>
+              <option>Espagne</option>
+              <option>Grêce</option>
+              <option>Croatie</option>
+            </select>
           </div>
           <div>
             <label
@@ -315,14 +313,13 @@
                 focus:outline-none focus:bg-white
               "
               id="grid-couleur"
-              
             >
-            <option>Rouge</option>
-                      <option>Blanc</option>
-                      <option>Rosé</option>
-                      <option>Bubble</option>
-                      <option>Biere</option>
-                    </select>
+              <option>Rouge</option>
+              <option>Blanc</option>
+              <option>Rosé</option>
+              <option>Bubble</option>
+              <option>Biere</option>
+            </select>
           </div>
           <div>
             <label
@@ -356,7 +353,7 @@
               "
               id="grid-quantite"
               type="number"
-                placeholder="0"
+              placeholder="0"
             />
           </div>
           <div>
@@ -391,8 +388,47 @@
               "
               id="grid-prix"
               type="number"
-                placeholder="0"
+              placeholder="0"
             />
+          </div>
+     
+          <div>
+            <label
+              class="
+                info
+                uppercase
+                tracking-wide
+                text-gray-700 text-xs
+                font-bold
+                mb-2
+              "
+              for="grid-description"
+            >
+              Description
+            </label>
+            <textarea
+              v-model="description"
+              class="
+                resize
+                border
+                rounded-md
+                border border-gray-200
+                appearance-none
+                block
+                bg-gray-200
+                text-black
+                rounded
+                py-3
+                px-4
+                mb-3
+                leading-tight
+                focus:outline-none focus:bg-white
+                text-gray-500
+              "
+              id="grid-description"
+              type="text"
+            >
+            </textarea>
           </div>
           <div>
             <label
@@ -408,60 +444,8 @@
             >
               Download images
             </label>
-            <input
-              class="
-                border border-gray-200
-                appearance-none
-                block
-                w-full
-                bg-gray-200
-                text-gray-700
-                rounded
-                py-3
-                px-4
-                mb-3
-                leading-tight
-                focus:outline-none focus:bg-white
-              "
-              id="grid-prix"
-              type="file"
-              @change="onFileSelected"
-              placeholder="..."
-            />
-          </div>
-          <div>
-            <label
-              class="
-                info
-                uppercase
-                tracking-wide
-                text-gray-700 text-xs
-                font-bold
-                mb-2
-              "
-              for="grid-description"
-            >
-              Description
-            </label>
-            <textarea 
-            v-model="description"
-                class="resize border rounded-md
-                border border-gray-200
-                appearance-none
-                block
-                bg-gray-200
-                text-black
-                rounded
-                py-3
-                px-4
-                mb-3
-                leading-tight
-                focus:outline-none focus:bg-white
-                text-gray-500"             
-              id="grid-description"
-              type="text"
-              >
-            </textarea>
+            <input type="file" @change="previewFile" />
+            <canvas ref="canvas" />
           </div>
         </div>
         <button
@@ -489,7 +473,6 @@
 </template>
 
 <script>
-
 export default {
   name: "SignUp",
   data() {
@@ -506,9 +489,37 @@ export default {
       pays: "",
       quantite: "",
       prix: "",
+      imgBase64: "",
+      quantite: 0,
+      img: "/src/",
     };
   },
   methods: {
+
+      previewFile(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      const maxW = 300;
+      const maxH = 300;
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          const iw = img.width;
+          const ih = img.height;
+          const scale = Math.min(maxW / iw, maxH / ih);
+          const iwScaled = iw * scale;
+          const ihScaled = ih * scale;
+          this.$refs.canvas.width = iwScaled;
+          this.$refs.canvas.height = ihScaled;
+
+          const ctx = this.$refs.canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
+          this.imgBase64 = this.$refs.canvas.toDataURL();
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    },
     async createWine() {
       const wine = {
         cuvee: this.cuvee,
@@ -523,11 +534,11 @@ export default {
         pays: this.pays,
         quantite: this.quantite,
         prix: this.prix,
+        imgBase64:this.imgBase64
       };
       await this.$store.dispatch("wines/addWine", wine);
-      await this.$store.dispatch('wines/fetchWines')
+      await this.$store.dispatch("wines/fetchWines");
     },
-    
   },
 };
 </script>
@@ -542,7 +553,7 @@ export default {
 }
 
 .info {
- color: black;
+  color: black;
 }
 
 .sub {
