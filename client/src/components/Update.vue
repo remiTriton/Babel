@@ -484,7 +484,6 @@
           Submit
         </button>
       </form>
-      <img v-bind:src="wine.imgBase64" />
     </div>
   </div>
 </template>
