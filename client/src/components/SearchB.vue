@@ -6,6 +6,22 @@
           <button
             class="
               test
+              w-35
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               bg-transparent
               text-#2a574c
               inline-block
@@ -33,6 +49,21 @@
           <button
             class="
               test
+              w-35
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               bg-transparent
               font-bold
               hover:text-#2a574c hover:border-transparent
@@ -58,6 +89,21 @@
           <button
             class="
               test
+            w-35
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               bg-transparent
               text-#2a574c
               font-bold
@@ -83,8 +129,22 @@
         <span>
           <button
             class="
-            
               test
+              w-35
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               bg-transparent
               text-#2a574c
               font-bold
@@ -111,6 +171,21 @@
           <button
             class="
               test
+              w-35
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               bg-transparent
               text-#2a574c
               font-bold
@@ -137,6 +212,21 @@
           <button
             class="
               test
+              w-35
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               bg-transparent
               text-#2a574c
               font-bold
@@ -163,7 +253,22 @@
           <button
             class="
               test
+              w-35
               bg-transparent
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               text-#2a574c
               font-bold
               hover:text-#2a574c hover:border-transparent
@@ -189,7 +294,21 @@
           <button
             class="
               test
-              bg-transparent
+              w-35
+              inline-flex
+              items-center
+              px-4
+              py-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-full
+              shadow-sm
+              text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
               text-#2a574c
               font-bold
               hover:text-#2a574c hover:border-transparent
@@ -211,7 +330,7 @@
           </button></span
         >
       </div>
-      <div class="flex flex-col items-center text-black ">
+      <div class="flex flex-col items-center text-black">
         <form class="left" @submit.prevent.stop>
           <button type="submit" @click.prevent="searchWine(type, query)">
             <svg
