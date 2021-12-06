@@ -243,7 +243,15 @@ router.get("/kpi/sum", async (req, res) => {
   } finally {
     await client.close();
   }
-})
+});
 
+router.get('/:cuvee/:couleur', async (req, res) => {
+try {
+  await client.connect();
+const wine = await wineCol.findOne({ cuvee: req.params.cuvee, couleur: req.params.couleur });
+res.send(wine);
+}finally {
+  await client.close();
+}});
 
 module.exports = router;
