@@ -1,9 +1,14 @@
 const express = require("express");
+require('dotenv').config();
+
 const { MongoClient, ObjectId } = require("mongodb");
 const router = express.Router();
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
-const client = new MongoClient(uri);
-const database = client.db("babel");
+const uri = process.env.MONGODB_URI
+const client = new MongoClient(uri, { 
+   useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const database = client.db("Babel");
 const orderCol = database.collection("orders");
 const wineCol = database.collection('wines');
 const users = require('./users')
