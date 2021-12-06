@@ -90,7 +90,7 @@
             br-5
             rounded
           "
-          @click="filter('Bubble')"
+          @click="filter('Bubble', query)"
         >
           Bubble
         </button></span
@@ -107,7 +107,7 @@
             br-5
             rounded
           "
-          @click="filter('Rouge')"
+          @click="filter('Rouge',query)"
         >
           Red
         </button></span
@@ -124,7 +124,7 @@
             br-5
             rounded
           "
-          @click="filter('Blanc')"
+          @click="filter('Blanc',query)"
         >
           White
         </button></span
@@ -141,7 +141,7 @@
             br-5
             rounded
           "
-          @click="filter('Rose')"
+          @click="filter('Rose',query)"
         >
           Rosé
         </button></span
@@ -158,7 +158,7 @@
             br-5
             rounded
           "
-          @click="filter('Beer')"
+          @click="filter('Beer',query)"
         >
           Beer
         </button></span
@@ -180,8 +180,8 @@ export default {
     searchWine(type, query) {
       this.$emit("searchWine", type, query);
     },
-    filter(color) {
-      this.$emit("color", color);
+    filter(query,color) {
+      this.$emit("color", color,query);
     },
   },
 };

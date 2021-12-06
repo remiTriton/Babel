@@ -238,7 +238,6 @@ router.get("/kpi/sum", async (req, res) => {
       },
     },
     ]).toArray();
-
     res.send([totalBycolor, total])
   } finally {
     await client.close();

@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
 
         console.log(tak)
 
-        const link = `http://localhost:3000/password-reset/${user._id}/${tak._id}`;
+        const link = `${process.env.LINK_MAIL}${user._id}/${tak._id}`;
         await sendEmail(user.email, "Password reset", "Bonjour, il semblerait que vous ayiez demandé une demande de nouveau mot de passe, Veuillez vous rendre à cette adresse :" + link );
 
     } catch (error) {
