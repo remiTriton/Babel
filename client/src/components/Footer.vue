@@ -9,7 +9,7 @@
         </a>
       </div>
       <div class="mt-8 md:mt-0 md:order-1">
-        <p class="text-center text-base text-white">
+        <p class="text-center  text-white">
           &copy; 2020 Workflow, Inc. All rights reserved.
         </p>
       </div>
@@ -69,5 +69,6 @@ export default {
     background-color: #2a574c;
     color: white;
     width: 100%;
+    position: static;
 }
 </style>
