@@ -1,14 +1,18 @@
 const {MongoClient} = require("mongodb");
 const bcrypt = require('bcryptjs')
 const fs = require('fs').promises;
+require('dotenv').config();
 
 // convert users.csv file to JSON array
 const main = async () => {
-    const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
-    const client = new MongoClient(uri);
+  const uri = process.env.MONGODB_URI
+  const client = new MongoClient(uri, { 
+     useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
     await client.connect();
-    const database = client.db('babel');
+    const database = client.db('Babel');
     const wineCol = database.collection('wines');
     const user = database.collection('users');
 
