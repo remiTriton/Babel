@@ -1,10 +1,10 @@
 <template>
   <div class=" flexo">
-  <div>
     <nav class="grid grid-cols-3 gap-1 m-8">
       <router-link
         to="/blog"
         class="
+        col-span-1
           flex
           items-center
           px-3
@@ -15,23 +15,6 @@
       >
         ISI
       </router-link>
-      <div class="block lg:hidden">
-        <button
-          class="
-            items-center
-            px-3
-            py-2
-            border
-            rounded
-            text-teal-200
-            border-teal-400
-            hover:text-white hover:border-white
-          "
-        >
-        </button>
-      </div>
-      <div class=" w-full lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm relative ">
           <router-link
             to="/WineList"
             class="
@@ -41,10 +24,7 @@
           >
             <img class="bb " src="../assets/Arches.png" atl="" />
           </router-link>
-        </div>
 
-<div class="flex space-x-4 mr-28 ">
-        <div class="log">
           <router-link
             v-if="!auth"
             to="/login"
@@ -61,7 +41,6 @@
             "
             >Login</router-link
           >
-        </div>
 
         <div>
           <router-link
@@ -118,10 +97,7 @@
           >Admin</router-link
         >
       </div>
-      </div>
-      </div>
     </nav>
-  </div>
   </div>
 
 </template>
@@ -145,7 +121,6 @@ export default {
 
 <style>
 .flexo {
-display: flex;
   background-color: #2a574c;
   display: flex;
   justify-content: space-around;
