@@ -101,7 +101,7 @@
             br-5
             rounded
           "
-          @click="filter('Beer')"
+          @click="getAll()"
         >
           Tous
         </button></span
@@ -244,6 +244,9 @@ export default {
     filter(color) {
       this.$emit("color", color);
     },
+    getAll(){
+      this.$emit("allWines");
+    }
   },
 };
 </script>
