@@ -141,6 +141,17 @@ router.get("/color/:couleur", async (req, res) => {
   }
 });
 
+router.get("/cepage/:cepage", async (req, res) => {
+  try {
+    await client.connect();
+    const query = { cepage: req.params.cepage };
+    const wine = await wineCol.find(query).toArray();
+    res.send(wine);
+  } finally {
+    await client.close();
+  }
+});
+
 router.get("/region/:region", async (req, res) => {
   try {
     await client.connect();
@@ -242,7 +253,6 @@ router.get("/kpi/sum", async (req, res) => {
   } finally {
     await client.close();
   }
-})
-
+});
 
 module.exports = router;

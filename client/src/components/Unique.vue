@@ -80,8 +80,8 @@
         </dl>
       </div>
       <div class="">
-        <img class='w-full' v-bind:src="wine.imgBase64" />
-      
+        <img class="w-full" v-bind:src="wine.imgBase64" />
+        
       </div>
     </div>
     <button
