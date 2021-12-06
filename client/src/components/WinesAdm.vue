@@ -1,7 +1,11 @@
 <template>
   <Suspense>
     <div class="md:pl-64 flex flex-col flex-1">
-      <SearchB v-on:searchWine="search" v-on:color="filter" />
+      <SearchB
+        v-on:searchWine="search"
+        v-on:color="filter"
+        v-on:allWines="fetchWines"
+      />
       <main class="flex-1">
         <div class="py-6">
           <div class="mx-auto px-4 sm:px-6 md:px-8">
@@ -15,7 +19,7 @@
                     min-w-full
                     sm:px-6
                     lg:px-8
-                     text-center text-xs
+                    text-center text-xs
                   "
                 >
                   <div
@@ -24,7 +28,7 @@
                       overflow-hidden
                       border-b border-gray-200
                       sm:rounded-lg
-                       text-center text-xs
+                      text-center text-xs
                     "
                   >
                     <div class="flex flex-col">
@@ -37,7 +41,7 @@
                             min-w-full
                             sm:px-6
                             lg:px-8
-                             text-center text-xs
+                            text-center text-xs
                           "
                         >
                           <div
@@ -46,7 +50,7 @@
                               overflow-hidden
                               border-b border-gray-200
                               sm:rounded-lg
-                               text-center text-xs
+                              text-center text-xs
                             "
                           ></div>
                         </div>
@@ -65,7 +69,7 @@
                               text-gray-900
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             Cuvée
@@ -80,7 +84,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             Quantité
@@ -95,7 +99,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             Couleur
@@ -110,7 +114,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             PAHT
@@ -126,7 +130,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             PVC
@@ -143,7 +147,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             Commande
@@ -160,7 +164,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             Add
@@ -175,7 +179,7 @@
                               text-gray-500
                               uppercase
                               tracking-wider
-                               text-center text-xs
+                              text-center text-xs
                             "
                           >
                             Edit
@@ -190,8 +194,7 @@
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
-                               text-center text-xs
+                              text-sm text-gray-500 text-center text-xs
                             "
                           >
                             <router-link
@@ -209,8 +212,7 @@
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
-                               text-center text-xs
+                              text-sm text-gray-500 text-center text-xs
                             "
                           >
                             {{ wine.quantite }}
@@ -221,8 +223,7 @@
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
-                               text-center text-xs
+                              text-sm text-gray-500 text-center text-xs
                             "
                           >
                             {{ wine.couleur }}
@@ -233,8 +234,7 @@
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
-                               text-center text-xs
+                              text-sm text-gray-500 text-center text-xs
                             "
                           >
                             {{ wine.prix }} €
@@ -245,8 +245,7 @@
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
-                               text-center text-xs
+                              text-sm text-gray-500 text-center text-xs
                             "
                           >
                             {{ parseFloat(wine.prix * 1.2).toFixed(2) }} €
@@ -257,7 +256,7 @@
                               class="
                                 appearance-none
                                 block
-                                 text-center text-xs
+                                text-center text-xs
                                 bg-gray-200
                                 text-gray-700
                                 border border-gray-200
@@ -281,7 +280,7 @@
                                 round
                                 inline-flex
                                 items-center
-                                 text-center text-xs
+                                text-center text-xs
                                 p-2
                                 border border-transparent
                                 rounded-full
@@ -307,7 +306,7 @@
                             class="
                               px-6
                               py-4
-                               text-center text-xs
+                              text-center text-xs
                               whitespace-nowrap
                               text-sm text-gray-500
                               ml-5
@@ -321,8 +320,7 @@
                             >
                               <button
                                 class="
-                                 text-center text-xs
-                                  text-indigo-600
+                                  text-center text-xs text-indigo-600
                                   hover:text-indigo-900
                                   ml-5
                                 "
@@ -411,9 +409,17 @@ export default {
         query.charAt(0).toUpperCase() + query.slice(1),
       ]);
     },
-
-    async filter(couleur) {
-      await this.$store.dispatch("wines/searchWinesByColor", couleur);
+    async fetchWines() {
+      this.$store.dispatch("wines/fetchWines");
+    },
+    async filter(query, value) {
+      if (!query) {
+        await this.$store.dispatch("wines/searchWinesByColor", value);
+      } else {
+        return (this.$store.state.wines.wines = this.wines.filter(
+          (m) => m.couleur === value
+        ));
+      }
     },
 
     async Delete(name, id) {

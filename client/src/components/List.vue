@@ -1,6 +1,10 @@
 <template>
   <div>
-    <SearchB v-on:searchWine="search" v-on:color="filter" />
+    <SearchB
+      v-on:searchWine="search"
+      v-on:color="filter"
+      v-on:allWines="fetchWines"
+    />
 
     <div class="bg-white">
       <div
@@ -127,6 +131,10 @@ export default {
       } else {        
         return this.$store.state.wines.wines = this.wines.filter((m) => m.couleur === value);
       }
+    },
+    async fetchWines(){
+          this.$store.dispatch("wines/fetchWines");
+
     },
     back() {
       this.$router.back(-1);
