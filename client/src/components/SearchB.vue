@@ -6,7 +6,7 @@
           <button type="submit" @click.prevent="searchWine(type, query)">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-4 h-4 mr-2 text-gray-600"
+              class="w-4 h-4 text-gray-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -75,10 +75,37 @@
                 />
                 <span class="text-gray-500 ml-2">Région</span>
               </label>
+              <label class="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  v-model="type"
+                  value="cepage"
+                />
+                <span class="text-gray-500 ml-2">Cépage</span>
+              </label>
             </div>
           </div></form
         >
       </div>
+
+      <span>
+        <button
+          class="
+            test
+            bg-transparent
+            text-#2a574c
+            font-bold
+            hover:text-#2a574c hover:border-transparent
+            br-5
+            rounded
+          "
+          @click="filter('Beer')"
+        >
+          Tous
+        </button></span
+      >
 
       <span>
         <button
@@ -92,7 +119,7 @@
           "
           @click="filter('Bubble')"
         >
-          Bubble
+          Bulles
         </button></span
       >
 
@@ -109,7 +136,7 @@
           "
           @click="filter('Rouge')"
         >
-          Red
+          Rouge
         </button></span
       >
 
@@ -126,7 +153,7 @@
           "
           @click="filter('Blanc')"
         >
-          White
+          Blanc
         </button></span
       >
 
@@ -160,7 +187,41 @@
           "
           @click="filter('Beer')"
         >
-          Beer
+          Orange
+        </button></span
+      >
+
+      <span>
+        <button
+          class="
+            test
+            bg-transparent
+            text-#2a574c
+            font-bold
+            hover:text-#2a574c hover:border-transparent
+            br-5
+            rounded
+          "
+          @click="filter('Beer')"
+        >
+          Bière
+        </button></span
+      >
+
+      <span>
+        <button
+          class="
+            test
+            bg-transparent
+            text-#2a574c
+            font-bold
+            hover:text-#2a574c hover:border-transparent
+            br-5
+            rounded
+          "
+          @click="filter('Beer')"
+        >
+          Alcool
         </button></span
       >
     </div>
