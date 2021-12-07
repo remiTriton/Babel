@@ -14,10 +14,12 @@
   "author": "remi",
   "main": "app.js",
   "scripts": {
+    
     "start": "node server.js",
     "dev": "nodemon server.js",
     "populate": "node ./populate_db/test.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publishToHeroku": "cd ../ && git subtree push --prefix babel-back heroku-babel-back master || true"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

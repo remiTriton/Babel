@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "publishToHeroku": "cd ../ && git subtree push --prefix frontend heroku-babel-front master || true"
+
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.1",
