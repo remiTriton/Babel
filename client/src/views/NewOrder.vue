@@ -1,6 +1,5 @@
 <template>
   <div>
-    <MiniSearchBar v-on:crud="toggle" />
     <NewOrder />
     <WinesAdmOrder v-if="toggleCrud" />
   </div>
@@ -9,9 +8,8 @@
 <script>
 import WinesAdmOrder from "../components/WinesAdm.vue";
 import NewOrder from "../components/UpdateOrder.vue";
-import MiniSearchBar from "../components/MiniSearchBar.vue";
 export default {
-  components: { NewOrder, WinesAdmOrder, MiniSearchBar },
+  components: { NewOrder, WinesAdmOrder },
   data() {
     return {
       toggleCrud: false,

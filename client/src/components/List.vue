@@ -6,7 +6,7 @@
       v-on:allWines="fetchWines"
     />
 
-    <div class="bg-white">
+    <div class="list bg-white">
       <div
         class="
           max-w-2xl
@@ -157,6 +157,7 @@ export default {
 .container {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
   font-size: large;

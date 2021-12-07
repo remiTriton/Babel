@@ -1,6 +1,7 @@
 version: "3.9"
 
 services:
+
   back:
     build: ./back
     command: npm run start
@@ -13,5 +14,3 @@ services:
     depends_on:
       - "back"
     restart: always
-
-
